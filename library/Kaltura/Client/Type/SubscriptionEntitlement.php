@@ -133,12 +133,14 @@ class SubscriptionEntitlement extends \Kaltura\Client\Type\Entitlement
 	/**
 	 * Scheduled Subscription Identifier
 	 * @var int
+	 * @readonly
 	 */
 	public $scheduledSubscriptionId = null;
 
 	/**
 	 * Unified payment identifier
 	 * @var int
+	 * @readonly
 	 */
 	public $unifiedPaymentId = null;
 

@@ -51,6 +51,8 @@ class Channel extends \Kaltura\Client\Type\BaseChannel
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->name))
+			$this->name = (string)$xml->name;
 		if(count($xml->description))
 			$this->description = (string)$xml->description;
 		if(count($xml->images))
@@ -81,6 +83,12 @@ class Channel extends \Kaltura\Client\Type\BaseChannel
 		if(count($xml->groupBy) && !empty($xml->groupBy))
 			$this->groupBy = \Kaltura\Client\ParseUtils::unmarshalObject($xml->groupBy, "KalturaAssetGroupBy");
 	}
+	/**
+	 * Channel name
+	 * @var string
+	 */
+	public $name = null;
+
 	/**
 	 * Cannel description
 	 * @var string

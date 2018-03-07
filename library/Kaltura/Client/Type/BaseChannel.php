@@ -53,8 +53,6 @@ class BaseChannel extends \Kaltura\Client\ObjectBase
 		
 		if(count($xml->id))
 			$this->id = (string)$xml->id;
-		if(count($xml->name))
-			$this->name = (string)$xml->name;
 	}
 	/**
 	 * Unique identifier for the channel
@@ -62,11 +60,5 @@ class BaseChannel extends \Kaltura\Client\ObjectBase
 	 * @readonly
 	 */
 	public $id = null;
-
-	/**
-	 * Channel name
-	 * @var string
-	 */
-	public $name = null;
 
 }
