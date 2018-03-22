@@ -86,24 +86,6 @@ class FollowTvSeriesService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Delete a user&#39;s tv series follow.
-	 * 
-	 */
-	function deleteWithToken($assetId, $token, $partnerId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "assetId", $assetId);
-		$this->client->addParam($kparams, "token", $token);
-		$this->client->addParam($kparams, "partnerId", $partnerId);
-		$this->client->queueServiceActionCall("followtvseries", "deleteWithToken", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-	}
-
-	/**
 	 * List user&#39;s tv series follows.
 	 *             Possible status codes:
 	 * 

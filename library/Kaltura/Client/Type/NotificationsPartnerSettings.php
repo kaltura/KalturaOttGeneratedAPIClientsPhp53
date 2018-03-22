@@ -105,15 +105,6 @@ class NotificationsPartnerSettings extends \Kaltura\Client\ObjectBase
 			$this->senderEmail = (string)$xml->senderEmail;
 		if(count($xml->mailSenderName))
 			$this->mailSenderName = (string)$xml->mailSenderName;
-		if(count($xml->mailNotificationAdapterId))
-			$this->mailNotificationAdapterId = (string)$xml->mailNotificationAdapterId;
-		if(count($xml->smsEnabled))
-		{
-			if(!empty($xml->smsEnabled))
-				$this->smsEnabled = true;
-			else
-				$this->smsEnabled = false;
-		}
 	}
 	/**
 	 * Push notification capability is enabled for the account
@@ -204,17 +195,5 @@ class NotificationsPartnerSettings extends \Kaltura\Client\ObjectBase
 	 * @var string
 	 */
 	public $mailSenderName = null;
-
-	/**
-	 * Mail notification adapter identifier
-	 * @var int
-	 */
-	public $mailNotificationAdapterId = null;
-
-	/**
-	 * SMS capability is enabled for the account
-	 * @var bool
-	 */
-	public $smsEnabled = null;
 
 }

@@ -62,12 +62,6 @@ class MessageTemplate extends \Kaltura\Client\ObjectBase
 			$this->action = (string)$xml->action;
 		if(count($xml->url))
 			$this->url = (string)$xml->url;
-		if(count($xml->mailTemplate))
-			$this->mailTemplate = (string)$xml->mailTemplate;
-		if(count($xml->mailSubject))
-			$this->mailSubject = (string)$xml->mailSubject;
-		if(count($xml->ratioId))
-			$this->ratioId = (string)$xml->ratioId;
 	}
 	/**
 	 * The message template with placeholders
@@ -104,23 +98,5 @@ class MessageTemplate extends \Kaltura\Client\ObjectBase
 	 * @var string
 	 */
 	public $url = null;
-
-	/**
-	 * Mail template name
-	 * @var string
-	 */
-	public $mailTemplate = null;
-
-	/**
-	 * Mail subject
-	 * @var string
-	 */
-	public $mailSubject = null;
-
-	/**
-	 * Ratio identifier
-	 * @var string
-	 */
-	public $ratioId = null;
 
 }

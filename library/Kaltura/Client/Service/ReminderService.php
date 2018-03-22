@@ -85,25 +85,6 @@ class ReminderService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Delete a reminder. Reminder cannot be delete while being sent.
-	 * 
-	 */
-	function deleteWithToken($id, $type, $token, $partnerId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "type", $type);
-		$this->client->addParam($kparams, "token", $token);
-		$this->client->addParam($kparams, "partnerId", $partnerId);
-		$this->client->queueServiceActionCall("reminder", "deleteWithToken", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-	}
-
-	/**
 	 * Return a list of reminders with optional filter by KSQL.
 	 * 
 	 * @return \Kaltura\Client\Type\ReminderListResponse

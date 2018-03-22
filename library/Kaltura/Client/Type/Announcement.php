@@ -73,24 +73,6 @@ class Announcement extends \Kaltura\Client\ObjectBase
 			$this->id = (int)$xml->id;
 		if(count($xml->imageUrl))
 			$this->imageUrl = (string)$xml->imageUrl;
-		if(count($xml->includeMail))
-		{
-			if(!empty($xml->includeMail))
-				$this->includeMail = true;
-			else
-				$this->includeMail = false;
-		}
-		if(count($xml->mailTemplate))
-			$this->mailTemplate = (string)$xml->mailTemplate;
-		if(count($xml->mailSubject))
-			$this->mailSubject = (string)$xml->mailSubject;
-		if(count($xml->includeSms))
-		{
-			if(!empty($xml->includeSms))
-				$this->includeSms = true;
-			else
-				$this->includeSms = false;
-		}
 	}
 	/**
 	 * Announcement name
@@ -147,29 +129,5 @@ class Announcement extends \Kaltura\Client\ObjectBase
 	 * @var string
 	 */
 	public $imageUrl = null;
-
-	/**
-	 * Include Mail
-	 * @var bool
-	 */
-	public $includeMail = null;
-
-	/**
-	 * Mail Template
-	 * @var string
-	 */
-	public $mailTemplate = null;
-
-	/**
-	 * Mail Subject
-	 * @var string
-	 */
-	public $mailSubject = null;
-
-	/**
-	 * Include SMS
-	 * @var bool
-	 */
-	public $includeSms = null;
 
 }

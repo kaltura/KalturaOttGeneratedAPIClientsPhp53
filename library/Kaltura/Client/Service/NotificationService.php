@@ -86,25 +86,6 @@ class NotificationService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Sends SMS notification to user
-	 * 
-	 * @return bool
-	 */
-	function sendSms($message)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "message", $message);
-		$this->client->queueServiceActionCall("notification", "sendSms", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (bool)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
-	}
-
-	/**
 	 * Registers the device push token to the push service
 	 * 
 	 * @return bool

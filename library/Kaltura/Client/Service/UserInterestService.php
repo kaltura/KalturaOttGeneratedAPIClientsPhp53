@@ -84,24 +84,6 @@ class UserInterestService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Delete new user interest for partner user
-	 * 
-	 */
-	function deleteWithToken($id, $token, $partnerId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "token", $token);
-		$this->client->addParam($kparams, "partnerId", $partnerId);
-		$this->client->queueServiceActionCall("userinterest", "deleteWithToken", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-	}
-
-	/**
 	 * Returns all Engagement for partner
 	 * 
 	 * @return \Kaltura\Client\Type\UserInterestListResponse

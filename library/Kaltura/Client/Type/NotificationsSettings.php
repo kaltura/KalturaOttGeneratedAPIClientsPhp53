@@ -64,20 +64,6 @@ class NotificationsSettings extends \Kaltura\Client\ObjectBase
 			else
 				$this->pushFollowEnabled = false;
 		}
-		if(count($xml->mailEnabled))
-		{
-			if(!empty($xml->mailEnabled))
-				$this->mailEnabled = true;
-			else
-				$this->mailEnabled = false;
-		}
-		if(count($xml->smsEnabled))
-		{
-			if(!empty($xml->smsEnabled))
-				$this->smsEnabled = true;
-			else
-				$this->smsEnabled = false;
-		}
 	}
 	/**
 	 * Specify if the user want to receive push notifications or not
@@ -90,17 +76,5 @@ class NotificationsSettings extends \Kaltura\Client\ObjectBase
 	 * @var bool
 	 */
 	public $pushFollowEnabled = null;
-
-	/**
-	 * Specify if the user wants to receive mail notifications or not
-	 * @var bool
-	 */
-	public $mailEnabled = null;
-
-	/**
-	 * Specify if the user wants to receive SMS notifications or not
-	 * @var bool
-	 */
-	public $smsEnabled = null;
 
 }

@@ -81,25 +81,4 @@ class NotificationsSettingsService extends \Kaltura\Client\ServiceBase
 		$resultObject = (bool)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
 		return $resultObject;
 	}
-
-	/**
-	 * Update the user’s notification settings.
-	 * 
-	 * @return bool
-	 */
-	function updateWithToken(\Kaltura\Client\Type\NotificationsSettings $settings, $token, $partnerId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "settings", $settings->toParams());
-		$this->client->addParam($kparams, "token", $token);
-		$this->client->addParam($kparams, "partnerId", $partnerId);
-		$this->client->queueServiceActionCall("notificationssettings", "updateWithToken", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (bool)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
-	}
 }
