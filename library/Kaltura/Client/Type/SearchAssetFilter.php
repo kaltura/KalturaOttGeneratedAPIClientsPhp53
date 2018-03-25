@@ -56,6 +56,13 @@ class SearchAssetFilter extends \Kaltura\Client\Type\BaseSearchAssetFilter
 			$this->typeIn = (string)$xml->typeIn;
 		if(count($xml->idIn))
 			$this->idIn = (string)$xml->idIn;
+		if(count($xml->excludeWatched))
+		{
+			if(!empty($xml->excludeWatched))
+				$this->excludeWatched = true;
+			else
+				$this->excludeWatched = false;
+		}
 	}
 	/**
 	 * Search assets using dynamic criteria. Provided collection of nested expressions with key, comparison operators, value, and logical conjunction.
@@ -88,5 +95,11 @@ class SearchAssetFilter extends \Kaltura\Client\Type\BaseSearchAssetFilter
 	 * @var string
 	 */
 	public $idIn = null;
+
+	/**
+	 * Exclude watched asset.
+	 * @var bool
+	 */
+	public $excludeWatched = null;
 
 }

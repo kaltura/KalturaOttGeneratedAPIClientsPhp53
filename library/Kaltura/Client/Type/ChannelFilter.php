@@ -54,6 +54,13 @@ class ChannelFilter extends \Kaltura\Client\Type\AssetFilter
 			$this->idEqual = (int)$xml->idEqual;
 		if(count($xml->kSql))
 			$this->kSql = (string)$xml->kSql;
+		if(count($xml->excludeWatched))
+		{
+			if(!empty($xml->excludeWatched))
+				$this->excludeWatched = true;
+			else
+				$this->excludeWatched = false;
+		}
 	}
 	/**
 	 * Channel Id
@@ -78,5 +85,11 @@ class ChannelFilter extends \Kaltura\Client\Type\AssetFilter
 	 * @var string
 	 */
 	public $kSql = null;
+
+	/**
+	 * Exclude watched asset.
+	 * @var bool
+	 */
+	public $excludeWatched = null;
 
 }
