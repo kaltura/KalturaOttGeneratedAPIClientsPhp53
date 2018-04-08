@@ -72,6 +72,8 @@ class CouponsGroup extends \Kaltura\Client\ObjectBase
 			$this->maxUsesNumberOnRenewableSub = (int)$xml->maxUsesNumberOnRenewableSub;
 		if(count($xml->couponGroupType))
 			$this->couponGroupType = (string)$xml->couponGroupType;
+		if(count($xml->maxHouseholdUses))
+			$this->maxHouseholdUses = (int)$xml->maxHouseholdUses;
 	}
 	/**
 	 * Coupon group identifier
@@ -121,5 +123,11 @@ class CouponsGroup extends \Kaltura\Client\ObjectBase
 	 * @var \Kaltura\Client\Enum\CouponGroupType
 	 */
 	public $couponGroupType = null;
+
+	/**
+	 * Maximum number of uses per household for each coupon in the group
+	 * @var int
+	 */
+	public $maxHouseholdUses = null;
 
 }

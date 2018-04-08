@@ -33,15 +33,14 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Coupon details container
  * @package Kaltura
  * @subpackage Client
  */
-class Coupon extends \Kaltura\Client\ObjectBase
+class RandomCouponGenerationOptions extends \Kaltura\Client\Type\CouponGenerationOptions
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaCoupon';
+		return 'KalturaRandomCouponGenerationOptions';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,41 +50,52 @@ class Coupon extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->couponsGroup) && !empty($xml->couponsGroup))
-			$this->couponsGroup = \Kaltura\Client\ParseUtils::unmarshalObject($xml->couponsGroup, "KalturaCouponsGroup");
-		if(count($xml->status))
-			$this->status = (string)$xml->status;
-		if(count($xml->totalUses))
-			$this->totalUses = (int)$xml->totalUses;
-		if(count($xml->leftUses))
-			$this->leftUses = (int)$xml->leftUses;
+		if(count($xml->numberOfCoupons))
+			$this->numberOfCoupons = (int)$xml->numberOfCoupons;
+		if(count($xml->useLetters))
+		{
+			if(!empty($xml->useLetters))
+				$this->useLetters = true;
+			else
+				$this->useLetters = false;
+		}
+		if(count($xml->useNumbers))
+		{
+			if(!empty($xml->useNumbers))
+				$this->useNumbers = true;
+			else
+				$this->useNumbers = false;
+		}
+		if(count($xml->useSpecialCharacters))
+		{
+			if(!empty($xml->useSpecialCharacters))
+				$this->useSpecialCharacters = true;
+			else
+				$this->useSpecialCharacters = false;
+		}
 	}
 	/**
-	 * Coupons group details
-	 * @var \Kaltura\Client\Type\CouponsGroup
-	 * @readonly
-	 */
-	public $couponsGroup;
-
-	/**
-	 * Coupon status
-	 * @var \Kaltura\Client\Enum\CouponStatus
-	 * @readonly
-	 */
-	public $status = null;
-
-	/**
-	 * Total available coupon uses
+	 * Number of coupons to generate
 	 * @var int
-	 * @readonly
 	 */
-	public $totalUses = null;
+	public $numberOfCoupons = null;
 
 	/**
-	 * Left coupon uses
-	 * @var int
-	 * @readonly
+	 * Indicates whether to use letters in the generated codes (default is true)
+	 * @var bool
 	 */
-	public $leftUses = null;
+	public $useLetters = null;
+
+	/**
+	 * Indicates whether to use numbers in the generated codes (default is true)
+	 * @var bool
+	 */
+	public $useNumbers = null;
+
+	/**
+	 * Indicates whether to use special characters in the generated codes(default is true)
+	 * @var bool
+	 */
+	public $useSpecialCharacters = null;
 
 }

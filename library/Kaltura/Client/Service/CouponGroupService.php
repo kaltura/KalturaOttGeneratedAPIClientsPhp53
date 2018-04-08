@@ -27,65 +27,40 @@
 // @ignore
 // ===================================================================================================
 
+
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Service;
 
 /**
- * Coupon details container
  * @package Kaltura
  * @subpackage Client
  */
-class Coupon extends \Kaltura\Client\ObjectBase
+class CouponGroupService extends \Kaltura\Client\ServiceBase
 {
-	public function getKalturaObjectType()
+	function __construct(\Kaltura\Client\Client $client = null)
 	{
-		return 'KalturaCoupon';
+		parent::__construct($client);
 	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
+
+	/**
+	 * Generate a coupon
+	 * 
+	 * @return string
+	 */
+	function generate($id, \Kaltura\Client\Type\CouponGenerationOptions $couponGenerationOptions)
 	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->couponsGroup) && !empty($xml->couponsGroup))
-			$this->couponsGroup = \Kaltura\Client\ParseUtils::unmarshalObject($xml->couponsGroup, "KalturaCouponsGroup");
-		if(count($xml->status))
-			$this->status = (string)$xml->status;
-		if(count($xml->totalUses))
-			$this->totalUses = (int)$xml->totalUses;
-		if(count($xml->leftUses))
-			$this->leftUses = (int)$xml->leftUses;
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "couponGenerationOptions", $couponGenerationOptions->toParams());
+		$this->client->queueServiceActionCall("coupongroup", "generate", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (String)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
 	}
-	/**
-	 * Coupons group details
-	 * @var \Kaltura\Client\Type\CouponsGroup
-	 * @readonly
-	 */
-	public $couponsGroup;
-
-	/**
-	 * Coupon status
-	 * @var \Kaltura\Client\Enum\CouponStatus
-	 * @readonly
-	 */
-	public $status = null;
-
-	/**
-	 * Total available coupon uses
-	 * @var int
-	 * @readonly
-	 */
-	public $totalUses = null;
-
-	/**
-	 * Left coupon uses
-	 * @var int
-	 * @readonly
-	 */
-	public $leftUses = null;
-
 }
