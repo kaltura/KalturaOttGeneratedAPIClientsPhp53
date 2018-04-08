@@ -139,9 +139,9 @@ class Client extends Base
 	protected $coupon = null;
 
 	/**
-	 * @var \Kaltura\Client\Service\CouponGroupService
+	 * @var \Kaltura\Client\Service\CouponsGroupService
 	 */
-	protected $couponGroup = null;
+	protected $couponsGroup = null;
 
 	/**
 	 * @var \Kaltura\Client\Service\CurrencyService
@@ -493,7 +493,7 @@ class Client extends Base
 		parent::__construct($config);
 		
 		$this->setClientTag('php5:18-04-08');
-		$this->setApiVersion('4.8.9.24103');
+		$this->setApiVersion('4.8.15.25280');
 	}
 	
 	/**
@@ -677,13 +677,13 @@ class Client extends Base
 		return $this->coupon;
 	}
 	/**
-	 * @return \Kaltura\Client\Service\CouponGroupService
+	 * @return \Kaltura\Client\Service\CouponsGroupService
 	 */
-	public function getCouponGroupService()
+	public function getCouponsGroupService()
 	{
-		if (is_null($this->couponGroup))
-			$this->couponGroup = new \Kaltura\Client\Service\CouponGroupService($this);
-		return $this->couponGroup;
+		if (is_null($this->couponsGroup))
+			$this->couponsGroup = new \Kaltura\Client\Service\CouponsGroupService($this);
+		return $this->couponsGroup;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\CurrencyService
