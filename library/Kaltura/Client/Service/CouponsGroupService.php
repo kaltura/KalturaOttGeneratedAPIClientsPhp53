@@ -64,4 +64,24 @@ class CouponsGroupService extends \Kaltura\Client\ServiceBase
 		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\StringValueArray");
 		return $resultObject;
 	}
+
+	/**
+	 * Returns information about coupons group
+	 * 
+	 * @return \Kaltura\Client\Type\CouponsGroup
+	 */
+	function get($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("couponsgroup", "get", "KalturaCouponsGroup", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCouponsGroup");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\CouponsGroup");
+		return $resultObject;
+	}
 }
