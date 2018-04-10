@@ -86,6 +86,25 @@ class CouponsGroupService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
+	 * Returns information about partner coupons groups
+	 * 
+	 * @return \Kaltura\Client\Type\CouponsGroupListResponse
+	 */
+	function listAction()
+	{
+		$kparams = array();
+		$this->client->queueServiceActionCall("couponsgroup", "list", "KalturaCouponsGroupListResponse", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCouponsGroupListResponse");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\CouponsGroupListResponse");
+		return $resultObject;
+	}
+
+	/**
 	 * Update coupons group
 	 * 
 	 * @return \Kaltura\Client\Type\CouponsGroup

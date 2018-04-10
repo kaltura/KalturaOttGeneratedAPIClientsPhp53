@@ -130,6 +130,7 @@ class TypeMap
 		'KalturaPpvPrice' => 'Kaltura\Client\Type\PpvPrice',
 		'KalturaPPVItemPriceDetails' => 'Kaltura\Client\Type\PPVItemPriceDetails',
 		'KalturaSubscriptionPrice' => 'Kaltura\Client\Type\SubscriptionPrice',
+		'KalturaCouponsGroupListResponse' => 'Kaltura\Client\Type\CouponsGroupListResponse',
 		'KalturaPriceDetails' => 'Kaltura\Client\Type\PriceDetails',
 		'KalturaPriceDetailsListResponse' => 'Kaltura\Client\Type\PriceDetailsListResponse',
 		'KalturaPricePlanListResponse' => 'Kaltura\Client\Type\PricePlanListResponse',
