@@ -84,4 +84,25 @@ class CouponsGroupService extends \Kaltura\Client\ServiceBase
 		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\CouponsGroup");
 		return $resultObject;
 	}
+
+	/**
+	 * Update coupons group
+	 * 
+	 * @return \Kaltura\Client\Type\CouponsGroup
+	 */
+	function update($id, \Kaltura\Client\Type\CouponsGroup $couponsGroup)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "couponsGroup", $couponsGroup->toParams());
+		$this->client->queueServiceActionCall("couponsgroup", "update", "KalturaCouponsGroup", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCouponsGroup");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\CouponsGroup");
+		return $resultObject;
+	}
 }
