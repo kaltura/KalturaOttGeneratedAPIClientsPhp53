@@ -45,6 +45,26 @@ class CouponsGroupService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
+	 * Add coupons group
+	 * 
+	 * @return \Kaltura\Client\Type\CouponsGroup
+	 */
+	function add(\Kaltura\Client\Type\CouponsGroup $couponsGroup)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "couponsGroup", $couponsGroup->toParams());
+		$this->client->queueServiceActionCall("couponsgroup", "add", "KalturaCouponsGroup", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCouponsGroup");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\CouponsGroup");
+		return $resultObject;
+	}
+
+	/**
 	 * Delete a coupons group
 	 * 
 	 * @return bool
