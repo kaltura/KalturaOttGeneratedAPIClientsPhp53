@@ -59,6 +59,7 @@ class UserInterest extends \Kaltura\Client\ObjectBase
 	/**
 	 * Identifier
 	 * @var string
+	 * @readonly
 	 */
 	public $id = null;
 
