@@ -55,13 +55,6 @@ class CouponsGroup extends \Kaltura\Client\ObjectBase
 			$this->id = (string)$xml->id;
 		if(count($xml->name))
 			$this->name = (string)$xml->name;
-		if(count($xml->descriptions))
-		{
-			if(empty($xml->descriptions))
-				$this->descriptions = array();
-			else
-				$this->descriptions = \Kaltura\Client\ParseUtils::unmarshalArray($xml->descriptions, "KalturaTranslationToken");
-		}
 		if(count($xml->startDate))
 			$this->startDate = (string)$xml->startDate;
 		if(count($xml->endDate))
@@ -87,12 +80,6 @@ class CouponsGroup extends \Kaltura\Client\ObjectBase
 	 * @var string
 	 */
 	public $name = null;
-
-	/**
-	 * A list of the descriptions of the coupon group on different languages (language code and translation)
-	 * @var array<KalturaTranslationToken>
-	 */
-	public $descriptions;
 
 	/**
 	 * The first date the coupons in this coupons group are valid
