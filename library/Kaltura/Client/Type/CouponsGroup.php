@@ -67,6 +67,8 @@ class CouponsGroup extends \Kaltura\Client\ObjectBase
 			$this->couponGroupType = (string)$xml->couponGroupType;
 		if(count($xml->maxHouseholdUses))
 			$this->maxHouseholdUses = (int)$xml->maxHouseholdUses;
+		if(count($xml->discountCode))
+			$this->discountCode = (string)$xml->discountCode;
 	}
 	/**
 	 * Coupon group identifier
@@ -116,5 +118,11 @@ class CouponsGroup extends \Kaltura\Client\ObjectBase
 	 * @var int
 	 */
 	public $maxHouseholdUses = null;
+
+	/**
+	 * Discount code
+	 * @var int
+	 */
+	public $discountCode = null;
 
 }
