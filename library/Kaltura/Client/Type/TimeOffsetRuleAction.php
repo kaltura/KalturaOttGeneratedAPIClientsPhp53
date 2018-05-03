@@ -30,16 +30,47 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
+ * Time offset action
  * @package Kaltura
  * @subpackage Client
  */
-class RuleActionType extends \Kaltura\Client\EnumBase
+abstract class TimeOffsetRuleAction extends \Kaltura\Client\Type\RuleAction
 {
-	const BLOCK = "BLOCK";
-	const START_DATE_OFFSET = "START_DATE_OFFSET";
-	const END_DATE_OFFSET = "END_DATE_OFFSET";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaTimeOffsetRuleAction';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->offset))
+			$this->offset = (int)$xml->offset;
+		if(count($xml->timeZone))
+		{
+			if(!empty($xml->timeZone))
+				$this->timeZone = true;
+			else
+				$this->timeZone = false;
+		}
+	}
+	/**
+	 * Offset in seconds
+	 * @var int
+	 */
+	public $offset = null;
 
+	/**
+	 * Indicates whether to add time zone offset to the time
+	 * @var bool
+	 */
+	public $timeZone = null;
+
+}

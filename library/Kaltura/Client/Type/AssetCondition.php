@@ -30,16 +30,34 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
+ * Asset Condition
  * @package Kaltura
  * @subpackage Client
  */
-class RuleActionType extends \Kaltura\Client\EnumBase
+class AssetCondition extends \Kaltura\Client\Type\Condition
 {
-	const BLOCK = "BLOCK";
-	const START_DATE_OFFSET = "START_DATE_OFFSET";
-	const END_DATE_OFFSET = "END_DATE_OFFSET";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaAssetCondition';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->ksql))
+			$this->ksql = (string)$xml->ksql;
+	}
+	/**
+	 * KSQL
+	 * @var string
+	 */
+	public $ksql = null;
 
+}

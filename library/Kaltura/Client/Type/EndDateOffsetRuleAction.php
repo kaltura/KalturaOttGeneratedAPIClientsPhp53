@@ -30,16 +30,26 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
+ * End date offset action
  * @package Kaltura
  * @subpackage Client
  */
-class RuleActionType extends \Kaltura\Client\EnumBase
+class EndDateOffsetRuleAction extends \Kaltura\Client\Type\TimeOffsetRuleAction
 {
-	const BLOCK = "BLOCK";
-	const START_DATE_OFFSET = "START_DATE_OFFSET";
-	const END_DATE_OFFSET = "END_DATE_OFFSET";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaEndDateOffsetRuleAction';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+	}
 }
-

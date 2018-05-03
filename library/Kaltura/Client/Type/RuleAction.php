@@ -52,11 +52,19 @@ class RuleAction extends \Kaltura\Client\ObjectBase
 		
 		if(count($xml->type))
 			$this->type = (string)$xml->type;
+		if(count($xml->description))
+			$this->description = (string)$xml->description;
 	}
 	/**
 	 * The type of the action
 	 * @var \Kaltura\Client\Enum\RuleActionType
 	 */
 	public $type = null;
+
+	/**
+	 * Description
+	 * @var string
+	 */
+	public $description = null;
 
 }

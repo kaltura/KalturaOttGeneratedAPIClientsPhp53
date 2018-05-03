@@ -30,16 +30,77 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
+ * Asset rule
  * @package Kaltura
  * @subpackage Client
  */
-class RuleActionType extends \Kaltura\Client\EnumBase
+class AssetRule extends \Kaltura\Client\ObjectBase
 {
-	const BLOCK = "BLOCK";
-	const START_DATE_OFFSET = "START_DATE_OFFSET";
-	const END_DATE_OFFSET = "END_DATE_OFFSET";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaAssetRule';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->id))
+			$this->id = (string)$xml->id;
+		if(count($xml->name))
+			$this->name = (string)$xml->name;
+		if(count($xml->description))
+			$this->description = (string)$xml->description;
+		if(count($xml->conditions))
+		{
+			if(empty($xml->conditions))
+				$this->conditions = array();
+			else
+				$this->conditions = \Kaltura\Client\ParseUtils::unmarshalArray($xml->conditions, "KalturaCondition");
+		}
+		if(count($xml->actions))
+		{
+			if(empty($xml->actions))
+				$this->actions = array();
+			else
+				$this->actions = \Kaltura\Client\ParseUtils::unmarshalArray($xml->actions, "KalturaRuleAction");
+		}
+	}
+	/**
+	 * ID
+	 * @var int
+	 * @readonly
+	 */
+	public $id = null;
 
+	/**
+	 * Name
+	 * @var string
+	 */
+	public $name = null;
+
+	/**
+	 * Description
+	 * @var string
+	 */
+	public $description = null;
+
+	/**
+	 * List of conditions for the rule
+	 * @var array<KalturaCondition>
+	 */
+	public $conditions;
+
+	/**
+	 * List of actions for the rule
+	 * @var array<KalturaRuleAction>
+	 */
+	public $actions;
+
+}

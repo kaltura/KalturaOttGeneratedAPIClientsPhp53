@@ -30,16 +30,34 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
+ * Condition
  * @package Kaltura
  * @subpackage Client
  */
-class RuleActionType extends \Kaltura\Client\EnumBase
+abstract class Condition extends \Kaltura\Client\ObjectBase
 {
-	const BLOCK = "BLOCK";
-	const START_DATE_OFFSET = "START_DATE_OFFSET";
-	const END_DATE_OFFSET = "END_DATE_OFFSET";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaCondition';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->description))
+			$this->description = (string)$xml->description;
+	}
+	/**
+	 * Description
+	 * @var string
+	 */
+	public $description = null;
 
+}

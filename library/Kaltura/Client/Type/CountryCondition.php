@@ -30,16 +30,47 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
+ * Country condition
  * @package Kaltura
  * @subpackage Client
  */
-class RuleActionType extends \Kaltura\Client\EnumBase
+class CountryCondition extends \Kaltura\Client\Type\Condition
 {
-	const BLOCK = "BLOCK";
-	const START_DATE_OFFSET = "START_DATE_OFFSET";
-	const END_DATE_OFFSET = "END_DATE_OFFSET";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaCountryCondition';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->not))
+		{
+			if(!empty($xml->not))
+				$this->not = true;
+			else
+				$this->not = false;
+		}
+		if(count($xml->countries))
+			$this->countries = (string)$xml->countries;
+	}
+	/**
+	 * Indicates whether to apply not on the other properties in the condition
+	 * @var bool
+	 */
+	public $not = null;
 
+	/**
+	 * Comma separated countries IDs list
+	 * @var string
+	 */
+	public $countries = null;
+
+}
