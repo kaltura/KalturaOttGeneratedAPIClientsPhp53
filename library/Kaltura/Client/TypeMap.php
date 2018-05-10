@@ -207,7 +207,7 @@ class TypeMap
 		'KalturaAssetRuleAction' => 'Kaltura\Client\Type\AssetRuleAction',
 		'KalturaAssetRule' => 'Kaltura\Client\Type\AssetRule',
 		'KalturaCountryCondition' => 'Kaltura\Client\Type\CountryCondition',
-		'KalturaAssetUserBlockRuleAction' => 'Kaltura\Client\Type\AssetUserBlockRuleAction',
+		'KalturaAssetUserRuleBlockAction' => 'Kaltura\Client\Type\AssetUserRuleBlockAction',
 		'KalturaAccessControlBlockAction' => 'Kaltura\Client\Type\AccessControlBlockAction',
 		'KalturaTimeOffsetRuleAction' => 'Kaltura\Client\Type\TimeOffsetRuleAction',
 		'KalturaEndDateOffsetRuleAction' => 'Kaltura\Client\Type\EndDateOffsetRuleAction',
