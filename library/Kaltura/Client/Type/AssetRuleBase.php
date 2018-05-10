@@ -33,15 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Time offset action
+ * Asset rule base
  * @package Kaltura
  * @subpackage Client
  */
-abstract class TimeOffsetRuleAction extends \Kaltura\Client\Type\AssetRuleAction
+abstract class AssetRuleBase extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaTimeOffsetRuleAction';
+		return 'KalturaAssetRuleBase';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,26 +51,30 @@ abstract class TimeOffsetRuleAction extends \Kaltura\Client\Type\AssetRuleAction
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->offset))
-			$this->offset = (int)$xml->offset;
-		if(count($xml->timeZone))
-		{
-			if(!empty($xml->timeZone))
-				$this->timeZone = true;
-			else
-				$this->timeZone = false;
-		}
+		if(count($xml->id))
+			$this->id = (string)$xml->id;
+		if(count($xml->name))
+			$this->name = (string)$xml->name;
+		if(count($xml->description))
+			$this->description = (string)$xml->description;
 	}
 	/**
-	 * Offset in seconds
+	 * ID
 	 * @var int
+	 * @readonly
 	 */
-	public $offset = null;
+	public $id = null;
 
 	/**
-	 * Indicates whether to add time zone offset to the time
-	 * @var bool
+	 * Name
+	 * @var string
 	 */
-	public $timeZone = null;
+	public $name = null;
+
+	/**
+	 * Description
+	 * @var string
+	 */
+	public $description = null;
 
 }

@@ -27,50 +27,40 @@
 // @ignore
 // ===================================================================================================
 
+
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Service;
 
 /**
- * Time offset action
  * @package Kaltura
  * @subpackage Client
  */
-abstract class TimeOffsetRuleAction extends \Kaltura\Client\Type\AssetRuleAction
+class AssetUserRuleService extends \Kaltura\Client\ServiceBase
 {
-	public function getKalturaObjectType()
+	function __construct(\Kaltura\Client\Client $client = null)
 	{
-		return 'KalturaTimeOffsetRuleAction';
+		parent::__construct($client);
 	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->offset))
-			$this->offset = (int)$xml->offset;
-		if(count($xml->timeZone))
-		{
-			if(!empty($xml->timeZone))
-				$this->timeZone = true;
-			else
-				$this->timeZone = false;
-		}
-	}
-	/**
-	 * Offset in seconds
-	 * @var int
-	 */
-	public $offset = null;
 
 	/**
-	 * Indicates whether to add time zone offset to the time
-	 * @var bool
+	 * Add asset user rule
+	 * 
+	 * @return \Kaltura\Client\Type\AssetUserRule
 	 */
-	public $timeZone = null;
-
+	function add(\Kaltura\Client\Type\AssetUserRule $assetUserRule)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "assetUserRule", $assetUserRule->toParams());
+		$this->client->queueServiceActionCall("assetuserrule", "add", "KalturaAssetUserRule", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAssetUserRule");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\AssetUserRule");
+		return $resultObject;
+	}
 }

@@ -79,6 +79,11 @@ class Client extends Base
 	protected $assetStatistics = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\AssetUserRuleService
+	 */
+	protected $assetUserRule = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\BookmarkService
 	 */
 	protected $bookmark = null;
@@ -498,7 +503,7 @@ class Client extends Base
 		parent::__construct($config);
 		
 		$this->setClientTag('php5:18-05-10');
-		$this->setApiVersion('4.81.44.18995');
+		$this->setApiVersion('4.81.46.21597');
 	}
 	
 	/**
@@ -572,6 +577,15 @@ class Client extends Base
 		if (is_null($this->assetStatistics))
 			$this->assetStatistics = new \Kaltura\Client\Service\AssetStatisticsService($this);
 		return $this->assetStatistics;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\AssetUserRuleService
+	 */
+	public function getAssetUserRuleService()
+	{
+		if (is_null($this->assetUserRule))
+			$this->assetUserRule = new \Kaltura\Client\Service\AssetUserRuleService($this);
+		return $this->assetUserRule;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\BookmarkService

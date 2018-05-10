@@ -36,7 +36,7 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class AccessControlBlockAction extends \Kaltura\Client\Type\RuleAction
+class AccessControlBlockAction extends \Kaltura\Client\Type\AssetRuleAction
 {
 	public function getKalturaObjectType()
 	{

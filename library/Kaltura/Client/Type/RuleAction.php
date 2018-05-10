@@ -36,7 +36,7 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class RuleAction extends \Kaltura\Client\ObjectBase
+abstract class RuleAction extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{

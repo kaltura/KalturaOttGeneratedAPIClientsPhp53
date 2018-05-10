@@ -37,7 +37,7 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class AssetRule extends \Kaltura\Client\ObjectBase
+class AssetRule extends \Kaltura\Client\Type\AssetRuleBase
 {
 	public function getKalturaObjectType()
 	{
@@ -51,12 +51,6 @@ class AssetRule extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->id))
-			$this->id = (string)$xml->id;
-		if(count($xml->name))
-			$this->name = (string)$xml->name;
-		if(count($xml->description))
-			$this->description = (string)$xml->description;
 		if(count($xml->conditions))
 		{
 			if(empty($xml->conditions))
@@ -69,28 +63,9 @@ class AssetRule extends \Kaltura\Client\ObjectBase
 			if(empty($xml->actions))
 				$this->actions = array();
 			else
-				$this->actions = \Kaltura\Client\ParseUtils::unmarshalArray($xml->actions, "KalturaRuleAction");
+				$this->actions = \Kaltura\Client\ParseUtils::unmarshalArray($xml->actions, "KalturaAssetRuleAction");
 		}
 	}
-	/**
-	 * ID
-	 * @var int
-	 * @readonly
-	 */
-	public $id = null;
-
-	/**
-	 * Name
-	 * @var string
-	 */
-	public $name = null;
-
-	/**
-	 * Description
-	 * @var string
-	 */
-	public $description = null;
-
 	/**
 	 * List of conditions for the rule
 	 * @var array<KalturaCondition>
@@ -99,7 +74,7 @@ class AssetRule extends \Kaltura\Client\ObjectBase
 
 	/**
 	 * List of actions for the rule
-	 * @var array<KalturaRuleAction>
+	 * @var array<KalturaAssetRuleAction>
 	 */
 	public $actions;
 

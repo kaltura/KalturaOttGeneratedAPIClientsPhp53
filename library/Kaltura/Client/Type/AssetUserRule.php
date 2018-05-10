@@ -33,15 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Time offset action
+ * Asset user rule
  * @package Kaltura
  * @subpackage Client
  */
-abstract class TimeOffsetRuleAction extends \Kaltura\Client\Type\AssetRuleAction
+class AssetUserRule extends \Kaltura\Client\Type\AssetRuleBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaTimeOffsetRuleAction';
+		return 'KalturaAssetUserRule';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,26 +51,31 @@ abstract class TimeOffsetRuleAction extends \Kaltura\Client\Type\AssetRuleAction
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->offset))
-			$this->offset = (int)$xml->offset;
-		if(count($xml->timeZone))
+		if(count($xml->conditions))
 		{
-			if(!empty($xml->timeZone))
-				$this->timeZone = true;
+			if(empty($xml->conditions))
+				$this->conditions = array();
 			else
-				$this->timeZone = false;
+				$this->conditions = \Kaltura\Client\ParseUtils::unmarshalArray($xml->conditions, "KalturaAssetCondition");
+		}
+		if(count($xml->actions))
+		{
+			if(empty($xml->actions))
+				$this->actions = array();
+			else
+				$this->actions = \Kaltura\Client\ParseUtils::unmarshalArray($xml->actions, "KalturaAssetUserRuleAction");
 		}
 	}
 	/**
-	 * Offset in seconds
-	 * @var int
+	 * List of Ksql conditions for the user rule
+	 * @var array<KalturaAssetCondition>
 	 */
-	public $offset = null;
+	public $conditions;
 
 	/**
-	 * Indicates whether to add time zone offset to the time
-	 * @var bool
+	 * List of actions for the user rule
+	 * @var array<KalturaAssetUserRuleAction>
 	 */
-	public $timeZone = null;
+	public $actions;
 
 }
