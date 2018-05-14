@@ -63,4 +63,63 @@ class AssetUserRuleService extends \Kaltura\Client\ServiceBase
 		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\AssetUserRule");
 		return $resultObject;
 	}
+
+	/**
+	 * Delete asset user rule
+	 * 
+	 * @return bool
+	 */
+	function delete($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("assetuserrule", "delete", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (bool)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
+	}
+
+	/**
+	 * Get the list of asset user rules for the partner
+	 * 
+	 * @return \Kaltura\Client\Type\AssetUserRuleListResponse
+	 */
+	function listAction()
+	{
+		$kparams = array();
+		$this->client->queueServiceActionCall("assetuserrule", "list", "KalturaAssetUserRuleListResponse", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAssetUserRuleListResponse");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\AssetUserRuleListResponse");
+		return $resultObject;
+	}
+
+	/**
+	 * Update asset user rule
+	 * 
+	 * @return \Kaltura\Client\Type\AssetUserRule
+	 */
+	function update($id, \Kaltura\Client\Type\AssetUserRule $assetUserRule)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "assetUserRule", $assetUserRule->toParams());
+		$this->client->queueServiceActionCall("assetuserrule", "update", "KalturaAssetUserRule", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAssetUserRule");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\AssetUserRule");
+		return $resultObject;
+	}
 }

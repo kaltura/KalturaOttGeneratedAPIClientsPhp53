@@ -162,6 +162,8 @@ class TypeMap
 		'KalturaPersonalFeedListResponse' => 'Kaltura\Client\Type\PersonalFeedListResponse',
 		'KalturaTopic' => 'Kaltura\Client\Type\Topic',
 		'KalturaTopicListResponse' => 'Kaltura\Client\Type\TopicListResponse',
+		'KalturaT' => 'Kaltura\Client\Type\T',
+		'KalturaGenericListResponse' => 'Kaltura\Client\Type\GenericListResponse',
 		'KalturaIntegerValueListResponse' => 'Kaltura\Client\Type\IntegerValueListResponse',
 		'KalturaReport' => 'Kaltura\Client\Type\Report',
 		'KalturaReportListResponse' => 'Kaltura\Client\Type\ReportListResponse',

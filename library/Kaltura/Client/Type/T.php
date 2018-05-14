@@ -36,11 +36,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class AssetUserRuleListResponse extends \Kaltura\Client\Type\ListResponse
+class T extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaAssetUserRuleListResponse';
+		return 'KalturaT';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,18 +50,5 @@ class AssetUserRuleListResponse extends \Kaltura\Client\Type\ListResponse
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->objects))
-		{
-			if(empty($xml->objects))
-				$this->objects = array();
-			else
-				$this->objects = \Kaltura\Client\ParseUtils::unmarshalArray($xml->objects, "KalturaAssetUserRule");
-		}
 	}
-	/**
-	 * Asset user rules
-	 * @var array<KalturaAssetUserRule>
-	 */
-	public $objects;
-
 }
