@@ -65,9 +65,24 @@ class AssetUserRuleService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
+	 * Add Asset User Rule To User
+	 * 
+	 */
+	function addRuleToUser($ruleId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "ruleId", $ruleId);
+		$this->client->queueServiceActionCall("assetuserrule", "addRuleToUser", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
+
+	/**
 	 * Delete asset user rule
 	 * 
-	 * @return bool
 	 */
 	function delete($id)
 	{
@@ -79,8 +94,6 @@ class AssetUserRuleService extends \Kaltura\Client\ServiceBase
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (bool)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
 	}
 
 	/**
@@ -88,9 +101,11 @@ class AssetUserRuleService extends \Kaltura\Client\ServiceBase
 	 * 
 	 * @return \Kaltura\Client\Type\AssetUserRuleListResponse
 	 */
-	function listAction()
+	function listAction(\Kaltura\Client\Type\AssetUserRuleFilter $filter = null)
 	{
 		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
 		$this->client->queueServiceActionCall("assetuserrule", "list", "KalturaAssetUserRuleListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -100,6 +115,22 @@ class AssetUserRuleService extends \Kaltura\Client\ServiceBase
 		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAssetUserRuleListResponse");
 		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\AssetUserRuleListResponse");
 		return $resultObject;
+	}
+
+	/**
+	 * Remove asset user rule from user
+	 * 
+	 */
+	function removeRuleToUser($ruleId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "ruleId", $ruleId);
+		$this->client->queueServiceActionCall("assetuserrule", "removeRuleToUser", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
 	}
 
 	/**

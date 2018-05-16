@@ -317,6 +317,7 @@ class TypeMap
 		'KalturaAssetCommentFilter' => 'Kaltura\Client\Type\AssetCommentFilter',
 		'KalturaBookmarkFilter' => 'Kaltura\Client\Type\BookmarkFilter',
 		'KalturaAssetHistoryFilter' => 'Kaltura\Client\Type\AssetHistoryFilter',
+		'KalturaAssetUserRuleFilter' => 'Kaltura\Client\Type\AssetUserRuleFilter',
 		'KalturaCurrencyFilter' => 'Kaltura\Client\Type\CurrencyFilter',
 		'KalturaLanguageFilter' => 'Kaltura\Client\Type\LanguageFilter',
 		'KalturaMetaFilter' => 'Kaltura\Client\Type\MetaFilter',
