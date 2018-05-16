@@ -67,6 +67,8 @@ class Country extends \Kaltura\Client\ObjectBase
 			$this->currencySign = (string)$xml->currencySign;
 		if(count($xml->vatPercent))
 			$this->vatPercent = (float)$xml->vatPercent;
+		if(count($xml->timeZoneId))
+			$this->timeZoneId = (string)$xml->timeZoneId;
 	}
 	/**
 	 * Country identifier
@@ -116,5 +118,11 @@ class Country extends \Kaltura\Client\ObjectBase
 	 * @var float
 	 */
 	public $vatPercent = null;
+
+	/**
+	 * Time zone ID
+	 * @var string
+	 */
+	public $timeZoneId = null;
 
 }
