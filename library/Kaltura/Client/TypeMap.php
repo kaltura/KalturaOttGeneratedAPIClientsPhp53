@@ -94,6 +94,7 @@ class TypeMap
 		'KalturaUserInterest' => 'Kaltura\Client\Type\UserInterest',
 		'KalturaUserInterestListResponse' => 'Kaltura\Client\Type\UserInterestListResponse',
 		'KalturaMediaImage' => 'Kaltura\Client\Type\MediaImage',
+		'KalturaAssetFile' => 'Kaltura\Client\Type\AssetFile',
 		'KalturaStringValueArray' => 'Kaltura\Client\Type\StringValueArray',
 		'KalturaMediaFile' => 'Kaltura\Client\Type\MediaFile',
 		'KalturaBuzzScore' => 'Kaltura\Client\Type\BuzzScore',
