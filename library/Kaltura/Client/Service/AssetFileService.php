@@ -68,6 +68,7 @@ class AssetFileService extends \Kaltura\Client\ServiceBase
 	/**
 	 * Redirects to play manifest
 	 * 
+	 * @return string
 	 */
 	function playManifest($partnerId, $assetId, $assetType, $assetFileId, $contextType, $ks = null)
 	{
@@ -84,5 +85,7 @@ class AssetFileService extends \Kaltura\Client\ServiceBase
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (String)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
 	}
 }
