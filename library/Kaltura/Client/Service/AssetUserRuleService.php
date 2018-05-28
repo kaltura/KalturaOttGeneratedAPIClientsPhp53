@@ -68,11 +68,11 @@ class AssetUserRuleService extends \Kaltura\Client\ServiceBase
 	 * Attach AssetUserRule To User
 	 * 
 	 */
-	function attachUser ($ruleId)
+	function attachUser($ruleId)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "ruleId", $ruleId);
-		$this->client->queueServiceActionCall("assetuserrule", "attachUser ", null, $kparams);
+		$this->client->queueServiceActionCall("assetuserrule", "attachUser", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
