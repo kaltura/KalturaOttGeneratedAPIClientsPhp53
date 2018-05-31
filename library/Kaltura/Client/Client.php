@@ -169,6 +169,11 @@ class Client extends Base
 	protected $deviceFamily = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\DiscountDetailsService
+	 */
+	protected $discountDetails = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\EmailService
 	 */
 	protected $email = null;
@@ -503,7 +508,7 @@ class Client extends Base
 		parent::__construct($config);
 		
 		$this->setClientTag('php5:18-05-31');
-		$this->setApiVersion('4.82.0.15158');
+		$this->setApiVersion('4.82.5.22442');
 	}
 	
 	/**
@@ -739,6 +744,15 @@ class Client extends Base
 		if (is_null($this->deviceFamily))
 			$this->deviceFamily = new \Kaltura\Client\Service\DeviceFamilyService($this);
 		return $this->deviceFamily;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\DiscountDetailsService
+	 */
+	public function getDiscountDetailsService()
+	{
+		if (is_null($this->discountDetails))
+			$this->discountDetails = new \Kaltura\Client\Service\DiscountDetailsService($this);
+		return $this->discountDetails;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\EmailService
