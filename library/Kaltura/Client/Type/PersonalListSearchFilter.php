@@ -36,11 +36,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class SearchAssetFilter extends \Kaltura\Client\Type\BaseSearchAssetFilter
+class PersonalListSearchFilter extends \Kaltura\Client\Type\BaseSearchAssetFilter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaSearchAssetFilter';
+		return 'KalturaPersonalListSearchFilter';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,13 +50,21 @@ class SearchAssetFilter extends \Kaltura\Client\Type\BaseSearchAssetFilter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->kSql))
-			$this->kSql = (string)$xml->kSql;
 		if(count($xml->typeIn))
 			$this->typeIn = (string)$xml->typeIn;
-		if(count($xml->idIn))
-			$this->idIn = (string)$xml->idIn;
+		if(count($xml->kSql))
+			$this->kSql = (string)$xml->kSql;
+		if(count($xml->partnerListTypeEqual))
+			$this->partnerListTypeEqual = (int)$xml->partnerListTypeEqual;
 	}
+	/**
+	 * Comma separated list of asset types to search within. 
+	 *             Possible values: 0 – EPG linear programs entries, any media type ID (according to media type IDs defined dynamically in the system).
+	 *             If omitted – all types should be included.
+	 * @var string
+	 */
+	public $typeIn = null;
+
 	/**
 	 * Search assets using dynamic criteria. Provided collection of nested expressions with key, comparison operators, value, and logical conjunction.
 	 *             Possible keys: any Tag or Meta defined in the system and the following reserved keys: start_date, end_date. 
@@ -76,17 +84,9 @@ class SearchAssetFilter extends \Kaltura\Client\Type\BaseSearchAssetFilter
 	public $kSql = null;
 
 	/**
-	 * Comma separated list of asset types to search within. 
-	 *             Possible values: 0 – EPG linear programs entries; 1 - Recordings; Any media type ID (according to media type IDs defined dynamically in the system).
-	 *             If omitted – all types should be included.
-	 * @var string
+	 * partnerListType
+	 * @var int
 	 */
-	public $typeIn = null;
-
-	/**
-	 * Comma separated list of EPG channel ids to search within.
-	 * @var string
-	 */
-	public $idIn = null;
+	public $partnerListTypeEqual = null;
 
 }

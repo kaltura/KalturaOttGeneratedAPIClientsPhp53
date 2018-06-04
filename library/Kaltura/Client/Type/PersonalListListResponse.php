@@ -33,14 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
+ * List of KalturaPersonalList.
  * @package Kaltura
  * @subpackage Client
  */
-abstract class FollowDataBase extends \Kaltura\Client\ObjectBase
+class PersonalListListResponse extends \Kaltura\Client\Type\ListResponse
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaFollowDataBase';
+		return 'KalturaPersonalListListResponse';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,50 +51,18 @@ abstract class FollowDataBase extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->announcementId))
-			$this->announcementId = (string)$xml->announcementId;
-		if(count($xml->status))
-			$this->status = (int)$xml->status;
-		if(count($xml->title))
-			$this->title = (string)$xml->title;
-		if(count($xml->timestamp))
-			$this->timestamp = (string)$xml->timestamp;
-		if(count($xml->followPhrase))
-			$this->followPhrase = (string)$xml->followPhrase;
+		if(count($xml->objects))
+		{
+			if(empty($xml->objects))
+				$this->objects = array();
+			else
+				$this->objects = \Kaltura\Client\ParseUtils::unmarshalArray($xml->objects, "KalturaPersonalList");
+		}
 	}
 	/**
-	 * Announcement Id
-	 * @var int
-	 * @readonly
+	 * Follow data list
+	 * @var array<KalturaPersonalList>
 	 */
-	public $announcementId = null;
-
-	/**
-	 * Status
-	 * @var int
-	 * @readonly
-	 */
-	public $status = null;
-
-	/**
-	 * Title
-	 * @var string
-	 * @readonly
-	 */
-	public $title = null;
-
-	/**
-	 * Timestamp
-	 * @var int
-	 * @readonly
-	 */
-	public $timestamp = null;
-
-	/**
-	 * Follow Phrase
-	 * @var string
-	 * @readonly
-	 */
-	public $followPhrase = null;
+	public $objects;
 
 }

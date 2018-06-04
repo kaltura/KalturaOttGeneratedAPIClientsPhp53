@@ -36,11 +36,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-abstract class FollowDataBase extends \Kaltura\Client\ObjectBase
+class PersonalList extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaFollowDataBase';
+		return 'KalturaPersonalList';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,50 +50,47 @@ abstract class FollowDataBase extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->announcementId))
-			$this->announcementId = (string)$xml->announcementId;
-		if(count($xml->status))
-			$this->status = (int)$xml->status;
-		if(count($xml->title))
-			$this->title = (string)$xml->title;
-		if(count($xml->timestamp))
-			$this->timestamp = (string)$xml->timestamp;
-		if(count($xml->followPhrase))
-			$this->followPhrase = (string)$xml->followPhrase;
+		if(count($xml->id))
+			$this->id = (string)$xml->id;
+		if(count($xml->name))
+			$this->name = (string)$xml->name;
+		if(count($xml->createDate))
+			$this->createDate = (string)$xml->createDate;
+		if(count($xml->ksql))
+			$this->ksql = (string)$xml->ksql;
+		if(count($xml->partnerListType))
+			$this->partnerListType = (int)$xml->partnerListType;
 	}
 	/**
-	 * Announcement Id
+	 * Id
 	 * @var int
 	 * @readonly
 	 */
-	public $announcementId = null;
+	public $id = null;
 
 	/**
-	 * Status
-	 * @var int
-	 * @readonly
-	 */
-	public $status = null;
-
-	/**
-	 * Title
+	 * Name
 	 * @var string
-	 * @readonly
 	 */
-	public $title = null;
+	public $name = null;
 
 	/**
-	 * Timestamp
+	 * Create Date
 	 * @var int
 	 * @readonly
 	 */
-	public $timestamp = null;
+	public $createDate = null;
 
 	/**
-	 * Follow Phrase
+	 * Ksql
 	 * @var string
-	 * @readonly
 	 */
-	public $followPhrase = null;
+	public $ksql = null;
+
+	/**
+	 * Partner List Type (optional)
+	 * @var int
+	 */
+	public $partnerListType = null;
 
 }

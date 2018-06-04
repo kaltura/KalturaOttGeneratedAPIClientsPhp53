@@ -30,70 +30,15 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-abstract class FollowDataBase extends \Kaltura\Client\ObjectBase
+class PersonalListOrderBy extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaFollowDataBase';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->announcementId))
-			$this->announcementId = (string)$xml->announcementId;
-		if(count($xml->status))
-			$this->status = (int)$xml->status;
-		if(count($xml->title))
-			$this->title = (string)$xml->title;
-		if(count($xml->timestamp))
-			$this->timestamp = (string)$xml->timestamp;
-		if(count($xml->followPhrase))
-			$this->followPhrase = (string)$xml->followPhrase;
-	}
-	/**
-	 * Announcement Id
-	 * @var int
-	 * @readonly
-	 */
-	public $announcementId = null;
-
-	/**
-	 * Status
-	 * @var int
-	 * @readonly
-	 */
-	public $status = null;
-
-	/**
-	 * Title
-	 * @var string
-	 * @readonly
-	 */
-	public $title = null;
-
-	/**
-	 * Timestamp
-	 * @var int
-	 * @readonly
-	 */
-	public $timestamp = null;
-
-	/**
-	 * Follow Phrase
-	 * @var string
-	 * @readonly
-	 */
-	public $followPhrase = null;
-
+	const START_DATE_DESC = "START_DATE_DESC";
+	const START_DATE_ASC = "START_DATE_ASC";
 }
+

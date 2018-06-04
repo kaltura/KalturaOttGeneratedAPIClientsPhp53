@@ -36,11 +36,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-abstract class FollowDataBase extends \Kaltura\Client\ObjectBase
+class PersonalListFilter extends \Kaltura\Client\Type\Filter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaFollowDataBase';
+		return 'KalturaPersonalListFilter';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,50 +50,13 @@ abstract class FollowDataBase extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->announcementId))
-			$this->announcementId = (string)$xml->announcementId;
-		if(count($xml->status))
-			$this->status = (int)$xml->status;
-		if(count($xml->title))
-			$this->title = (string)$xml->title;
-		if(count($xml->timestamp))
-			$this->timestamp = (string)$xml->timestamp;
-		if(count($xml->followPhrase))
-			$this->followPhrase = (string)$xml->followPhrase;
+		if(count($xml->partnerListTypeEqual))
+			$this->partnerListTypeEqual = (int)$xml->partnerListTypeEqual;
 	}
 	/**
-	 * Announcement Id
+	 * partnerListType
 	 * @var int
-	 * @readonly
 	 */
-	public $announcementId = null;
-
-	/**
-	 * Status
-	 * @var int
-	 * @readonly
-	 */
-	public $status = null;
-
-	/**
-	 * Title
-	 * @var string
-	 * @readonly
-	 */
-	public $title = null;
-
-	/**
-	 * Timestamp
-	 * @var int
-	 * @readonly
-	 */
-	public $timestamp = null;
-
-	/**
-	 * Follow Phrase
-	 * @var string
-	 * @readonly
-	 */
-	public $followPhrase = null;
+	public $partnerListTypeEqual = null;
 
 }

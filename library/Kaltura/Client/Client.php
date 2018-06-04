@@ -339,6 +339,11 @@ class Client extends Base
 	protected $personalFeed = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\PersonalListService
+	 */
+	protected $personalList = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\PinService
 	 */
 	protected $pin = null;
@@ -508,7 +513,7 @@ class Client extends Base
 		parent::__construct($config);
 		
 		$this->setClientTag('php5:18-06-04');
-		$this->setApiVersion('4.82.8.22548');
+		$this->setApiVersion('4.82.23.25466');
 	}
 	
 	/**
@@ -1050,6 +1055,15 @@ class Client extends Base
 		if (is_null($this->personalFeed))
 			$this->personalFeed = new \Kaltura\Client\Service\PersonalFeedService($this);
 		return $this->personalFeed;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\PersonalListService
+	 */
+	public function getPersonalListService()
+	{
+		if (is_null($this->personalList))
+			$this->personalList = new \Kaltura\Client\Service\PersonalListService($this);
+		return $this->personalList;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\PinService
