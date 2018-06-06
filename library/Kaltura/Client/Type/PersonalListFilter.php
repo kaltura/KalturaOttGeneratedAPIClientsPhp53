@@ -50,13 +50,14 @@ class PersonalListFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->partnerListTypeEqual))
-			$this->partnerListTypeEqual = (int)$xml->partnerListTypeEqual;
+		if(count($xml->partnerListTypeIn))
+			$this->partnerListTypeIn = (string)$xml->partnerListTypeIn;
 	}
 	/**
-	 * partnerListType
-	 * @var int
+	 * Comma separated list of partner list types to search within. 
+	 *             If omitted – all types should be included.
+	 * @var string
 	 */
-	public $partnerListTypeEqual = null;
+	public $partnerListTypeIn = null;
 
 }
