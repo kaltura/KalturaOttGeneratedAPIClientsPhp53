@@ -50,8 +50,8 @@ abstract class BaseSearchAssetFilter extends \Kaltura\Client\Type\AssetFilter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->ksql))
-			$this->ksql = (string)$xml->ksql;
+		if(count($xml->kSql))
+			$this->kSql = (string)$xml->kSql;
 		if(count($xml->groupBy))
 		{
 			if(empty($xml->groupBy))
@@ -77,7 +77,7 @@ abstract class BaseSearchAssetFilter extends \Kaltura\Client\Type\AssetFilter
 	 *             (maximum length of entire filter is 2048 characters)
 	 * @var string
 	 */
-	public $ksql = null;
+	public $kSql = null;
 
 	/**
 	 * groupBy
