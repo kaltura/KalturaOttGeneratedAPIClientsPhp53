@@ -30,43 +30,16 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
- * Condition
  * @package Kaltura
  * @subpackage Client
  */
-abstract class Condition extends \Kaltura\Client\ObjectBase
+class RuleConditionType extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaCondition';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->type))
-			$this->type = (string)$xml->type;
-		if(count($xml->description))
-			$this->description = (string)$xml->description;
-	}
-	/**
-	 * The type of the condition
-	 * @var \Kaltura\Client\Enum\RuleConditionType
-	 * @readonly
-	 */
-	public $type = null;
-
-	/**
-	 * Description
-	 * @var string
-	 */
-	public $description = null;
-
+	const ASSET = "ASSET";
+	const COUNTRY = "COUNTRY";
+	const CONCURRENCY = "CONCURRENCY";
 }
+

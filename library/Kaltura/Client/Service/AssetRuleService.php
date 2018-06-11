@@ -88,9 +88,11 @@ class AssetRuleService extends \Kaltura\Client\ServiceBase
 	 * 
 	 * @return \Kaltura\Client\Type\AssetRuleListResponse
 	 */
-	function listAction()
+	function listAction(\Kaltura\Client\Type\AssetRuleFilter $filter = null)
 	{
 		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
 		$this->client->queueServiceActionCall("assetrule", "list", "KalturaAssetRuleListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();

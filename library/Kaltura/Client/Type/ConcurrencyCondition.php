@@ -33,15 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Condition
+ * Asset Condition
  * @package Kaltura
  * @subpackage Client
  */
-abstract class Condition extends \Kaltura\Client\ObjectBase
+class ConcurrencyCondition extends \Kaltura\Client\Type\AssetCondition
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaCondition';
+		return 'KalturaConcurrencyCondition';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,22 +51,21 @@ abstract class Condition extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->type))
-			$this->type = (string)$xml->type;
-		if(count($xml->description))
-			$this->description = (string)$xml->description;
+		if(count($xml->limit))
+			$this->limit = (int)$xml->limit;
+		if(count($xml->concurrencyLimitationType))
+			$this->concurrencyLimitationType = (string)$xml->concurrencyLimitationType;
 	}
 	/**
-	 * The type of the condition
-	 * @var \Kaltura\Client\Enum\RuleConditionType
-	 * @readonly
+	 * Concurrency limitation
+	 * @var int
 	 */
-	public $type = null;
+	public $limit = null;
 
 	/**
-	 * Description
-	 * @var string
+	 * Concurrency limitation type
+	 * @var \Kaltura\Client\Enum\ConcurrencyLimitationType
 	 */
-	public $description = null;
+	public $concurrencyLimitationType = null;
 
 }

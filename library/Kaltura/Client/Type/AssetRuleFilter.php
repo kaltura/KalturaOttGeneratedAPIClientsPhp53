@@ -33,15 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Condition
+ * Asset rule filter
  * @package Kaltura
  * @subpackage Client
  */
-abstract class Condition extends \Kaltura\Client\ObjectBase
+class AssetRuleFilter extends \Kaltura\Client\Type\Filter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaCondition';
+		return 'KalturaAssetRuleFilter';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,22 +51,13 @@ abstract class Condition extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->type))
-			$this->type = (string)$xml->type;
-		if(count($xml->description))
-			$this->description = (string)$xml->description;
+		if(count($xml->conditionsContainType))
+			$this->conditionsContainType = (string)$xml->conditionsContainType;
 	}
 	/**
-	 * The type of the condition
+	 * Indicates if to get the asset user rule list for the attached user or for the entire group
 	 * @var \Kaltura\Client\Enum\RuleConditionType
-	 * @readonly
 	 */
-	public $type = null;
-
-	/**
-	 * Description
-	 * @var string
-	 */
-	public $description = null;
+	public $conditionsContainType = null;
 
 }
