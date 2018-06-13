@@ -53,11 +53,19 @@ class AssetRuleFilter extends \Kaltura\Client\Type\Filter
 		
 		if(count($xml->conditionsContainType))
 			$this->conditionsContainType = (string)$xml->conditionsContainType;
+		if(count($xml->assetApplied) && !empty($xml->assetApplied))
+			$this->assetApplied = \Kaltura\Client\ParseUtils::unmarshalObject($xml->assetApplied, "KalturaSlimAsset");
 	}
 	/**
-	 * Indicates if to get the asset user rule list for the attached user or for the entire group
+	 * Indicates which asset rule list to return by it KalturaRuleConditionType
 	 * @var \Kaltura\Client\Enum\RuleConditionType
 	 */
 	public $conditionsContainType = null;
+
+	/**
+	 * Indicates if to return an asset rule list that related to specific asset
+	 * @var \Kaltura\Client\Type\SlimAsset
+	 */
+	public $assetApplied;
 
 }
