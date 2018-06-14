@@ -36,7 +36,7 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-abstract class FollowDataBase extends \Kaltura\Client\ObjectBase
+class FollowDataBase extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{

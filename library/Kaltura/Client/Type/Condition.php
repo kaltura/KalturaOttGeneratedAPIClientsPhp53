@@ -51,18 +51,9 @@ abstract class Condition extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->type))
-			$this->type = (string)$xml->type;
 		if(count($xml->description))
 			$this->description = (string)$xml->description;
 	}
-	/**
-	 * The type of the condition
-	 * @var \Kaltura\Client\Enum\RuleConditionType
-	 * @readonly
-	 */
-	public $type = null;
-
 	/**
 	 * Description
 	 * @var string
