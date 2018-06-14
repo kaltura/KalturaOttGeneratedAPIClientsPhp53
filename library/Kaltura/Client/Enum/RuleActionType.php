@@ -39,8 +39,5 @@ namespace Kaltura\Client\Enum;
 class RuleActionType extends \Kaltura\Client\EnumBase
 {
 	const BLOCK = "BLOCK";
-	const START_DATE_OFFSET = "START_DATE_OFFSET";
-	const END_DATE_OFFSET = "END_DATE_OFFSET";
-	const USER_BLOCK = "USER_BLOCK";
 }
 

@@ -69,19 +69,9 @@ class Client extends Base
 	protected $assetHistory = null;
 
 	/**
-	 * @var \Kaltura\Client\Service\AssetRuleService
-	 */
-	protected $assetRule = null;
-
-	/**
 	 * @var \Kaltura\Client\Service\AssetStatisticsService
 	 */
 	protected $assetStatistics = null;
-
-	/**
-	 * @var \Kaltura\Client\Service\AssetUserRuleService
-	 */
-	protected $assetUserRule = null;
 
 	/**
 	 * @var \Kaltura\Client\Service\BookmarkService
@@ -167,11 +157,6 @@ class Client extends Base
 	 * @var \Kaltura\Client\Service\DeviceFamilyService
 	 */
 	protected $deviceFamily = null;
-
-	/**
-	 * @var \Kaltura\Client\Service\DiscountDetailsService
-	 */
-	protected $discountDetails = null;
 
 	/**
 	 * @var \Kaltura\Client\Service\EmailService
@@ -337,11 +322,6 @@ class Client extends Base
 	 * @var \Kaltura\Client\Service\PersonalFeedService
 	 */
 	protected $personalFeed = null;
-
-	/**
-	 * @var \Kaltura\Client\Service\PersonalListService
-	 */
-	protected $personalList = null;
 
 	/**
 	 * @var \Kaltura\Client\Service\PinService
@@ -512,8 +492,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:18-06-13');
-		$this->setApiVersion('4.82.54.43127');
+		$this->setClientTag('php5:18-06-14');
+		$this->setApiVersion('4.81.6.13022');
 	}
 	
 	/**
@@ -571,15 +551,6 @@ class Client extends Base
 		return $this->assetHistory;
 	}
 	/**
-	 * @return \Kaltura\Client\Service\AssetRuleService
-	 */
-	public function getAssetRuleService()
-	{
-		if (is_null($this->assetRule))
-			$this->assetRule = new \Kaltura\Client\Service\AssetRuleService($this);
-		return $this->assetRule;
-	}
-	/**
 	 * @return \Kaltura\Client\Service\AssetStatisticsService
 	 */
 	public function getAssetStatisticsService()
@@ -587,15 +558,6 @@ class Client extends Base
 		if (is_null($this->assetStatistics))
 			$this->assetStatistics = new \Kaltura\Client\Service\AssetStatisticsService($this);
 		return $this->assetStatistics;
-	}
-	/**
-	 * @return \Kaltura\Client\Service\AssetUserRuleService
-	 */
-	public function getAssetUserRuleService()
-	{
-		if (is_null($this->assetUserRule))
-			$this->assetUserRule = new \Kaltura\Client\Service\AssetUserRuleService($this);
-		return $this->assetUserRule;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\BookmarkService
@@ -749,15 +711,6 @@ class Client extends Base
 		if (is_null($this->deviceFamily))
 			$this->deviceFamily = new \Kaltura\Client\Service\DeviceFamilyService($this);
 		return $this->deviceFamily;
-	}
-	/**
-	 * @return \Kaltura\Client\Service\DiscountDetailsService
-	 */
-	public function getDiscountDetailsService()
-	{
-		if (is_null($this->discountDetails))
-			$this->discountDetails = new \Kaltura\Client\Service\DiscountDetailsService($this);
-		return $this->discountDetails;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\EmailService
@@ -1055,15 +1008,6 @@ class Client extends Base
 		if (is_null($this->personalFeed))
 			$this->personalFeed = new \Kaltura\Client\Service\PersonalFeedService($this);
 		return $this->personalFeed;
-	}
-	/**
-	 * @return \Kaltura\Client\Service\PersonalListService
-	 */
-	public function getPersonalListService()
-	{
-		if (is_null($this->personalList))
-			$this->personalList = new \Kaltura\Client\Service\PersonalListService($this);
-		return $this->personalList;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\PinService

@@ -37,7 +37,7 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class MediaFile extends \Kaltura\Client\Type\AssetFile
+class MediaFile extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
@@ -57,6 +57,8 @@ class MediaFile extends \Kaltura\Client\Type\AssetFile
 			$this->id = (int)$xml->id;
 		if(count($xml->type))
 			$this->type = (string)$xml->type;
+		if(count($xml->url))
+			$this->url = (string)$xml->url;
 		if(count($xml->duration))
 			$this->duration = (string)$xml->duration;
 		if(count($xml->externalId))
@@ -98,6 +100,12 @@ class MediaFile extends \Kaltura\Client\Type\AssetFile
 	 * @var string
 	 */
 	public $type = null;
+
+	/**
+	 * URL of the media file to be played
+	 * @var string
+	 */
+	public $url = null;
 
 	/**
 	 * Duration of the media file

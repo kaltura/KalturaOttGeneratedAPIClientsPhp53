@@ -42,6 +42,5 @@ class RuleType extends \Kaltura\Client\EnumBase
 	const GEO = "geo";
 	const USER_TYPE = "user_type";
 	const DEVICE = "device";
-	const ASSETUSER = "assetUser";
 }
 

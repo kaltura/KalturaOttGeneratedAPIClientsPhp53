@@ -36,7 +36,7 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-abstract class RuleAction extends \Kaltura\Client\ObjectBase
+class RuleAction extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
@@ -52,20 +52,11 @@ abstract class RuleAction extends \Kaltura\Client\ObjectBase
 		
 		if(count($xml->type))
 			$this->type = (string)$xml->type;
-		if(count($xml->description))
-			$this->description = (string)$xml->description;
 	}
 	/**
 	 * The type of the action
 	 * @var \Kaltura\Client\Enum\RuleActionType
-	 * @readonly
 	 */
 	public $type = null;
-
-	/**
-	 * Description
-	 * @var string
-	 */
-	public $description = null;
 
 }
