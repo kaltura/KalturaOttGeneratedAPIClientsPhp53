@@ -439,6 +439,11 @@ class Client extends Base
 	protected $socialFriendActivity = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\SsoAdapterProfileService
+	 */
+	protected $ssoAdapterProfile = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\SubscriptionService
 	 */
 	protected $subscription = null;
@@ -513,7 +518,7 @@ class Client extends Base
 		parent::__construct($config);
 		
 		$this->setClientTag('php5:18-06-19');
-		$this->setApiVersion('4.82.61.19886');
+		$this->setApiVersion('4.82.72.32512');
 	}
 	
 	/**
@@ -1235,6 +1240,15 @@ class Client extends Base
 		if (is_null($this->socialFriendActivity))
 			$this->socialFriendActivity = new \Kaltura\Client\Service\SocialFriendActivityService($this);
 		return $this->socialFriendActivity;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\SsoAdapterProfileService
+	 */
+	public function getSsoAdapterProfileService()
+	{
+		if (is_null($this->ssoAdapterProfile))
+			$this->ssoAdapterProfile = new \Kaltura\Client\Service\SsoAdapterProfileService($this);
+		return $this->ssoAdapterProfile;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\SubscriptionService

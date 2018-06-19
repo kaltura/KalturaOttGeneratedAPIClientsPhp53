@@ -90,6 +90,8 @@ class TypeMap
 		'KalturaConfigurationIdentifier' => 'Kaltura\Client\Type\ConfigurationIdentifier',
 		'KalturaConfigurationGroup' => 'Kaltura\Client\Type\ConfigurationGroup',
 		'KalturaConfigurationGroupListResponse' => 'Kaltura\Client\Type\ConfigurationGroupListResponse',
+		'KalturaSSOAdapterProfile' => 'Kaltura\Client\Type\SSOAdapterProfile',
+		'KalturaSSOAdapterProfileListResponse' => 'Kaltura\Client\Type\SSOAdapterProfileListResponse',
 		'KalturaUserInterestTopic' => 'Kaltura\Client\Type\UserInterestTopic',
 		'KalturaUserInterest' => 'Kaltura\Client\Type\UserInterest',
 		'KalturaUserInterestListResponse' => 'Kaltura\Client\Type\UserInterestListResponse',
