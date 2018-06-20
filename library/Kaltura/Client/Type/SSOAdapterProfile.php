@@ -59,12 +59,12 @@ class SSOAdapterProfile extends \Kaltura\Client\ObjectBase
 			$this->isActive = (int)$xml->isActive;
 		if(count($xml->adapterUrl))
 			$this->adapterUrl = (string)$xml->adapterUrl;
-		if(count($xml->ssoAdapterSettings))
+		if(count($xml->settings))
 		{
-			if(empty($xml->ssoAdapterSettings))
-				$this->ssoAdapterSettings = array();
+			if(empty($xml->settings))
+				$this->settings = array();
 			else
-				$this->ssoAdapterSettings = \Kaltura\Client\ParseUtils::unmarshalMap($xml->ssoAdapterSettings, "KalturaStringValue");
+				$this->settings = \Kaltura\Client\ParseUtils::unmarshalMap($xml->settings, "KalturaStringValue");
 		}
 		if(count($xml->externalIdentifier))
 			$this->externalIdentifier = (string)$xml->externalIdentifier;
@@ -100,7 +100,7 @@ class SSOAdapterProfile extends \Kaltura\Client\ObjectBase
 	 * SSO Adapter extra parameters
 	 * @var array<string, KalturaStringValue>
 	 */
-	public $ssoAdapterSettings;
+	public $settings;
 
 	/**
 	 * SSO Adapter external identifier
