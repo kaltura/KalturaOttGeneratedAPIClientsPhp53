@@ -30,65 +30,15 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class PlaybackContextOptions extends \Kaltura\Client\ObjectBase
+class UrlType extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaPlaybackContextOptions';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->mediaProtocol))
-			$this->mediaProtocol = (string)$xml->mediaProtocol;
-		if(count($xml->streamerType))
-			$this->streamerType = (string)$xml->streamerType;
-		if(count($xml->assetFileIds))
-			$this->assetFileIds = (string)$xml->assetFileIds;
-		if(count($xml->context))
-			$this->context = (string)$xml->context;
-		if(count($xml->urlType))
-			$this->urlType = (string)$xml->urlType;
-	}
-	/**
-	 * Protocol of the specific media object (http / https).
-	 * @var string
-	 */
-	public $mediaProtocol = null;
-
-	/**
-	 * Playback streamer type: applehttp, mpegdash, url.
-	 * @var string
-	 */
-	public $streamerType = null;
-
-	/**
-	 * List of comma separated media file IDs
-	 * @var string
-	 */
-	public $assetFileIds = null;
-
-	/**
-	 * Playback context type
-	 * @var \Kaltura\Client\Enum\PlaybackContextType
-	 */
-	public $context = null;
-
-	/**
-	 * Url type
-	 * @var \Kaltura\Client\Enum\UrlType
-	 */
-	public $urlType = null;
-
+	const PLAYMANIFEST = "PLAYMANIFEST";
+	const DIRECT = "DIRECT";
 }
+

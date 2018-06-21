@@ -42,5 +42,6 @@ class PlaybackContextType extends \Kaltura\Client\EnumBase
 	const CATCHUP = "CATCHUP";
 	const START_OVER = "START_OVER";
 	const PLAYBACK = "PLAYBACK";
+	const DOWNLOAD = "DOWNLOAD";
 }
 
