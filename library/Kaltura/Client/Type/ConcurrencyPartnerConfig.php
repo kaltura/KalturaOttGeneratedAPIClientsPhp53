@@ -33,14 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
+ * Partner concurrency configuration
  * @package Kaltura
  * @subpackage Client
  */
-class Bookmark extends \Kaltura\Client\Type\SlimAsset
+class ConcurrencyPartnerConfig extends \Kaltura\Client\Type\PartnerConfiguration
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaBookmark';
+		return 'KalturaConcurrencyPartnerConfig';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,62 +51,21 @@ class Bookmark extends \Kaltura\Client\Type\SlimAsset
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->userId))
-			$this->userId = (string)$xml->userId;
-		if(count($xml->position))
-			$this->position = (int)$xml->position;
-		if(count($xml->positionOwner))
-			$this->positionOwner = (string)$xml->positionOwner;
-		if(count($xml->finishedWatching))
-		{
-			if(!empty($xml->finishedWatching))
-				$this->finishedWatching = true;
-			else
-				$this->finishedWatching = false;
-		}
-		if(count($xml->playerData) && !empty($xml->playerData))
-			$this->playerData = \Kaltura\Client\ParseUtils::unmarshalObject($xml->playerData, "KalturaBookmarkPlayerData");
-		if(count($xml->programId))
-			$this->programId = (string)$xml->programId;
+		if(count($xml->deviceFamilyIds))
+			$this->deviceFamilyIds = (string)$xml->deviceFamilyIds;
+		if(count($xml->evictionPolicy))
+			$this->evictionPolicy = (string)$xml->evictionPolicy;
 	}
 	/**
-	 * User identifier
+	 * Comma separated list of device Family Ids order by their priority.
 	 * @var string
-	 * @readonly
 	 */
-	public $userId = null;
+	public $deviceFamilyIds = null;
 
 	/**
-	 * The position of the user in the specific asset (in seconds)
-	 * @var int
-	 * @insertonly
+	 * Policy of eviction devices
+	 * @var \Kaltura\Client\Enum\EvictionPolicyType
 	 */
-	public $position = null;
-
-	/**
-	 * Indicates who is the owner of this position
-	 * @var \Kaltura\Client\Enum\PositionOwner
-	 * @readonly
-	 */
-	public $positionOwner = null;
-
-	/**
-	 * Specifies whether the user&#39;s current position exceeded 95% of the duration
-	 * @var bool
-	 * @readonly
-	 */
-	public $finishedWatching = null;
-
-	/**
-	 * Insert only player data
-	 * @var \Kaltura\Client\Type\BookmarkPlayerData
-	 */
-	public $playerData;
-
-	/**
-	 * Program Id
-	 * @var int
-	 */
-	public $programId = null;
+	public $evictionPolicy = null;
 
 }

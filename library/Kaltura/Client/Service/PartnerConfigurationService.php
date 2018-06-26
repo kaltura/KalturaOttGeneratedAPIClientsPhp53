@@ -45,6 +45,26 @@ class PartnerConfigurationService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
+	 * Get the list of PartnerConfiguration
+	 * 
+	 * @return \Kaltura\Client\Type\PartnerConfigurationListResponse
+	 */
+	function listAction(\Kaltura\Client\Type\PartnerConfigurationFilter $filter)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "filter", $filter->toParams());
+		$this->client->queueServiceActionCall("partnerconfiguration", "list", "KalturaPartnerConfigurationListResponse", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPartnerConfigurationListResponse");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\PartnerConfigurationListResponse");
+		return $resultObject;
+	}
+
+	/**
 	 * Update Partner Configuration
 	 * 
 	 * @return bool

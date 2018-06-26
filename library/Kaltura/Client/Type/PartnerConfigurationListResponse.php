@@ -36,11 +36,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class Bookmark extends \Kaltura\Client\Type\SlimAsset
+class PartnerConfigurationListResponse extends \Kaltura\Client\Type\ListResponse
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaBookmark';
+		return 'KalturaPartnerConfigurationListResponse';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,62 +50,18 @@ class Bookmark extends \Kaltura\Client\Type\SlimAsset
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->userId))
-			$this->userId = (string)$xml->userId;
-		if(count($xml->position))
-			$this->position = (int)$xml->position;
-		if(count($xml->positionOwner))
-			$this->positionOwner = (string)$xml->positionOwner;
-		if(count($xml->finishedWatching))
+		if(count($xml->objects))
 		{
-			if(!empty($xml->finishedWatching))
-				$this->finishedWatching = true;
+			if(empty($xml->objects))
+				$this->objects = array();
 			else
-				$this->finishedWatching = false;
+				$this->objects = \Kaltura\Client\ParseUtils::unmarshalArray($xml->objects, "KalturaPartnerConfiguration");
 		}
-		if(count($xml->playerData) && !empty($xml->playerData))
-			$this->playerData = \Kaltura\Client\ParseUtils::unmarshalObject($xml->playerData, "KalturaBookmarkPlayerData");
-		if(count($xml->programId))
-			$this->programId = (string)$xml->programId;
 	}
 	/**
-	 * User identifier
-	 * @var string
-	 * @readonly
+	 * Partner Configurations
+	 * @var array<KalturaPartnerConfiguration>
 	 */
-	public $userId = null;
-
-	/**
-	 * The position of the user in the specific asset (in seconds)
-	 * @var int
-	 * @insertonly
-	 */
-	public $position = null;
-
-	/**
-	 * Indicates who is the owner of this position
-	 * @var \Kaltura\Client\Enum\PositionOwner
-	 * @readonly
-	 */
-	public $positionOwner = null;
-
-	/**
-	 * Specifies whether the user&#39;s current position exceeded 95% of the duration
-	 * @var bool
-	 * @readonly
-	 */
-	public $finishedWatching = null;
-
-	/**
-	 * Insert only player data
-	 * @var \Kaltura\Client\Type\BookmarkPlayerData
-	 */
-	public $playerData;
-
-	/**
-	 * Program Id
-	 * @var int
-	 */
-	public $programId = null;
+	public $objects;
 
 }

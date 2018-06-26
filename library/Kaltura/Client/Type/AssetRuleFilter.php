@@ -57,7 +57,8 @@ class AssetRuleFilter extends \Kaltura\Client\Type\Filter
 			$this->assetApplied = \Kaltura\Client\ParseUtils::unmarshalObject($xml->assetApplied, "KalturaSlimAsset");
 	}
 	/**
-	 * Indicates which asset rule list to return by it KalturaRuleConditionType
+	 * Indicates which asset rule list to return by it KalturaRuleConditionType.
+	 *             Default value: KalturaRuleConditionType.COUNTRY
 	 * @var \Kaltura\Client\Enum\RuleConditionType
 	 */
 	public $conditionsContainType = null;
