@@ -45,6 +45,45 @@ class ParentalRuleService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
+	 * Add a new parentalRule
+	 * 
+	 * @return \Kaltura\Client\Type\ParentalRule
+	 */
+	function add(\Kaltura\Client\Type\ParentalRule $parentalRule)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "parentalRule", $parentalRule->toParams());
+		$this->client->queueServiceActionCall("parentalrule", "add", "KalturaParentalRule", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaParentalRule");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\ParentalRule");
+		return $resultObject;
+	}
+
+	/**
+	 * Delete an existing parentalRule
+	 * 
+	 * @return bool
+	 */
+	function delete($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("parentalrule", "delete", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (bool)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
+	}
+
+	/**
 	 * Disables a parental rule that was previously defined by the household master. Disable can be at specific user or household level.
 	 * 
 	 * @return bool
@@ -104,6 +143,26 @@ class ParentalRuleService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
+	 * Get an existing parentalRule by identifier
+	 * 
+	 * @return \Kaltura\Client\Type\ParentalRule
+	 */
+	function get($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("parentalrule", "get", "KalturaParentalRule", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaParentalRule");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\ParentalRule");
+		return $resultObject;
+	}
+
+	/**
 	 * Return the parental rules that applies for the user or household. Can include rules that have been associated in account, household, or user level.
 	 *             Association level is also specified in the response.
 	 * 
@@ -121,6 +180,27 @@ class ParentalRuleService extends \Kaltura\Client\ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaParentalRuleListResponse");
 		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\ParentalRuleListResponse");
+		return $resultObject;
+	}
+
+	/**
+	 * Update an existing parentalRule
+	 * 
+	 * @return \Kaltura\Client\Type\ParentalRule
+	 */
+	function update($id, \Kaltura\Client\Type\ParentalRule $parentalRule)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "parentalRule", $parentalRule->toParams());
+		$this->client->queueServiceActionCall("parentalrule", "update", "KalturaParentalRule", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaParentalRule");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\ParentalRule");
 		return $resultObject;
 	}
 }

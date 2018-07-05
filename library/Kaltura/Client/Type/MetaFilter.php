@@ -51,45 +51,42 @@ class MetaFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->fieldNameEqual))
-			$this->fieldNameEqual = (string)$xml->fieldNameEqual;
-		if(count($xml->fieldNameNotEqual))
-			$this->fieldNameNotEqual = (string)$xml->fieldNameNotEqual;
-		if(count($xml->typeEqual))
-			$this->typeEqual = (string)$xml->typeEqual;
-		if(count($xml->assetTypeEqual))
-			$this->assetTypeEqual = (string)$xml->assetTypeEqual;
-		if(count($xml->featuresIn))
-			$this->featuresIn = (string)$xml->featuresIn;
+		if(count($xml->idIn))
+			$this->idIn = (string)$xml->idIn;
+		if(count($xml->assetStructIdEqual))
+			$this->assetStructIdEqual = (string)$xml->assetStructIdEqual;
+		if(count($xml->dataTypeEqual))
+			$this->dataTypeEqual = (string)$xml->dataTypeEqual;
+		if(count($xml->multipleValueEqual))
+		{
+			if(!empty($xml->multipleValueEqual))
+				$this->multipleValueEqual = true;
+			else
+				$this->multipleValueEqual = false;
+		}
 	}
 	/**
-	 * Meta system field name to filter by
-	 * @var \Kaltura\Client\Enum\MetaFieldName
-	 */
-	public $fieldNameEqual = null;
-
-	/**
-	 * Meta system field name to filter by
-	 * @var \Kaltura\Client\Enum\MetaFieldName
-	 */
-	public $fieldNameNotEqual = null;
-
-	/**
-	 * Meta type to filter by
-	 * @var \Kaltura\Client\Enum\MetaType
-	 */
-	public $typeEqual = null;
-
-	/**
-	 * Asset type to filter by
-	 * @var \Kaltura\Client\Enum\AssetType
-	 */
-	public $assetTypeEqual = null;
-
-	/**
-	 * Features
+	 * Comma separated identifiers
 	 * @var string
 	 */
-	public $featuresIn = null;
+	public $idIn = null;
+
+	/**
+	 * Filter Metas that are contained in a specific asset struct
+	 * @var int
+	 */
+	public $assetStructIdEqual = null;
+
+	/**
+	 * Meta data type to filter by
+	 * @var \Kaltura\Client\Enum\MetaDataType
+	 */
+	public $dataTypeEqual = null;
+
+	/**
+	 * Filter metas by multipleValueEqual value
+	 * @var bool
+	 */
+	public $multipleValueEqual = null;
 
 }

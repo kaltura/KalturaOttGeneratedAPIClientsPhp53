@@ -27,20 +27,3 @@
 // @ignore
 // ===================================================================================================
 
-/**
- * @namespace
- */
-namespace Kaltura\Client\Enum;
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class MetaType extends \Kaltura\Client\EnumBase
-{
-	const STRING = "STRING";
-	const NUMBER = "NUMBER";
-	const BOOLEAN = "BOOLEAN";
-	const STRING_ARRAY = "STRING_ARRAY";
-}
-

@@ -45,7 +45,46 @@ class MetaService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Get the list of meta mappings for the partner
+	 * Add a new meta
+	 * 
+	 * @return \Kaltura\Client\Type\Meta
+	 */
+	function add(\Kaltura\Client\Type\Meta $meta)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "meta", $meta->toParams());
+		$this->client->queueServiceActionCall("meta", "add", "KalturaMeta", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMeta");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\Meta");
+		return $resultObject;
+	}
+
+	/**
+	 * Delete an existing meta
+	 * 
+	 * @return bool
+	 */
+	function delete($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("meta", "delete", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (bool)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
+	}
+
+	/**
+	 * Return a list of metas for the account with optional filter
 	 * 
 	 * @return \Kaltura\Client\Type\MetaListResponse
 	 */
@@ -66,7 +105,7 @@ class MetaService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Update meta&#39;s user interest
+	 * Update an existing meta
 	 * 
 	 * @return \Kaltura\Client\Type\Meta
 	 */

@@ -38,6 +38,13 @@ namespace Kaltura\Client\Enum;
  */
 class MetaOrderBy extends \Kaltura\Client\EnumBase
 {
-	const NONE = "NONE";
+	const NAME_ASC = "NAME_ASC";
+	const NAME_DESC = "NAME_DESC";
+	const SYSTEM_NAME_ASC = "SYSTEM_NAME_ASC";
+	const SYSTEM_NAME_DESC = "SYSTEM_NAME_DESC";
+	const CREATE_DATE_ASC = "CREATE_DATE_ASC";
+	const CREATE_DATE_DESC = "CREATE_DATE_DESC";
+	const UPDATE_DATE_ASC = "UPDATE_DATE_ASC";
+	const UPDATE_DATE_DESC = "UPDATE_DATE_DESC";
 }
 

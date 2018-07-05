@@ -51,23 +51,53 @@ class Meta extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->name))
-			$this->name = (string)$xml->name;
-		if(count($xml->fieldName))
-			$this->fieldName = (string)$xml->fieldName;
-		if(count($xml->type))
-			$this->type = (string)$xml->type;
-		if(count($xml->assetType))
-			$this->assetType = (string)$xml->assetType;
-		if(count($xml->features))
-			$this->features = (string)$xml->features;
 		if(count($xml->id))
 			$this->id = (string)$xml->id;
+		if(count($xml->name))
+			$this->name = (string)$xml->name;
+		if(count($xml->multilingualName))
+		{
+			if(empty($xml->multilingualName))
+				$this->multilingualName = array();
+			else
+				$this->multilingualName = \Kaltura\Client\ParseUtils::unmarshalArray($xml->multilingualName, "KalturaTranslationToken");
+		}
+		if(count($xml->systemName))
+			$this->systemName = (string)$xml->systemName;
+		if(count($xml->dataType))
+			$this->dataType = (string)$xml->dataType;
+		if(count($xml->multipleValue))
+		{
+			if(!empty($xml->multipleValue))
+				$this->multipleValue = true;
+			else
+				$this->multipleValue = false;
+		}
+		if(count($xml->isProtected))
+		{
+			if(!empty($xml->isProtected))
+				$this->isProtected = true;
+			else
+				$this->isProtected = false;
+		}
+		if(count($xml->helpText))
+			$this->helpText = (string)$xml->helpText;
+		if(count($xml->features))
+			$this->features = (string)$xml->features;
 		if(count($xml->parentId))
 			$this->parentId = (string)$xml->parentId;
-		if(count($xml->partnerId))
-			$this->partnerId = (int)$xml->partnerId;
+		if(count($xml->createDate))
+			$this->createDate = (string)$xml->createDate;
+		if(count($xml->updateDate))
+			$this->updateDate = (string)$xml->updateDate;
 	}
+	/**
+	 * Meta id
+	 * @var string
+	 * @readonly
+	 */
+	public $id = null;
+
 	/**
 	 * Meta name for the partner
 	 * @var string
@@ -75,22 +105,43 @@ class Meta extends \Kaltura\Client\ObjectBase
 	public $name = null;
 
 	/**
-	 * Meta system field name
-	 * @var \Kaltura\Client\Enum\MetaFieldName
+	 * Meta name for the partner
+	 * @var array<KalturaTranslationToken>
 	 */
-	public $fieldName = null;
+	public $multilingualName;
 
 	/**
-	 * Meta value type
-	 * @var \Kaltura\Client\Enum\MetaType
+	 * Meta system name for the partner
+	 * @var string
+	 * @insertonly
 	 */
-	public $type = null;
+	public $systemName = null;
 
 	/**
-	 * Asset type this meta is related to
-	 * @var \Kaltura\Client\Enum\AssetType
+	 * Meta data type
+	 * @var \Kaltura\Client\Enum\MetaDataType
+	 * @insertonly
 	 */
-	public $assetType = null;
+	public $dataType = null;
+
+	/**
+	 * Does the meta contain multiple values
+	 * @var bool
+	 */
+	public $multipleValue = null;
+
+	/**
+	 * Is the meta protected by the system
+	 * @var bool
+	 * @insertonly
+	 */
+	public $isProtected = null;
+
+	/**
+	 * The help text of the meta to be displayed on the UI.
+	 * @var string
+	 */
+	public $helpText = null;
 
 	/**
 	 * List of supported features
@@ -99,21 +150,23 @@ class Meta extends \Kaltura\Client\ObjectBase
 	public $features = null;
 
 	/**
-	 * Meta id
-	 * @var string
-	 */
-	public $id = null;
-
-	/**
 	 * Parent meta id
 	 * @var string
 	 */
 	public $parentId = null;
 
 	/**
-	 * Partner Id
+	 * Specifies when was the meta created. Date and time represented as epoch.
 	 * @var int
+	 * @readonly
 	 */
-	public $partnerId = null;
+	public $createDate = null;
+
+	/**
+	 * Specifies when was the meta last updated. Date and time represented as epoch.
+	 * @var int
+	 * @readonly
+	 */
+	public $updateDate = null;
 
 }

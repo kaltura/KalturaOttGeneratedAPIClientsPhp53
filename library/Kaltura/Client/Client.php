@@ -79,6 +79,16 @@ class Client extends Base
 	protected $assetStatistics = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\AssetStructService
+	 */
+	protected $assetStruct = null;
+
+	/**
+	 * @var \Kaltura\Client\Service\AssetStructMetaService
+	 */
+	protected $assetStructMeta = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\AssetUserRuleService
 	 */
 	protected $assetUserRule = null;
@@ -87,6 +97,11 @@ class Client extends Base
 	 * @var \Kaltura\Client\Service\BookmarkService
 	 */
 	protected $bookmark = null;
+
+	/**
+	 * @var \Kaltura\Client\Service\BulkService
+	 */
+	protected $bulk = null;
 
 	/**
 	 * @var \Kaltura\Client\Service\CdnAdapterProfileService
@@ -259,6 +274,16 @@ class Client extends Base
 	protected $householdUser = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\ImageService
+	 */
+	protected $image = null;
+
+	/**
+	 * @var \Kaltura\Client\Service\ImageTypeService
+	 */
+	protected $imageType = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\InboxMessageService
 	 */
 	protected $inboxMessage = null;
@@ -272,6 +297,16 @@ class Client extends Base
 	 * @var \Kaltura\Client\Service\LicensedUrlService
 	 */
 	protected $licensedUrl = null;
+
+	/**
+	 * @var \Kaltura\Client\Service\MediaFileService
+	 */
+	protected $mediaFile = null;
+
+	/**
+	 * @var \Kaltura\Client\Service\MediaFileTypeService
+	 */
+	protected $mediaFileType = null;
 
 	/**
 	 * @var \Kaltura\Client\Service\MessageTemplateService
@@ -374,6 +409,11 @@ class Client extends Base
 	protected $purchaseSettings = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\RatioService
+	 */
+	protected $ratio = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\RecommendationProfileService
 	 */
 	protected $recommendationProfile = null;
@@ -459,6 +499,11 @@ class Client extends Base
 	protected $system = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\TagService
+	 */
+	protected $tag = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\TimeShiftedTvPartnerSettingsService
 	 */
 	protected $timeShiftedTvPartnerSettings = null;
@@ -482,6 +527,11 @@ class Client extends Base
 	 * @var \Kaltura\Client\Service\UnifiedPaymentService
 	 */
 	protected $unifiedPayment = null;
+
+	/**
+	 * @var \Kaltura\Client\Service\UploadTokenService
+	 */
+	protected $uploadToken = null;
 
 	/**
 	 * @var \Kaltura\Client\Service\UserAssetRuleService
@@ -517,8 +567,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:18-07-04');
-		$this->setApiVersion('4.9.0.42015');
+		$this->setClientTag('php5:18-07-05');
+		$this->setApiVersion('4.9.273.42022');
 	}
 	
 	/**
@@ -594,6 +644,24 @@ class Client extends Base
 		return $this->assetStatistics;
 	}
 	/**
+	 * @return \Kaltura\Client\Service\AssetStructService
+	 */
+	public function getAssetStructService()
+	{
+		if (is_null($this->assetStruct))
+			$this->assetStruct = new \Kaltura\Client\Service\AssetStructService($this);
+		return $this->assetStruct;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\AssetStructMetaService
+	 */
+	public function getAssetStructMetaService()
+	{
+		if (is_null($this->assetStructMeta))
+			$this->assetStructMeta = new \Kaltura\Client\Service\AssetStructMetaService($this);
+		return $this->assetStructMeta;
+	}
+	/**
 	 * @return \Kaltura\Client\Service\AssetUserRuleService
 	 */
 	public function getAssetUserRuleService()
@@ -610,6 +678,15 @@ class Client extends Base
 		if (is_null($this->bookmark))
 			$this->bookmark = new \Kaltura\Client\Service\BookmarkService($this);
 		return $this->bookmark;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\BulkService
+	 */
+	public function getBulkService()
+	{
+		if (is_null($this->bulk))
+			$this->bulk = new \Kaltura\Client\Service\BulkService($this);
+		return $this->bulk;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\CdnAdapterProfileService
@@ -918,6 +995,24 @@ class Client extends Base
 		return $this->householdUser;
 	}
 	/**
+	 * @return \Kaltura\Client\Service\ImageService
+	 */
+	public function getImageService()
+	{
+		if (is_null($this->image))
+			$this->image = new \Kaltura\Client\Service\ImageService($this);
+		return $this->image;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\ImageTypeService
+	 */
+	public function getImageTypeService()
+	{
+		if (is_null($this->imageType))
+			$this->imageType = new \Kaltura\Client\Service\ImageTypeService($this);
+		return $this->imageType;
+	}
+	/**
 	 * @return \Kaltura\Client\Service\InboxMessageService
 	 */
 	public function getInboxMessageService()
@@ -943,6 +1038,24 @@ class Client extends Base
 		if (is_null($this->licensedUrl))
 			$this->licensedUrl = new \Kaltura\Client\Service\LicensedUrlService($this);
 		return $this->licensedUrl;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\MediaFileService
+	 */
+	public function getMediaFileService()
+	{
+		if (is_null($this->mediaFile))
+			$this->mediaFile = new \Kaltura\Client\Service\MediaFileService($this);
+		return $this->mediaFile;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\MediaFileTypeService
+	 */
+	public function getMediaFileTypeService()
+	{
+		if (is_null($this->mediaFileType))
+			$this->mediaFileType = new \Kaltura\Client\Service\MediaFileTypeService($this);
+		return $this->mediaFileType;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\MessageTemplateService
@@ -1125,6 +1238,15 @@ class Client extends Base
 		return $this->purchaseSettings;
 	}
 	/**
+	 * @return \Kaltura\Client\Service\RatioService
+	 */
+	public function getRatioService()
+	{
+		if (is_null($this->ratio))
+			$this->ratio = new \Kaltura\Client\Service\RatioService($this);
+		return $this->ratio;
+	}
+	/**
 	 * @return \Kaltura\Client\Service\RecommendationProfileService
 	 */
 	public function getRecommendationProfileService()
@@ -1278,6 +1400,15 @@ class Client extends Base
 		return $this->system;
 	}
 	/**
+	 * @return \Kaltura\Client\Service\TagService
+	 */
+	public function getTagService()
+	{
+		if (is_null($this->tag))
+			$this->tag = new \Kaltura\Client\Service\TagService($this);
+		return $this->tag;
+	}
+	/**
 	 * @return \Kaltura\Client\Service\TimeShiftedTvPartnerSettingsService
 	 */
 	public function getTimeShiftedTvPartnerSettingsService()
@@ -1321,6 +1452,15 @@ class Client extends Base
 		if (is_null($this->unifiedPayment))
 			$this->unifiedPayment = new \Kaltura\Client\Service\UnifiedPaymentService($this);
 		return $this->unifiedPayment;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\UploadTokenService
+	 */
+	public function getUploadTokenService()
+	{
+		if (is_null($this->uploadToken))
+			$this->uploadToken = new \Kaltura\Client\Service\UploadTokenService($this);
+		return $this->uploadToken;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\UserAssetRuleService
