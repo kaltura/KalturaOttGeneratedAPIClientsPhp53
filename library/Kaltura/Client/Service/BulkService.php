@@ -72,11 +72,11 @@ class BulkService extends \Kaltura\Client\ServiceBase
 	 * 
 	 * @return \Kaltura\Client\Type\Bulk
 	 */
-	function serveLog ($id)
+	function serveLog($id)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("bulk", "serveLog ", "KalturaBulk", $kparams);
+		$this->client->queueServiceActionCall("bulk", "serveLog", "KalturaBulk", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
