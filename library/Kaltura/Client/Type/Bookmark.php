@@ -67,6 +67,13 @@ class Bookmark extends \Kaltura\Client\Type\SlimAsset
 			$this->playerData = \Kaltura\Client\ParseUtils::unmarshalObject($xml->playerData, "KalturaBookmarkPlayerData");
 		if(count($xml->programId))
 			$this->programId = (string)$xml->programId;
+		if(count($xml->isReportingMode))
+		{
+			if(!empty($xml->isReportingMode))
+				$this->isReportingMode = true;
+			else
+				$this->isReportingMode = false;
+		}
 	}
 	/**
 	 * User identifier
@@ -107,5 +114,11 @@ class Bookmark extends \Kaltura\Client\Type\SlimAsset
 	 * @var int
 	 */
 	public $programId = null;
+
+	/**
+	 * Indicates if the current request is in reporting mode (hit)
+	 * @var bool
+	 */
+	public $isReportingMode = null;
 
 }

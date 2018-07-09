@@ -76,6 +76,16 @@ class AssetStruct extends \Kaltura\Client\ObjectBase
 			$this->createDate = (string)$xml->createDate;
 		if(count($xml->updateDate))
 			$this->updateDate = (string)$xml->updateDate;
+		if(count($xml->features))
+			$this->features = (string)$xml->features;
+		if(count($xml->pluralName))
+			$this->pluralName = (string)$xml->pluralName;
+		if(count($xml->parentId))
+			$this->parentId = (string)$xml->parentId;
+		if(count($xml->connectingMetaId))
+			$this->connectingMetaId = (string)$xml->connectingMetaId;
+		if(count($xml->connectedParentMetaId))
+			$this->connectedParentMetaId = (string)$xml->connectedParentMetaId;
 	}
 	/**
 	 * Asset Struct id
@@ -127,5 +137,35 @@ class AssetStruct extends \Kaltura\Client\ObjectBase
 	 * @readonly
 	 */
 	public $updateDate = null;
+
+	/**
+	 * List of supported features
+	 * @var string
+	 */
+	public $features = null;
+
+	/**
+	 * Plural Name
+	 * @var string
+	 */
+	public $pluralName = null;
+
+	/**
+	 * AssetStruct parent Id
+	 * @var int
+	 */
+	public $parentId = null;
+
+	/**
+	 * connectingMetaId
+	 * @var int
+	 */
+	public $connectingMetaId = null;
+
+	/**
+	 * connectedParentMetaId
+	 * @var int
+	 */
+	public $connectedParentMetaId = null;
 
 }

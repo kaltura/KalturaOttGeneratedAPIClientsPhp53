@@ -189,6 +189,11 @@ class Client extends Base
 	protected $discountDetails = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\DrmProfileService
+	 */
+	protected $drmProfile = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\EmailService
 	 */
 	protected $email = null;
@@ -567,8 +572,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:18-07-08');
-		$this->setApiVersion('4.9.274.41991');
+		$this->setClientTag('php5:18-07-09');
+		$this->setApiVersion('4.9.283.41996');
 	}
 	
 	/**
@@ -840,6 +845,15 @@ class Client extends Base
 		if (is_null($this->discountDetails))
 			$this->discountDetails = new \Kaltura\Client\Service\DiscountDetailsService($this);
 		return $this->discountDetails;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\DrmProfileService
+	 */
+	public function getDrmProfileService()
+	{
+		if (is_null($this->drmProfile))
+			$this->drmProfile = new \Kaltura\Client\Service\DrmProfileService($this);
+		return $this->drmProfile;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\EmailService
