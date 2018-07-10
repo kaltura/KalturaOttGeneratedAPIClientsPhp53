@@ -27,21 +27,3 @@
 // @ignore
 // ===================================================================================================
 
-/**
- * @namespace
- */
-namespace Kaltura\Client\Enum;
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class CouponStatus extends \Kaltura\Client\EnumBase
-{
-	const VALID = "VALID";
-	const NOT_EXISTS = "NOT_EXISTS";
-	const ALREADY_USED = "ALREADY_USED";
-	const EXPIRED = "EXPIRED";
-	const INACTIVE = "INACTIVE";
-}
-

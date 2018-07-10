@@ -27,19 +27,3 @@
 // @ignore
 // ===================================================================================================
 
-/**
- * @namespace
- */
-namespace Kaltura\Client\Enum;
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class TransactionAdapterStatus extends \Kaltura\Client\EnumBase
-{
-	const OK = "OK";
-	const PENDING = "PENDING";
-	const FAILED = "FAILED";
-}
-

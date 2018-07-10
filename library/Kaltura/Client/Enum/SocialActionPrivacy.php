@@ -27,18 +27,3 @@
 // @ignore
 // ===================================================================================================
 
-/**
- * @namespace
- */
-namespace Kaltura\Client\Enum;
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class SocialActionPrivacy extends \Kaltura\Client\EnumBase
-{
-	const ALLOW = "ALLOW";
-	const DONT_ALLOW = "DONT_ALLOW";
-}
-

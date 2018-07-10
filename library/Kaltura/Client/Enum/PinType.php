@@ -27,18 +27,3 @@
 // @ignore
 // ===================================================================================================
 
-/**
- * @namespace
- */
-namespace Kaltura\Client\Enum;
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class PinType extends \Kaltura\Client\EnumBase
-{
-	const PURCHASE = "purchase";
-	const PARENTAL = "parental";
-}
-

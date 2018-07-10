@@ -27,19 +27,3 @@
 // @ignore
 // ===================================================================================================
 
-/**
- * @namespace
- */
-namespace Kaltura\Client\Enum;
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class StreamType extends \Kaltura\Client\EnumBase
-{
-	const CATCHUP = "catchup";
-	const START_OVER = "start_over";
-	const TRICK_PLAY = "trick_play";
-}
-

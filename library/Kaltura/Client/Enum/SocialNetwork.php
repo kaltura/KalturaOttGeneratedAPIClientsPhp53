@@ -27,17 +27,3 @@
 // @ignore
 // ===================================================================================================
 
-/**
- * @namespace
- */
-namespace Kaltura\Client\Enum;
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class SocialNetwork extends \Kaltura\Client\EnumBase
-{
-	const FACEBOOK = "facebook";
-}
-

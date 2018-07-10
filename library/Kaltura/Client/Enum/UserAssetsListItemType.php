@@ -27,18 +27,3 @@
 // @ignore
 // ===================================================================================================
 
-/**
- * @namespace
- */
-namespace Kaltura\Client\Enum;
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class UserAssetsListItemType extends \Kaltura\Client\EnumBase
-{
-	const ALL = "all";
-	const MEDIA = "media";
-}
-

@@ -27,20 +27,3 @@
 // @ignore
 // ===================================================================================================
 
-/**
- * @namespace
- */
-namespace Kaltura\Client\Enum;
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class NotificationType extends \Kaltura\Client\EnumBase
-{
-	const ANNOUNCEMENT = "announcement";
-	const SYSTEM = "system";
-	const REMINDER = "Reminder";
-	const SERIES_REMINDER = "series_reminder";
-}
-

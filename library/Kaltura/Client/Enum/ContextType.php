@@ -27,18 +27,3 @@
 // @ignore
 // ===================================================================================================
 
-/**
- * @namespace
- */
-namespace Kaltura\Client\Enum;
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class ContextType extends \Kaltura\Client\EnumBase
-{
-	const NONE = "none";
-	const RECORDING = "recording";
-}
-

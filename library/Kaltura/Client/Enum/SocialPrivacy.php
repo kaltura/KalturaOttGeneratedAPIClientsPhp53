@@ -27,22 +27,3 @@
 // @ignore
 // ===================================================================================================
 
-/**
- * @namespace
- */
-namespace Kaltura\Client\Enum;
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class SocialPrivacy extends \Kaltura\Client\EnumBase
-{
-	const UNKNOWN = "UNKNOWN";
-	const EVERYONE = "EVERYONE";
-	const ALL_FRIENDS = "ALL_FRIENDS";
-	const FRIENDS_OF_FRIENDS = "FRIENDS_OF_FRIENDS";
-	const SELF = "SELF";
-	const CUSTOM = "CUSTOM";
-}
-

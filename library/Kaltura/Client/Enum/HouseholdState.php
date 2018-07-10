@@ -27,21 +27,3 @@
 // @ignore
 // ===================================================================================================
 
-/**
- * @namespace
- */
-namespace Kaltura\Client\Enum;
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class HouseholdState extends \Kaltura\Client\EnumBase
-{
-	const OK = "ok";
-	const CREATED_WITHOUT_NPVR_ACCOUNT = "created_without_npvr_account";
-	const SUSPENDED = "suspended";
-	const NO_USERS_IN_HOUSEHOLD = "no_users_in_household";
-	const PENDING = "pending";
-}
-

@@ -27,20 +27,3 @@
 // @ignore
 // ===================================================================================================
 
-/**
- * @namespace
- */
-namespace Kaltura\Client\Enum;
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class AppTokenHashType extends \Kaltura\Client\EnumBase
-{
-	const SHA1 = "SHA1";
-	const SHA256 = "SHA256";
-	const SHA512 = "SHA512";
-	const MD5 = "MD5";
-}
-

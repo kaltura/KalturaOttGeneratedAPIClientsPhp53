@@ -37,7 +37,7 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class Channel extends \Kaltura\Client\ObjectBase
+class Channel extends \Kaltura\Client\Type\BaseChannel
 {
 	public function getKalturaObjectType()
 	{
@@ -51,8 +51,6 @@ class Channel extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->id))
-			$this->id = (string)$xml->id;
 		if(count($xml->name))
 			$this->name = (string)$xml->name;
 		if(count($xml->multilingualName))
@@ -87,13 +85,6 @@ class Channel extends \Kaltura\Client\ObjectBase
 		if(count($xml->updateDate))
 			$this->updateDate = (string)$xml->updateDate;
 	}
-	/**
-	 * Unique identifier for the channel
-	 * @var int
-	 * @readonly
-	 */
-	public $id = null;
-
 	/**
 	 * Channel name
 	 * @var string

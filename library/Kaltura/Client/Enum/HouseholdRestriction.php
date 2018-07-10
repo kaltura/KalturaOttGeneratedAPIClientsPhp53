@@ -27,20 +27,3 @@
 // @ignore
 // ===================================================================================================
 
-/**
- * @namespace
- */
-namespace Kaltura\Client\Enum;
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class HouseholdRestriction extends \Kaltura\Client\EnumBase
-{
-	const NOT_RESTRICTED = "not_restricted";
-	const USER_MASTER_RESTRICTED = "user_master_restricted";
-	const DEVICE_MASTER_RESTRICTED = "device_master_restricted";
-	const DEVICE_USER_MASTER_RESTRICTED = "device_user_master_restricted";
-}
-
