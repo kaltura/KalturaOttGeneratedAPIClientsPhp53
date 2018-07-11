@@ -53,19 +53,27 @@ class MediaAsset extends \Kaltura\Client\Type\Asset
 		
 		if(count($xml->externalIds))
 			$this->externalIds = (string)$xml->externalIds;
+		if(count($xml->catchUpBuffer))
+			$this->catchUpBuffer = (string)$xml->catchUpBuffer;
+		if(count($xml->trickPlayBuffer))
+			$this->trickPlayBuffer = (string)$xml->trickPlayBuffer;
+		if(count($xml->enableRecordingPlaybackNonEntitledChannel))
+		{
+			if(!empty($xml->enableRecordingPlaybackNonEntitledChannel))
+				$this->enableRecordingPlaybackNonEntitledChannel = true;
+			else
+				$this->enableRecordingPlaybackNonEntitledChannel = false;
+		}
+		if(count($xml->typeDescription))
+			$this->typeDescription = (string)$xml->typeDescription;
 		if(count($xml->entryId))
 			$this->entryId = (string)$xml->entryId;
-		if(count($xml->deviceRuleId))
-			$this->deviceRuleId = (int)$xml->deviceRuleId;
-		if(count($xml->geoBlockRuleId))
-			$this->geoBlockRuleId = (int)$xml->geoBlockRuleId;
-		if(count($xml->status))
-		{
-			if(!empty($xml->status))
-				$this->status = true;
-			else
-				$this->status = false;
-		}
+		if(count($xml->deviceRule))
+			$this->deviceRule = (string)$xml->deviceRule;
+		if(count($xml->geoBlockRule))
+			$this->geoBlockRule = (string)$xml->geoBlockRule;
+		if(count($xml->watchPermissionRule))
+			$this->watchPermissionRule = (string)$xml->watchPermissionRule;
 	}
 	/**
 	 * External identifiers
@@ -74,27 +82,52 @@ class MediaAsset extends \Kaltura\Client\Type\Asset
 	public $externalIds = null;
 
 	/**
+	 * Catch-up buffer
+	 * @var int
+	 */
+	public $catchUpBuffer = null;
+
+	/**
+	 * Trick-play buffer
+	 * @var int
+	 */
+	public $trickPlayBuffer = null;
+
+	/**
+	 * Enable Recording playback for non entitled channel
+	 * @var bool
+	 * @readonly
+	 */
+	public $enableRecordingPlaybackNonEntitledChannel = null;
+
+	/**
+	 * Asset type description
+	 * @var string
+	 */
+	public $typeDescription = null;
+
+	/**
 	 * Entry Identifier
 	 * @var string
 	 */
 	public $entryId = null;
 
 	/**
-	 * Device rule identifier
-	 * @var int
+	 * Device rule
+	 * @var string
 	 */
-	public $deviceRuleId = null;
+	public $deviceRule = null;
 
 	/**
-	 * Geo block rule identifier
-	 * @var int
+	 * Geo block rule
+	 * @var string
 	 */
-	public $geoBlockRuleId = null;
+	public $geoBlockRule = null;
 
 	/**
-	 * The media asset status
-	 * @var bool
+	 * Watch permission rule
+	 * @var string
 	 */
-	public $status = null;
+	public $watchPermissionRule = null;
 
 }

@@ -27,3 +27,22 @@
 // @ignore
 // ===================================================================================================
 
+/**
+ * @namespace
+ */
+namespace Kaltura\Client\Enum;
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class MessageTemplateType extends \Kaltura\Client\EnumBase
+{
+	const SERIES = "Series";
+	const REMINDER = "Reminder";
+	const CHURN = "Churn";
+	const SERIESREMINDER = "SeriesReminder";
+	const INTERESTVOD = "InterestVod";
+	const INTERESTEPG = "InterestEPG";
+}
+

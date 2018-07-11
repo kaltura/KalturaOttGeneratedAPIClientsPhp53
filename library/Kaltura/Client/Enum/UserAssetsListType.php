@@ -27,3 +27,20 @@
 // @ignore
 // ===================================================================================================
 
+/**
+ * @namespace
+ */
+namespace Kaltura\Client\Enum;
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class UserAssetsListType extends \Kaltura\Client\EnumBase
+{
+	const ALL = "all";
+	const WATCH = "watch";
+	const PURCHASE = "purchase";
+	const LIBRARY = "library";
+}
+

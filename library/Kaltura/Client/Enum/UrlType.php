@@ -27,3 +27,18 @@
 // @ignore
 // ===================================================================================================
 
+/**
+ * @namespace
+ */
+namespace Kaltura\Client\Enum;
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class UrlType extends \Kaltura\Client\EnumBase
+{
+	const PLAYMANIFEST = "PLAYMANIFEST";
+	const DIRECT = "DIRECT";
+}
+

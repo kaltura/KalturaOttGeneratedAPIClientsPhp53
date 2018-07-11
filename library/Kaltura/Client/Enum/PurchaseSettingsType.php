@@ -27,3 +27,19 @@
 // @ignore
 // ===================================================================================================
 
+/**
+ * @namespace
+ */
+namespace Kaltura\Client\Enum;
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class PurchaseSettingsType extends \Kaltura\Client\EnumBase
+{
+	const BLOCK = "block";
+	const ASK = "ask";
+	const ALLOW = "allow";
+}
+

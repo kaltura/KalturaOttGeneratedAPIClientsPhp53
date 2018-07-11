@@ -27,3 +27,18 @@
 // @ignore
 // ===================================================================================================
 
+/**
+ * @namespace
+ */
+namespace Kaltura\Client\Enum;
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class AdsPolicy extends \Kaltura\Client\EnumBase
+{
+	const NO_ADS = "NO_ADS";
+	const KEEP_ADS = "KEEP_ADS";
+}
+

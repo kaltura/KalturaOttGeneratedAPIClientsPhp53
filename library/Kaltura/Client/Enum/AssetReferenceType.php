@@ -27,3 +27,19 @@
 // @ignore
 // ===================================================================================================
 
+/**
+ * @namespace
+ */
+namespace Kaltura\Client\Enum;
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class AssetReferenceType extends \Kaltura\Client\EnumBase
+{
+	const MEDIA = "media";
+	const EPG_INTERNAL = "epg_internal";
+	const EPG_EXTERNAL = "epg_external";
+}
+

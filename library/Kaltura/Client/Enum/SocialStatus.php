@@ -27,3 +27,28 @@
 // @ignore
 // ===================================================================================================
 
+/**
+ * @namespace
+ */
+namespace Kaltura\Client\Enum;
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class SocialStatus extends \Kaltura\Client\EnumBase
+{
+	const ERROR = "error";
+	const OK = "ok";
+	const USER_DOES_NOT_EXIST = "user_does_not_exist";
+	const NO_USER_SOCIAL_SETTINGS_FOUND = "no_user_social_settings_found";
+	const ASSET_ALREADY_LIKED = "asset_already_liked";
+	const NOT_ALLOWED = "not_allowed";
+	const INVALID_PARAMETERS = "invalid_parameters";
+	const NO_FACEBOOK_ACTION = "no_facebook_action";
+	const ASSET_ALREADY_RATED = "asset_already_rated";
+	const ASSET_DOSE_NOT_EXISTS = "asset_dose_not_exists";
+	const INVALID_PLATFORM_REQUEST = "invalid_platform_request";
+	const INVALID_ACCESS_TOKEN = "invalid_access_token";
+}
+

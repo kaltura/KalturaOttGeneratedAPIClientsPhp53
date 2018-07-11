@@ -105,10 +105,34 @@ abstract class Asset extends \Kaltura\Client\ObjectBase
 			$this->startDate = (string)$xml->startDate;
 		if(count($xml->endDate))
 			$this->endDate = (string)$xml->endDate;
-		if(count($xml->createDate))
-			$this->createDate = (string)$xml->createDate;
-		if(count($xml->updateDate))
-			$this->updateDate = (string)$xml->updateDate;
+		if(count($xml->enableCdvr))
+		{
+			if(!empty($xml->enableCdvr))
+				$this->enableCdvr = true;
+			else
+				$this->enableCdvr = false;
+		}
+		if(count($xml->enableCatchUp))
+		{
+			if(!empty($xml->enableCatchUp))
+				$this->enableCatchUp = true;
+			else
+				$this->enableCatchUp = false;
+		}
+		if(count($xml->enableStartOver))
+		{
+			if(!empty($xml->enableStartOver))
+				$this->enableStartOver = true;
+			else
+				$this->enableStartOver = false;
+		}
+		if(count($xml->enableTrickPlay))
+		{
+			if(!empty($xml->enableTrickPlay))
+				$this->enableTrickPlay = true;
+			else
+				$this->enableTrickPlay = false;
+		}
 		if(count($xml->externalId))
 			$this->externalId = (string)$xml->externalId;
 	}
@@ -123,7 +147,6 @@ abstract class Asset extends \Kaltura\Client\ObjectBase
 	 * Identifies the asset type (EPG, Recording, Movie, TV Series, etc). 
 	 *             Possible values: 0 – EPG linear programs, 1 - Recording; or any asset type ID according to the asset types IDs defined in the system.
 	 * @var int
-	 * @insertonly
 	 */
 	public $type = null;
 
@@ -154,14 +177,12 @@ abstract class Asset extends \Kaltura\Client\ObjectBase
 	/**
 	 * Collection of images details that can be used to represent this asset
 	 * @var array<KalturaMediaImage>
-	 * @readonly
 	 */
 	public $images;
 
 	/**
 	 * Files
 	 * @var array<KalturaMediaFile>
-	 * @readonly
 	 */
 	public $mediaFiles;
 
@@ -190,21 +211,31 @@ abstract class Asset extends \Kaltura\Client\ObjectBase
 	public $endDate = null;
 
 	/**
-	 * Specifies when was the Asset was created. Date and time represented as epoch.
-	 * @var int
-	 * @readonly
+	 * Enable cDVR
+	 * @var bool
 	 */
-	public $createDate = null;
+	public $enableCdvr = null;
 
 	/**
-	 * Specifies when was the Asset last updated. Date and time represented as epoch.
-	 * @var int
-	 * @readonly
+	 * Enable catch-up
+	 * @var bool
 	 */
-	public $updateDate = null;
+	public $enableCatchUp = null;
 
 	/**
-	 * External identifier for the asset
+	 * Enable start over
+	 * @var bool
+	 */
+	public $enableStartOver = null;
+
+	/**
+	 * Enable trick-play
+	 * @var bool
+	 */
+	public $enableTrickPlay = null;
+
+	/**
+	 * External identifier for the media file
 	 * @var string
 	 */
 	public $externalId = null;

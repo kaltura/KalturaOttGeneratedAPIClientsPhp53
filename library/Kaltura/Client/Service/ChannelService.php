@@ -45,7 +45,7 @@ class ChannelService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Insert new channel for partner. Supports KalturaDynamicChannel or KalturaManualChannel
+	 * Insert new channel for partner. Currently supports only KSQL channel
 	 * 
 	 * @return \Kaltura\Client\Type\Channel
 	 */
@@ -84,7 +84,7 @@ class ChannelService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Returns channel
+	 * Returns channel info
 	 * 
 	 * @return \Kaltura\Client\Type\Channel
 	 */
@@ -104,37 +104,14 @@ class ChannelService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Get the list of tags for the partner
-	 * 
-	 * @return \Kaltura\Client\Type\ChannelListResponse
-	 */
-	function listAction(\Kaltura\Client\Type\ChannelsFilter $filter = null, \Kaltura\Client\Type\FilterPager $pager = null)
-	{
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("channel", "list", "KalturaChannelListResponse", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaChannelListResponse");
-		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\ChannelListResponse");
-		return $resultObject;
-	}
-
-	/**
-	 * Update channel details. Supports KalturaDynamicChannel or KalturaManualChannel
+	 * Update channel details. Currently supports only KSQL channel
 	 * 
 	 * @return \Kaltura\Client\Type\Channel
 	 */
-	function update($id, \Kaltura\Client\Type\Channel $channel)
+	function update($channelId, \Kaltura\Client\Type\Channel $channel)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "channelId", $channelId);
 		$this->client->addParam($kparams, "channel", $channel->toParams());
 		$this->client->queueServiceActionCall("channel", "update", "KalturaChannel", $kparams);
 		if ($this->client->isMultiRequest())

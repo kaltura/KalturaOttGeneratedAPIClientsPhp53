@@ -45,26 +45,6 @@ class AssetService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Add a new asset
-	 * 
-	 * @return \Kaltura\Client\Type\Asset
-	 */
-	function add(\Kaltura\Client\Type\Asset $asset)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "asset", $asset->toParams());
-		$this->client->queueServiceActionCall("asset", "add", "KalturaAsset", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAsset");
-		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\Asset");
-		return $resultObject;
-	}
-
-	/**
 	 * Returns a group-by result for media or EPG according to given filter. Lists values of each field and their respective count.
 	 * 
 	 * @return \Kaltura\Client\Type\AssetCount
@@ -82,26 +62,6 @@ class AssetService extends \Kaltura\Client\ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAssetCount");
 		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\AssetCount");
-		return $resultObject;
-	}
-
-	/**
-	 * Delete an existing asset
-	 * 
-	 * @return bool
-	 */
-	function delete($id, $assetReferenceType)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "assetReferenceType", $assetReferenceType);
-		$this->client->queueServiceActionCall("asset", "delete", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (bool)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
 		return $resultObject;
 	}
 
@@ -190,48 +150,6 @@ class AssetService extends \Kaltura\Client\ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAssetListResponse");
 		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\AssetListResponse");
-		return $resultObject;
-	}
-
-	/**
-	 * remove metas and tags from asset
-	 * 
-	 * @return bool
-	 */
-	function removeMetasAndTags($id, $assetReferenceType, $idIn)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "assetReferenceType", $assetReferenceType);
-		$this->client->addParam($kparams, "idIn", $idIn);
-		$this->client->queueServiceActionCall("asset", "removeMetasAndTags", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (bool)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
-	}
-
-	/**
-	 * update an existing asset
-	 * 
-	 * @return \Kaltura\Client\Type\Asset
-	 */
-	function update($id, \Kaltura\Client\Type\Asset $asset)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "asset", $asset->toParams());
-		$this->client->queueServiceActionCall("asset", "update", "KalturaAsset", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAsset");
-		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\Asset");
 		return $resultObject;
 	}
 }
