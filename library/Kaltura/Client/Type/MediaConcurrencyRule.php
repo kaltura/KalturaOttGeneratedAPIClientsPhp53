@@ -33,15 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Filtering recordings
+ * Media concurrency rule
  * @package Kaltura
  * @subpackage Client
  */
-class RecordingFilter extends \Kaltura\Client\Type\Filter
+class MediaConcurrencyRule extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaRecordingFilter';
+		return 'KalturaMediaConcurrencyRule';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,21 +51,37 @@ class RecordingFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->statusIn))
-			$this->statusIn = (string)$xml->statusIn;
-		if(count($xml->kSql))
-			$this->kSql = (string)$xml->kSql;
+		if(count($xml->id))
+			$this->id = (string)$xml->id;
+		if(count($xml->name))
+			$this->name = (string)$xml->name;
+		if(count($xml->concurrencyLimitationType))
+			$this->concurrencyLimitationType = (string)$xml->concurrencyLimitationType;
+		if(count($xml->limitation))
+			$this->limitation = (int)$xml->limitation;
 	}
 	/**
-	 * Recording Statuses
+	 * Media concurrency rule  identifier
 	 * @var string
 	 */
-	public $statusIn = null;
+	public $id = null;
 
 	/**
-	 * KSQL expression
+	 * Media concurrency rule  name
 	 * @var string
 	 */
-	public $kSql = null;
+	public $name = null;
+
+	/**
+	 * Concurrency limitation type
+	 * @var \Kaltura\Client\Enum\ConcurrencyLimitationType
+	 */
+	public $concurrencyLimitationType = null;
+
+	/**
+	 * Limitation
+	 * @var int
+	 */
+	public $limitation = null;
 
 }

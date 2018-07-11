@@ -88,6 +88,7 @@ class Channel extends \Kaltura\Client\Type\BaseChannel
 	/**
 	 * Channel name
 	 * @var string
+	 * @readonly
 	 */
 	public $name = null;
 
@@ -106,6 +107,7 @@ class Channel extends \Kaltura\Client\Type\BaseChannel
 	/**
 	 * Cannel description
 	 * @var string
+	 * @readonly
 	 */
 	public $description = null;
 

@@ -130,6 +130,7 @@ abstract class Asset extends \Kaltura\Client\ObjectBase
 	/**
 	 * Asset name
 	 * @var string
+	 * @readonly
 	 */
 	public $name = null;
 
@@ -142,6 +143,7 @@ abstract class Asset extends \Kaltura\Client\ObjectBase
 	/**
 	 * Asset description
 	 * @var string
+	 * @readonly
 	 */
 	public $description = null;
 

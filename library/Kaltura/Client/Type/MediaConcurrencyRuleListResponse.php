@@ -33,15 +33,14 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Filtering recordings
  * @package Kaltura
  * @subpackage Client
  */
-class RecordingFilter extends \Kaltura\Client\Type\Filter
+class MediaConcurrencyRuleListResponse extends \Kaltura\Client\Type\ListResponse
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaRecordingFilter';
+		return 'KalturaMediaConcurrencyRuleListResponse';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,21 +50,18 @@ class RecordingFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->statusIn))
-			$this->statusIn = (string)$xml->statusIn;
-		if(count($xml->kSql))
-			$this->kSql = (string)$xml->kSql;
+		if(count($xml->objects))
+		{
+			if(empty($xml->objects))
+				$this->objects = array();
+			else
+				$this->objects = \Kaltura\Client\ParseUtils::unmarshalArray($xml->objects, "KalturaMediaConcurrencyRule");
+		}
 	}
 	/**
-	 * Recording Statuses
-	 * @var string
+	 * Media CONCURRENCY RULES
+	 * @var array<KalturaMediaConcurrencyRule>
 	 */
-	public $statusIn = null;
-
-	/**
-	 * KSQL expression
-	 * @var string
-	 */
-	public $kSql = null;
+	public $objects;
 
 }

@@ -80,6 +80,7 @@ class Tag extends \Kaltura\Client\ObjectBase
 	/**
 	 * Tag
 	 * @var string
+	 * @readonly
 	 */
 	public $tag = null;
 

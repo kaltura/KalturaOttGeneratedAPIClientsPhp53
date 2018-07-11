@@ -67,6 +67,8 @@ class Recording extends \Kaltura\Client\ObjectBase
 			else
 				$this->isProtected = false;
 		}
+		if(count($xml->externalId))
+			$this->externalId = (string)$xml->externalId;
 		if(count($xml->createDate))
 			$this->createDate = (string)$xml->createDate;
 		if(count($xml->updateDate))
@@ -80,7 +82,7 @@ class Recording extends \Kaltura\Client\ObjectBase
 	public $id = null;
 
 	/**
-	 * Recording state: scheduled/recording/recorded/canceled/failed/does_not_exists/deleted
+	 * Recording state: scheduled/recording/recorded/canceled/failed/deleted
 	 * @var \Kaltura\Client\Enum\RecordingStatus
 	 * @readonly
 	 */
@@ -112,6 +114,12 @@ class Recording extends \Kaltura\Client\ObjectBase
 	 * @readonly
 	 */
 	public $isProtected = null;
+
+	/**
+	 * External identifier for the recording
+	 * @var string
+	 */
+	public $externalId = null;
 
 	/**
 	 * Specifies when was the recording created. Date and time represented as epoch.

@@ -101,6 +101,7 @@ class Meta extends \Kaltura\Client\ObjectBase
 	/**
 	 * Meta name for the partner
 	 * @var string
+	 * @readonly
 	 */
 	public $name = null;
 

@@ -27,19 +27,3 @@
 // @ignore
 // ===================================================================================================
 
-/**
- * @namespace
- */
-namespace Kaltura\Client\Enum;
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class UploadTokenStatus extends \Kaltura\Client\EnumBase
-{
-	const PENDING = "PENDING";
-	const FULL_UPLOAD = "FULL_UPLOAD";
-	const CLOSED = "CLOSED";
-}
-

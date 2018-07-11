@@ -97,6 +97,7 @@ class AssetStruct extends \Kaltura\Client\ObjectBase
 	/**
 	 * Asset struct name for the partner
 	 * @var string
+	 * @readonly
 	 */
 	public $name = null;
 
