@@ -133,8 +133,6 @@ abstract class Asset extends \Kaltura\Client\ObjectBase
 			else
 				$this->enableTrickPlay = false;
 		}
-		if(count($xml->externalId))
-			$this->externalId = (string)$xml->externalId;
 	}
 	/**
 	 * Unique identifier for the asset
@@ -153,6 +151,7 @@ abstract class Asset extends \Kaltura\Client\ObjectBase
 	/**
 	 * Asset name
 	 * @var string
+	 * @readonly
 	 */
 	public $name = null;
 
@@ -165,6 +164,7 @@ abstract class Asset extends \Kaltura\Client\ObjectBase
 	/**
 	 * Asset description
 	 * @var string
+	 * @readonly
 	 */
 	public $description = null;
 
@@ -233,11 +233,5 @@ abstract class Asset extends \Kaltura\Client\ObjectBase
 	 * @var bool
 	 */
 	public $enableTrickPlay = null;
-
-	/**
-	 * External identifier for the media file
-	 * @var string
-	 */
-	public $externalId = null;
 
 }

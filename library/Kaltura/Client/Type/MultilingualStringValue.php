@@ -64,6 +64,7 @@ class MultilingualStringValue extends \Kaltura\Client\Type\Value
 	/**
 	 * Value
 	 * @var string
+	 * @readonly
 	 */
 	public $value = null;
 

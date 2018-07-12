@@ -64,16 +64,8 @@ class MediaAsset extends \Kaltura\Client\Type\Asset
 			else
 				$this->enableRecordingPlaybackNonEntitledChannel = false;
 		}
-		if(count($xml->typeDescription))
-			$this->typeDescription = (string)$xml->typeDescription;
 		if(count($xml->entryId))
 			$this->entryId = (string)$xml->entryId;
-		if(count($xml->deviceRule))
-			$this->deviceRule = (string)$xml->deviceRule;
-		if(count($xml->geoBlockRule))
-			$this->geoBlockRule = (string)$xml->geoBlockRule;
-		if(count($xml->watchPermissionRule))
-			$this->watchPermissionRule = (string)$xml->watchPermissionRule;
 	}
 	/**
 	 * External identifiers
@@ -101,33 +93,9 @@ class MediaAsset extends \Kaltura\Client\Type\Asset
 	public $enableRecordingPlaybackNonEntitledChannel = null;
 
 	/**
-	 * Asset type description
-	 * @var string
-	 */
-	public $typeDescription = null;
-
-	/**
 	 * Entry Identifier
 	 * @var string
 	 */
 	public $entryId = null;
-
-	/**
-	 * Device rule
-	 * @var string
-	 */
-	public $deviceRule = null;
-
-	/**
-	 * Geo block rule
-	 * @var string
-	 */
-	public $geoBlockRule = null;
-
-	/**
-	 * Watch permission rule
-	 * @var string
-	 */
-	public $watchPermissionRule = null;
 
 }

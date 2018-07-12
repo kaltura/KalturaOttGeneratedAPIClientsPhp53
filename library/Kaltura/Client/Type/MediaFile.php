@@ -63,22 +63,6 @@ class MediaFile extends \Kaltura\Client\ObjectBase
 			$this->duration = (string)$xml->duration;
 		if(count($xml->externalId))
 			$this->externalId = (string)$xml->externalId;
-		if(count($xml->billingType))
-			$this->billingType = (string)$xml->billingType;
-		if(count($xml->quality))
-			$this->quality = (string)$xml->quality;
-		if(count($xml->handlingType))
-			$this->handlingType = (string)$xml->handlingType;
-		if(count($xml->cdnName))
-			$this->cdnName = (string)$xml->cdnName;
-		if(count($xml->cdnCode))
-			$this->cdnCode = (string)$xml->cdnCode;
-		if(count($xml->altCdnCode))
-			$this->altCdnCode = (string)$xml->altCdnCode;
-		if(count($xml->ppvModules) && !empty($xml->ppvModules))
-			$this->ppvModules = \Kaltura\Client\ParseUtils::unmarshalObject($xml->ppvModules, "KalturaStringValueArray");
-		if(count($xml->productCode))
-			$this->productCode = (string)$xml->productCode;
 		if(count($xml->fileSize))
 			$this->fileSize = (string)$xml->fileSize;
 	}
@@ -118,54 +102,6 @@ class MediaFile extends \Kaltura\Client\ObjectBase
 	 * @var string
 	 */
 	public $externalId = null;
-
-	/**
-	 * Billing type
-	 * @var string
-	 */
-	public $billingType = null;
-
-	/**
-	 * Quality
-	 * @var string
-	 */
-	public $quality = null;
-
-	/**
-	 * Handling type
-	 * @var string
-	 */
-	public $handlingType = null;
-
-	/**
-	 * CDN name
-	 * @var string
-	 */
-	public $cdnName = null;
-
-	/**
-	 * CDN code
-	 * @var string
-	 */
-	public $cdnCode = null;
-
-	/**
-	 * Alt CDN code
-	 * @var string
-	 */
-	public $altCdnCode = null;
-
-	/**
-	 * PPV Module
-	 * @var \Kaltura\Client\Type\StringValueArray
-	 */
-	public $ppvModules;
-
-	/**
-	 * Product code
-	 * @var string
-	 */
-	public $productCode = null;
 
 	/**
 	 * File size
