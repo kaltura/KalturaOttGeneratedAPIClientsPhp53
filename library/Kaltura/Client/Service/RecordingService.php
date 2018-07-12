@@ -152,7 +152,7 @@ class RecordingService extends \Kaltura\Client\ServiceBase
 	 * 
 	 * @return bool
 	 */
-	function notify($externalDomainRecordingId, $recordingStatus, $domainId, $externalEpgId = null, $recordingType = null, $isProtected)
+	function notify($externalDomainRecordingId, $recordingStatus, $domainId, $externalEpgId = null, $recordingType = null, $isProtected = false)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "externalDomainRecordingId", $externalDomainRecordingId);
