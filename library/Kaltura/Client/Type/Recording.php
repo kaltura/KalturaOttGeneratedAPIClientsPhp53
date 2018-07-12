@@ -97,7 +97,7 @@ class Recording extends \Kaltura\Client\ObjectBase
 	/**
 	 * Recording Type: single/season/series
 	 * @var \Kaltura\Client\Enum\RecordingType
-	 * @readonly
+	 * @insertonly
 	 */
 	public $type = null;
 
@@ -111,13 +111,14 @@ class Recording extends \Kaltura\Client\ObjectBase
 	/**
 	 * Specifies whether or not the recording is protected
 	 * @var bool
-	 * @readonly
+	 * @insertonly
 	 */
 	public $isProtected = null;
 
 	/**
 	 * External identifier for the recording
 	 * @var string
+	 * @insertonly
 	 */
 	public $externalId = null;
 
