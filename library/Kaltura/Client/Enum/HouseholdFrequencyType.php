@@ -27,3 +27,18 @@
 // @ignore
 // ===================================================================================================
 
+/**
+ * @namespace
+ */
+namespace Kaltura\Client\Enum;
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class HouseholdFrequencyType extends \Kaltura\Client\EnumBase
+{
+	const DEVICES = "devices";
+	const USERS = "users";
+}
+

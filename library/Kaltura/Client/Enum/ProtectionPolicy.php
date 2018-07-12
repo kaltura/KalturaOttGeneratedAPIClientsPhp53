@@ -27,3 +27,18 @@
 // @ignore
 // ===================================================================================================
 
+/**
+ * @namespace
+ */
+namespace Kaltura\Client\Enum;
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class ProtectionPolicy extends \Kaltura\Client\EnumBase
+{
+	const EXTENDINGRECORDINGLIFETIME = "ExtendingRecordingLifetime";
+	const LIMITEDBYRECORDINGLIFETIME = "LimitedByRecordingLifetime";
+}
+

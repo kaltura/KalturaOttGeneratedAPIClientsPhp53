@@ -27,3 +27,18 @@
 // @ignore
 // ===================================================================================================
 
+/**
+ * @namespace
+ */
+namespace Kaltura\Client\Enum;
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class CompensationType extends \Kaltura\Client\EnumBase
+{
+	const PERCENTAGE = "PERCENTAGE";
+	const FIXED_AMOUNT = "FIXED_AMOUNT";
+}
+

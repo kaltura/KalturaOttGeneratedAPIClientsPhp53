@@ -27,3 +27,18 @@
 // @ignore
 // ===================================================================================================
 
+/**
+ * @namespace
+ */
+namespace Kaltura\Client\Enum;
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class QuotaOveragePolicy extends \Kaltura\Client\EnumBase
+{
+	const STOPATQUOTA = "StopAtQuota";
+	const FIFOAUTODELETE = "FIFOAutoDelete";
+}
+

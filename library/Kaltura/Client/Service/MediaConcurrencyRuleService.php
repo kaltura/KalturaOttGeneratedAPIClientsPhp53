@@ -27,20 +27,39 @@
 // @ignore
 // ===================================================================================================
 
+
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Service;
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class AppTokenHashType extends \Kaltura\Client\EnumBase
+class MediaConcurrencyRuleService extends \Kaltura\Client\ServiceBase
 {
-	const SHA1 = "SHA1";
-	const SHA256 = "SHA256";
-	const SHA512 = "SHA512";
-	const MD5 = "MD5";
-}
+	function __construct(\Kaltura\Client\Client $client = null)
+	{
+		parent::__construct($client);
+	}
 
+	/**
+	 * Get the list of meta mappings for the partner
+	 * 
+	 * @return \Kaltura\Client\Type\MediaConcurrencyRuleListResponse
+	 */
+	function listAction()
+	{
+		$kparams = array();
+		$this->client->queueServiceActionCall("mediaconcurrencyrule", "list", "KalturaMediaConcurrencyRuleListResponse", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMediaConcurrencyRuleListResponse");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\MediaConcurrencyRuleListResponse");
+		return $resultObject;
+	}
+}

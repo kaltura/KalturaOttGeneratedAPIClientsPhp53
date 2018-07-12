@@ -148,6 +148,30 @@ class RecordingService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
+	 * Notify on an external recording
+	 * 
+	 * @return bool
+	 */
+	function notify($externalDomainRecordingId, $recordingStatus, $domainId, $externalEpgId = null, $recordingType = null, $isProtected)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "externalDomainRecordingId", $externalDomainRecordingId);
+		$this->client->addParam($kparams, "recordingStatus", $recordingStatus);
+		$this->client->addParam($kparams, "domainId", $domainId);
+		$this->client->addParam($kparams, "externalEpgId", $externalEpgId);
+		$this->client->addParam($kparams, "recordingType", $recordingType);
+		$this->client->addParam($kparams, "isProtected", $isProtected);
+		$this->client->queueServiceActionCall("recording", "notify", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (bool)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
+	}
+
+	/**
 	 * Protects an existing recording from the cleanup process for the defined protection period
 	 * 
 	 * @return \Kaltura\Client\Type\Recording

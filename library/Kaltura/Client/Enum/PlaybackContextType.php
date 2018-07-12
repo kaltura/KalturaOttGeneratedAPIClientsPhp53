@@ -27,3 +27,21 @@
 // @ignore
 // ===================================================================================================
 
+/**
+ * @namespace
+ */
+namespace Kaltura\Client\Enum;
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class PlaybackContextType extends \Kaltura\Client\EnumBase
+{
+	const TRAILER = "TRAILER";
+	const CATCHUP = "CATCHUP";
+	const START_OVER = "START_OVER";
+	const PLAYBACK = "PLAYBACK";
+	const DOWNLOAD = "DOWNLOAD";
+}
+
