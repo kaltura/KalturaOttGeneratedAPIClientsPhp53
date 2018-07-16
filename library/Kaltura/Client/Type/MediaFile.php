@@ -55,6 +55,8 @@ class MediaFile extends \Kaltura\Client\Type\AssetFile
 			$this->assetId = (int)$xml->assetId;
 		if(count($xml->id))
 			$this->id = (int)$xml->id;
+		if(count($xml->type))
+			$this->type = (string)$xml->type;
 		if(count($xml->typeId))
 			$this->typeId = (int)$xml->typeId;
 		if(count($xml->duration))
@@ -112,6 +114,13 @@ class MediaFile extends \Kaltura\Client\Type\AssetFile
 	 * @readonly
 	 */
 	public $id = null;
+
+	/**
+	 * Deprecated - Device types as defined in the system
+	 * @var string
+	 * @readonly
+	 */
+	public $type = null;
 
 	/**
 	 * Device types identifier as defined in the system
