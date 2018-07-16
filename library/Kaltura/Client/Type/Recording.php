@@ -67,8 +67,6 @@ class Recording extends \Kaltura\Client\ObjectBase
 			else
 				$this->isProtected = false;
 		}
-		if(count($xml->externalId))
-			$this->externalId = (string)$xml->externalId;
 		if(count($xml->createDate))
 			$this->createDate = (string)$xml->createDate;
 		if(count($xml->updateDate))
@@ -114,13 +112,6 @@ class Recording extends \Kaltura\Client\ObjectBase
 	 * @insertonly
 	 */
 	public $isProtected = null;
-
-	/**
-	 * External identifier for the recording
-	 * @var string
-	 * @insertonly
-	 */
-	public $externalId = null;
 
 	/**
 	 * Specifies when was the recording created. Date and time represented as epoch.
