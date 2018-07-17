@@ -1,2 +1,2 @@
 Kaltura PHP 5.3 API Client Library for usage with namespace.
-Compatible with Kaltura server version 4.9.4.20864 and above.
+Compatible with Kaltura server version 4.9.9.13406 and above.

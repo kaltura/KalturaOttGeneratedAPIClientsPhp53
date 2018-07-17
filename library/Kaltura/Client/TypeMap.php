@@ -212,6 +212,8 @@ class TypeMap
 		'KalturaConcurrencyPartnerConfig' => 'Kaltura\Client\Type\ConcurrencyPartnerConfig',
 		'KalturaPartnerConfigurationHolder' => 'Kaltura\Client\Type\PartnerConfigurationHolder',
 		'KalturaBillingPartnerConfig' => 'Kaltura\Client\Type\BillingPartnerConfig',
+		'KalturaMediaConcurrencyRule' => 'Kaltura\Client\Type\MediaConcurrencyRule',
+		'KalturaMediaConcurrencyRuleListResponse' => 'Kaltura\Client\Type\MediaConcurrencyRuleListResponse',
 		'KalturaAssetRuleBase' => 'Kaltura\Client\Type\AssetRuleBase',
 		'KalturaCondition' => 'Kaltura\Client\Type\Condition',
 		'KalturaAssetCondition' => 'Kaltura\Client\Type\AssetCondition',

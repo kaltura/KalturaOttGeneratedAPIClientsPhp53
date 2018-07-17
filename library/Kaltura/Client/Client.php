@@ -274,6 +274,11 @@ class Client extends Base
 	protected $licensedUrl = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\MediaConcurrencyRuleService
+	 */
+	protected $mediaConcurrencyRule = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\MessageTemplateService
 	 */
 	protected $messageTemplate = null;
@@ -517,8 +522,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:18-07-11');
-		$this->setApiVersion('4.9.4.20864');
+		$this->setClientTag('php5:18-07-17');
+		$this->setApiVersion('4.9.9.13406');
 	}
 	
 	/**
@@ -943,6 +948,15 @@ class Client extends Base
 		if (is_null($this->licensedUrl))
 			$this->licensedUrl = new \Kaltura\Client\Service\LicensedUrlService($this);
 		return $this->licensedUrl;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\MediaConcurrencyRuleService
+	 */
+	public function getMediaConcurrencyRuleService()
+	{
+		if (is_null($this->mediaConcurrencyRule))
+			$this->mediaConcurrencyRule = new \Kaltura\Client\Service\MediaConcurrencyRuleService($this);
+		return $this->mediaConcurrencyRule;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\MessageTemplateService
