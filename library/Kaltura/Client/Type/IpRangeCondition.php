@@ -30,19 +30,42 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
+ * IP range condition
  * @package Kaltura
  * @subpackage Client
  */
-class RuleActionType extends \Kaltura\Client\EnumBase
+class IpRangeCondition extends \Kaltura\Client\Type\Condition
 {
-	const BLOCK = "BLOCK";
-	const START_DATE_OFFSET = "START_DATE_OFFSET";
-	const END_DATE_OFFSET = "END_DATE_OFFSET";
-	const USER_BLOCK = "USER_BLOCK";
-	const ALLOW_PLAYBACK = "ALLOW_PLAYBACK";
-	const BLOCK_PLAYBACK = "BLOCK_PLAYBACK";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaIpRangeCondition';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->fromIP))
+			$this->fromIP = (string)$xml->fromIP;
+		if(count($xml->toIP))
+			$this->toIP = (string)$xml->toIP;
+	}
+	/**
+	 * From IP address range
+	 * @var string
+	 */
+	public $fromIP = null;
 
+	/**
+	 * TO IP address range
+	 * @var string
+	 */
+	public $toIP = null;
+
+}
