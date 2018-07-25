@@ -60,6 +60,8 @@ class Channel extends \Kaltura\Client\Type\BaseChannel
 			else
 				$this->multilingualName = \Kaltura\Client\ParseUtils::unmarshalArray($xml->multilingualName, "KalturaTranslationToken");
 		}
+		if(count($xml->oldName))
+			$this->oldName = (string)$xml->oldName;
 		if(count($xml->systemName))
 			$this->systemName = (string)$xml->systemName;
 		if(count($xml->description))
@@ -71,6 +73,8 @@ class Channel extends \Kaltura\Client\Type\BaseChannel
 			else
 				$this->multilingualDescription = \Kaltura\Client\ParseUtils::unmarshalArray($xml->multilingualDescription, "KalturaTranslationToken");
 		}
+		if(count($xml->oldDescription))
+			$this->oldDescription = (string)$xml->oldDescription;
 		if(count($xml->isActive))
 		{
 			if(!empty($xml->isActive))
@@ -99,6 +103,12 @@ class Channel extends \Kaltura\Client\Type\BaseChannel
 	public $multilingualName;
 
 	/**
+	 * Channel name
+	 * @var string
+	 */
+	public $oldName = null;
+
+	/**
 	 * Channel system name
 	 * @var string
 	 */
@@ -116,6 +126,12 @@ class Channel extends \Kaltura\Client\Type\BaseChannel
 	 * @var array<KalturaTranslationToken>
 	 */
 	public $multilingualDescription;
+
+	/**
+	 * Cannel description
+	 * @var string
+	 */
+	public $oldDescription = null;
 
 	/**
 	 * active status
