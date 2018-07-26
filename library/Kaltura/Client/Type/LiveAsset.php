@@ -57,10 +57,10 @@ class LiveAsset extends \Kaltura\Client\Type\MediaAsset
 			$this->enableCatchUpState = (string)$xml->enableCatchUpState;
 		if(count($xml->enableStartOverState))
 			$this->enableStartOverState = (string)$xml->enableStartOverState;
-		if(count($xml->bufferCatchUp))
-			$this->bufferCatchUp = (string)$xml->bufferCatchUp;
-		if(count($xml->bufferTrickPlay))
-			$this->bufferTrickPlay = (string)$xml->bufferTrickPlay;
+		if(count($xml->bufferCatchUpSetting))
+			$this->bufferCatchUpSetting = (string)$xml->bufferCatchUpSetting;
+		if(count($xml->bufferTrickPlaySetting))
+			$this->bufferTrickPlaySetting = (string)$xml->bufferTrickPlaySetting;
 		if(count($xml->enableRecordingPlaybackNonEntitledChannelState))
 			$this->enableRecordingPlaybackNonEntitledChannelState = (string)$xml->enableRecordingPlaybackNonEntitledChannelState;
 		if(count($xml->enableTrickPlayState))
@@ -69,44 +69,44 @@ class LiveAsset extends \Kaltura\Client\Type\MediaAsset
 			$this->externalEpgIngestId = (string)$xml->externalEpgIngestId;
 		if(count($xml->externalCdvrId))
 			$this->externalCdvrId = (string)$xml->externalCdvrId;
-		if(count($xml->cdvrEnabled))
+		if(count($xml->enableCdvr))
 		{
-			if(!empty($xml->cdvrEnabled))
-				$this->cdvrEnabled = true;
+			if(!empty($xml->enableCdvr))
+				$this->enableCdvr = true;
 			else
-				$this->cdvrEnabled = false;
+				$this->enableCdvr = false;
 		}
-		if(count($xml->catchUpEnabled))
+		if(count($xml->enableCatchUp))
 		{
-			if(!empty($xml->catchUpEnabled))
-				$this->catchUpEnabled = true;
+			if(!empty($xml->enableCatchUp))
+				$this->enableCatchUp = true;
 			else
-				$this->catchUpEnabled = false;
+				$this->enableCatchUp = false;
 		}
-		if(count($xml->startOverEnabled))
+		if(count($xml->enableStartOver))
 		{
-			if(!empty($xml->startOverEnabled))
-				$this->startOverEnabled = true;
+			if(!empty($xml->enableStartOver))
+				$this->enableStartOver = true;
 			else
-				$this->startOverEnabled = false;
+				$this->enableStartOver = false;
 		}
-		if(count($xml->summedCatchUpBuffer))
-			$this->summedCatchUpBuffer = (string)$xml->summedCatchUpBuffer;
-		if(count($xml->summedTrickPlayBuffer))
-			$this->summedTrickPlayBuffer = (string)$xml->summedTrickPlayBuffer;
-		if(count($xml->recordingPlaybackNonEntitledChannelEnabled))
+		if(count($xml->catchUpBuffer))
+			$this->catchUpBuffer = (string)$xml->catchUpBuffer;
+		if(count($xml->trickPlayBuffer))
+			$this->trickPlayBuffer = (string)$xml->trickPlayBuffer;
+		if(count($xml->enableRecordingPlaybackNonEntitledChannel))
 		{
-			if(!empty($xml->recordingPlaybackNonEntitledChannelEnabled))
-				$this->recordingPlaybackNonEntitledChannelEnabled = true;
+			if(!empty($xml->enableRecordingPlaybackNonEntitledChannel))
+				$this->enableRecordingPlaybackNonEntitledChannel = true;
 			else
-				$this->recordingPlaybackNonEntitledChannelEnabled = false;
+				$this->enableRecordingPlaybackNonEntitledChannel = false;
 		}
-		if(count($xml->trickPlayEnabled))
+		if(count($xml->enableTrickPlay))
 		{
-			if(!empty($xml->trickPlayEnabled))
-				$this->trickPlayEnabled = true;
+			if(!empty($xml->enableTrickPlay))
+				$this->enableTrickPlay = true;
 			else
-				$this->trickPlayEnabled = false;
+				$this->enableTrickPlay = false;
 		}
 		if(count($xml->channelType))
 			$this->channelType = (string)$xml->channelType;
@@ -133,13 +133,13 @@ class LiveAsset extends \Kaltura\Client\Type\MediaAsset
 	 * buffer Catch-up, configuration only
 	 * @var int
 	 */
-	public $bufferCatchUp = null;
+	public $bufferCatchUpSetting = null;
 
 	/**
 	 * buffer Trick-play, configuration only
 	 * @var int
 	 */
-	public $bufferTrickPlay = null;
+	public $bufferTrickPlaySetting = null;
 
 	/**
 	 * Enable Recording playback for non entitled channel, configuration only
@@ -170,49 +170,49 @@ class LiveAsset extends \Kaltura\Client\Type\MediaAsset
 	 * @var bool
 	 * @readonly
 	 */
-	public $cdvrEnabled = null;
+	public $enableCdvr = null;
 
 	/**
 	 * Is catch-up enabled for this asset
 	 * @var bool
 	 * @readonly
 	 */
-	public $catchUpEnabled = null;
+	public $enableCatchUp = null;
 
 	/**
 	 * Is start over enabled for this asset
 	 * @var bool
 	 * @readonly
 	 */
-	public $startOverEnabled = null;
+	public $enableStartOver = null;
 
 	/**
 	 * summed Catch-up buffer, the TimeShiftedTvPartnerSettings are also taken into consideration
 	 * @var int
 	 * @readonly
 	 */
-	public $summedCatchUpBuffer = null;
+	public $catchUpBuffer = null;
 
 	/**
 	 * summed Trick-play buffer, the TimeShiftedTvPartnerSettings are also taken into consideration
 	 * @var int
 	 * @readonly
 	 */
-	public $summedTrickPlayBuffer = null;
+	public $trickPlayBuffer = null;
 
 	/**
 	 * Is recording playback for non entitled channel enabled for this asset
 	 * @var bool
 	 * @readonly
 	 */
-	public $recordingPlaybackNonEntitledChannelEnabled = null;
+	public $enableRecordingPlaybackNonEntitledChannel = null;
 
 	/**
 	 * Is trick-play enabled for this asset
 	 * @var bool
 	 * @readonly
 	 */
-	public $trickPlayEnabled = null;
+	public $enableTrickPlay = null;
 
 	/**
 	 * channel type, possible values: UNKNOWN, DTT, OTT, DTT_AND_OTT
