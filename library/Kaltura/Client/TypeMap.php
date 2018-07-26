@@ -200,7 +200,7 @@ class TypeMap
 		'KalturaAsset' => 'Kaltura\Client\Type\Asset',
 		'KalturaAssetListResponse' => 'Kaltura\Client\Type\AssetListResponse',
 		'KalturaMediaAsset' => 'Kaltura\Client\Type\MediaAsset',
-		'KalturaLinearMediaAsset' => 'Kaltura\Client\Type\LinearMediaAsset',
+		'KalturaLiveAsset' => 'Kaltura\Client\Type\LiveAsset',
 		'KalturaProgramAsset' => 'Kaltura\Client\Type\ProgramAsset',
 		'KalturaRecordingAsset' => 'Kaltura\Client\Type\RecordingAsset',
 		'KalturaAssetStruct' => 'Kaltura\Client\Type\AssetStruct',
