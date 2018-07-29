@@ -54,8 +54,6 @@ class SearchAssetFilter extends \Kaltura\Client\Type\BaseSearchAssetFilter
 			$this->kSql = (string)$xml->kSql;
 		if(count($xml->typeIn))
 			$this->typeIn = (string)$xml->typeIn;
-		if(count($xml->idIn))
-			$this->idIn = (string)$xml->idIn;
 	}
 	/**
 	 * Search assets using dynamic criteria. Provided collection of nested expressions with key, comparison operators, value, and logical conjunction.
@@ -85,11 +83,5 @@ class SearchAssetFilter extends \Kaltura\Client\Type\BaseSearchAssetFilter
 	 * @var string
 	 */
 	public $typeIn = null;
-
-	/**
-	 * Comma separated list of EPG channel ids to search within. *****Deprecated, please use linear_media_id inside kSql instead*****
-	 * @var string
-	 */
-	public $idIn = null;
 
 }
