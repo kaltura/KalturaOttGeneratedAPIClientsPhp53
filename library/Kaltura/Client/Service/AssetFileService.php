@@ -68,7 +68,6 @@ class AssetFileService extends \Kaltura\Client\ServiceBase
 	/**
 	 * Redirects to play manifest
 	 * 
-	 * @return \Kaltura\Client\Type\AssetFile
 	 */
 	function playManifest($partnerId, $assetId, $assetType, $assetFileId, $contextType, $ks = null)
 	{
@@ -79,14 +78,11 @@ class AssetFileService extends \Kaltura\Client\ServiceBase
 		$this->client->addParam($kparams, "assetFileId", $assetFileId);
 		$this->client->addParam($kparams, "contextType", $contextType);
 		$this->client->addParam($kparams, "ks", $ks);
-		$this->client->queueServiceActionCall("assetfile", "playManifest", "KalturaAssetFile", $kparams);
+		$this->client->queueServiceActionCall("assetfile", "playManifest", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAssetFile");
-		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\AssetFile");
-		return $resultObject;
 	}
 }

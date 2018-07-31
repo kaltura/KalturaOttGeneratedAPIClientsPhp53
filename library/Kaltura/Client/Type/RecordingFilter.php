@@ -53,10 +53,8 @@ class RecordingFilter extends \Kaltura\Client\Type\Filter
 		
 		if(count($xml->statusIn))
 			$this->statusIn = (string)$xml->statusIn;
-		if(count($xml->externalRecordingIdIn))
-			$this->externalRecordingIdIn = (string)$xml->externalRecordingIdIn;
-		if(count($xml->kSql))
-			$this->kSql = (string)$xml->kSql;
+		if(count($xml->filterExpression))
+			$this->filterExpression = (string)$xml->filterExpression;
 	}
 	/**
 	 * Recording Statuses
@@ -65,15 +63,9 @@ class RecordingFilter extends \Kaltura\Client\Type\Filter
 	public $statusIn = null;
 
 	/**
-	 * Comma separated external identifiers
-	 * @var string
-	 */
-	public $externalRecordingIdIn = null;
-
-	/**
 	 * KSQL expression
 	 * @var string
 	 */
-	public $kSql = null;
+	public $filterExpression = null;
 
 }

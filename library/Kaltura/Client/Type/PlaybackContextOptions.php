@@ -58,8 +58,6 @@ class PlaybackContextOptions extends \Kaltura\Client\ObjectBase
 			$this->assetFileIds = (string)$xml->assetFileIds;
 		if(count($xml->context))
 			$this->context = (string)$xml->context;
-		if(count($xml->urlType))
-			$this->urlType = (string)$xml->urlType;
 	}
 	/**
 	 * Protocol of the specific media object (http / https).
@@ -84,11 +82,5 @@ class PlaybackContextOptions extends \Kaltura\Client\ObjectBase
 	 * @var \Kaltura\Client\Enum\PlaybackContextType
 	 */
 	public $context = null;
-
-	/**
-	 * Url type
-	 * @var \Kaltura\Client\Enum\UrlType
-	 */
-	public $urlType = null;
 
 }

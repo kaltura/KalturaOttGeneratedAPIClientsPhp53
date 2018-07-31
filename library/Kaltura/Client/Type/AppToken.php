@@ -67,10 +67,6 @@ class AppToken extends \Kaltura\Client\ObjectBase
 			$this->token = (string)$xml->token;
 		if(count($xml->sessionUserId))
 			$this->sessionUserId = (string)$xml->sessionUserId;
-		if(count($xml->createDate))
-			$this->createDate = (string)$xml->createDate;
-		if(count($xml->updateDate))
-			$this->updateDate = (string)$xml->updateDate;
 	}
 	/**
 	 * The id of the application token
@@ -122,19 +118,5 @@ class AppToken extends \Kaltura\Client\ObjectBase
 	 * @var string
 	 */
 	public $sessionUserId = null;
-
-	/**
-	 * Create date
-	 * @var int
-	 * @readonly
-	 */
-	public $createDate = null;
-
-	/**
-	 * Update date
-	 * @var int
-	 * @readonly
-	 */
-	public $updateDate = null;
 
 }

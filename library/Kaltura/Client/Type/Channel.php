@@ -53,28 +53,24 @@ class Channel extends \Kaltura\Client\Type\BaseChannel
 		
 		if(count($xml->name))
 			$this->name = (string)$xml->name;
-		if(count($xml->multilingualName))
-		{
-			if(empty($xml->multilingualName))
-				$this->multilingualName = array();
-			else
-				$this->multilingualName = \Kaltura\Client\ParseUtils::unmarshalArray($xml->multilingualName, "KalturaTranslationToken");
-		}
-		if(count($xml->oldName))
-			$this->oldName = (string)$xml->oldName;
-		if(count($xml->systemName))
-			$this->systemName = (string)$xml->systemName;
 		if(count($xml->description))
 			$this->description = (string)$xml->description;
-		if(count($xml->multilingualDescription))
+		if(count($xml->images))
 		{
-			if(empty($xml->multilingualDescription))
-				$this->multilingualDescription = array();
+			if(empty($xml->images))
+				$this->images = array();
 			else
-				$this->multilingualDescription = \Kaltura\Client\ParseUtils::unmarshalArray($xml->multilingualDescription, "KalturaTranslationToken");
+				$this->images = \Kaltura\Client\ParseUtils::unmarshalArray($xml->images, "KalturaMediaImage");
 		}
-		if(count($xml->oldDescription))
-			$this->oldDescription = (string)$xml->oldDescription;
+		if(count($xml->assetTypes))
+		{
+			if(empty($xml->assetTypes))
+				$this->assetTypes = array();
+			else
+				$this->assetTypes = \Kaltura\Client\ParseUtils::unmarshalArray($xml->assetTypes, "KalturaIntegerValue");
+		}
+		if(count($xml->filterExpression))
+			$this->filterExpression = (string)$xml->filterExpression;
 		if(count($xml->isActive))
 		{
 			if(!empty($xml->isActive))
@@ -82,56 +78,41 @@ class Channel extends \Kaltura\Client\Type\BaseChannel
 			else
 				$this->isActive = false;
 		}
-		if(count($xml->orderBy) && !empty($xml->orderBy))
-			$this->orderBy = \Kaltura\Client\ParseUtils::unmarshalObject($xml->orderBy, "KalturaChannelOrder");
-		if(count($xml->createDate))
-			$this->createDate = (string)$xml->createDate;
-		if(count($xml->updateDate))
-			$this->updateDate = (string)$xml->updateDate;
+		if(count($xml->order))
+			$this->order = (string)$xml->order;
+		if(count($xml->groupBy) && !empty($xml->groupBy))
+			$this->groupBy = \Kaltura\Client\ParseUtils::unmarshalObject($xml->groupBy, "KalturaAssetGroupBy");
 	}
 	/**
 	 * Channel name
 	 * @var string
-	 * @readonly
 	 */
 	public $name = null;
 
 	/**
-	 * Channel name
-	 * @var array<KalturaTranslationToken>
-	 */
-	public $multilingualName;
-
-	/**
-	 * Channel name
-	 * @var string
-	 */
-	public $oldName = null;
-
-	/**
-	 * Channel system name
-	 * @var string
-	 */
-	public $systemName = null;
-
-	/**
 	 * Cannel description
 	 * @var string
-	 * @readonly
 	 */
 	public $description = null;
 
 	/**
-	 * Cannel description
-	 * @var array<KalturaTranslationToken>
+	 * Channel images
+	 * @var array<KalturaMediaImage>
 	 */
-	public $multilingualDescription;
+	public $images;
 
 	/**
-	 * Cannel description
+	 * Asset types in the channel.
+	 *             -26 is EPG
+	 * @var array<KalturaIntegerValue>
+	 */
+	public $assetTypes;
+
+	/**
+	 * Filter expression
 	 * @var string
 	 */
-	public $oldDescription = null;
+	public $filterExpression = null;
 
 	/**
 	 * active status
@@ -140,23 +121,15 @@ class Channel extends \Kaltura\Client\Type\BaseChannel
 	public $isActive = null;
 
 	/**
-	 * Channel order by
-	 * @var \Kaltura\Client\Type\ChannelOrder
+	 * Channel order
+	 * @var \Kaltura\Client\Enum\AssetOrderBy
 	 */
-	public $orderBy;
+	public $order = null;
 
 	/**
-	 * Specifies when was the Channel was created. Date and time represented as epoch.
-	 * @var int
-	 * @readonly
+	 * Channel group by
+	 * @var \Kaltura\Client\Type\AssetGroupBy
 	 */
-	public $createDate = null;
-
-	/**
-	 * Specifies when was the Channel last updated. Date and time represented as epoch.
-	 * @var int
-	 * @readonly
-	 */
-	public $updateDate = null;
+	public $groupBy;
 
 }

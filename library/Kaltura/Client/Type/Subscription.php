@@ -237,7 +237,6 @@ class Subscription extends \Kaltura\Client\ObjectBase
 	/**
 	 * Name of the subscription
 	 * @var string
-	 * @readonly
 	 */
 	public $name = null;
 
@@ -250,7 +249,6 @@ class Subscription extends \Kaltura\Client\ObjectBase
 	/**
 	 * description of the subscription
 	 * @var string
-	 * @readonly
 	 */
 	public $description = null;
 

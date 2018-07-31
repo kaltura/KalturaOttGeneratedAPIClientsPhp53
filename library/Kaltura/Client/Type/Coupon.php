@@ -55,10 +55,6 @@ class Coupon extends \Kaltura\Client\ObjectBase
 			$this->couponsGroup = \Kaltura\Client\ParseUtils::unmarshalObject($xml->couponsGroup, "KalturaCouponsGroup");
 		if(count($xml->status))
 			$this->status = (string)$xml->status;
-		if(count($xml->totalUses))
-			$this->totalUses = (int)$xml->totalUses;
-		if(count($xml->leftUses))
-			$this->leftUses = (int)$xml->leftUses;
 	}
 	/**
 	 * Coupons group details
@@ -73,19 +69,5 @@ class Coupon extends \Kaltura\Client\ObjectBase
 	 * @readonly
 	 */
 	public $status = null;
-
-	/**
-	 * Total available coupon uses
-	 * @var int
-	 * @readonly
-	 */
-	public $totalUses = null;
-
-	/**
-	 * Left coupon uses
-	 * @var int
-	 * @readonly
-	 */
-	public $leftUses = null;
 
 }

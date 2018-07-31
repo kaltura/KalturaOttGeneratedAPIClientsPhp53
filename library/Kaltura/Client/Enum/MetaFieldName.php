@@ -27,3 +27,20 @@
 // @ignore
 // ===================================================================================================
 
+/**
+ * @namespace
+ */
+namespace Kaltura\Client\Enum;
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class MetaFieldName extends \Kaltura\Client\EnumBase
+{
+	const NONE = "NONE";
+	const SERIES_ID = "SERIES_ID";
+	const SEASON_NUMBER = "SEASON_NUMBER";
+	const EPISODE_NUMBER = "EPISODE_NUMBER";
+}
+

@@ -95,17 +95,6 @@ class ParentalRule extends \Kaltura\Client\ObjectBase
 		}
 		if(count($xml->origin))
 			$this->origin = (string)$xml->origin;
-		if(count($xml->isActive))
-		{
-			if(!empty($xml->isActive))
-				$this->isActive = true;
-			else
-				$this->isActive = false;
-		}
-		if(count($xml->createDate))
-			$this->createDate = (string)$xml->createDate;
-		if(count($xml->updateDate))
-			$this->updateDate = (string)$xml->updateDate;
 	}
 	/**
 	 * Unique parental rule identifier
@@ -171,35 +160,13 @@ class ParentalRule extends \Kaltura\Client\ObjectBase
 	/**
 	 * Is the rule the default rule of the account
 	 * @var bool
-	 * @readonly
 	 */
 	public $isDefault = null;
 
 	/**
 	 * Where was this rule defined account, household or user
 	 * @var \Kaltura\Client\Enum\RuleLevel
-	 * @readonly
 	 */
 	public $origin = null;
-
-	/**
-	 * active status
-	 * @var bool
-	 */
-	public $isActive = null;
-
-	/**
-	 * Specifies when was the parental rule created. Date and time represented as epoch.
-	 * @var int
-	 * @readonly
-	 */
-	public $createDate = null;
-
-	/**
-	 * Specifies when was the parental rule last updated. Date and time represented as epoch.
-	 * @var int
-	 * @readonly
-	 */
-	public $updateDate = null;
 
 }

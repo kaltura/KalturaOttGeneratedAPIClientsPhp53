@@ -80,7 +80,7 @@ class Recording extends \Kaltura\Client\ObjectBase
 	public $id = null;
 
 	/**
-	 * Recording state: scheduled/recording/recorded/canceled/failed/deleted
+	 * Recording state: scheduled/recording/recorded/canceled/failed/does_not_exists/deleted
 	 * @var \Kaltura\Client\Enum\RecordingStatus
 	 * @readonly
 	 */
@@ -95,7 +95,7 @@ class Recording extends \Kaltura\Client\ObjectBase
 	/**
 	 * Recording Type: single/season/series
 	 * @var \Kaltura\Client\Enum\RecordingType
-	 * @insertonly
+	 * @readonly
 	 */
 	public $type = null;
 
@@ -109,7 +109,7 @@ class Recording extends \Kaltura\Client\ObjectBase
 	/**
 	 * Specifies whether or not the recording is protected
 	 * @var bool
-	 * @insertonly
+	 * @readonly
 	 */
 	public $isProtected = null;
 

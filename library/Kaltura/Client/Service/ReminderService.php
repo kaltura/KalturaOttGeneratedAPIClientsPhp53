@@ -110,14 +110,13 @@ class ReminderService extends \Kaltura\Client\ServiceBase
 	 */
 	function listAction(\Kaltura\Client\Type\ReminderFilter $filter, \Kaltura\Client\Type\FilterPager $pager = null)
 	{
-		if ($this->client->isMultiRequest())
-			throw $this->client->getClientException("Action is not supported as part of multi-request.", ClientException::ERROR_ACTION_IN_MULTIREQUEST);
-		
 		$kparams = array();
 		$this->client->addParam($kparams, "filter", $filter->toParams());
 		if ($pager !== null)
 			$this->client->addParam($kparams, "pager", $pager->toParams());
 		$this->client->queueServiceActionCall("reminder", "list", "KalturaReminderListResponse", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);

@@ -47,7 +47,5 @@ class AssetOrderBy extends \Kaltura\Client\EnumBase
 	const START_DATE_DESC = "START_DATE_DESC";
 	const START_DATE_ASC = "START_DATE_ASC";
 	const LIKES_DESC = "LIKES_DESC";
-	const CREATE_DATE_ASC = "CREATE_DATE_ASC";
-	const CREATE_DATE_DESC = "CREATE_DATE_DESC";
 }
 

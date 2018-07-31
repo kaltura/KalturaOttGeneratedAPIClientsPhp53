@@ -37,7 +37,7 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class MediaFile extends \Kaltura\Client\Type\AssetFile
+class MediaFile extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
@@ -57,50 +57,30 @@ class MediaFile extends \Kaltura\Client\Type\AssetFile
 			$this->id = (int)$xml->id;
 		if(count($xml->type))
 			$this->type = (string)$xml->type;
-		if(count($xml->typeId))
-			$this->typeId = (int)$xml->typeId;
+		if(count($xml->url))
+			$this->url = (string)$xml->url;
 		if(count($xml->duration))
 			$this->duration = (string)$xml->duration;
 		if(count($xml->externalId))
 			$this->externalId = (string)$xml->externalId;
-		if(count($xml->altExternalId))
-			$this->altExternalId = (string)$xml->altExternalId;
+		if(count($xml->billingType))
+			$this->billingType = (string)$xml->billingType;
+		if(count($xml->quality))
+			$this->quality = (string)$xml->quality;
+		if(count($xml->handlingType))
+			$this->handlingType = (string)$xml->handlingType;
+		if(count($xml->cdnName))
+			$this->cdnName = (string)$xml->cdnName;
+		if(count($xml->cdnCode))
+			$this->cdnCode = (string)$xml->cdnCode;
+		if(count($xml->altCdnCode))
+			$this->altCdnCode = (string)$xml->altCdnCode;
+		if(count($xml->ppvModules) && !empty($xml->ppvModules))
+			$this->ppvModules = \Kaltura\Client\ParseUtils::unmarshalObject($xml->ppvModules, "KalturaStringValueArray");
+		if(count($xml->productCode))
+			$this->productCode = (string)$xml->productCode;
 		if(count($xml->fileSize))
 			$this->fileSize = (string)$xml->fileSize;
-		if(count($xml->additionalData))
-			$this->additionalData = (string)$xml->additionalData;
-		if(count($xml->altStreamingCode))
-			$this->altStreamingCode = (string)$xml->altStreamingCode;
-		if(count($xml->alternativeCdnAdapaterProfileId))
-			$this->alternativeCdnAdapaterProfileId = (string)$xml->alternativeCdnAdapaterProfileId;
-		if(count($xml->endDate))
-			$this->endDate = (string)$xml->endDate;
-		if(count($xml->startDate))
-			$this->startDate = (string)$xml->startDate;
-		if(count($xml->externalStoreId))
-			$this->externalStoreId = (string)$xml->externalStoreId;
-		if(count($xml->isDefaultLanguage))
-		{
-			if(!empty($xml->isDefaultLanguage))
-				$this->isDefaultLanguage = true;
-			else
-				$this->isDefaultLanguage = false;
-		}
-		if(count($xml->language))
-			$this->language = (string)$xml->language;
-		if(count($xml->orderNum))
-			$this->orderNum = (int)$xml->orderNum;
-		if(count($xml->outputProtecationLevel))
-			$this->outputProtecationLevel = (string)$xml->outputProtecationLevel;
-		if(count($xml->cdnAdapaterProfileId))
-			$this->cdnAdapaterProfileId = (string)$xml->cdnAdapaterProfileId;
-		if(count($xml->status))
-		{
-			if(!empty($xml->status))
-				$this->status = true;
-			else
-				$this->status = false;
-		}
 	}
 	/**
 	 * Unique identifier for the asset
@@ -116,17 +96,16 @@ class MediaFile extends \Kaltura\Client\Type\AssetFile
 	public $id = null;
 
 	/**
-	 * Deprecated - Device types as defined in the system
+	 * Device types as defined in the system
 	 * @var string
-	 * @readonly
 	 */
 	public $type = null;
 
 	/**
-	 * Device types identifier as defined in the system
-	 * @var int
+	 * URL of the media file to be played
+	 * @var string
 	 */
-	public $typeId = null;
+	public $url = null;
 
 	/**
 	 * Duration of the media file
@@ -141,87 +120,57 @@ class MediaFile extends \Kaltura\Client\Type\AssetFile
 	public $externalId = null;
 
 	/**
-	 * Alternative external identifier for the media file
+	 * Billing type
 	 * @var string
 	 */
-	public $altExternalId = null;
+	public $billingType = null;
+
+	/**
+	 * Quality
+	 * @var string
+	 */
+	public $quality = null;
+
+	/**
+	 * Handling type
+	 * @var string
+	 */
+	public $handlingType = null;
+
+	/**
+	 * CDN name
+	 * @var string
+	 */
+	public $cdnName = null;
+
+	/**
+	 * CDN code
+	 * @var string
+	 */
+	public $cdnCode = null;
+
+	/**
+	 * Alt CDN code
+	 * @var string
+	 */
+	public $altCdnCode = null;
+
+	/**
+	 * PPV Module
+	 * @var \Kaltura\Client\Type\StringValueArray
+	 */
+	public $ppvModules;
+
+	/**
+	 * Product code
+	 * @var string
+	 */
+	public $productCode = null;
 
 	/**
 	 * File size
 	 * @var int
 	 */
 	public $fileSize = null;
-
-	/**
-	 * Additional Data
-	 * @var string
-	 */
-	public $additionalData = null;
-
-	/**
-	 * Alternative streaming code
-	 * @var string
-	 */
-	public $altStreamingCode = null;
-
-	/**
-	 * Alternative cdn adapter profile identifier
-	 * @var int
-	 */
-	public $alternativeCdnAdapaterProfileId = null;
-
-	/**
-	 * EndDate
-	 * @var int
-	 */
-	public $endDate = null;
-
-	/**
-	 * StartDate
-	 * @var int
-	 */
-	public $startDate = null;
-
-	/**
-	 * ExternalStoreId
-	 * @var string
-	 */
-	public $externalStoreId = null;
-
-	/**
-	 * IsDefaultLanguage
-	 * @var bool
-	 */
-	public $isDefaultLanguage = null;
-
-	/**
-	 * Language
-	 * @var string
-	 */
-	public $language = null;
-
-	/**
-	 * OrderNum
-	 * @var int
-	 */
-	public $orderNum = null;
-
-	/**
-	 * OutputProtecationLevel
-	 * @var string
-	 */
-	public $outputProtecationLevel = null;
-
-	/**
-	 * cdn adapter profile identifier
-	 * @var int
-	 */
-	public $cdnAdapaterProfileId = null;
-
-	/**
-	 * The media file status
-	 * @var bool
-	 */
-	public $status = null;
 
 }
