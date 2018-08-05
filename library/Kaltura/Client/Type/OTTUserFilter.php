@@ -57,6 +57,8 @@ class OTTUserFilter extends \Kaltura\Client\Type\Filter
 			$this->externalIdEqual = (string)$xml->externalIdEqual;
 		if(count($xml->idIn))
 			$this->idIn = (string)$xml->idIn;
+		if(count($xml->roleIdsIn))
+			$this->roleIdsIn = (string)$xml->roleIdsIn;
 	}
 	/**
 	 * Username
@@ -75,5 +77,11 @@ class OTTUserFilter extends \Kaltura\Client\Type\Filter
 	 * @var string
 	 */
 	public $idIn = null;
+
+	/**
+	 * Comma separated list of role Ids.
+	 * @var string
+	 */
+	public $roleIdsIn = null;
 
 }

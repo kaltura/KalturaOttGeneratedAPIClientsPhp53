@@ -67,7 +67,7 @@ class OttUserService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Edit user details.
+	 * Deprecate - use Register or Update actions instead by setting user.roleIds parameter
 	 * 
 	 * @return bool
 	 */

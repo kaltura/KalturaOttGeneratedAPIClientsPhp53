@@ -89,6 +89,12 @@ class OTTUser extends \Kaltura\Client\Type\BaseOTTUser
 			$this->suspensionState = (string)$xml->suspensionState;
 		if(count($xml->userState))
 			$this->userState = (string)$xml->userState;
+		if(count($xml->roleIds))
+			$this->roleIds = (string)$xml->roleIds;
+		if(count($xml->createDate))
+			$this->createDate = (string)$xml->createDate;
+		if(count($xml->updateDate))
+			$this->updateDate = (string)$xml->updateDate;
 	}
 	/**
 	 * Household identifier
@@ -178,5 +184,25 @@ class OTTUser extends \Kaltura\Client\Type\BaseOTTUser
 	 * @readonly
 	 */
 	public $userState = null;
+
+	/**
+	 * Comma separated list of role Ids.
+	 * @var string
+	 */
+	public $roleIds = null;
+
+	/**
+	 * User create date
+	 * @var int
+	 * @readonly
+	 */
+	public $createDate = null;
+
+	/**
+	 * User last update date
+	 * @var int
+	 * @readonly
+	 */
+	public $updateDate = null;
 
 }
