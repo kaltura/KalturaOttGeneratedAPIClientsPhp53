@@ -379,6 +379,11 @@ class Client extends Base
 	protected $paymentMethodProfile = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\PermissionService
+	 */
+	protected $permission = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\PersonalFeedService
 	 */
 	protected $personalFeed = null;
@@ -578,7 +583,7 @@ class Client extends Base
 		parent::__construct($config);
 		
 		$this->setClientTag('php5:18-08-08');
-		$this->setApiVersion('5.0.1.24791');
+		$this->setApiVersion('5.0.1.28367');
 	}
 	
 	/**
@@ -1192,6 +1197,15 @@ class Client extends Base
 		if (is_null($this->paymentMethodProfile))
 			$this->paymentMethodProfile = new \Kaltura\Client\Service\PaymentMethodProfileService($this);
 		return $this->paymentMethodProfile;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\PermissionService
+	 */
+	public function getPermissionService()
+	{
+		if (is_null($this->permission))
+			$this->permission = new \Kaltura\Client\Service\PermissionService($this);
+		return $this->permission;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\PersonalFeedService
