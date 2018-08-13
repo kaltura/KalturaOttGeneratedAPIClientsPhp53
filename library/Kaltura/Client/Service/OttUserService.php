@@ -299,11 +299,12 @@ class OttUserService extends \Kaltura\Client\ServiceBase
 	 * 
 	 * @return bool
 	 */
-	function resetPassword($partnerId, $username)
+	function resetPassword($partnerId, $username, $templateName = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "partnerId", $partnerId);
 		$this->client->addParam($kparams, "username", $username);
+		$this->client->addParam($kparams, "templateName", $templateName);
 		$this->client->queueServiceActionCall("ottuser", "resetPassword", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
