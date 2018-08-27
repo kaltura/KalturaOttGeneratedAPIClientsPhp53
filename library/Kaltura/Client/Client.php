@@ -464,6 +464,11 @@ class Client extends Base
 	protected $searchHistory = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\SegmentationTypeService
+	 */
+	protected $segmentationType = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\SeriesRecordingService
 	 */
 	protected $seriesRecording = null;
@@ -583,7 +588,7 @@ class Client extends Base
 		parent::__construct($config);
 		
 		$this->setClientTag('php5:18-08-27');
-		$this->setApiVersion('5.0.1.22446');
+		$this->setApiVersion('5.0.1.24727');
 	}
 	
 	/**
@@ -1350,6 +1355,15 @@ class Client extends Base
 		if (is_null($this->searchHistory))
 			$this->searchHistory = new \Kaltura\Client\Service\SearchHistoryService($this);
 		return $this->searchHistory;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\SegmentationTypeService
+	 */
+	public function getSegmentationTypeService()
+	{
+		if (is_null($this->segmentationType))
+			$this->segmentationType = new \Kaltura\Client\Service\SegmentationTypeService($this);
+		return $this->segmentationType;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\SeriesRecordingService
