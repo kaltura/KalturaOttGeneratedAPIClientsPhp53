@@ -93,7 +93,7 @@ class SegmentValue extends \Kaltura\Client\ObjectBase
 	public $value = null;
 
 	/**
-	 * Threshold - minimuim score to be met for this specific value
+	 * Threshold - minimum score to be met for this specific value
 	 * @var int
 	 */
 	public $threshold = null;
