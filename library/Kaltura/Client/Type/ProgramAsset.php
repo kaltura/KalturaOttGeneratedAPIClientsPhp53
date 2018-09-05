@@ -61,6 +61,34 @@ class ProgramAsset extends \Kaltura\Client\Type\Asset
 			$this->crid = (string)$xml->crid;
 		if(count($xml->linearAssetId))
 			$this->linearAssetId = (string)$xml->linearAssetId;
+		if(count($xml->enableCdvr))
+		{
+			if(!empty($xml->enableCdvr))
+				$this->enableCdvr = true;
+			else
+				$this->enableCdvr = false;
+		}
+		if(count($xml->enableCatchUp))
+		{
+			if(!empty($xml->enableCatchUp))
+				$this->enableCatchUp = true;
+			else
+				$this->enableCatchUp = false;
+		}
+		if(count($xml->enableStartOver))
+		{
+			if(!empty($xml->enableStartOver))
+				$this->enableStartOver = true;
+			else
+				$this->enableStartOver = false;
+		}
+		if(count($xml->enableTrickPlay))
+		{
+			if(!empty($xml->enableTrickPlay))
+				$this->enableTrickPlay = true;
+			else
+				$this->enableTrickPlay = false;
+		}
 	}
 	/**
 	 * EPG channel identifier
@@ -91,5 +119,33 @@ class ProgramAsset extends \Kaltura\Client\Type\Asset
 	 * @var int
 	 */
 	public $linearAssetId = null;
+
+	/**
+	 * Is CDVR enabled for this asset
+	 * @var bool
+	 * @readonly
+	 */
+	public $enableCdvr = null;
+
+	/**
+	 * Is catch-up enabled for this asset
+	 * @var bool
+	 * @readonly
+	 */
+	public $enableCatchUp = null;
+
+	/**
+	 * Is start over enabled for this asset
+	 * @var bool
+	 * @readonly
+	 */
+	public $enableStartOver = null;
+
+	/**
+	 * Is trick-play enabled for this asset
+	 * @var bool
+	 * @readonly
+	 */
+	public $enableTrickPlay = null;
 
 }
