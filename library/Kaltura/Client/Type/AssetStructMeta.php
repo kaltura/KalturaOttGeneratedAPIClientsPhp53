@@ -70,6 +70,13 @@ class AssetStructMeta extends \Kaltura\Client\ObjectBase
 			$this->createDate = (string)$xml->createDate;
 		if(count($xml->updateDate))
 			$this->updateDate = (string)$xml->updateDate;
+		if(count($xml->isInherited))
+		{
+			if(!empty($xml->isInherited))
+				$this->isInherited = true;
+			else
+				$this->isInherited = false;
+		}
 	}
 	/**
 	 * Asset Struct id (template_id)
@@ -116,5 +123,11 @@ class AssetStructMeta extends \Kaltura\Client\ObjectBase
 	 * @readonly
 	 */
 	public $updateDate = null;
+
+	/**
+	 * Is inherited
+	 * @var bool
+	 */
+	public $isInherited = null;
 
 }
