@@ -37,7 +37,7 @@ namespace Kaltura\Client\Service;
  * @package Kaltura
  * @subpackage Client
  */
-class SegmentationTypeService extends \Kaltura\Client\ServiceBase
+class UserSegmentService extends \Kaltura\Client\ServiceBase
 {
 	function __construct(\Kaltura\Client\Client $client = null)
 	{
@@ -45,35 +45,36 @@ class SegmentationTypeService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * ...
+	 * Adds a segment to a user
 	 * 
-	 * @return \Kaltura\Client\Type\SegmentationType
+	 * @return \Kaltura\Client\Type\UserSegment
 	 */
-	function add(\Kaltura\Client\Type\SegmentationType $segmentationType)
+	function add(\Kaltura\Client\Type\UserSegment $userSegment)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "segmentationType", $segmentationType->toParams());
-		$this->client->queueServiceActionCall("segmentationtype", "add", "KalturaSegmentationType", $kparams);
+		$this->client->addParam($kparams, "userSegment", $userSegment->toParams());
+		$this->client->queueServiceActionCall("usersegment", "add", "KalturaUserSegment", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaSegmentationType");
-		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\SegmentationType");
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUserSegment");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\UserSegment");
 		return $resultObject;
 	}
 
 	/**
-	 * Delete a segmentation type from the system
+	 * Deletes a segment from a user
 	 * 
 	 * @return bool
 	 */
-	function delete($id)
+	function delete($userId, $segmentId)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("segmentationtype", "delete", null, $kparams);
+		$this->client->addParam($kparams, "userId", $userId);
+		$this->client->addParam($kparams, "segmentId", $segmentId);
+		$this->client->queueServiceActionCall("usersegment", "delete", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
@@ -84,45 +85,24 @@ class SegmentationTypeService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * ...
+	 * Retrieve all the segments that apply for this user
 	 * 
-	 * @return \Kaltura\Client\Type\SegmentationTypeListResponse
+	 * @return \Kaltura\Client\Type\UserSegmentListResponse
 	 */
-	function listAction(\Kaltura\Client\Type\SegmentationTypeFilter $filter, \Kaltura\Client\Type\FilterPager $pager = null)
+	function listAction(\Kaltura\Client\Type\UserSegmentFilter $filter, \Kaltura\Client\Type\FilterPager $pager = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "filter", $filter->toParams());
 		if ($pager !== null)
 			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("segmentationtype", "list", "KalturaSegmentationTypeListResponse", $kparams);
+		$this->client->queueServiceActionCall("usersegment", "list", "KalturaUserSegmentListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaSegmentationTypeListResponse");
-		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\SegmentationTypeListResponse");
-		return $resultObject;
-	}
-
-	/**
-	 * ...
-	 * 
-	 * @return \Kaltura\Client\Type\SegmentationType
-	 */
-	function update($segmentationTypeId, \Kaltura\Client\Type\SegmentationType $segmentationType)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "segmentationTypeId", $segmentationTypeId);
-		$this->client->addParam($kparams, "segmentationType", $segmentationType->toParams());
-		$this->client->queueServiceActionCall("segmentationtype", "update", "KalturaSegmentationType", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaSegmentationType");
-		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\SegmentationType");
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUserSegmentListResponse");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\UserSegmentListResponse");
 		return $resultObject;
 	}
 }

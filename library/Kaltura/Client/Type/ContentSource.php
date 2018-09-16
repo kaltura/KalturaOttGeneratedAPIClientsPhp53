@@ -51,19 +51,11 @@ class ContentSource extends \Kaltura\Client\Type\SegmentSource
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->type))
-			$this->type = (string)$xml->type;
 		if(count($xml->field))
 			$this->field = (string)$xml->field;
 	}
 	/**
-	 * Content data type
-	 * @var \Kaltura\Client\Enum\ContentFieldType
-	 */
-	public $type = null;
-
-	/**
-	 * Field name
+	 * Topic (meta or tag) name
 	 * @var string
 	 */
 	public $field = null;

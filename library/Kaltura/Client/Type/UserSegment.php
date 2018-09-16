@@ -33,15 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Segmentation type which takes certain values of a tag/meta as segments
+ * Indicates a segment of a user
  * @package Kaltura
  * @subpackage Client
  */
-class SegmentValues extends \Kaltura\Client\Type\BaseSegmentValue
+class UserSegment extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaSegmentValues';
+		return 'KalturaUserSegment';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,26 +51,29 @@ class SegmentValues extends \Kaltura\Client\Type\BaseSegmentValue
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->source) && !empty($xml->source))
-			$this->source = \Kaltura\Client\ParseUtils::unmarshalObject($xml->source, "KalturaSegmentSource");
-		if(count($xml->values))
-		{
-			if(empty($xml->values))
-				$this->values = array();
-			else
-				$this->values = \Kaltura\Client\ParseUtils::unmarshalArray($xml->values, "KalturaSegmentValue");
-		}
+		if(count($xml->segmentId))
+			$this->segmentId = (string)$xml->segmentId;
+		if(count($xml->segmentationTypeId))
+			$this->segmentationTypeId = (string)$xml->segmentationTypeId;
+		if(count($xml->userId))
+			$this->userId = (string)$xml->userId;
 	}
 	/**
-	 * Segment values source
-	 * @var \Kaltura\Client\Type\SegmentSource
+	 * Segment Id
+	 * @var int
 	 */
-	public $source;
+	public $segmentId = null;
 
 	/**
-	 * List of segment values
-	 * @var array<KalturaSegmentValue>
+	 * Segmentation type Id
+	 * @var int
 	 */
-	public $values;
+	public $segmentationTypeId = null;
+
+	/**
+	 * User Id of segment
+	 * @var string
+	 */
+	public $userId = null;
 
 }

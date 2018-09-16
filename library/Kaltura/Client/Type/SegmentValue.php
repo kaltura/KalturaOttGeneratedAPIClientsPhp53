@@ -53,6 +53,8 @@ class SegmentValue extends \Kaltura\Client\ObjectBase
 		
 		if(count($xml->id))
 			$this->id = (string)$xml->id;
+		if(count($xml->systematicName))
+			$this->systematicName = (string)$xml->systematicName;
 		if(count($xml->name))
 			$this->name = (string)$xml->name;
 		if(count($xml->multilingualName))
@@ -70,8 +72,15 @@ class SegmentValue extends \Kaltura\Client\ObjectBase
 	/**
 	 * Id of segment
 	 * @var int
+	 * @readonly
 	 */
 	public $id = null;
+
+	/**
+	 * Systematic name of segment
+	 * @var string
+	 */
+	public $systematicName = null;
 
 	/**
 	 * Name of segment

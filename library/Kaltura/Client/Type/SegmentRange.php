@@ -51,6 +51,10 @@ class SegmentRange extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->id))
+			$this->id = (string)$xml->id;
+		if(count($xml->systematicName))
+			$this->systematicName = (string)$xml->systematicName;
 		if(count($xml->name))
 			$this->name = (string)$xml->name;
 		if(count($xml->multilingualName))
@@ -68,7 +72,22 @@ class SegmentRange extends \Kaltura\Client\ObjectBase
 			$this->lte = (float)$xml->lte;
 		if(count($xml->lt))
 			$this->lt = (float)$xml->lt;
+		if(count($xml->equals))
+			$this->equals = (float)$xml->equals;
 	}
+	/**
+	 * Id of segment
+	 * @var int
+	 * @readonly
+	 */
+	public $id = null;
+
+	/**
+	 * Systematic name of segment
+	 * @var string
+	 */
+	public $systematicName = null;
+
 	/**
 	 * Specific segment name
 	 * @var string
@@ -105,5 +124,11 @@ class SegmentRange extends \Kaltura\Client\ObjectBase
 	 * @var float
 	 */
 	public $lt = null;
+
+	/**
+	 * Equals
+	 * @var float
+	 */
+	public $equals = null;
 
 }

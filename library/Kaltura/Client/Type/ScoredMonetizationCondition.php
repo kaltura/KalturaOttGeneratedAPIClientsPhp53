@@ -53,6 +53,8 @@ class ScoredMonetizationCondition extends \Kaltura\Client\Type\BaseSegmentCondit
 		
 		if(count($xml->score))
 			$this->score = (int)$xml->score;
+		if(count($xml->days))
+			$this->days = (int)$xml->days;
 		if(count($xml->actions))
 		{
 			if(empty($xml->actions))
@@ -66,6 +68,12 @@ class ScoredMonetizationCondition extends \Kaltura\Client\Type\BaseSegmentCondit
 	 * @var int
 	 */
 	public $score = null;
+
+	/**
+	 * How many days back should the actions be considered
+	 * @var int
+	 */
+	public $days = null;
 
 	/**
 	 * List of the actions that consist the condition

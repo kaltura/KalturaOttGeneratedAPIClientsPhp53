@@ -579,6 +579,11 @@ class Client extends Base
 	protected $userRole = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\UserSegmentService
+	 */
+	protected $userSegment = null;
+
+	/**
 	 * Kaltura client constructor
 	 *
 	 * @param \Kaltura\Client\Configuration $config
@@ -588,7 +593,7 @@ class Client extends Base
 		parent::__construct($config);
 		
 		$this->setClientTag('php5:18-09-16');
-		$this->setApiVersion('5.0.2.20444');
+		$this->setApiVersion('5.0.2.42002');
 	}
 	
 	/**
@@ -1562,6 +1567,15 @@ class Client extends Base
 		if (is_null($this->userRole))
 			$this->userRole = new \Kaltura\Client\Service\UserRoleService($this);
 		return $this->userRole;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\UserSegmentService
+	 */
+	public function getUserSegmentService()
+	{
+		if (is_null($this->userSegment))
+			$this->userSegment = new \Kaltura\Client\Service\UserSegmentService($this);
+		return $this->userSegment;
 	}
 	/**
 	 * Client tag

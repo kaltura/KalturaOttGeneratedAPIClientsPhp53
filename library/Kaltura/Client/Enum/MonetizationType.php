@@ -40,5 +40,6 @@ class MonetizationType extends \Kaltura\Client\EnumBase
 {
 	const PPV = "ppv";
 	const SUBSCRIPTION = "subscription";
+	const BOXSET = "boxset";
 }
 
