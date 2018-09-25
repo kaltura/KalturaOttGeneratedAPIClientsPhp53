@@ -30,79 +30,15 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
- * Media-asset info
  * @package Kaltura
  * @subpackage Client
  */
-class MediaAsset extends \Kaltura\Client\Type\Asset
+class AssetInheritancePolicy extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaMediaAsset';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->externalIds))
-			$this->externalIds = (string)$xml->externalIds;
-		if(count($xml->entryId))
-			$this->entryId = (string)$xml->entryId;
-		if(count($xml->deviceRuleId))
-			$this->deviceRuleId = (int)$xml->deviceRuleId;
-		if(count($xml->geoBlockRuleId))
-			$this->geoBlockRuleId = (int)$xml->geoBlockRuleId;
-		if(count($xml->status))
-		{
-			if(!empty($xml->status))
-				$this->status = true;
-			else
-				$this->status = false;
-		}
-		if(count($xml->inheritancePolicy))
-			$this->inheritancePolicy = (string)$xml->inheritancePolicy;
-	}
-	/**
-	 * External identifiers
-	 * @var string
-	 */
-	public $externalIds = null;
-
-	/**
-	 * Entry Identifier
-	 * @var string
-	 */
-	public $entryId = null;
-
-	/**
-	 * Device rule identifier
-	 * @var int
-	 */
-	public $deviceRuleId = null;
-
-	/**
-	 * Geo block rule identifier
-	 * @var int
-	 */
-	public $geoBlockRuleId = null;
-
-	/**
-	 * The media asset status
-	 * @var bool
-	 */
-	public $status = null;
-
-	/**
-	 * The media asset inheritance policy
-	 * @var \Kaltura\Client\Enum\AssetInheritancePolicy
-	 */
-	public $inheritancePolicy = null;
-
+	const ENABLE = "Enable";
+	const DISABLE = "Disable";
 }
+
