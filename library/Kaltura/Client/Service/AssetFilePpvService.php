@@ -45,6 +45,46 @@ class AssetFilePpvService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
+	 * Add asset file ppv
+	 * 
+	 * @return \Kaltura\Client\Type\AssetFilePpv
+	 */
+	function add(\Kaltura\Client\Type\AssetFilePpv $assetFilePpv)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "assetFilePpv", $assetFilePpv->toParams());
+		$this->client->queueServiceActionCall("assetfileppv", "add", "KalturaAssetFilePpv", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAssetFilePpv");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\AssetFilePpv");
+		return $resultObject;
+	}
+
+	/**
+	 * Delete asset file ppv
+	 * 
+	 * @return bool
+	 */
+	function delete($assetFileId, $ppvModuleId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "assetFileId", $assetFileId);
+		$this->client->addParam($kparams, "ppvModuleId", $ppvModuleId);
+		$this->client->queueServiceActionCall("assetfileppv", "delete", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (bool)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
+	}
+
+	/**
 	 * Return a list of asset files ppvs for the account with optional filter
 	 * 
 	 * @return \Kaltura\Client\Type\AssetFilePpvListResponse
@@ -61,6 +101,28 @@ class AssetFilePpvService extends \Kaltura\Client\ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAssetFilePpvListResponse");
 		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\AssetFilePpvListResponse");
+		return $resultObject;
+	}
+
+	/**
+	 * Update assetFilePpv
+	 * 
+	 * @return \Kaltura\Client\Type\AssetFilePpv
+	 */
+	function update($assetFileId, $ppvModuleId, \Kaltura\Client\Type\AssetFilePpv $assetFilePpv)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "assetFileId", $assetFileId);
+		$this->client->addParam($kparams, "ppvModuleId", $ppvModuleId);
+		$this->client->addParam($kparams, "assetFilePpv", $assetFilePpv->toParams());
+		$this->client->queueServiceActionCall("assetfileppv", "update", "KalturaAssetFilePpv", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAssetFilePpv");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\AssetFilePpv");
 		return $resultObject;
 	}
 }

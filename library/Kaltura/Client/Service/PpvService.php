@@ -69,9 +69,11 @@ class PpvService extends \Kaltura\Client\ServiceBase
 	 * 
 	 * @return \Kaltura\Client\Type\PpvListResponse
 	 */
-	function listAction()
+	function listAction(\Kaltura\Client\Type\PpvFilter $filter = null)
 	{
 		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
 		$this->client->queueServiceActionCall("ppv", "list", "KalturaPpvListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();

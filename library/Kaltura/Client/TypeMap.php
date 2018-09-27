@@ -379,6 +379,7 @@ class TypeMap
 		'KalturaTransactionHistoryFilter' => 'Kaltura\Client\Type\TransactionHistoryFilter',
 		'KalturaRecordingContextFilter' => 'Kaltura\Client\Type\RecordingContextFilter',
 		'KalturaRecordingFilter' => 'Kaltura\Client\Type\RecordingFilter',
+		'KalturaPpvFilter' => 'Kaltura\Client\Type\PpvFilter',
 		'KalturaAssetFilePpvFilter' => 'Kaltura\Client\Type\AssetFilePpvFilter',
 		'KalturaCollectionFilter' => 'Kaltura\Client\Type\CollectionFilter',
 		'KalturaDiscountDetailsFilter' => 'Kaltura\Client\Type\DiscountDetailsFilter',
