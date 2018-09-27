@@ -37,7 +37,7 @@ namespace Kaltura\Client\Service;
  * @package Kaltura
  * @subpackage Client
  */
-class PpvService extends \Kaltura\Client\ServiceBase
+class AssetFilePpvService extends \Kaltura\Client\ServiceBase
 {
 	function __construct(\Kaltura\Client\Client $client = null)
 	{
@@ -45,41 +45,22 @@ class PpvService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Returns ppv object by internal identifier
+	 * Return a list of asset files ppvs for the account with optional filter
 	 * 
-	 * @return \Kaltura\Client\Type\Ppv
+	 * @return \Kaltura\Client\Type\AssetFilePpvListResponse
 	 */
-	function get($id)
+	function listAction(\Kaltura\Client\Type\AssetFilePpvFilter $filter)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("ppv", "get", "KalturaPpv", $kparams);
+		$this->client->addParam($kparams, "filter", $filter->toParams());
+		$this->client->queueServiceActionCall("assetfileppv", "list", "KalturaAssetFilePpvListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPpv");
-		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\Ppv");
-		return $resultObject;
-	}
-
-	/**
-	 * Returns all ppv objects
-	 * 
-	 * @return \Kaltura\Client\Type\PpvListResponse
-	 */
-	function listAction()
-	{
-		$kparams = array();
-		$this->client->queueServiceActionCall("ppv", "list", "KalturaPpvListResponse", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPpvListResponse");
-		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\PpvListResponse");
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAssetFilePpvListResponse");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\AssetFilePpvListResponse");
 		return $resultObject;
 	}
 }

@@ -64,6 +64,11 @@ class Client extends Base
 	protected $assetFile = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\AssetFilePpvService
+	 */
+	protected $assetFilePpv = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\AssetHistoryService
 	 */
 	protected $assetHistory = null;
@@ -592,8 +597,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:18-09-26');
-		$this->setApiVersion('5.0.2.41999');
+		$this->setClientTag('php5:18-09-27');
+		$this->setApiVersion('5.0.2.15349');
 	}
 	
 	/**
@@ -640,6 +645,15 @@ class Client extends Base
 		if (is_null($this->assetFile))
 			$this->assetFile = new \Kaltura\Client\Service\AssetFileService($this);
 		return $this->assetFile;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\AssetFilePpvService
+	 */
+	public function getAssetFilePpvService()
+	{
+		if (is_null($this->assetFilePpv))
+			$this->assetFilePpv = new \Kaltura\Client\Service\AssetFilePpvService($this);
+		return $this->assetFilePpv;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\AssetHistoryService
