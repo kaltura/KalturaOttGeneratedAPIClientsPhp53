@@ -30,58 +30,15 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
- * Segmentation condition regarding content actions
  * @package Kaltura
  * @subpackage Client
  */
-class ContentActionCondition extends \Kaltura\Client\ObjectBase
+class ContentActionConditionLengthType extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaContentActionCondition';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->action))
-			$this->action = (string)$xml->action;
-		if(count($xml->length))
-			$this->length = (int)$xml->length;
-		if(count($xml->lengthType))
-			$this->lengthType = (string)$xml->lengthType;
-		if(count($xml->multiplier))
-			$this->multiplier = (int)$xml->multiplier;
-	}
-	/**
-	 * The relevant action to be examined
-	 * @var \Kaltura\Client\Enum\ContentAction
-	 */
-	public $action = null;
-
-	/**
-	 * Optional - if action required specific length to be considered (in percentage or minutes)
-	 * @var int
-	 */
-	public $length = null;
-
-	/**
-	 * Optional - if action required specific length to be considered (in percentage or minutes)
-	 * @var \Kaltura\Client\Enum\ContentActionConditionLengthType
-	 */
-	public $lengthType = null;
-
-	/**
-	 * Score multiplier - how much is a single action worth when considering the action
-	 * @var int
-	 */
-	public $multiplier = null;
-
+	const MINUTES = "minutes";
+	const PERCENTAGE = "percentage";
 }
+

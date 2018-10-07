@@ -55,22 +55,8 @@ class SegmentationType extends \Kaltura\Client\ObjectBase
 			$this->id = (string)$xml->id;
 		if(count($xml->name))
 			$this->name = (string)$xml->name;
-		if(count($xml->multilingualName))
-		{
-			if(empty($xml->multilingualName))
-				$this->multilingualName = array();
-			else
-				$this->multilingualName = \Kaltura\Client\ParseUtils::unmarshalArray($xml->multilingualName, "KalturaTranslationToken");
-		}
 		if(count($xml->description))
 			$this->description = (string)$xml->description;
-		if(count($xml->multilingualDescription))
-		{
-			if(empty($xml->multilingualDescription))
-				$this->multilingualDescription = array();
-			else
-				$this->multilingualDescription = \Kaltura\Client\ParseUtils::unmarshalArray($xml->multilingualDescription, "KalturaTranslationToken");
-		}
 		if(count($xml->conditions))
 		{
 			if(empty($xml->conditions))
@@ -90,28 +76,14 @@ class SegmentationType extends \Kaltura\Client\ObjectBase
 	/**
 	 * Name of segmentation type
 	 * @var string
-	 * @readonly
 	 */
 	public $name = null;
 
 	/**
-	 * Name of segmentation type
-	 * @var array<KalturaTranslationToken>
-	 */
-	public $multilingualName;
-
-	/**
 	 * Description of segmentation type
 	 * @var string
-	 * @readonly
 	 */
 	public $description = null;
-
-	/**
-	 * Description of segmentation type
-	 * @var array<KalturaTranslationToken>
-	 */
-	public $multilingualDescription;
 
 	/**
 	 * Segmentation conditions - can be empty

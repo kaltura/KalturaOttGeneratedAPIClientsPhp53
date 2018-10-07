@@ -51,8 +51,10 @@ class ScoredMonetizationCondition extends \Kaltura\Client\Type\BaseSegmentCondit
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->score))
-			$this->score = (int)$xml->score;
+		if(count($xml->minScore))
+			$this->minScore = (int)$xml->minScore;
+		if(count($xml->maxScore))
+			$this->maxScore = (int)$xml->maxScore;
 		if(count($xml->days))
 			$this->days = (int)$xml->days;
 		if(count($xml->actions))
@@ -67,7 +69,13 @@ class ScoredMonetizationCondition extends \Kaltura\Client\Type\BaseSegmentCondit
 	 * The minimum score to be met
 	 * @var int
 	 */
-	public $score = null;
+	public $minScore = null;
+
+	/**
+	 * The maximum score to be met
+	 * @var int
+	 */
+	public $maxScore = null;
 
 	/**
 	 * How many days back should the actions be considered

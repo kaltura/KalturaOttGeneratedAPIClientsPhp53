@@ -51,10 +51,16 @@ class ContentScoreCondition extends \Kaltura\Client\Type\BaseSegmentCondition
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->score))
-			$this->score = (int)$xml->score;
+		if(count($xml->minScore))
+			$this->minScore = (int)$xml->minScore;
+		if(count($xml->maxScore))
+			$this->maxScore = (int)$xml->maxScore;
 		if(count($xml->days))
 			$this->days = (int)$xml->days;
+		if(count($xml->field))
+			$this->field = (string)$xml->field;
+		if(count($xml->value))
+			$this->value = (string)$xml->value;
 		if(count($xml->actions))
 		{
 			if(empty($xml->actions))
@@ -67,13 +73,31 @@ class ContentScoreCondition extends \Kaltura\Client\Type\BaseSegmentCondition
 	 * The minimum score to be met
 	 * @var int
 	 */
-	public $score = null;
+	public $minScore = null;
+
+	/**
+	 * The maximum score to be met
+	 * @var int
+	 */
+	public $maxScore = null;
 
 	/**
 	 * How many days back should the actions be considered
 	 * @var int
 	 */
 	public $days = null;
+
+	/**
+	 * If condition should be applied on specific field (and not the one of the segment value)
+	 * @var string
+	 */
+	public $field = null;
+
+	/**
+	 * If condition should be applied on specific field (and not the one of the segment value) -
+	 * @var string
+	 */
+	public $value = null;
 
 	/**
 	 * List of the actions that consist the condition
