@@ -45,7 +45,7 @@ class SegmentationTypeService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * ...
+	 * Adds a new segmentation type to the system
 	 * 
 	 * @return \Kaltura\Client\Type\SegmentationType
 	 */
@@ -84,7 +84,7 @@ class SegmentationTypeService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * ...
+	 * Lists all segmentation types in group
 	 * 
 	 * @return \Kaltura\Client\Type\SegmentationTypeListResponse
 	 */
@@ -106,7 +106,7 @@ class SegmentationTypeService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * ...
+	 * Updates an existing segmentation type
 	 * 
 	 * @return \Kaltura\Client\Type\SegmentationType
 	 */

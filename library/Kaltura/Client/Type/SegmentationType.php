@@ -70,6 +70,7 @@ class SegmentationType extends \Kaltura\Client\ObjectBase
 	/**
 	 * Id of segmentation type
 	 * @var int
+	 * @readonly
 	 */
 	public $id = null;
 
