@@ -58,6 +58,8 @@ class EntitlementRenewal extends \Kaltura\Client\ObjectBase
 			$this->purchaseId = (string)$xml->purchaseId;
 		if(count($xml->subscriptionId))
 			$this->subscriptionId = (string)$xml->subscriptionId;
+		if(count($xml->userId))
+			$this->userId = (string)$xml->userId;
 	}
 	/**
 	 * Price that is going to be paid on the renewal
@@ -82,5 +84,11 @@ class EntitlementRenewal extends \Kaltura\Client\ObjectBase
 	 * @var int
 	 */
 	public $subscriptionId = null;
+
+	/**
+	 * User ID
+	 * @var int
+	 */
+	public $userId = null;
 
 }

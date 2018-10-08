@@ -63,6 +63,8 @@ class UnifiedPaymentRenewal extends \Kaltura\Client\ObjectBase
 			else
 				$this->entitlements = \Kaltura\Client\ParseUtils::unmarshalArray($xml->entitlements, "KalturaEntitlementRenewalBase");
 		}
+		if(count($xml->userId))
+			$this->userId = (string)$xml->userId;
 	}
 	/**
 	 * Price that is going to be paid on the renewal
@@ -87,5 +89,11 @@ class UnifiedPaymentRenewal extends \Kaltura\Client\ObjectBase
 	 * @var array<KalturaEntitlementRenewalBase>
 	 */
 	public $entitlements;
+
+	/**
+	 * User ID
+	 * @var int
+	 */
+	public $userId = null;
 
 }
