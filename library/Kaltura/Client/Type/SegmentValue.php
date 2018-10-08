@@ -57,6 +57,13 @@ class SegmentValue extends \Kaltura\Client\ObjectBase
 			$this->systematicName = (string)$xml->systematicName;
 		if(count($xml->name))
 			$this->name = (string)$xml->name;
+		if(count($xml->multilingualName))
+		{
+			if(empty($xml->multilingualName))
+				$this->multilingualName = array();
+			else
+				$this->multilingualName = \Kaltura\Client\ParseUtils::unmarshalArray($xml->multilingualName, "KalturaTranslationToken");
+		}
 		if(count($xml->value))
 			$this->value = (string)$xml->value;
 		if(count($xml->threshold))
@@ -78,8 +85,15 @@ class SegmentValue extends \Kaltura\Client\ObjectBase
 	/**
 	 * Name of segment
 	 * @var string
+	 * @readonly
 	 */
 	public $name = null;
+
+	/**
+	 * Name of segment
+	 * @var array<KalturaTranslationToken>
+	 */
+	public $multilingualName;
 
 	/**
 	 * The value of the segment

@@ -57,6 +57,13 @@ class SegmentRange extends \Kaltura\Client\ObjectBase
 			$this->systematicName = (string)$xml->systematicName;
 		if(count($xml->name))
 			$this->name = (string)$xml->name;
+		if(count($xml->multilingualName))
+		{
+			if(empty($xml->multilingualName))
+				$this->multilingualName = array();
+			else
+				$this->multilingualName = \Kaltura\Client\ParseUtils::unmarshalArray($xml->multilingualName, "KalturaTranslationToken");
+		}
 		if(count($xml->gte))
 			$this->gte = (float)$xml->gte;
 		if(count($xml->gt))
@@ -84,8 +91,15 @@ class SegmentRange extends \Kaltura\Client\ObjectBase
 	/**
 	 * Specific segment name
 	 * @var string
+	 * @readonly
 	 */
 	public $name = null;
+
+	/**
+	 * Specific segment name
+	 * @var array<KalturaTranslationToken>
+	 */
+	public $multilingualName;
 
 	/**
 	 * Greater than or equals &gt;=

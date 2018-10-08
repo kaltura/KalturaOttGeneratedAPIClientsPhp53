@@ -55,8 +55,6 @@ class ContentActionCondition extends \Kaltura\Client\ObjectBase
 			$this->action = (string)$xml->action;
 		if(count($xml->length))
 			$this->length = (int)$xml->length;
-		if(count($xml->lengthType))
-			$this->lengthType = (string)$xml->lengthType;
 		if(count($xml->multiplier))
 			$this->multiplier = (int)$xml->multiplier;
 	}
@@ -67,16 +65,10 @@ class ContentActionCondition extends \Kaltura\Client\ObjectBase
 	public $action = null;
 
 	/**
-	 * Optional - if action required specific length to be considered (in percentage or minutes)
+	 * Optional - if action required specific length to be considered
 	 * @var int
 	 */
 	public $length = null;
-
-	/**
-	 * Optional - if action required specific length to be considered (in percentage or minutes)
-	 * @var \Kaltura\Client\Enum\ContentActionConditionLengthType
-	 */
-	public $lengthType = null;
 
 	/**
 	 * Score multiplier - how much is a single action worth when considering the action
