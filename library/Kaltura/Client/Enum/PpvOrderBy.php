@@ -38,6 +38,7 @@ namespace Kaltura\Client\Enum;
  */
 class PpvOrderBy extends \Kaltura\Client\EnumBase
 {
-	const NONE = "NONE";
+	const NAME_ASC = "NAME_ASC";
+	const NAME_DESC = "NAME_DESC";
 }
 
