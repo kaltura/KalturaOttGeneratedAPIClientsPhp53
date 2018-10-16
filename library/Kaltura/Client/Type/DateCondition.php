@@ -30,20 +30,42 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
+ * Date condition
  * @package Kaltura
  * @subpackage Client
  */
-class RuleActionType extends \Kaltura\Client\EnumBase
+class DateCondition extends \Kaltura\Client\Type\NotCondition
 {
-	const BLOCK = "BLOCK";
-	const START_DATE_OFFSET = "START_DATE_OFFSET";
-	const END_DATE_OFFSET = "END_DATE_OFFSET";
-	const USER_BLOCK = "USER_BLOCK";
-	const ALLOW_PLAYBACK = "ALLOW_PLAYBACK";
-	const BLOCK_PLAYBACK = "BLOCK_PLAYBACK";
-	const APPLY_DISCOUNT_MODULE = "APPLY_DISCOUNT_MODULE";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaDateCondition';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->startDate))
+			$this->startDate = (string)$xml->startDate;
+		if(count($xml->endDate))
+			$this->endDate = (string)$xml->endDate;
+	}
+	/**
+	 * Start date
+	 * @var int
+	 */
+	public $startDate = null;
 
+	/**
+	 * End date
+	 * @var int
+	 */
+	public $endDate = null;
+
+}

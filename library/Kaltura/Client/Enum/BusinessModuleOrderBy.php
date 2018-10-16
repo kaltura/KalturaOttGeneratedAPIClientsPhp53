@@ -27,23 +27,3 @@
 // @ignore
 // ===================================================================================================
 
-/**
- * @namespace
- */
-namespace Kaltura\Client\Enum;
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class RuleActionType extends \Kaltura\Client\EnumBase
-{
-	const BLOCK = "BLOCK";
-	const START_DATE_OFFSET = "START_DATE_OFFSET";
-	const END_DATE_OFFSET = "END_DATE_OFFSET";
-	const USER_BLOCK = "USER_BLOCK";
-	const ALLOW_PLAYBACK = "ALLOW_PLAYBACK";
-	const BLOCK_PLAYBACK = "BLOCK_PLAYBACK";
-	const APPLY_DISCOUNT_MODULE = "APPLY_DISCOUNT_MODULE";
-}
-

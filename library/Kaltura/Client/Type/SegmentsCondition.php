@@ -30,20 +30,34 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
+ * Segments condition
  * @package Kaltura
  * @subpackage Client
  */
-class RuleActionType extends \Kaltura\Client\EnumBase
+class SegmentsCondition extends \Kaltura\Client\Type\Condition
 {
-	const BLOCK = "BLOCK";
-	const START_DATE_OFFSET = "START_DATE_OFFSET";
-	const END_DATE_OFFSET = "END_DATE_OFFSET";
-	const USER_BLOCK = "USER_BLOCK";
-	const ALLOW_PLAYBACK = "ALLOW_PLAYBACK";
-	const BLOCK_PLAYBACK = "BLOCK_PLAYBACK";
-	const APPLY_DISCOUNT_MODULE = "APPLY_DISCOUNT_MODULE";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaSegmentsCondition';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->segmentsIds))
+			$this->segmentsIds = (string)$xml->segmentsIds;
+	}
+	/**
+	 * Comma separated segments IDs list
+	 * @var string
+	 */
+	public $segmentsIds = null;
 
+}

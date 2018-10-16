@@ -37,7 +37,7 @@ namespace Kaltura\Client\Service;
  * @package Kaltura
  * @subpackage Client
  */
-class UserSegmentService extends \Kaltura\Client\ServiceBase
+class BusinessModuleRuleService extends \Kaltura\Client\ServiceBase
 {
 	function __construct(\Kaltura\Client\Client $client = null)
 	{
@@ -45,65 +45,80 @@ class UserSegmentService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Adds a segment to a user
+	 * Add business module rule
 	 * 
-	 * @return \Kaltura\Client\Type\UserSegment
+	 * @return \Kaltura\Client\Type\BusinessModuleRule
 	 */
-	function add(\Kaltura\Client\Type\UserSegment $userSegment)
+	function add(\Kaltura\Client\Type\BusinessModuleRule $businessModuleRule)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "userSegment", $userSegment->toParams());
-		$this->client->queueServiceActionCall("usersegment", "add", "KalturaUserSegment", $kparams);
+		$this->client->addParam($kparams, "businessModuleRule", $businessModuleRule->toParams());
+		$this->client->queueServiceActionCall("businessmodulerule", "add", "KalturaBusinessModuleRule", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUserSegment");
-		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\UserSegment");
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBusinessModuleRule");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\BusinessModuleRule");
 		return $resultObject;
 	}
 
 	/**
-	 * Deletes a segment from a user
+	 * Delete business module rule
 	 * 
-	 * @return bool
 	 */
-	function delete($userId, $segmentationTypeId, $segmentId)
+	function delete($id)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "userId", $userId);
-		$this->client->addParam($kparams, "segmentationTypeId", $segmentationTypeId);
-		$this->client->addParam($kparams, "segmentId", $segmentId);
-		$this->client->queueServiceActionCall("usersegment", "delete", null, $kparams);
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("businessmodulerule", "delete", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (bool)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+	}
+
+	/**
+	 * Get the list of business module rules for the partner
+	 * 
+	 * @return \Kaltura\Client\Type\BusinessModuleRuleListResponse
+	 */
+	function listAction(\Kaltura\Client\Type\BusinessModuleRuleFilter $filter = null)
+	{
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		$this->client->queueServiceActionCall("businessmodulerule", "list", "KalturaBusinessModuleRuleListResponse", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBusinessModuleRuleListResponse");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\BusinessModuleRuleListResponse");
 		return $resultObject;
 	}
 
 	/**
-	 * Retrieve all the segments that apply for given user
+	 * Update business module rule
 	 * 
-	 * @return \Kaltura\Client\Type\UserSegmentListResponse
+	 * @return \Kaltura\Client\Type\BusinessModuleRule
 	 */
-	function listAction(\Kaltura\Client\Type\UserSegmentFilter $filter, \Kaltura\Client\Type\FilterPager $pager = null)
+	function update($id, \Kaltura\Client\Type\BusinessModuleRule $businessModuleRule)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("usersegment", "list", "KalturaUserSegmentListResponse", $kparams);
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "businessModuleRule", $businessModuleRule->toParams());
+		$this->client->queueServiceActionCall("businessmodulerule", "update", "KalturaBusinessModuleRule", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUserSegmentListResponse");
-		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\UserSegmentListResponse");
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBusinessModuleRule");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\BusinessModuleRule");
 		return $resultObject;
 	}
 }

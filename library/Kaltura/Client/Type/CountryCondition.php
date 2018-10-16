@@ -37,7 +37,7 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class CountryCondition extends \Kaltura\Client\Type\Condition
+class CountryCondition extends \Kaltura\Client\Type\NotCondition
 {
 	public function getKalturaObjectType()
 	{
@@ -51,22 +51,9 @@ class CountryCondition extends \Kaltura\Client\Type\Condition
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->not))
-		{
-			if(!empty($xml->not))
-				$this->not = true;
-			else
-				$this->not = false;
-		}
 		if(count($xml->countries))
 			$this->countries = (string)$xml->countries;
 	}
-	/**
-	 * Indicates whether to apply not on the other properties in the condition
-	 * @var bool
-	 */
-	public $not = null;
-
 	/**
 	 * Comma separated countries IDs list
 	 * @var string

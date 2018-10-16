@@ -109,6 +109,11 @@ class Client extends Base
 	protected $bulk = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\BusinessModuleRuleService
+	 */
+	protected $businessModuleRule = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\CdnAdapterProfileService
 	 */
 	protected $cdnAdapterProfile = null;
@@ -597,8 +602,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:18-10-15');
-		$this->setApiVersion('5.0.3.41997');
+		$this->setClientTag('php5:18-10-16');
+		$this->setApiVersion('5.0.3.17581');
 	}
 	
 	/**
@@ -726,6 +731,15 @@ class Client extends Base
 		if (is_null($this->bulk))
 			$this->bulk = new \Kaltura\Client\Service\BulkService($this);
 		return $this->bulk;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\BusinessModuleRuleService
+	 */
+	public function getBusinessModuleRuleService()
+	{
+		if (is_null($this->businessModuleRule))
+			$this->businessModuleRule = new \Kaltura\Client\Service\BusinessModuleRuleService($this);
+		return $this->businessModuleRule;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\CdnAdapterProfileService

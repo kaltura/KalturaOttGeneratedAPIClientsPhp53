@@ -30,20 +30,50 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
+ * Business module rule filter
  * @package Kaltura
  * @subpackage Client
  */
-class RuleActionType extends \Kaltura\Client\EnumBase
+class BusinessModuleRuleFilter extends \Kaltura\Client\Type\Filter
 {
-	const BLOCK = "BLOCK";
-	const START_DATE_OFFSET = "START_DATE_OFFSET";
-	const END_DATE_OFFSET = "END_DATE_OFFSET";
-	const USER_BLOCK = "USER_BLOCK";
-	const ALLOW_PLAYBACK = "ALLOW_PLAYBACK";
-	const BLOCK_PLAYBACK = "BLOCK_PLAYBACK";
-	const APPLY_DISCOUNT_MODULE = "APPLY_DISCOUNT_MODULE";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaBusinessModuleRuleFilter';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->businessModuleTypeApplied))
+			$this->businessModuleTypeApplied = (string)$xml->businessModuleTypeApplied;
+		if(count($xml->businessModuleIdApplied))
+			$this->businessModuleIdApplied = (string)$xml->businessModuleIdApplied;
+		if(count($xml->segmentIdsApplied))
+			$this->segmentIdsApplied = (string)$xml->segmentIdsApplied;
+	}
+	/**
+	 * Business module type the rules applied on
+	 * @var \Kaltura\Client\Enum\TransactionType
+	 */
+	public $businessModuleTypeApplied = null;
 
+	/**
+	 * Business module ID the rules applied on
+	 * @var int
+	 */
+	public $businessModuleIdApplied = null;
+
+	/**
+	 * Comma separated segment IDs the rules applied on
+	 * @var string
+	 */
+	public $segmentIdsApplied = null;
+
+}

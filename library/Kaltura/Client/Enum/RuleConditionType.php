@@ -42,5 +42,9 @@ class RuleConditionType extends \Kaltura\Client\EnumBase
 	const COUNTRY = "COUNTRY";
 	const CONCURRENCY = "CONCURRENCY";
 	const IP_RANGE = "IP_RANGE";
+	const BUSINESS_MODULE = "BUSINESS_MODULE";
+	const SEGMENTS = "SEGMENTS";
+	const DATE = "DATE";
+	const OR = "OR";
 }
 

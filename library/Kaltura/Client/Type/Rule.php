@@ -30,20 +30,51 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
+ * Rule base
  * @package Kaltura
  * @subpackage Client
  */
-class RuleActionType extends \Kaltura\Client\EnumBase
+abstract class Rule extends \Kaltura\Client\ObjectBase
 {
-	const BLOCK = "BLOCK";
-	const START_DATE_OFFSET = "START_DATE_OFFSET";
-	const END_DATE_OFFSET = "END_DATE_OFFSET";
-	const USER_BLOCK = "USER_BLOCK";
-	const ALLOW_PLAYBACK = "ALLOW_PLAYBACK";
-	const BLOCK_PLAYBACK = "BLOCK_PLAYBACK";
-	const APPLY_DISCOUNT_MODULE = "APPLY_DISCOUNT_MODULE";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaRule';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->id))
+			$this->id = (string)$xml->id;
+		if(count($xml->name))
+			$this->name = (string)$xml->name;
+		if(count($xml->description))
+			$this->description = (string)$xml->description;
+	}
+	/**
+	 * ID
+	 * @var int
+	 * @readonly
+	 */
+	public $id = null;
 
+	/**
+	 * Name
+	 * @var string
+	 */
+	public $name = null;
+
+	/**
+	 * Description
+	 * @var string
+	 */
+	public $description = null;
+
+}

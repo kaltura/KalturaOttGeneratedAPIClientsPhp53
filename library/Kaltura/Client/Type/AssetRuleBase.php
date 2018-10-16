@@ -37,7 +37,7 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-abstract class AssetRuleBase extends \Kaltura\Client\ObjectBase
+abstract class AssetRuleBase extends \Kaltura\Client\Type\Rule
 {
 	public function getKalturaObjectType()
 	{
@@ -51,30 +51,5 @@ abstract class AssetRuleBase extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->id))
-			$this->id = (string)$xml->id;
-		if(count($xml->name))
-			$this->name = (string)$xml->name;
-		if(count($xml->description))
-			$this->description = (string)$xml->description;
 	}
-	/**
-	 * ID
-	 * @var int
-	 * @readonly
-	 */
-	public $id = null;
-
-	/**
-	 * Name
-	 * @var string
-	 */
-	public $name = null;
-
-	/**
-	 * Description
-	 * @var string
-	 */
-	public $description = null;
-
 }
