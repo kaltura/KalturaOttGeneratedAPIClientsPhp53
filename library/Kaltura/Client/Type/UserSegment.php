@@ -53,8 +53,6 @@ class UserSegment extends \Kaltura\Client\ObjectBase
 		
 		if(count($xml->segmentId))
 			$this->segmentId = (string)$xml->segmentId;
-		if(count($xml->segmentationTypeId))
-			$this->segmentationTypeId = (string)$xml->segmentationTypeId;
 		if(count($xml->userId))
 			$this->userId = (string)$xml->userId;
 	}
@@ -63,12 +61,6 @@ class UserSegment extends \Kaltura\Client\ObjectBase
 	 * @var int
 	 */
 	public $segmentId = null;
-
-	/**
-	 * Segmentation type Id
-	 * @var int
-	 */
-	public $segmentationTypeId = null;
 
 	/**
 	 * User Id of segment

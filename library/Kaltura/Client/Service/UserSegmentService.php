@@ -69,11 +69,10 @@ class UserSegmentService extends \Kaltura\Client\ServiceBase
 	 * 
 	 * @return bool
 	 */
-	function delete($userId, $segmentationTypeId, $segmentId)
+	function delete($userId, $segmentId)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "userId", $userId);
-		$this->client->addParam($kparams, "segmentationTypeId", $segmentationTypeId);
 		$this->client->addParam($kparams, "segmentId", $segmentId);
 		$this->client->queueServiceActionCall("usersegment", "delete", null, $kparams);
 		if ($this->client->isMultiRequest())

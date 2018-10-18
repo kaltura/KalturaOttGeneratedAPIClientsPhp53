@@ -51,5 +51,13 @@ class SegmentationTypeFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->idIn))
+			$this->idIn = (string)$xml->idIn;
 	}
+	/**
+	 * Comma separated segmentation types identifieridentifiers
+	 * @var string
+	 */
+	public $idIn = null;
+
 }
