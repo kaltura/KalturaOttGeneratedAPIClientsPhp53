@@ -156,7 +156,7 @@ class TypeMap
 		'KalturaContentActionCondition' => 'Kaltura\Client\Type\ContentActionCondition',
 		'KalturaContentScoreCondition' => 'Kaltura\Client\Type\ContentScoreCondition',
 		'KalturaUserDataCondition' => 'Kaltura\Client\Type\UserDataCondition',
-		'KalturaDummyValue' => 'Kaltura\Client\Type\DummyValue',
+		'KalturaSingleSegmentValue' => 'Kaltura\Client\Type\SingleSegmentValue',
 		'KalturaSegmentSource' => 'Kaltura\Client\Type\SegmentSource',
 		'KalturaSegmentValue' => 'Kaltura\Client\Type\SegmentValue',
 		'KalturaSegmentValues' => 'Kaltura\Client\Type\SegmentValues',
