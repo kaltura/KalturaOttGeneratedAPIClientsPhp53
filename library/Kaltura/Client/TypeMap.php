@@ -152,7 +152,6 @@ class TypeMap
 		'KalturaSegmentationType' => 'Kaltura\Client\Type\SegmentationType',
 		'KalturaSegmentationTypeListResponse' => 'Kaltura\Client\Type\SegmentationTypeListResponse',
 		'KalturaMonetizationCondition' => 'Kaltura\Client\Type\MonetizationCondition',
-		'KalturaScoredMonetizationCondition' => 'Kaltura\Client\Type\ScoredMonetizationCondition',
 		'KalturaContentActionCondition' => 'Kaltura\Client\Type\ContentActionCondition',
 		'KalturaContentScoreCondition' => 'Kaltura\Client\Type\ContentScoreCondition',
 		'KalturaUserDataCondition' => 'Kaltura\Client\Type\UserDataCondition',

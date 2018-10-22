@@ -33,11 +33,11 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Defines a singular monetization condition
+ * Defines a condition which is essentially a combination of several monetization-based actions, each has their own score multiplier
  * @package Kaltura
  * @subpackage Client
  */
-class MonetizationCondition extends \Kaltura\Client\ObjectBase
+class MonetizationCondition extends \Kaltura\Client\Type\BaseSegmentCondition
 {
 	public function getKalturaObjectType()
 	{
@@ -51,13 +51,35 @@ class MonetizationCondition extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->minValue))
+			$this->minValue = (int)$xml->minValue;
+		if(count($xml->maxValue))
+			$this->maxValue = (int)$xml->maxValue;
+		if(count($xml->days))
+			$this->days = (int)$xml->days;
 		if(count($xml->type))
 			$this->type = (string)$xml->type;
-		if(count($xml->minimumPrice))
-			$this->minimumPrice = (int)$xml->minimumPrice;
-		if(count($xml->multiplier))
-			$this->multiplier = (int)$xml->multiplier;
+		if(count($xml->operator))
+			$this->operator = (string)$xml->operator;
 	}
+	/**
+	 * The minimum value to be met
+	 * @var int
+	 */
+	public $minValue = null;
+
+	/**
+	 * The maximum value to be met
+	 * @var int
+	 */
+	public $maxValue = null;
+
+	/**
+	 * How many days back should the actions be considered
+	 * @var int
+	 */
+	public $days = null;
+
 	/**
 	 * Purchase type
 	 * @var \Kaltura\Client\Enum\MonetizationType
@@ -65,15 +87,9 @@ class MonetizationCondition extends \Kaltura\Client\ObjectBase
 	public $type = null;
 
 	/**
-	 * Minimum price of purchase
-	 * @var int
+	 * Mathermtical operator to calculate
+	 * @var \Kaltura\Client\Enum\MathemticalOperatorType
 	 */
-	public $minimumPrice = null;
-
-	/**
-	 * Score multiplier
-	 * @var int
-	 */
-	public $multiplier = null;
+	public $operator = null;
 
 }
