@@ -68,13 +68,6 @@ class SegmentationType extends \Kaltura\Client\ObjectBase
 			$this->value = \Kaltura\Client\ParseUtils::unmarshalObject($xml->value, "KalturaBaseSegmentValue");
 		if(count($xml->createDate))
 			$this->createDate = (string)$xml->createDate;
-		if(count($xml->affectsContentOrdering))
-		{
-			if(!empty($xml->affectsContentOrdering))
-				$this->affectsContentOrdering = true;
-			else
-				$this->affectsContentOrdering = false;
-		}
 	}
 	/**
 	 * Id of segmentation type
@@ -113,11 +106,5 @@ class SegmentationType extends \Kaltura\Client\ObjectBase
 	 * @readonly
 	 */
 	public $createDate = null;
-
-	/**
-	 * Do the segments of this type affect content ordering of channels and searches
-	 * @var bool
-	 */
-	public $affectsContentOrdering = null;
 
 }
