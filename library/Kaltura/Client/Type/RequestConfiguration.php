@@ -63,6 +63,15 @@ class RequestConfiguration extends \Kaltura\Client\ObjectBase
 			$this->ks = (string)$xml->ks;
 		if(count($xml->responseProfile) && !empty($xml->responseProfile))
 			$this->responseProfile = \Kaltura\Client\ParseUtils::unmarshalObject($xml->responseProfile, "KalturaBaseResponseProfile");
+		if(count($xml->abortAllOnError))
+		{
+			if(!empty($xml->abortAllOnError))
+				$this->abortAllOnError = true;
+			else
+				$this->abortAllOnError = false;
+		}
+		if(count($xml->skipOnOrror))
+			$this->skipOnOrror = (string)$xml->skipOnOrror;
 	}
 	/**
 	 * Impersonated partner id
@@ -99,5 +108,17 @@ class RequestConfiguration extends \Kaltura\Client\ObjectBase
 	 * @var \Kaltura\Client\Type\BaseResponseProfile
 	 */
 	public $responseProfile;
+
+	/**
+	 * Abort all following requests if current request has an error
+	 * @var bool
+	 */
+	public $abortAllOnError = null;
+
+	/**
+	 * Skip current request according to skip option
+	 * @var \Kaltura\Client\Enum\SkipOptions
+	 */
+	public $skipOnOrror = null;
 
 }
