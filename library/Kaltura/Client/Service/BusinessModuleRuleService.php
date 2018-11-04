@@ -81,6 +81,26 @@ class BusinessModuleRuleService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
+	 * Get business module rule by ID
+	 * 
+	 * @return \Kaltura\Client\Type\BusinessModuleRule
+	 */
+	function get($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("businessmodulerule", "get", "KalturaBusinessModuleRule", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBusinessModuleRule");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\BusinessModuleRule");
+		return $resultObject;
+	}
+
+	/**
 	 * Get the list of business module rules for the partner
 	 * 
 	 * @return \Kaltura\Client\Type\BusinessModuleRuleListResponse

@@ -65,6 +65,10 @@ class BusinessModuleRule extends \Kaltura\Client\Type\Rule
 			else
 				$this->actions = \Kaltura\Client\ParseUtils::unmarshalArray($xml->actions, "KalturaApplyDiscountModuleAction");
 		}
+		if(count($xml->createDate))
+			$this->createDate = (string)$xml->createDate;
+		if(count($xml->updateDate))
+			$this->updateDate = (string)$xml->updateDate;
 	}
 	/**
 	 * List of conditions for the rule
@@ -77,5 +81,19 @@ class BusinessModuleRule extends \Kaltura\Client\Type\Rule
 	 * @var array<KalturaApplyDiscountModuleAction>
 	 */
 	public $actions;
+
+	/**
+	 * Create date of the rule
+	 * @var int
+	 * @readonly
+	 */
+	public $createDate = null;
+
+	/**
+	 * Update date of the rule
+	 * @var int
+	 * @readonly
+	 */
+	public $updateDate = null;
 
 }
