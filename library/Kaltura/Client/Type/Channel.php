@@ -88,6 +88,13 @@ class Channel extends \Kaltura\Client\Type\BaseChannel
 			$this->createDate = (string)$xml->createDate;
 		if(count($xml->updateDate))
 			$this->updateDate = (string)$xml->updateDate;
+		if(count($xml->supportSegmentBasedOrdering))
+		{
+			if(!empty($xml->supportSegmentBasedOrdering))
+				$this->supportSegmentBasedOrdering = true;
+			else
+				$this->supportSegmentBasedOrdering = false;
+		}
 	}
 	/**
 	 * Channel name
@@ -158,5 +165,11 @@ class Channel extends \Kaltura\Client\Type\BaseChannel
 	 * @readonly
 	 */
 	public $updateDate = null;
+
+	/**
+	 * Specifies whether the assets in this channel will be ordered based on their match to the user&#39;s segments (see BEO-5524)
+	 * @var bool
+	 */
+	public $supportSegmentBasedOrdering = null;
 
 }
