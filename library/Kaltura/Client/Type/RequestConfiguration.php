@@ -70,8 +70,8 @@ class RequestConfiguration extends \Kaltura\Client\ObjectBase
 			else
 				$this->abortAllOnError = false;
 		}
-		if(count($xml->skipOnOrror))
-			$this->skipOnOrror = (string)$xml->skipOnOrror;
+		if(count($xml->skipOnError))
+			$this->skipOnError = (string)$xml->skipOnError;
 	}
 	/**
 	 * Impersonated partner id
@@ -119,6 +119,6 @@ class RequestConfiguration extends \Kaltura\Client\ObjectBase
 	 * Skip current request according to skip option
 	 * @var \Kaltura\Client\Enum\SkipOptions
 	 */
-	public $skipOnOrror = null;
+	public $skipOnError = null;
 
 }

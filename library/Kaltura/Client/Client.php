@@ -603,7 +603,7 @@ class Client extends Base
 		parent::__construct($config);
 		
 		$this->setClientTag('php5:18-11-06');
-		$this->setApiVersion('5.0.3.17592');
+		$this->setApiVersion('5.0.3.25438');
 	}
 	
 	/**
@@ -1858,11 +1858,11 @@ class Client extends Base
 	/**
 	 * Skip current request according to skip option
 	 * 
-	 * @param string $skipOnOrror
+	 * @param string $skipOnError
 	 */
-	public function setSkipOnOrror($skipOnOrror)
+	public function setSkipOnError($skipOnError)
 	{
-		$this->requestConfiguration['skipOnOrror'] = $skipOnOrror;
+		$this->requestConfiguration['skipOnError'] = $skipOnError;
 	}
 	
 	/**
@@ -1870,11 +1870,11 @@ class Client extends Base
 	 * 
 	 * @return string
 	 */
-	public function getSkipOnOrror()
+	public function getSkipOnError()
 	{
-		if(isset($this->requestConfiguration['skipOnOrror']))
+		if(isset($this->requestConfiguration['skipOnError']))
 		{
-			return $this->requestConfiguration['skipOnOrror'];
+			return $this->requestConfiguration['skipOnError'];
 		}
 		
 		return null;
