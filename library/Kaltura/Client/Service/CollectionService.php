@@ -49,10 +49,11 @@ class CollectionService extends \Kaltura\Client\ServiceBase
 	 * 
 	 * @return \Kaltura\Client\Type\CollectionListResponse
 	 */
-	function listAction(\Kaltura\Client\Type\CollectionFilter $filter)
+	function listAction(\Kaltura\Client\Type\CollectionFilter $filter = null)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
 		$this->client->queueServiceActionCall("collection", "list", "KalturaCollectionListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
