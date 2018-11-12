@@ -55,6 +55,8 @@ class MonetizationSource extends \Kaltura\Client\Type\SegmentSource
 			$this->type = (string)$xml->type;
 		if(count($xml->operator))
 			$this->operator = (string)$xml->operator;
+		if(count($xml->days))
+			$this->days = (int)$xml->days;
 	}
 	/**
 	 * Purchase type
@@ -67,5 +69,11 @@ class MonetizationSource extends \Kaltura\Client\Type\SegmentSource
 	 * @var \Kaltura\Client\Enum\MathemticalOperatorType
 	 */
 	public $operator = null;
+
+	/**
+	 * Days to consider when checking the users&#39; purchaes
+	 * @var int
+	 */
+	public $days = null;
 
 }
