@@ -59,6 +59,8 @@ abstract class BaseSearchAssetFilter extends \Kaltura\Client\Type\AssetFilter
 			else
 				$this->groupBy = \Kaltura\Client\ParseUtils::unmarshalArray($xml->groupBy, "KalturaAssetGroupBy");
 		}
+		if(count($xml->groupOrderBy))
+			$this->groupOrderBy = (string)$xml->groupOrderBy;
 	}
 	/**
 	 * Search assets using dynamic criteria. Provided collection of nested expressions with key, comparison operators, value, and logical conjunction.
@@ -84,5 +86,11 @@ abstract class BaseSearchAssetFilter extends \Kaltura\Client\Type\AssetFilter
 	 * @var array<KalturaAssetGroupBy>
 	 */
 	public $groupBy;
+
+	/**
+	 * order by of grouping
+	 * @var \Kaltura\Client\Enum\GroupByOrder
+	 */
+	public $groupOrderBy = null;
 
 }
