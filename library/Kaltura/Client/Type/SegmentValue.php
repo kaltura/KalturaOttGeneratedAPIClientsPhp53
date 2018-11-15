@@ -59,8 +59,6 @@ class SegmentValue extends \Kaltura\Client\ObjectBase
 			$this->name = (string)$xml->name;
 		if(count($xml->value))
 			$this->value = (string)$xml->value;
-		if(count($xml->threshold))
-			$this->threshold = (int)$xml->threshold;
 	}
 	/**
 	 * Id of segment
@@ -86,11 +84,5 @@ class SegmentValue extends \Kaltura\Client\ObjectBase
 	 * @var string
 	 */
 	public $value = null;
-
-	/**
-	 * Threshold - minimum score to be met for this specific value
-	 * @var int
-	 */
-	public $threshold = null;
 
 }

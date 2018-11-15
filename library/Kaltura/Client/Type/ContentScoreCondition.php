@@ -59,8 +59,13 @@ class ContentScoreCondition extends \Kaltura\Client\Type\BaseSegmentCondition
 			$this->days = (int)$xml->days;
 		if(count($xml->field))
 			$this->field = (string)$xml->field;
-		if(count($xml->value))
-			$this->value = (string)$xml->value;
+		if(count($xml->values))
+		{
+			if(empty($xml->values))
+				$this->values = array();
+			else
+				$this->values = \Kaltura\Client\ParseUtils::unmarshalArray($xml->values, "KalturaStringValue");
+		}
 		if(count($xml->actions))
 		{
 			if(empty($xml->actions))
@@ -94,10 +99,11 @@ class ContentScoreCondition extends \Kaltura\Client\Type\BaseSegmentCondition
 	public $field = null;
 
 	/**
-	 * If condition should be applied on specific field (and not the one of the segment value) -
-	 * @var string
+	 * If condition should be applied on specific field (and not the one of the segment value) - 
+	 *             list of values to be considered together
+	 * @var array<KalturaStringValue>
 	 */
-	public $value = null;
+	public $values;
 
 	/**
 	 * List of the actions that consist the condition
