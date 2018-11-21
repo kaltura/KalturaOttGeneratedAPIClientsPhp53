@@ -99,6 +99,7 @@ class ProgramAsset extends \Kaltura\Client\Type\Asset
 	/**
 	 * EPG identifier
 	 * @var string
+	 * @readonly
 	 */
 	public $epgId = null;
 
@@ -117,34 +118,31 @@ class ProgramAsset extends \Kaltura\Client\Type\Asset
 	/**
 	 * Id of linear media asset
 	 * @var int
+	 * @readonly
 	 */
 	public $linearAssetId = null;
 
 	/**
 	 * Is CDVR enabled for this asset
 	 * @var bool
-	 * @readonly
 	 */
 	public $enableCdvr = null;
 
 	/**
 	 * Is catch-up enabled for this asset
 	 * @var bool
-	 * @readonly
 	 */
 	public $enableCatchUp = null;
 
 	/**
 	 * Is start over enabled for this asset
 	 * @var bool
-	 * @readonly
 	 */
 	public $enableStartOver = null;
 
 	/**
 	 * Is trick-play enabled for this asset
 	 * @var bool
-	 * @readonly
 	 */
 	public $enableTrickPlay = null;
 
