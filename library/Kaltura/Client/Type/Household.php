@@ -109,7 +109,6 @@ class Household extends \Kaltura\Client\ObjectBase
 	/**
 	 * Household external identifier
 	 * @var string
-	 * @insertonly
 	 */
 	public $externalId = null;
 

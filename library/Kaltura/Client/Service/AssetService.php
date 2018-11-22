@@ -45,7 +45,8 @@ class AssetService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Add a new asset
+	 * Add a new asset.
+	 *             For metas of type bool-&gt; use kalturaBoolValue, type number-&gt; KalturaDoubleValue, type date -&gt; KalturaLongValue, type string -&gt; KalturaStringValue
 	 * 
 	 * @return \Kaltura\Client\Type\Asset
 	 */
@@ -215,7 +216,8 @@ class AssetService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * update an existing asset
+	 * update an existing asset.
+	 *             For metas of type bool-&gt; use kalturaBoolValue, type number-&gt; KalturaDoubleValue, type date -&gt; KalturaLongValue, type string -&gt; KalturaStringValue
 	 * 
 	 * @return \Kaltura\Client\Type\Asset
 	 */
