@@ -70,8 +70,8 @@ class RequestConfiguration extends \Kaltura\Client\ObjectBase
 			else
 				$this->abortAllOnError = false;
 		}
-		if(count($xml->skipOnError))
-			$this->skipOnError = (string)$xml->skipOnError;
+		if(count($xml->skipCondition) && !empty($xml->skipCondition))
+			$this->skipCondition = \Kaltura\Client\ParseUtils::unmarshalObject($xml->skipCondition, "KalturaSkipCondition");
 	}
 	/**
 	 * Impersonated partner id
@@ -116,9 +116,9 @@ class RequestConfiguration extends \Kaltura\Client\ObjectBase
 	public $abortAllOnError = null;
 
 	/**
-	 * Skip current request according to skip option
-	 * @var \Kaltura\Client\Enum\SkipOptions
+	 * Skip current request according to skip condition
+	 * @var \Kaltura\Client\Type\SkipCondition
 	 */
-	public $skipOnError = null;
+	public $skipCondition;
 
 }
