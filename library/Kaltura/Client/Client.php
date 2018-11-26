@@ -602,8 +602,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:18-11-25');
-		$this->setApiVersion('5.0.3.42010');
+		$this->setClientTag('php5:18-11-26');
+		$this->setApiVersion('5.0.3.22718');
 	}
 	
 	/**
@@ -1856,25 +1856,25 @@ class Client extends Base
 	}
 	
 	/**
-	 * Skip current request according to skip option
+	 * Skip current request according to skip condition
 	 * 
-	 * @param string $skipOnError
+	 * @param \Kaltura\Client\Type\SkipCondition $skipCondition
 	 */
-	public function setSkipOnError($skipOnError)
+	public function setSkipCondition(\Kaltura\Client\Type\SkipCondition $skipCondition)
 	{
-		$this->requestConfiguration['skipOnError'] = $skipOnError;
+		$this->requestConfiguration['skipCondition'] = $skipCondition;
 	}
 	
 	/**
-	 * Skip current request according to skip option
+	 * Skip current request according to skip condition
 	 * 
-	 * @return string
+	 * @return \Kaltura\Client\Type\SkipCondition
 	 */
-	public function getSkipOnError()
+	public function getSkipCondition()
 	{
-		if(isset($this->requestConfiguration['skipOnError']))
+		if(isset($this->requestConfiguration['skipCondition']))
 		{
-			return $this->requestConfiguration['skipOnError'];
+			return $this->requestConfiguration['skipCondition'];
 		}
 		
 		return null;
