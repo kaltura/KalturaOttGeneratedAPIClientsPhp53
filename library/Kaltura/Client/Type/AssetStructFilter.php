@@ -64,7 +64,7 @@ class AssetStructFilter extends \Kaltura\Client\Type\Filter
 		}
 	}
 	/**
-	 * Comma separated identifiers
+	 * Comma separated identifiers, id = 0 is identified as program AssetStruct
 	 * @var string
 	 */
 	public $idIn = null;
