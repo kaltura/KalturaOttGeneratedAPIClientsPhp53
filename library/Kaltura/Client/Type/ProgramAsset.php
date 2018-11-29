@@ -93,6 +93,7 @@ class ProgramAsset extends \Kaltura\Client\Type\Asset
 	/**
 	 * EPG channel identifier
 	 * @var int
+	 * @readonly
 	 */
 	public $epgChannelId = null;
 
@@ -118,7 +119,7 @@ class ProgramAsset extends \Kaltura\Client\Type\Asset
 	/**
 	 * Id of linear media asset
 	 * @var int
-	 * @readonly
+	 * @insertonly
 	 */
 	public $linearAssetId = null;
 
