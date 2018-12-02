@@ -603,7 +603,7 @@ class Client extends Base
 		parent::__construct($config);
 		
 		$this->setClientTag('php5:18-12-02');
-		$this->setApiVersion('5.0.3.15726');
+		$this->setApiVersion('5.0.3.17321');
 	}
 	
 	/**
@@ -1650,6 +1650,31 @@ class Client extends Base
 		if(isset($this->clientConfiguration['apiVersion']))
 		{
 			return $this->clientConfiguration['apiVersion'];
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * Abort the Multireuqset call if any error occurs in one of the requests
+	 * 
+	 * @param bool $abortOnError
+	 */
+	public function setAbortOnError($abortOnError)
+	{
+		$this->clientConfiguration['abortOnError'] = $abortOnError;
+	}
+	
+	/**
+	 * Abort the Multireuqset call if any error occurs in one of the requests
+	 * 
+	 * @return bool
+	 */
+	public function getAbortOnError()
+	{
+		if(isset($this->clientConfiguration['abortOnError']))
+		{
+			return $this->clientConfiguration['abortOnError'];
 		}
 		
 		return null;
