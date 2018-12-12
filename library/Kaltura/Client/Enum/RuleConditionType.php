@@ -46,5 +46,6 @@ class RuleConditionType extends \Kaltura\Client\EnumBase
 	const SEGMENTS = "SEGMENTS";
 	const DATE = "DATE";
 	const OR = "OR";
+	const HEADER = "HEADER";
 }
 

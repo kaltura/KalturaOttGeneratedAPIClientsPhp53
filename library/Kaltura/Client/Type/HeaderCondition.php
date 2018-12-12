@@ -30,19 +30,42 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
+ * Header condition
  * @package Kaltura
  * @subpackage Client
  */
-class RuleType extends \Kaltura\Client\EnumBase
+class HeaderCondition extends \Kaltura\Client\Type\NotCondition
 {
-	const PARENTAL = "parental";
-	const GEO = "geo";
-	const USER_TYPE = "user_type";
-	const DEVICE = "device";
-	const ASSETUSER = "assetUser";
-	const NETWORK = "network";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaHeaderCondition';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->key))
+			$this->key = (string)$xml->key;
+		if(count($xml->value))
+			$this->value = (string)$xml->value;
+	}
+	/**
+	 * Header key
+	 * @var string
+	 */
+	public $key = null;
 
+	/**
+	 * Header value
+	 * @var string
+	 */
+	public $value = null;
+
+}

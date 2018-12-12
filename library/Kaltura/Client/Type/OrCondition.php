@@ -36,7 +36,7 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class OrCondition extends \Kaltura\Client\Type\Condition
+class OrCondition extends \Kaltura\Client\Type\NotCondition
 {
 	public function getKalturaObjectType()
 	{
