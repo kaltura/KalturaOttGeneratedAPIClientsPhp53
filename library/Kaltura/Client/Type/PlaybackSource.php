@@ -61,6 +61,13 @@ class PlaybackSource extends \Kaltura\Client\Type\MediaFile
 			else
 				$this->drm = \Kaltura\Client\ParseUtils::unmarshalArray($xml->drm, "KalturaDrmPlaybackPluginData");
 		}
+		if(count($xml->isTokenized))
+		{
+			if(!empty($xml->isTokenized))
+				$this->isTokenized = true;
+			else
+				$this->isTokenized = false;
+		}
 	}
 	/**
 	 * Source format according to delivery profile streamer type (applehttp, mpegdash etc.)
@@ -79,5 +86,11 @@ class PlaybackSource extends \Kaltura\Client\Type\MediaFile
 	 * @var array<KalturaDrmPlaybackPluginData>
 	 */
 	public $drm;
+
+	/**
+	 * Is Tokenized
+	 * @var bool
+	 */
+	public $isTokenized = null;
 
 }
