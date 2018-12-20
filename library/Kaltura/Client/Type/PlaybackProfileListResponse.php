@@ -30,21 +30,38 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class RuleActionType extends \Kaltura\Client\EnumBase
+class PlaybackProfileListResponse extends \Kaltura\Client\Type\ListResponse
 {
-	const BLOCK = "BLOCK";
-	const START_DATE_OFFSET = "START_DATE_OFFSET";
-	const END_DATE_OFFSET = "END_DATE_OFFSET";
-	const USER_BLOCK = "USER_BLOCK";
-	const ALLOW_PLAYBACK = "ALLOW_PLAYBACK";
-	const BLOCK_PLAYBACK = "BLOCK_PLAYBACK";
-	const APPLY_DISCOUNT_MODULE = "APPLY_DISCOUNT_MODULE";
-	const APPLY_PLAYBACK_ADAPTER = "APPLY_PLAYBACK_ADAPTER";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaPlaybackProfileListResponse';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->objects))
+		{
+			if(empty($xml->objects))
+				$this->objects = array();
+			else
+				$this->objects = \Kaltura\Client\ParseUtils::unmarshalArray($xml->objects, "KalturaPlaybackProfile");
+		}
+	}
+	/**
+	 * A list of Engagement adapter
+	 * @var array<KalturaPlaybackProfile>
+	 */
+	public $objects;
 
+}

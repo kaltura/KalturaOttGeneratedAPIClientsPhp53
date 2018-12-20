@@ -409,6 +409,11 @@ class Client extends Base
 	protected $pin = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\PlaybackProfileService
+	 */
+	protected $playbackProfile = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\PpvService
 	 */
 	protected $ppv = null;
@@ -602,8 +607,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:18-12-19');
-		$this->setApiVersion('5.1.61.41995');
+		$this->setClientTag('php5:18-12-20');
+		$this->setApiVersion('5.1.74.35250');
 	}
 	
 	/**
@@ -1271,6 +1276,15 @@ class Client extends Base
 		if (is_null($this->pin))
 			$this->pin = new \Kaltura\Client\Service\PinService($this);
 		return $this->pin;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\PlaybackProfileService
+	 */
+	public function getPlaybackProfileService()
+	{
+		if (is_null($this->playbackProfile))
+			$this->playbackProfile = new \Kaltura\Client\Service\PlaybackProfileService($this);
+		return $this->playbackProfile;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\PpvService
