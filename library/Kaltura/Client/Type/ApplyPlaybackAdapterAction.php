@@ -51,7 +51,7 @@ class ApplyPlaybackAdapterAction extends \Kaltura\Client\Type\AssetRuleAction
 			return;
 		
 		if(count($xml->adapterId))
-			$this->adapterId = (string)$xml->adapterId;
+			$this->adapterId = (int)$xml->adapterId;
 	}
 	/**
 	 * Playback Adapter Identifier

@@ -52,7 +52,7 @@ class PlaybackProfileFilter extends \Kaltura\Client\Type\Filter
 			return;
 		
 		if(count($xml->playbackProfileEqual))
-			$this->playbackProfileEqual = (string)$xml->playbackProfileEqual;
+			$this->playbackProfileEqual = (int)$xml->playbackProfileEqual;
 	}
 	/**
 	 * Playback profile to filter by
