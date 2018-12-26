@@ -89,6 +89,7 @@ class Recording extends \Kaltura\Client\ObjectBase
 	/**
 	 * Kaltura unique ID representing the program identifier
 	 * @var int
+	 * @insertonly
 	 */
 	public $assetId = null;
 
@@ -109,7 +110,6 @@ class Recording extends \Kaltura\Client\ObjectBase
 	/**
 	 * Specifies whether or not the recording is protected
 	 * @var bool
-	 * @insertonly
 	 */
 	public $isProtected = null;
 

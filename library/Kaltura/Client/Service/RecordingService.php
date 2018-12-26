@@ -148,15 +148,16 @@ class RecordingService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Protects an existing recording from the cleanup process for the defined protection period
+	 * Update an existing recording with is protected field
 	 * 
 	 * @return \Kaltura\Client\Type\Recording
 	 */
-	function protect($id)
+	function update($id, \Kaltura\Client\Type\Recording $recording)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("recording", "protect", "KalturaRecording", $kparams);
+		$this->client->addParam($kparams, "recording", $recording->toParams());
+		$this->client->queueServiceActionCall("recording", "update", "KalturaRecording", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
