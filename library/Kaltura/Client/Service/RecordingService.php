@@ -148,6 +148,27 @@ class RecordingService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
+	 * Deprecated, please use recording.update instead
+	 *             Protects an existing recording from the cleanup process for the defined protection period
+	 * 
+	 * @return \Kaltura\Client\Type\Recording
+	 */
+	function protect($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("recording", "protect", "KalturaRecording", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaRecording");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\Recording");
+		return $resultObject;
+	}
+
+	/**
 	 * Update an existing recording with is protected field
 	 * 
 	 * @return \Kaltura\Client\Type\Recording
