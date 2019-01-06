@@ -56,7 +56,12 @@ class ClientConfiguration extends \Kaltura\Client\ObjectBase
 		if(count($xml->apiVersion))
 			$this->apiVersion = (string)$xml->apiVersion;
 		if(count($xml->abortOnError))
-			$this->abortOnError = (string)$xml->abortOnError;
+		{
+			if(!empty($xml->abortOnError))
+				$this->abortOnError = true;
+			else
+				$this->abortOnError = false;
+		}
 	}
 	/**
 	 * Client Tag
@@ -72,7 +77,7 @@ class ClientConfiguration extends \Kaltura\Client\ObjectBase
 
 	/**
 	 * Abort the Multireuqset call if any error occurs in one of the requests
-	 * @var string
+	 * @var bool
 	 */
 	public $abortOnError = null;
 
