@@ -33,15 +33,14 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Subscription Dependency Set
  * @package Kaltura
  * @subpackage Client
  */
-class SubscriptionDependencySet extends \Kaltura\Client\Type\SubscriptionSet
+class OTTObjectSupportNullable extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaSubscriptionDependencySet';
+		return 'KalturaOTTObjectSupportNullable';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,13 +50,5 @@ class SubscriptionDependencySet extends \Kaltura\Client\Type\SubscriptionSet
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->baseSubscriptionId))
-			$this->baseSubscriptionId = (string)$xml->baseSubscriptionId;
 	}
-	/**
-	 * Base Subscription identifier
-	 * @var int
-	 */
-	public $baseSubscriptionId = null;
-
 }
