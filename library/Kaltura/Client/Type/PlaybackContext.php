@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2019  Kaltura Inc.
+// Copyright (C) 2006-2018  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -71,6 +71,20 @@ class PlaybackContext extends \Kaltura\Client\ObjectBase
 			else
 				$this->messages = \Kaltura\Client\ParseUtils::unmarshalArray($xml->messages, "KalturaAccessControlMessage");
 		}
+		if(count($xml->playbackCaptions))
+		{
+			if(empty($xml->playbackCaptions))
+				$this->playbackCaptions = array();
+			else
+				$this->playbackCaptions = \Kaltura\Client\ParseUtils::unmarshalArray($xml->playbackCaptions, "KalturaCaptionPlaybackPluginData");
+		}
+		if(count($xml->playbackBumpers))
+		{
+			if(empty($xml->playbackBumpers))
+				$this->playbackBumpers = array();
+			else
+				$this->playbackBumpers = \Kaltura\Client\ParseUtils::unmarshalArray($xml->playbackBumpers, "KalturaBumpersPlaybackPluginData");
+		}
 	}
 	/**
 	 * Sources
@@ -89,5 +103,17 @@ class PlaybackContext extends \Kaltura\Client\ObjectBase
 	 * @var array<KalturaAccessControlMessage>
 	 */
 	public $messages;
+
+	/**
+	 * Playback captions
+	 * @var array<KalturaCaptionPlaybackPluginData>
+	 */
+	public $playbackCaptions;
+
+	/**
+	 * Playback bumpers
+	 * @var array<KalturaBumpersPlaybackPluginData>
+	 */
+	public $playbackBumpers;
 
 }
