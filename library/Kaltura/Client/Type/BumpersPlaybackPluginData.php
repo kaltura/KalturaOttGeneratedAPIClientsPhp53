@@ -36,7 +36,7 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class BumpersPlaybackPluginData extends \Kaltura\Client\ObjectBase
+class BumpersPlaybackPluginData extends \Kaltura\Client\Type\PlaybackPluginData
 {
 	public function getKalturaObjectType()
 	{

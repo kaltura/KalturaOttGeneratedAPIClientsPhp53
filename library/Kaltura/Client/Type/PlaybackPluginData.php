@@ -36,11 +36,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class PlaybackContext extends \Kaltura\Client\ObjectBase
+class PlaybackPluginData extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaPlaybackContext';
+		return 'KalturaPlaybackPluginData';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,70 +50,5 @@ class PlaybackContext extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->sources))
-		{
-			if(empty($xml->sources))
-				$this->sources = array();
-			else
-				$this->sources = \Kaltura\Client\ParseUtils::unmarshalArray($xml->sources, "KalturaPlaybackSource");
-		}
-		if(count($xml->actions))
-		{
-			if(empty($xml->actions))
-				$this->actions = array();
-			else
-				$this->actions = \Kaltura\Client\ParseUtils::unmarshalArray($xml->actions, "KalturaRuleAction");
-		}
-		if(count($xml->messages))
-		{
-			if(empty($xml->messages))
-				$this->messages = array();
-			else
-				$this->messages = \Kaltura\Client\ParseUtils::unmarshalArray($xml->messages, "KalturaAccessControlMessage");
-		}
-		if(count($xml->playbackCaptions))
-		{
-			if(empty($xml->playbackCaptions))
-				$this->playbackCaptions = array();
-			else
-				$this->playbackCaptions = \Kaltura\Client\ParseUtils::unmarshalArray($xml->playbackCaptions, "KalturaCaptionPlaybackPluginData");
-		}
-		if(count($xml->plugins))
-		{
-			if(empty($xml->plugins))
-				$this->plugins = array();
-			else
-				$this->plugins = \Kaltura\Client\ParseUtils::unmarshalArray($xml->plugins, "KalturaPlaybackPluginData");
-		}
 	}
-	/**
-	 * Sources
-	 * @var array<KalturaPlaybackSource>
-	 */
-	public $sources;
-
-	/**
-	 * Actions
-	 * @var array<KalturaRuleAction>
-	 */
-	public $actions;
-
-	/**
-	 * Messages
-	 * @var array<KalturaAccessControlMessage>
-	 */
-	public $messages;
-
-	/**
-	 * Playback captions
-	 * @var array<KalturaCaptionPlaybackPluginData>
-	 */
-	public $playbackCaptions;
-
-	/**
-	 * Plugins
-	 * @var array<KalturaPlaybackPluginData>
-	 */
-	public $plugins;
-
 }
