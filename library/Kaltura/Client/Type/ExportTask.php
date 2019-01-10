@@ -67,13 +67,6 @@ class ExportTask extends \Kaltura\Client\ObjectBase
 			$this->frequency = (string)$xml->frequency;
 		if(count($xml->notificationUrl))
 			$this->notificationUrl = (string)$xml->notificationUrl;
-		if(count($xml->vodTypes))
-		{
-			if(empty($xml->vodTypes))
-				$this->vodTypes = array();
-			else
-				$this->vodTypes = \Kaltura\Client\ParseUtils::unmarshalArray($xml->vodTypes, "KalturaIntegerValue");
-		}
 		if(count($xml->isActive))
 		{
 			if(!empty($xml->isActive))
@@ -131,12 +124,6 @@ class ExportTask extends \Kaltura\Client\ObjectBase
 	 * @var string
 	 */
 	public $notificationUrl = null;
-
-	/**
-	 * List of media type identifiers (as configured in TVM) to export. used only in case data_type = vod
-	 * @var array<KalturaIntegerValue>
-	 */
-	public $vodTypes;
 
 	/**
 	 * Indicates if the task is active or not
