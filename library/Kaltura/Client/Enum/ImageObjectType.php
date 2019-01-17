@@ -44,5 +44,6 @@ class ImageObjectType extends \Kaltura\Client\EnumBase
 	const CATEGORY = "CATEGORY";
 	const PARTNER = "PARTNER";
 	const IMAGE_TYPE = "IMAGE_TYPE";
+	const PROGRAM_GROUP = "PROGRAM_GROUP";
 }
 

@@ -88,11 +88,10 @@ class ImageService extends \Kaltura\Client\ServiceBase
 	 * 
 	 * @return \Kaltura\Client\Type\ImageListResponse
 	 */
-	function listAction(\Kaltura\Client\Type\ImageFilter $filter = null)
+	function listAction(\Kaltura\Client\Type\ImageFilter $filter)
 	{
 		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
+		$this->client->addParam($kparams, "filter", $filter->toParams());
 		$this->client->queueServiceActionCall("image", "list", "KalturaImageListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
