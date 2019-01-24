@@ -264,6 +264,7 @@ class TypeMap
 		'KalturaRule' => 'Kaltura\Client\Type\Rule',
 		'KalturaTvmRule' => 'Kaltura\Client\Type\TvmRule',
 		'KalturaTvmRuleListResponse' => 'Kaltura\Client\Type\TvmRuleListResponse',
+		'KalturaTvmDeviceRule' => 'Kaltura\Client\Type\TvmDeviceRule',
 		'KalturaTvmGeoRule' => 'Kaltura\Client\Type\TvmGeoRule',
 		'KalturaCondition' => 'Kaltura\Client\Type\Condition',
 		'KalturaRuleAction' => 'Kaltura\Client\Type\RuleAction',
