@@ -559,6 +559,11 @@ class Client extends Base
 	protected $transactionHistory = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\TvmRuleService
+	 */
+	protected $tvmRule = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\UnifiedPaymentService
 	 */
 	protected $unifiedPayment = null;
@@ -607,8 +612,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:19-01-23');
-		$this->setApiVersion('5.1.1.42808');
+		$this->setClientTag('php5:19-01-24');
+		$this->setApiVersion('5.1.1.21077');
 	}
 	
 	/**
@@ -1546,6 +1551,15 @@ class Client extends Base
 		if (is_null($this->transactionHistory))
 			$this->transactionHistory = new \Kaltura\Client\Service\TransactionHistoryService($this);
 		return $this->transactionHistory;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\TvmRuleService
+	 */
+	public function getTvmRuleService()
+	{
+		if (is_null($this->tvmRule))
+			$this->tvmRule = new \Kaltura\Client\Service\TvmRuleService($this);
+		return $this->tvmRule;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\UnifiedPaymentService
