@@ -60,13 +60,17 @@ class TvmGeoRule extends \Kaltura\Client\Type\TvmRule
 		}
 		if(count($xml->countryIds))
 			$this->countryIds = (string)$xml->countryIds;
-		if(count($xml->proxyRule))
-			$this->proxyRule = (int)$xml->proxyRule;
-		if(count($xml->proxyLevel))
-			$this->proxyLevel = (int)$xml->proxyLevel;
+		if(count($xml->proxyRuleId))
+			$this->proxyRuleId = (int)$xml->proxyRuleId;
+		if(count($xml->proxyRuleName))
+			$this->proxyRuleName = (string)$xml->proxyRuleName;
+		if(count($xml->proxyLevelId))
+			$this->proxyLevelId = (int)$xml->proxyLevelId;
+		if(count($xml->proxyLevelName))
+			$this->proxyLevelName = (string)$xml->proxyLevelName;
 	}
 	/**
-	 * Indicates if the rule is relevent ONLY for the country ids or except country ids here.
+	 * Indicates if the rule is relevent ONLY for the country ids or except country ids here. - is that true?
 	 * @var bool
 	 */
 	public $onlyOrBut = null;
@@ -78,15 +82,27 @@ class TvmGeoRule extends \Kaltura\Client\Type\TvmRule
 	public $countryIds = null;
 
 	/**
-	 * proxyRule - what is that?
+	 * proxyRuleId - what is that?
 	 * @var int
 	 */
-	public $proxyRule = null;
+	public $proxyRuleId = null;
 
 	/**
-	 * proxyLevel - what is that?
+	 * proxyRuleName - what is that?
+	 * @var string
+	 */
+	public $proxyRuleName = null;
+
+	/**
+	 * proxyLevelId - what is that?
 	 * @var int
 	 */
-	public $proxyLevel = null;
+	public $proxyLevelId = null;
+
+	/**
+	 * proxyLevelName - what is that?
+	 * @var string
+	 */
+	public $proxyLevelName = null;
 
 }
