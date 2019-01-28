@@ -56,6 +56,8 @@ class PurchaseBase extends \Kaltura\Client\ObjectBase
 			$this->contentId = (int)$xml->contentId;
 		if(count($xml->productType))
 			$this->productType = (string)$xml->productType;
+		if(count($xml->adapterData))
+			$this->adapterData = (string)$xml->adapterData;
 	}
 	/**
 	 * Identifier for the package from which this content is offered
@@ -74,5 +76,11 @@ class PurchaseBase extends \Kaltura\Client\ObjectBase
 	 * @var \Kaltura\Client\Enum\TransactionType
 	 */
 	public $productType = null;
+
+	/**
+	 * Additional data for the adapter
+	 * @var string
+	 */
+	public $adapterData = null;
 
 }

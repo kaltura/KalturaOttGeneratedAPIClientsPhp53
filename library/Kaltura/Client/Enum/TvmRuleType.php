@@ -30,42 +30,15 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
- * Asset user rule filter
  * @package Kaltura
  * @subpackage Client
  */
-class TvmRuleFilter extends \Kaltura\Client\Type\Filter
+class TvmRuleType extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaTvmRuleFilter';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->ruleTypeEqual))
-			$this->ruleTypeEqual = (string)$xml->ruleTypeEqual;
-		if(count($xml->nameEqual))
-			$this->nameEqual = (string)$xml->nameEqual;
-	}
-	/**
-	 * Indicates which tvm rule list to return by their type.
-	 * @var \Kaltura\Client\Enum\TvmRuleType
-	 */
-	public $ruleTypeEqual = null;
-
-	/**
-	 * Indicates which tvm rule list to return by their name.
-	 * @var string
-	 */
-	public $nameEqual = null;
-
+	const GEO = "Geo";
+	const DEVICE = "Device";
 }
+

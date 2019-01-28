@@ -65,7 +65,7 @@ abstract class TvmRule extends \Kaltura\Client\Type\Rule
 
 	/**
 	 * Specifies the tvm rule type.
-	 * @var \Kaltura\Client\Enum\RuleType
+	 * @var \Kaltura\Client\Enum\TvmRuleType
 	 * @readonly
 	 */
 	public $ruleType = null;

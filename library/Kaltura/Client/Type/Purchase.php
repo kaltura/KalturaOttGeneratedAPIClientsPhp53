@@ -60,8 +60,6 @@ class Purchase extends \Kaltura\Client\Type\PurchaseBase
 			$this->paymentGatewayId = (int)$xml->paymentGatewayId;
 		if(count($xml->coupon))
 			$this->coupon = (string)$xml->coupon;
-		if(count($xml->adapterData))
-			$this->adapterData = (string)$xml->adapterData;
 	}
 	/**
 	 * Identifier for paying currency, according to ISO 4217
@@ -92,11 +90,5 @@ class Purchase extends \Kaltura\Client\Type\PurchaseBase
 	 * @var string
 	 */
 	public $coupon = null;
-
-	/**
-	 * Additional data for the adapter
-	 * @var string
-	 */
-	public $adapterData = null;
 
 }

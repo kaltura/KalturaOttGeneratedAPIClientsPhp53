@@ -71,6 +71,13 @@ class Recording extends \Kaltura\Client\ObjectBase
 			$this->createDate = (string)$xml->createDate;
 		if(count($xml->updateDate))
 			$this->updateDate = (string)$xml->updateDate;
+		if(count($xml->metaData))
+		{
+			if(empty($xml->metaData))
+				$this->metaData = array();
+			else
+				$this->metaData = \Kaltura\Client\ParseUtils::unmarshalMap($xml->metaData, "KalturaStringValue");
+		}
 	}
 	/**
 	 * Kaltura unique ID representing the recording identifier
@@ -126,5 +133,11 @@ class Recording extends \Kaltura\Client\ObjectBase
 	 * @readonly
 	 */
 	public $updateDate = null;
+
+	/**
+	 * key/value map field for extra data
+	 * @var array<string, KalturaStringValue>
+	 */
+	public $metaData;
 
 }
