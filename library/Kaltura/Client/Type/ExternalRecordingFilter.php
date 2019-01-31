@@ -33,14 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
+ * Filtering external recordings
  * @package Kaltura
  * @subpackage Client
  */
-class ExternalRecording extends \Kaltura\Client\Type\Recording
+class ExternalRecordingFilter extends \Kaltura\Client\Type\RecordingFilter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaExternalRecording';
+		return 'KalturaExternalRecordingFilter';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,8 +51,6 @@ class ExternalRecording extends \Kaltura\Client\Type\Recording
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->externalId))
-			$this->externalId = (string)$xml->externalId;
 		if(count($xml->metaData))
 		{
 			if(empty($xml->metaData))
@@ -61,14 +60,7 @@ class ExternalRecording extends \Kaltura\Client\Type\Recording
 		}
 	}
 	/**
-	 * External identifier for the recording
-	 * @var string
-	 * @insertonly
-	 */
-	public $externalId = null;
-
-	/**
-	 * key/value map field for extra data
+	 * MetaData filtering
 	 * @var array<string, KalturaStringValue>
 	 */
 	public $metaData;
