@@ -51,6 +51,8 @@ class Currency extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->id))
+			$this->id = (int)$xml->id;
 		if(count($xml->name))
 			$this->name = (string)$xml->name;
 		if(count($xml->code))
@@ -65,6 +67,12 @@ class Currency extends \Kaltura\Client\ObjectBase
 				$this->isDefault = false;
 		}
 	}
+	/**
+	 * Identifier
+	 * @var int
+	 */
+	public $id = null;
+
 	/**
 	 * Currency name
 	 * @var string

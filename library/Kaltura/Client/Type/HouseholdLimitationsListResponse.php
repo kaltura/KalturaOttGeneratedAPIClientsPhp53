@@ -33,15 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Language details
+ * Household limitations details
  * @package Kaltura
  * @subpackage Client
  */
-class Language extends \Kaltura\Client\ObjectBase
+class HouseholdLimitationsListResponse extends \Kaltura\Client\Type\ListResponse
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaLanguage';
+		return 'KalturaHouseholdLimitationsListResponse';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,58 +51,18 @@ class Language extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->id))
-			$this->id = (int)$xml->id;
-		if(count($xml->name))
-			$this->name = (string)$xml->name;
-		if(count($xml->systemName))
-			$this->systemName = (string)$xml->systemName;
-		if(count($xml->code))
-			$this->code = (string)$xml->code;
-		if(count($xml->direction))
-			$this->direction = (string)$xml->direction;
-		if(count($xml->isDefault))
+		if(count($xml->objects))
 		{
-			if(!empty($xml->isDefault))
-				$this->isDefault = true;
+			if(empty($xml->objects))
+				$this->objects = array();
 			else
-				$this->isDefault = false;
+				$this->objects = \Kaltura\Client\ParseUtils::unmarshalArray($xml->objects, "KalturaHouseholdLimitations");
 		}
 	}
 	/**
-	 * Identifier
-	 * @var int
+	 * Household limitations
+	 * @var array<KalturaHouseholdLimitations>
 	 */
-	public $id = null;
-
-	/**
-	 * Language name
-	 * @var string
-	 */
-	public $name = null;
-
-	/**
-	 * Language system name
-	 * @var string
-	 */
-	public $systemName = null;
-
-	/**
-	 * Language code
-	 * @var string
-	 */
-	public $code = null;
-
-	/**
-	 * Language direction (LTR/RTL)
-	 * @var string
-	 */
-	public $direction = null;
-
-	/**
-	 * Is the default language of the account
-	 * @var bool
-	 */
-	public $isDefault = null;
+	public $objects;
 
 }

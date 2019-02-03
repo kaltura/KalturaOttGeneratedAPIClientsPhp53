@@ -42,5 +42,6 @@ class PartnerConfigurationType extends \Kaltura\Client\EnumBase
 	const ENABLEPAYMENTGATEWAYSELECTION = "EnablePaymentGatewaySelection";
 	const OSSADAPTER = "OSSAdapter";
 	const CONCURRENCY = "Concurrency";
+	const GENERAL = "General";
 }
 

@@ -63,4 +63,23 @@ class HouseholdLimitationsService extends \Kaltura\Client\ServiceBase
 		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\HouseholdLimitations");
 		return $resultObject;
 	}
+
+	/**
+	 * Get the list of PartnerConfiguration
+	 * 
+	 * @return \Kaltura\Client\Type\HouseholdLimitationsListResponse
+	 */
+	function listAction()
+	{
+		$kparams = array();
+		$this->client->queueServiceActionCall("householdlimitations", "list", "KalturaHouseholdLimitationsListResponse", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaHouseholdLimitationsListResponse");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\HouseholdLimitationsListResponse");
+		return $resultObject;
+	}
 }

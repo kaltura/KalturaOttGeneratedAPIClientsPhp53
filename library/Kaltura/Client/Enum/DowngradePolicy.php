@@ -30,79 +30,15 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
- * Language details
  * @package Kaltura
  * @subpackage Client
  */
-class Language extends \Kaltura\Client\ObjectBase
+class DowngradePolicy extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaLanguage';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->id))
-			$this->id = (int)$xml->id;
-		if(count($xml->name))
-			$this->name = (string)$xml->name;
-		if(count($xml->systemName))
-			$this->systemName = (string)$xml->systemName;
-		if(count($xml->code))
-			$this->code = (string)$xml->code;
-		if(count($xml->direction))
-			$this->direction = (string)$xml->direction;
-		if(count($xml->isDefault))
-		{
-			if(!empty($xml->isDefault))
-				$this->isDefault = true;
-			else
-				$this->isDefault = false;
-		}
-	}
-	/**
-	 * Identifier
-	 * @var int
-	 */
-	public $id = null;
-
-	/**
-	 * Language name
-	 * @var string
-	 */
-	public $name = null;
-
-	/**
-	 * Language system name
-	 * @var string
-	 */
-	public $systemName = null;
-
-	/**
-	 * Language code
-	 * @var string
-	 */
-	public $code = null;
-
-	/**
-	 * Language direction (LTR/RTL)
-	 * @var string
-	 */
-	public $direction = null;
-
-	/**
-	 * Is the default language of the account
-	 * @var bool
-	 */
-	public $isDefault = null;
-
+	const LIFO = "LIFO";
+	const FIFO = "FIFO";
 }
+
