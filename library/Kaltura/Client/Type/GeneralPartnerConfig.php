@@ -56,23 +56,13 @@ class GeneralPartnerConfig extends \Kaltura\Client\Type\PartnerConfiguration
 		if(count($xml->mainLanguage))
 			$this->mainLanguage = (int)$xml->mainLanguage;
 		if(count($xml->secondaryLanguages))
-		{
-			if(empty($xml->secondaryLanguages))
-				$this->secondaryLanguages = array();
-			else
-				$this->secondaryLanguages = \Kaltura\Client\ParseUtils::unmarshalArray($xml->secondaryLanguages, "KalturaIntegerValue");
-		}
+			$this->secondaryLanguages = (string)$xml->secondaryLanguages;
 		if(count($xml->deleteMediaPolicy))
 			$this->deleteMediaPolicy = (string)$xml->deleteMediaPolicy;
 		if(count($xml->mainCurrency))
 			$this->mainCurrency = (int)$xml->mainCurrency;
 		if(count($xml->secondaryCurrencys))
-		{
-			if(empty($xml->secondaryCurrencys))
-				$this->secondaryCurrencys = array();
-			else
-				$this->secondaryCurrencys = \Kaltura\Client\ParseUtils::unmarshalArray($xml->secondaryCurrencys, "KalturaIntegerValue");
-		}
+			$this->secondaryCurrencys = (string)$xml->secondaryCurrencys;
 		if(count($xml->downgradePolicy))
 			$this->downgradePolicy = (string)$xml->downgradePolicy;
 		if(count($xml->mailSettings))
@@ -95,10 +85,10 @@ class GeneralPartnerConfig extends \Kaltura\Client\Type\PartnerConfiguration
 	public $mainLanguage = null;
 
 	/**
-	 * More languages
-	 * @var array<KalturaIntegerValue>
+	 * A list of comma separated languages ids.
+	 * @var string
 	 */
-	public $secondaryLanguages;
+	public $secondaryLanguages = null;
 
 	/**
 	 * Delete media policy
@@ -113,10 +103,10 @@ class GeneralPartnerConfig extends \Kaltura\Client\Type\PartnerConfiguration
 	public $mainCurrency = null;
 
 	/**
-	 * More currencys
-	 * @var array<KalturaIntegerValue>
+	 * A list of comma separated currencys ids.
+	 * @var string
 	 */
-	public $secondaryCurrencys;
+	public $secondaryCurrencys = null;
 
 	/**
 	 * Downgrade policy
