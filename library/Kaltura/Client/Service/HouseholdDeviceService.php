@@ -130,9 +130,10 @@ class HouseholdDeviceService extends \Kaltura\Client\ServiceBase
 	 * 
 	 * @return \Kaltura\Client\Type\HouseholdDevice
 	 */
-	function get()
+	function get($udid = null)
 	{
 		$kparams = array();
+		$this->client->addParam($kparams, "udid", $udid);
 		$this->client->queueServiceActionCall("householddevice", "get", "KalturaHouseholdDevice", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
