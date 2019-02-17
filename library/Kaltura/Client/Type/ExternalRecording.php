@@ -59,6 +59,8 @@ class ExternalRecording extends \Kaltura\Client\Type\Recording
 			else
 				$this->metaData = \Kaltura\Client\ParseUtils::unmarshalMap($xml->metaData, "KalturaStringValue");
 		}
+		if(count($xml->expiryDate))
+			$this->expiryDate = (string)$xml->expiryDate;
 	}
 	/**
 	 * External identifier for the recording
@@ -72,5 +74,12 @@ class ExternalRecording extends \Kaltura\Client\Type\Recording
 	 * @var array<string, KalturaStringValue>
 	 */
 	public $metaData;
+
+	/**
+	 * Specifies until when the recording is available. Date and time represented as epoch.
+	 * @var int
+	 * @readonly
+	 */
+	public $expiryDate = null;
 
 }

@@ -103,7 +103,6 @@ class Recording extends \Kaltura\Client\ObjectBase
 	/**
 	 * Specifies until when the recording is available for viewing. Date and time represented as epoch.
 	 * @var int
-	 * @readonly
 	 */
 	public $viewableUntilDate = null;
 
