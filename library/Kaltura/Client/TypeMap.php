@@ -296,6 +296,7 @@ class TypeMap
 		'KalturaApplyPlaybackAdapterAction' => 'Kaltura\Client\Type\ApplyPlaybackAdapterAction',
 		'KalturaAssetUserRuleAction' => 'Kaltura\Client\Type\AssetUserRuleAction',
 		'KalturaAssetUserRuleBlockAction' => 'Kaltura\Client\Type\AssetUserRuleBlockAction',
+		'KalturaAssetUserRuleFilterAction' => 'Kaltura\Client\Type\AssetUserRuleFilterAction',
 		'KalturaAssetRuleBase' => 'Kaltura\Client\Type\AssetRuleBase',
 		'KalturaAssetUserRule' => 'Kaltura\Client\Type\AssetUserRule',
 		'KalturaAssetRule' => 'Kaltura\Client\Type\AssetRule',
