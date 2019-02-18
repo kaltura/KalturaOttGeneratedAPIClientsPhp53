@@ -50,5 +50,18 @@ class AssetUserRuleFilterAction extends \Kaltura\Client\Type\AssetUserRuleAction
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->applyOnChannel))
+		{
+			if(!empty($xml->applyOnChannel))
+				$this->applyOnChannel = true;
+			else
+				$this->applyOnChannel = false;
+		}
 	}
+	/**
+	 * Indicates whether to apply on channel
+	 * @var bool
+	 */
+	public $applyOnChannel = null;
+
 }
