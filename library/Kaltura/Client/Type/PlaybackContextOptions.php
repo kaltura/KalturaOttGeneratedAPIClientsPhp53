@@ -68,7 +68,7 @@ class PlaybackContextOptions extends \Kaltura\Client\ObjectBase
 	public $mediaProtocol = null;
 
 	/**
-	 * Playback streamer type: applehttp, mpegdash, url.
+	 * Playback streamer type: applehttp, mpegdash, url, smothstreaming, none
 	 * @var string
 	 */
 	public $streamerType = null;
