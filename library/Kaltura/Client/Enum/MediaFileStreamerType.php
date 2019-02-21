@@ -42,6 +42,5 @@ class MediaFileStreamerType extends \Kaltura\Client\EnumBase
 	const MPEG_DASH = "MPEG_DASH";
 	const URL = "URL";
 	const SMOOTH_STREAMING = "SMOOTH_STREAMING";
-	const NONE = "NONE";
 }
 
