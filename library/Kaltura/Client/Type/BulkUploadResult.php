@@ -33,14 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
+ * Bulk Upload Result
  * @package Kaltura
  * @subpackage Client
  */
-class Bulk extends \Kaltura\Client\ObjectBase
+abstract class BulkUploadResult extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaBulk';
+		return 'KalturaBulkUploadResult';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,41 +51,41 @@ class Bulk extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->id))
-			$this->id = (string)$xml->id;
-		if(count($xml->status))
-			$this->status = (string)$xml->status;
-		if(count($xml->createDate))
-			$this->createDate = (string)$xml->createDate;
-		if(count($xml->updateDate))
-			$this->updateDate = (string)$xml->updateDate;
+		if(count($xml->objectId))
+			$this->objectId = (string)$xml->objectId;
+		if(count($xml->index))
+			$this->index = (int)$xml->index;
+		if(count($xml->bulkUploadId))
+			$this->bulkUploadId = (string)$xml->bulkUploadId;
+		if(count($xml->status) && !empty($xml->status))
+			$this->status = \Kaltura\Client\ParseUtils::unmarshalObject($xml->status, "KalturaResponseStatus");
 	}
 	/**
-	 * Bulk identifier
+	 * the result ObjectId (assetId, userId etc)
 	 * @var int
 	 * @readonly
 	 */
-	public $id = null;
+	public $objectId = null;
 
 	/**
-	 * Status
-	 * @var \Kaltura\Client\Enum\BatchJobStatus
-	 * @readonly
-	 */
-	public $status = null;
-
-	/**
-	 * Specifies when was the bulk action created. Date and time represented as epoch
+	 * result index
 	 * @var int
 	 * @readonly
 	 */
-	public $createDate = null;
+	public $index = null;
 
 	/**
-	 * Specifies when was the bulk action last updated. Date and time represented as epoch
+	 * Bulk upload identifier
 	 * @var int
 	 * @readonly
 	 */
-	public $updateDate = null;
+	public $bulkUploadId = null;
+
+	/**
+	 * status
+	 * @var \Kaltura\Client\Type\ResponseStatus
+	 * @readonly
+	 */
+	public $status;
 
 }

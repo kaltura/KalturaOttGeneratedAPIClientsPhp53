@@ -33,14 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
+ * instractions for upload data type with xml
  * @package Kaltura
  * @subpackage Client
  */
-class BulkFilter extends \Kaltura\Client\Type\PersistedFilter
+class BulkUploadXmlJobData extends \Kaltura\Client\Type\BulkUploadJobData
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaBulkFilter';
+		return 'KalturaBulkUploadXmlJobData';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,13 +51,5 @@ class BulkFilter extends \Kaltura\Client\Type\PersistedFilter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->statusEqual))
-			$this->statusEqual = (string)$xml->statusEqual;
 	}
-	/**
-	 * dynamicOrderBy - order by Meta
-	 * @var \Kaltura\Client\Enum\BatchJobStatus
-	 */
-	public $statusEqual = null;
-
 }

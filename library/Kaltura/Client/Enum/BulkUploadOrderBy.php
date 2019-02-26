@@ -30,42 +30,16 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
- * User asset rule filter
  * @package Kaltura
  * @subpackage Client
  */
-class UserAssetRuleFilter extends \Kaltura\Client\Type\Filter
+class BulkUploadOrderBy extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaUserAssetRuleFilter';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->assetIdEqual))
-			$this->assetIdEqual = (string)$xml->assetIdEqual;
-		if(count($xml->assetTypeEqual))
-			$this->assetTypeEqual = (int)$xml->assetTypeEqual;
-	}
-	/**
-	 * Asset identifier to filter by
-	 * @var int
-	 */
-	public $assetIdEqual = null;
-
-	/**
-	 * Asset type to filter by - 0 = EPG, 1 = media, 2 = npvr
-	 * @var int
-	 */
-	public $assetTypeEqual = null;
-
+	const NONE = "NONE";
+	const UPDATE_DATE = "UPDATE_DATE";
+	const STATUS = "STATUS";
 }
+

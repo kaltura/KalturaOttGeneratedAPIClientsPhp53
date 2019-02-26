@@ -37,7 +37,7 @@ namespace Kaltura\Client\Service;
  * @package Kaltura
  * @subpackage Client
  */
-class BulkService extends \Kaltura\Client\ServiceBase
+class BulkUploadService extends \Kaltura\Client\ServiceBase
 {
 	function __construct(\Kaltura\Client\Client $client = null)
 	{
@@ -45,45 +45,23 @@ class BulkService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * List bulk actions
+	 * Get list of KalturaBulkUpload by filter
 	 * 
-	 * @return \Kaltura\Client\Type\BulkListResponse
+	 * @return \Kaltura\Client\Type\BulkUploadListResponse
 	 */
-	function listAction(\Kaltura\Client\Type\BulkFilter $filter = null, \Kaltura\Client\Type\FilterPager $pager = null)
+	function listAction(\Kaltura\Client\Type\BulkUploadFilter $filter = null)
 	{
 		$kparams = array();
 		if ($filter !== null)
 			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("bulk", "list", "KalturaBulkListResponse", $kparams);
+		$this->client->queueServiceActionCall("bulkupload", "list", "KalturaBulkUploadListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBulkListResponse");
-		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\BulkListResponse");
-		return $resultObject;
-	}
-
-	/**
-	 * ServeLog action returns the log file for the bulk action
-	 * 
-	 * @return \Kaltura\Client\Type\Bulk
-	 */
-	function serveLog($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("bulk", "serveLog", "KalturaBulk", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBulk");
-		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\Bulk");
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBulkUploadListResponse");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\BulkUploadListResponse");
 		return $resultObject;
 	}
 }

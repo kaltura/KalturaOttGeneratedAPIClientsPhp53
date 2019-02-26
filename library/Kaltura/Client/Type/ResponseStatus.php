@@ -33,15 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
- * User asset rule filter
+ * Response Status
  * @package Kaltura
  * @subpackage Client
  */
-class UserAssetRuleFilter extends \Kaltura\Client\Type\Filter
+class ResponseStatus extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaUserAssetRuleFilter';
+		return 'KalturaResponseStatus';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,21 +51,23 @@ class UserAssetRuleFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->assetIdEqual))
-			$this->assetIdEqual = (string)$xml->assetIdEqual;
-		if(count($xml->assetTypeEqual))
-			$this->assetTypeEqual = (int)$xml->assetTypeEqual;
+		if(count($xml->code))
+			$this->code = (int)$xml->code;
+		if(count($xml->message))
+			$this->message = (string)$xml->message;
 	}
 	/**
-	 * Asset identifier to filter by
+	 * Code
 	 * @var int
+	 * @readonly
 	 */
-	public $assetIdEqual = null;
+	public $code = null;
 
 	/**
-	 * Asset type to filter by - 0 = EPG, 1 = media, 2 = npvr
-	 * @var int
+	 * Message
+	 * @var string
+	 * @readonly
 	 */
-	public $assetTypeEqual = null;
+	public $message = null;
 
 }

@@ -30,42 +30,25 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
- * User asset rule filter
  * @package Kaltura
  * @subpackage Client
  */
-class UserAssetRuleFilter extends \Kaltura\Client\Type\Filter
+class BatchUploadJobStatus extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaUserAssetRuleFilter';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->assetIdEqual))
-			$this->assetIdEqual = (string)$xml->assetIdEqual;
-		if(count($xml->assetTypeEqual))
-			$this->assetTypeEqual = (int)$xml->assetTypeEqual;
-	}
-	/**
-	 * Asset identifier to filter by
-	 * @var int
-	 */
-	public $assetIdEqual = null;
-
-	/**
-	 * Asset type to filter by - 0 = EPG, 1 = media, 2 = npvr
-	 * @var int
-	 */
-	public $assetTypeEqual = null;
-
+	const PENDING = "PENDING";
+	const QUEUED = "QUEUED";
+	const PROCESSING = "PROCESSING";
+	const PROCESSED = "PROCESSED";
+	const MOVEFILE = "MOVEFILE";
+	const FINISHED = "FINISHED";
+	const FAILED = "FAILED";
+	const ABORTED = "ABORTED";
+	const RETRY = "RETRY";
+	const FATAL = "FATAL";
+	const DONT_PROCESS = "DONT_PROCESS";
+	const FINISHED_PARTIALLY = "FINISHED_PARTIALLY";
 }
+

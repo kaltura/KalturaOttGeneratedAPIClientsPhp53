@@ -33,15 +33,14 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Asset wrapper
  * @package Kaltura
  * @subpackage Client
  */
-class BulkListResponse extends \Kaltura\Client\Type\ListResponse
+class BulkUploadAssetResult extends \Kaltura\Client\Type\BulkUploadResult
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaBulkListResponse';
+		return 'KalturaBulkUploadAssetResult';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,18 +50,24 @@ class BulkListResponse extends \Kaltura\Client\Type\ListResponse
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->objects))
-		{
-			if(empty($xml->objects))
-				$this->objects = array();
-			else
-				$this->objects = \Kaltura\Client\ParseUtils::unmarshalArray($xml->objects, "KalturaBulk");
-		}
+		if(count($xml->type))
+			$this->type = (int)$xml->type;
+		if(count($xml->externalId))
+			$this->externalId = (string)$xml->externalId;
 	}
 	/**
-	 * bulk items
-	 * @var array<KalturaBulk>
+	 * Identifies the asset type (EPG, Recording, Movie, TV Series, etc). 
+	 *             Possible values: 0 – EPG linear programs, 1 - Recording; or any asset type ID according to the asset types IDs defined in the system.
+	 * @var int
+	 * @readonly
 	 */
-	public $objects;
+	public $type = null;
+
+	/**
+	 * External identifier for the asset
+	 * @var string
+	 * @readonly
+	 */
+	public $externalId = null;
 
 }

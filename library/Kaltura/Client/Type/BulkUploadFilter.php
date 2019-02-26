@@ -33,15 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
- * User asset rule filter
+ * Bulk Upload Filter
  * @package Kaltura
  * @subpackage Client
  */
-class UserAssetRuleFilter extends \Kaltura\Client\Type\Filter
+class BulkUploadFilter extends \Kaltura\Client\Type\PersistedFilter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaUserAssetRuleFilter';
+		return 'KalturaBulkUploadFilter';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,21 +51,13 @@ class UserAssetRuleFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->assetIdEqual))
-			$this->assetIdEqual = (string)$xml->assetIdEqual;
-		if(count($xml->assetTypeEqual))
-			$this->assetTypeEqual = (int)$xml->assetTypeEqual;
+		if(count($xml->statusEqual))
+			$this->statusEqual = (string)$xml->statusEqual;
 	}
 	/**
-	 * Asset identifier to filter by
-	 * @var int
+	 * Indicates which Bulk Upload list to return by this KalturaBatchUploadJobStatus.
+	 * @var \Kaltura\Client\Enum\BatchUploadJobStatus
 	 */
-	public $assetIdEqual = null;
-
-	/**
-	 * Asset type to filter by - 0 = EPG, 1 = media, 2 = npvr
-	 * @var int
-	 */
-	public $assetTypeEqual = null;
+	public $statusEqual = null;
 
 }

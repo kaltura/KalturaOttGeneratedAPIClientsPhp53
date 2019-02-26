@@ -30,26 +30,34 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
+ * instractions for upload data type
  * @package Kaltura
  * @subpackage Client
  */
-class BatchJobStatus extends \Kaltura\Client\EnumBase
+abstract class BulkUploadJobData extends \Kaltura\Client\ObjectBase
 {
-	const PENDING = "PENDING";
-	const QUEUED = "QUEUED";
-	const PROCESSING = "PROCESSING";
-	const PROCESSED = "PROCESSED";
-	const MOVEFILE = "MOVEFILE";
-	const FINISHED = "FINISHED";
-	const FAILED = "FAILED";
-	const ABORTED = "ABORTED";
-	const ALMOST_DONE = "ALMOST_DONE";
-	const RETRY = "RETRY";
-	const FATAL = "FATAL";
-	const DONT_PROCESS = "DONT_PROCESS";
-	const FINISHED_PARTIALLY = "FINISHED_PARTIALLY";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaBulkUploadJobData';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->entryData) && !empty($xml->entryData))
+			$this->entryData = \Kaltura\Client\ParseUtils::unmarshalObject($xml->entryData, "KalturaBulkUploadEntryData");
+	}
+	/**
+	 * EntryData
+	 * @var \Kaltura\Client\Type\BulkUploadEntryData
+	 */
+	public $entryData;
 
+}

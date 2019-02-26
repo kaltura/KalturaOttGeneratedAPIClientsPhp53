@@ -33,15 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
- * User asset rule filter
+ * instractions for upload data values
  * @package Kaltura
  * @subpackage Client
  */
-class UserAssetRuleFilter extends \Kaltura\Client\Type\Filter
+abstract class BulkUploadEntryData extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaUserAssetRuleFilter';
+		return 'KalturaBulkUploadEntryData';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,21 +51,5 @@ class UserAssetRuleFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->assetIdEqual))
-			$this->assetIdEqual = (string)$xml->assetIdEqual;
-		if(count($xml->assetTypeEqual))
-			$this->assetTypeEqual = (int)$xml->assetTypeEqual;
 	}
-	/**
-	 * Asset identifier to filter by
-	 * @var int
-	 */
-	public $assetIdEqual = null;
-
-	/**
-	 * Asset type to filter by - 0 = EPG, 1 = media, 2 = npvr
-	 * @var int
-	 */
-	public $assetTypeEqual = null;
-
 }

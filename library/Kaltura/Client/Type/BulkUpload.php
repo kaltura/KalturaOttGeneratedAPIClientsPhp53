@@ -33,15 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
- * User asset rule filter
+ * Bulk Upload
  * @package Kaltura
  * @subpackage Client
  */
-class UserAssetRuleFilter extends \Kaltura\Client\Type\Filter
+class BulkUpload extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaUserAssetRuleFilter';
+		return 'KalturaBulkUpload';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,21 +51,73 @@ class UserAssetRuleFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->assetIdEqual))
-			$this->assetIdEqual = (string)$xml->assetIdEqual;
-		if(count($xml->assetTypeEqual))
-			$this->assetTypeEqual = (int)$xml->assetTypeEqual;
+		if(count($xml->id))
+			$this->id = (string)$xml->id;
+		if(count($xml->status))
+			$this->status = (string)$xml->status;
+		if(count($xml->createDate))
+			$this->createDate = (string)$xml->createDate;
+		if(count($xml->updateDate))
+			$this->updateDate = (string)$xml->updateDate;
+		if(count($xml->uploadTokenId))
+			$this->uploadTokenId = (string)$xml->uploadTokenId;
+		if(count($xml->action))
+			$this->action = (string)$xml->action;
+		if(count($xml->results))
+		{
+			if(empty($xml->results))
+				$this->results = array();
+			else
+				$this->results = \Kaltura\Client\ParseUtils::unmarshalArray($xml->results, "KalturaBulkUploadResult");
+		}
 	}
 	/**
-	 * Asset identifier to filter by
+	 * Bulk identifier
 	 * @var int
+	 * @readonly
 	 */
-	public $assetIdEqual = null;
+	public $id = null;
 
 	/**
-	 * Asset type to filter by - 0 = EPG, 1 = media, 2 = npvr
-	 * @var int
+	 * Status
+	 * @var \Kaltura\Client\Enum\BatchUploadJobStatus
+	 * @readonly
 	 */
-	public $assetTypeEqual = null;
+	public $status = null;
+
+	/**
+	 * Specifies when was the bulk action created. Date and time represented as epoch
+	 * @var int
+	 * @readonly
+	 */
+	public $createDate = null;
+
+	/**
+	 * Specifies when was the bulk action last updated. Date and time represented as epoch
+	 * @var int
+	 * @readonly
+	 */
+	public $updateDate = null;
+
+	/**
+	 * Upload Token Id
+	 * @var string
+	 * @readonly
+	 */
+	public $uploadTokenId = null;
+
+	/**
+	 * Action
+	 * @var \Kaltura\Client\Enum\BatchUploadJobAction
+	 * @readonly
+	 */
+	public $action = null;
+
+	/**
+	 * A list of results
+	 * @var array<KalturaBulkUploadResult>
+	 * @readonly
+	 */
+	public $results;
 
 }

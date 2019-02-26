@@ -104,9 +104,9 @@ class Client extends Base
 	protected $bookmark = null;
 
 	/**
-	 * @var \Kaltura\Client\Service\BulkService
+	 * @var \Kaltura\Client\Service\BulkUploadService
 	 */
-	protected $bulk = null;
+	protected $bulkUpload = null;
 
 	/**
 	 * @var \Kaltura\Client\Service\BusinessModuleRuleService
@@ -613,7 +613,7 @@ class Client extends Base
 		parent::__construct($config);
 		
 		$this->setClientTag('php5:19-02-26');
-		$this->setApiVersion('5.1.1.19202');
+		$this->setApiVersion('5.1.1.26892');
 	}
 	
 	/**
@@ -734,13 +734,13 @@ class Client extends Base
 		return $this->bookmark;
 	}
 	/**
-	 * @return \Kaltura\Client\Service\BulkService
+	 * @return \Kaltura\Client\Service\BulkUploadService
 	 */
-	public function getBulkService()
+	public function getBulkUploadService()
 	{
-		if (is_null($this->bulk))
-			$this->bulk = new \Kaltura\Client\Service\BulkService($this);
-		return $this->bulk;
+		if (is_null($this->bulkUpload))
+			$this->bulkUpload = new \Kaltura\Client\Service\BulkUploadService($this);
+		return $this->bulkUpload;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\BusinessModuleRuleService
