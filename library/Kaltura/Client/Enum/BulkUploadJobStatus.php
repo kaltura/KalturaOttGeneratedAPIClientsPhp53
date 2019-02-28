@@ -30,26 +30,16 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
- * instractions for upload asset values
  * @package Kaltura
  * @subpackage Client
  */
-abstract class BulkUploadAssetEntryData extends \Kaltura\Client\Type\BulkUploadEntryData
+class BulkUploadJobStatus extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaBulkUploadAssetEntryData';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-	}
+	const PENDING = "PENDING";
+	const UPLOADED = "UPLOADED";
+	const QUEUED = "QUEUED";
 }
+

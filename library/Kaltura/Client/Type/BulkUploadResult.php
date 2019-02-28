@@ -57,8 +57,12 @@ abstract class BulkUploadResult extends \Kaltura\Client\ObjectBase
 			$this->index = (int)$xml->index;
 		if(count($xml->bulkUploadId))
 			$this->bulkUploadId = (string)$xml->bulkUploadId;
-		if(count($xml->status) && !empty($xml->status))
-			$this->status = \Kaltura\Client\ParseUtils::unmarshalObject($xml->status, "KalturaResponseStatus");
+		if(count($xml->status))
+			$this->status = (string)$xml->status;
+		if(count($xml->errorCode))
+			$this->errorCode = (int)$xml->errorCode;
+		if(count($xml->errorMessage))
+			$this->errorMessage = (string)$xml->errorMessage;
 	}
 	/**
 	 * the result ObjectId (assetId, userId etc)
@@ -83,9 +87,23 @@ abstract class BulkUploadResult extends \Kaltura\Client\ObjectBase
 
 	/**
 	 * status
-	 * @var \Kaltura\Client\Type\ResponseStatus
+	 * @var \Kaltura\Client\Enum\BulkUploadResultStatus
 	 * @readonly
 	 */
-	public $status;
+	public $status = null;
+
+	/**
+	 * Error Code
+	 * @var int
+	 * @readonly
+	 */
+	public $errorCode = null;
+
+	/**
+	 * Error Message
+	 * @var string
+	 * @readonly
+	 */
+	public $errorMessage = null;
 
 }

@@ -56,7 +56,7 @@ class BulkUploadFilter extends \Kaltura\Client\Type\PersistedFilter
 	}
 	/**
 	 * Indicates which Bulk Upload list to return by this KalturaBatchUploadJobStatus.
-	 * @var \Kaltura\Client\Enum\BatchUploadJobStatus
+	 * @var \Kaltura\Client\Enum\BulkUploadJobStatus
 	 */
 	public $statusEqual = null;
 

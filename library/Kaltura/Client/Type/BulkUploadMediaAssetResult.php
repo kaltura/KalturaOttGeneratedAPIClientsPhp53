@@ -33,15 +33,14 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Response Status
  * @package Kaltura
  * @subpackage Client
  */
-class ResponseStatus extends \Kaltura\Client\ObjectBase
+class BulkUploadMediaAssetResult extends \Kaltura\Client\Type\BulkUploadAssetResult
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaResponseStatus';
+		return 'KalturaBulkUploadMediaAssetResult';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,23 +50,5 @@ class ResponseStatus extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->code))
-			$this->code = (int)$xml->code;
-		if(count($xml->message))
-			$this->message = (string)$xml->message;
 	}
-	/**
-	 * Code
-	 * @var int
-	 * @readonly
-	 */
-	public $code = null;
-
-	/**
-	 * Message
-	 * @var string
-	 * @readonly
-	 */
-	public $message = null;
-
 }

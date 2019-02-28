@@ -30,26 +30,15 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
- * instractions for upload epg asset values
  * @package Kaltura
  * @subpackage Client
  */
-class BulkUploadEpgEntryData extends \Kaltura\Client\Type\BulkUploadAssetEntryData
+class BulkUploadJobAction extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaBulkUploadEpgEntryData';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-	}
+	const UPSERT = "Upsert";
+	const DELETE = "Delete";
 }
+

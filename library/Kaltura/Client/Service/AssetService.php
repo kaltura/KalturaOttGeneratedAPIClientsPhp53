@@ -68,21 +68,23 @@ class AssetService extends \Kaltura\Client\ServiceBase
 	/**
 	 * Add new bulk upload batch job Conversion profile id can be specified in the API.
 	 * 
-	 * @return bigint
+	 * @return \Kaltura\Client\Type\BulkUpload
 	 */
-	function addFromBulkUpload($fileData, \Kaltura\Client\Type\BulkUploadJobData $bulkUploadJobData)
+	function addFromBulkUpload($fileData, $assetType, \Kaltura\Client\Type\BulkUploadJobData $bulkUploadJobData)
 	{
 		$kparams = array();
 		$kfiles = array();
 		$this->client->addParam($kfiles, "fileData", $fileData);
+		$this->client->addParam($kparams, "assetType", $assetType);
 		$this->client->addParam($kparams, "bulkUploadJobData", $bulkUploadJobData->toParams());
-		$this->client->queueServiceActionCall("asset", "addFromBulkUpload", null, $kparams, $kfiles);
+		$this->client->queueServiceActionCall("asset", "addFromBulkUpload", "KalturaBulkUpload", $kparams, $kfiles);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (String)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBulkUpload");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\BulkUpload");
 		return $resultObject;
 	}
 

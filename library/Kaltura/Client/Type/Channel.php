@@ -95,6 +95,8 @@ class Channel extends \Kaltura\Client\Type\BaseChannel
 			else
 				$this->supportSegmentBasedOrdering = false;
 		}
+		if(count($xml->assetUserRuleId))
+			$this->assetUserRuleId = (string)$xml->assetUserRuleId;
 	}
 	/**
 	 * Channel name
@@ -171,5 +173,11 @@ class Channel extends \Kaltura\Client\Type\BaseChannel
 	 * @var bool
 	 */
 	public $supportSegmentBasedOrdering = null;
+
+	/**
+	 * Asset user rule identifier
+	 * @var int
+	 */
+	public $assetUserRuleId = null;
 
 }

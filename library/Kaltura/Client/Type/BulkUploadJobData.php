@@ -51,13 +51,5 @@ abstract class BulkUploadJobData extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->entryData) && !empty($xml->entryData))
-			$this->entryData = \Kaltura\Client\ParseUtils::unmarshalObject($xml->entryData, "KalturaBulkUploadEntryData");
 	}
-	/**
-	 * EntryData
-	 * @var \Kaltura\Client\Type\BulkUploadEntryData
-	 */
-	public $entryData;
-
 }

@@ -36,7 +36,7 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class BulkUploadAssetResult extends \Kaltura\Client\Type\BulkUploadResult
+abstract class BulkUploadAssetResult extends \Kaltura\Client\Type\BulkUploadResult
 {
 	public function getKalturaObjectType()
 	{

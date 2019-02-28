@@ -30,26 +30,16 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
- * instractions for upload media asset values
  * @package Kaltura
  * @subpackage Client
  */
-class BulkUploadMediaEntryData extends \Kaltura\Client\Type\BulkUploadAssetEntryData
+class BulkUploadResultStatus extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaBulkUploadMediaEntryData';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-	}
+	const ERROR = "ERROR";
+	const OK = "OK";
+	const IN_PROGRESS = "IN_PROGRESS";
 }
+
