@@ -30,16 +30,34 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class BulkUploadResultStatus extends \Kaltura\Client\EnumBase
+class BulkUploadAssetData extends \Kaltura\Client\Type\BulkUploadObjectData
 {
-	const ERROR = "Error";
-	const OK = "Ok";
-	const INPROGRESS = "InProgress";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaBulkUploadAssetData';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->typeId))
+			$this->typeId = (string)$xml->typeId;
+	}
+	/**
+	 * Identifies the asset type (EPG, Recording, Movie, TV Series, etc). 
+	 *             Possible values: 0 – EPG linear programs, 1 - Recording; or any asset type ID according to the asset types IDs defined in the system.
+	 * @var int
+	 */
+	public $typeId = null;
 
+}

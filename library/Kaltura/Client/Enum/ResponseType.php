@@ -27,3 +27,21 @@
 // @ignore
 // ===================================================================================================
 
+/**
+ * @namespace
+ */
+namespace Kaltura\Client\Enum;
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class ResponseType extends \Kaltura\Client\EnumBase
+{
+	const JSON = 1;
+	const XML = 2;
+	const JSONP = 9;
+	const ASSET_XML = 30;
+	const EXCEL = 31;
+}
+

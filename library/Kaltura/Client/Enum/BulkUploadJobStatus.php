@@ -38,8 +38,15 @@ namespace Kaltura\Client\Enum;
  */
 class BulkUploadJobStatus extends \Kaltura\Client\EnumBase
 {
-	const PENDING = "PENDING";
-	const UPLOADED = "UPLOADED";
-	const QUEUED = "QUEUED";
+	const PENDING = "Pending";
+	const UPLOADED = "Uploaded";
+	const QUEUED = "Queued";
+	const PARSING = "Parsing";
+	const PROCESSING = "Processing";
+	const PROCESSED = "Processed";
+	const SUCCESS = "Success";
+	const PARTIAL = "Partial";
+	const FAILED = "Failed";
+	const FATAL = "Fatal";
 }
 

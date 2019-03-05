@@ -84,6 +84,26 @@ class AssetStructService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
+	 * Get AssetStruct by ID
+	 * 
+	 * @return \Kaltura\Client\Type\AssetStruct
+	 */
+	function get($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("assetstruct", "get", "KalturaAssetStruct", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAssetStruct");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\AssetStruct");
+		return $resultObject;
+	}
+
+	/**
 	 * Return a list of asset structs for the account with optional filter
 	 * 
 	 * @return \Kaltura\Client\Type\AssetStructListResponse

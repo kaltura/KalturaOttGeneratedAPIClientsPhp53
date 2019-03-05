@@ -459,6 +459,8 @@ class TypeMap
 		'KalturaBulkUploadJobData' => 'Kaltura\Client\Type\BulkUploadJobData',
 		'KalturaBulkUploadExcelJobData' => 'Kaltura\Client\Type\BulkUploadExcelJobData',
 		'KalturaBulkUploadXmlJobData' => 'Kaltura\Client\Type\BulkUploadXmlJobData',
+		'KalturaBulkUploadObjectData' => 'Kaltura\Client\Type\BulkUploadObjectData',
+		'KalturaBulkUploadAssetData' => 'Kaltura\Client\Type\BulkUploadAssetData',
 		'KalturaAssetFileContext' => 'Kaltura\Client\Type\AssetFileContext',
 		'KalturaAssetStatisticsQuery' => 'Kaltura\Client\Type\AssetStatisticsQuery',
 		'KalturaUploadToken' => 'Kaltura\Client\Type\UploadToken',

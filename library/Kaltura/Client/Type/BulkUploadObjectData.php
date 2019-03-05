@@ -30,16 +30,25 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class BulkUploadResultStatus extends \Kaltura\Client\EnumBase
+abstract class BulkUploadObjectData extends \Kaltura\Client\ObjectBase
 {
-	const ERROR = "Error";
-	const OK = "Ok";
-	const INPROGRESS = "InProgress";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaBulkUploadObjectData';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+	}
 }
-
