@@ -37,7 +37,7 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class BulkUploadFilter extends \Kaltura\Client\Type\PersistedFilter
+class BulkUploadFilter extends \Kaltura\Client\Type\Filter
 {
 	public function getKalturaObjectType()
 	{
@@ -51,13 +51,42 @@ class BulkUploadFilter extends \Kaltura\Client\Type\PersistedFilter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->statusEqual))
-			$this->statusEqual = (string)$xml->statusEqual;
+		if(count($xml->uploadedOnEqual))
+			$this->uploadedOnEqual = (string)$xml->uploadedOnEqual;
+		if(count($xml->dateComparisonType))
+			$this->dateComparisonType = (string)$xml->dateComparisonType;
+		if(count($xml->statusIn))
+			$this->statusIn = (string)$xml->statusIn;
+		if(count($xml->userIdEqualCurrent))
+		{
+			if(!empty($xml->userIdEqualCurrent))
+				$this->userIdEqualCurrent = true;
+			else
+				$this->userIdEqualCurrent = false;
+		}
 	}
 	/**
-	 * Indicates which Bulk Upload list to return by this KalturaBatchUploadJobStatus.
-	 * @var \Kaltura\Client\Enum\BulkUploadJobStatus
+	 * upload date to search within.
+	 * @var int
 	 */
-	public $statusEqual = null;
+	public $uploadedOnEqual = null;
+
+	/**
+	 * Date Comparison Type.
+	 * @var \Kaltura\Client\Enum\DateComparisonType
+	 */
+	public $dateComparisonType = null;
+
+	/**
+	 * List of KalturaBulkUploadJobStatus to search within.
+	 * @var string
+	 */
+	public $statusIn = null;
+
+	/**
+	 * Indicates if to get the BulkUpload list that created by current user or by the entire group.
+	 * @var bool
+	 */
+	public $userIdEqualCurrent = null;
 
 }

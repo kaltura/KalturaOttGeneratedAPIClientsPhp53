@@ -33,7 +33,7 @@
 namespace Kaltura\Client\Type;
 
 /**
- * instractions for upload data type with xml
+ * instructions for upload data type with xml
  * @package Kaltura
  * @subpackage Client
  */

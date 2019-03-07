@@ -69,11 +69,13 @@ class BulkUploadService extends \Kaltura\Client\ServiceBase
 	 * 
 	 * @return \Kaltura\Client\Type\BulkUploadListResponse
 	 */
-	function listAction(\Kaltura\Client\Type\BulkUploadFilter $filter = null)
+	function listAction(\Kaltura\Client\Type\BulkUploadFilter $filter = null, \Kaltura\Client\Type\FilterPager $pager = null)
 	{
 		$kparams = array();
 		if ($filter !== null)
 			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
 		$this->client->queueServiceActionCall("bulkupload", "list", "KalturaBulkUploadListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();

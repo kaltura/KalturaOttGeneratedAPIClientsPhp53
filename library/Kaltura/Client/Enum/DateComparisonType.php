@@ -36,9 +36,10 @@ namespace Kaltura\Client\Enum;
  * @package Kaltura
  * @subpackage Client
  */
-class BulkUploadOrderBy extends \Kaltura\Client\EnumBase
+class DateComparisonType extends \Kaltura\Client\EnumBase
 {
-	const NONE = "NONE";
-	const UPDATE_DATE = "UPDATE_DATE";
+	const GREATERTHANOREQUAL = "GreaterThanOrEqual";
+	const LESSTHANOREQUAL = "LessThanOrEqual";
+	const EQUAL = "Equal";
 }
 

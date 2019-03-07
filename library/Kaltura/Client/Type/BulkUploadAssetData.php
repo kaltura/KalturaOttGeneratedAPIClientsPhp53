@@ -33,6 +33,7 @@
 namespace Kaltura\Client\Type;
 
 /**
+ * indicates the asset object type in the bulk file
  * @package Kaltura
  * @subpackage Client
  */
