@@ -51,12 +51,10 @@ class BulkUploadFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->uploadedOnEqual))
-			$this->uploadedOnEqual = (string)$xml->uploadedOnEqual;
-		if(count($xml->dateComparisonType))
-			$this->dateComparisonType = (string)$xml->dateComparisonType;
-		if(count($xml->statusIn))
-			$this->statusIn = (string)$xml->statusIn;
+		if(count($xml->fileObjectNameEqual))
+			$this->fileObjectNameEqual = (string)$xml->fileObjectNameEqual;
+		if(count($xml->createDateGreaterThanOrEqual))
+			$this->createDateGreaterThanOrEqual = (string)$xml->createDateGreaterThanOrEqual;
 		if(count($xml->userIdEqualCurrent))
 		{
 			if(!empty($xml->userIdEqualCurrent))
@@ -64,29 +62,36 @@ class BulkUploadFilter extends \Kaltura\Client\Type\Filter
 			else
 				$this->userIdEqualCurrent = false;
 		}
+		if(count($xml->shouldGetOnGoingBulkUploads))
+		{
+			if(!empty($xml->shouldGetOnGoingBulkUploads))
+				$this->shouldGetOnGoingBulkUploads = true;
+			else
+				$this->shouldGetOnGoingBulkUploads = false;
+		}
 	}
 	/**
-	 * upload date to search within.
-	 * @var int
-	 */
-	public $uploadedOnEqual = null;
-
-	/**
-	 * Date Comparison Type.
-	 * @var \Kaltura\Client\Enum\DateComparisonType
-	 */
-	public $dateComparisonType = null;
-
-	/**
-	 * List of KalturaBulkUploadJobStatus to search within.
+	 * File&#39;s objectType name (must be type of KalturaOTTObject)
 	 * @var string
 	 */
-	public $statusIn = null;
+	public $fileObjectNameEqual = null;
+
+	/**
+	 * upload date to search within (search in the last 60 days)
+	 * @var int
+	 */
+	public $createDateGreaterThanOrEqual = null;
 
 	/**
 	 * Indicates if to get the BulkUpload list that created by current user or by the entire group.
 	 * @var bool
 	 */
 	public $userIdEqualCurrent = null;
+
+	/**
+	 * Indicates if to get the BulkUpload list that are stil in OnGoing process or finished.
+	 * @var bool
+	 */
+	public $shouldGetOnGoingBulkUploads = null;
 
 }

@@ -39,6 +39,7 @@ namespace Kaltura\Client\Enum;
 class BulkUploadOrderBy extends \Kaltura\Client\EnumBase
 {
 	const NONE = "NONE";
-	const UPDATE_DATE = "UPDATE_DATE";
+	const UPDATE_DATE_ASC = "UPDATE_DATE_ASC";
+	const UPDATE_DATE_DESC = "UPDATE_DATE_DESC";
 }
 
