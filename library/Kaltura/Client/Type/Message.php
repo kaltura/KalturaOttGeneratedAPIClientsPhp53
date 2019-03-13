@@ -33,15 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Bulk Upload Result
+ * Message
  * @package Kaltura
  * @subpackage Client
  */
-abstract class BulkUploadResult extends \Kaltura\Client\ObjectBase
+class Message extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaBulkUploadResult';
+		return 'KalturaMessage';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,73 +51,34 @@ abstract class BulkUploadResult extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->objectId))
-			$this->objectId = (string)$xml->objectId;
-		if(count($xml->index))
-			$this->index = (int)$xml->index;
-		if(count($xml->bulkUploadId))
-			$this->bulkUploadId = (string)$xml->bulkUploadId;
-		if(count($xml->status))
-			$this->status = (string)$xml->status;
-		if(count($xml->errorCode))
-			$this->errorCode = (int)$xml->errorCode;
-		if(count($xml->errorMessage))
-			$this->errorMessage = (string)$xml->errorMessage;
-		if(count($xml->warnings))
+		if(count($xml->code))
+			$this->code = (int)$xml->code;
+		if(count($xml->message))
+			$this->message = (string)$xml->message;
+		if(count($xml->args))
 		{
-			if(empty($xml->warnings))
-				$this->warnings = array();
+			if(empty($xml->args))
+				$this->args = array();
 			else
-				$this->warnings = \Kaltura\Client\ParseUtils::unmarshalArray($xml->warnings, "KalturaMessage");
+				$this->args = \Kaltura\Client\ParseUtils::unmarshalMap($xml->args, "KalturaStringValue");
 		}
 	}
 	/**
-	 * the result ObjectId (assetId, userId etc)
+	 * Massage code
 	 * @var int
-	 * @readonly
 	 */
-	public $objectId = null;
+	public $code = null;
 
 	/**
-	 * result index
-	 * @var int
-	 * @readonly
-	 */
-	public $index = null;
-
-	/**
-	 * Bulk upload identifier
-	 * @var int
-	 * @readonly
-	 */
-	public $bulkUploadId = null;
-
-	/**
-	 * status
-	 * @var \Kaltura\Client\Enum\BulkUploadResultStatus
-	 * @readonly
-	 */
-	public $status = null;
-
-	/**
-	 * Error Code
-	 * @var int
-	 * @readonly
-	 */
-	public $errorCode = null;
-
-	/**
-	 * Error Message
+	 * Message details
 	 * @var string
-	 * @readonly
 	 */
-	public $errorMessage = null;
+	public $message = null;
 
 	/**
-	 * A list of warnings
-	 * @var array<KalturaMessage>
-	 * @readonly
+	 * Message args
+	 * @var array<string, KalturaStringValue>
 	 */
-	public $warnings;
+	public $args;
 
 }

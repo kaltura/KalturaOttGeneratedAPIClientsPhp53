@@ -51,30 +51,25 @@ class BulkUploadFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->fileObjectNameEqual))
-			$this->fileObjectNameEqual = (string)$xml->fileObjectNameEqual;
+		if(count($xml->bulkObjectNameEqual))
+			$this->bulkObjectNameEqual = (string)$xml->bulkObjectNameEqual;
 		if(count($xml->createDateGreaterThanOrEqual))
 			$this->createDateGreaterThanOrEqual = (string)$xml->createDateGreaterThanOrEqual;
-		if(count($xml->userIdEqualCurrent))
+		if(count($xml->uploadedByUserIdEqualCurrent))
 		{
-			if(!empty($xml->userIdEqualCurrent))
-				$this->userIdEqualCurrent = true;
+			if(!empty($xml->uploadedByUserIdEqualCurrent))
+				$this->uploadedByUserIdEqualCurrent = true;
 			else
-				$this->userIdEqualCurrent = false;
+				$this->uploadedByUserIdEqualCurrent = false;
 		}
-		if(count($xml->shouldGetOnGoingBulkUploads))
-		{
-			if(!empty($xml->shouldGetOnGoingBulkUploads))
-				$this->shouldGetOnGoingBulkUploads = true;
-			else
-				$this->shouldGetOnGoingBulkUploads = false;
-		}
+		if(count($xml->statusIn))
+			$this->statusIn = (string)$xml->statusIn;
 	}
 	/**
-	 * File&#39;s objectType name (must be type of KalturaOTTObject)
+	 * bulk objects Type name (must be type of KalturaOTTObject)
 	 * @var string
 	 */
-	public $fileObjectNameEqual = null;
+	public $bulkObjectNameEqual = null;
 
 	/**
 	 * upload date to search within (search in the last 60 days)
@@ -86,12 +81,12 @@ class BulkUploadFilter extends \Kaltura\Client\Type\Filter
 	 * Indicates if to get the BulkUpload list that created by current user or by the entire group.
 	 * @var bool
 	 */
-	public $userIdEqualCurrent = null;
+	public $uploadedByUserIdEqualCurrent = null;
 
 	/**
-	 * Indicates if to get the BulkUpload list that are stil in OnGoing process or finished.
-	 * @var bool
+	 * Comma separated list of BulkUpload Statuses to search\filter
+	 * @var string
 	 */
-	public $shouldGetOnGoingBulkUploads = null;
+	public $statusIn = null;
 
 }

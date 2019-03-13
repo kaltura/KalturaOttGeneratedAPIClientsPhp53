@@ -65,6 +65,8 @@ class BulkUpload extends \Kaltura\Client\ObjectBase
 			$this->createDate = (string)$xml->createDate;
 		if(count($xml->updateDate))
 			$this->updateDate = (string)$xml->updateDate;
+		if(count($xml->uploadedByUserId))
+			$this->uploadedByUserId = (string)$xml->uploadedByUserId;
 		if(count($xml->results))
 		{
 			if(empty($xml->results))
@@ -121,6 +123,13 @@ class BulkUpload extends \Kaltura\Client\ObjectBase
 	 * @readonly
 	 */
 	public $updateDate = null;
+
+	/**
+	 * The user who uploaded this bulk
+	 * @var int
+	 * @readonly
+	 */
+	public $uploadedByUserId = null;
 
 	/**
 	 * A list of results
