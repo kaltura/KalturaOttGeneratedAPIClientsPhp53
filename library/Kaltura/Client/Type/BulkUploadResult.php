@@ -59,10 +59,8 @@ abstract class BulkUploadResult extends \Kaltura\Client\ObjectBase
 			$this->bulkUploadId = (string)$xml->bulkUploadId;
 		if(count($xml->status))
 			$this->status = (string)$xml->status;
-		if(count($xml->errorCode))
-			$this->errorCode = (int)$xml->errorCode;
-		if(count($xml->errorMessage))
-			$this->errorMessage = (string)$xml->errorMessage;
+		if(count($xml->error) && !empty($xml->error))
+			$this->error = \Kaltura\Client\ParseUtils::unmarshalObject($xml->error, "KalturaMessage");
 		if(count($xml->warnings))
 		{
 			if(empty($xml->warnings))
@@ -100,18 +98,11 @@ abstract class BulkUploadResult extends \Kaltura\Client\ObjectBase
 	public $status = null;
 
 	/**
-	 * Error Code
-	 * @var int
+	 * Error details
+	 * @var \Kaltura\Client\Type\Message
 	 * @readonly
 	 */
-	public $errorCode = null;
-
-	/**
-	 * Error Message
-	 * @var string
-	 * @readonly
-	 */
-	public $errorMessage = null;
+	public $error;
 
 	/**
 	 * A list of warnings

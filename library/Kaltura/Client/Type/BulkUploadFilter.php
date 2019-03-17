@@ -51,8 +51,8 @@ class BulkUploadFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->bulkObjectNameEqual))
-			$this->bulkObjectNameEqual = (string)$xml->bulkObjectNameEqual;
+		if(count($xml->bulkObjectTypeEqual))
+			$this->bulkObjectTypeEqual = (string)$xml->bulkObjectTypeEqual;
 		if(count($xml->createDateGreaterThanOrEqual))
 			$this->createDateGreaterThanOrEqual = (string)$xml->createDateGreaterThanOrEqual;
 		if(count($xml->uploadedByUserIdEqualCurrent))
@@ -69,7 +69,7 @@ class BulkUploadFilter extends \Kaltura\Client\Type\Filter
 	 * bulk objects Type name (must be type of KalturaOTTObject)
 	 * @var string
 	 */
-	public $bulkObjectNameEqual = null;
+	public $bulkObjectTypeEqual = null;
 
 	/**
 	 * upload date to search within (search in the last 60 days)
