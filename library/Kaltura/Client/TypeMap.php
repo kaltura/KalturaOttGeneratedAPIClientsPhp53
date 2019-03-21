@@ -271,6 +271,8 @@ class TypeMap
 		'KalturaMediaFileListResponse' => 'Kaltura\Client\Type\MediaFileListResponse',
 		'KalturaAssetHistory' => 'Kaltura\Client\Type\AssetHistory',
 		'KalturaAssetHistoryListResponse' => 'Kaltura\Client\Type\AssetHistoryListResponse',
+		'KalturaIngestProfile' => 'Kaltura\Client\Type\IngestProfile',
+		'KalturaIngestProfileListResponse' => 'Kaltura\Client\Type\IngestProfileListResponse',
 		'KalturaRule' => 'Kaltura\Client\Type\Rule',
 		'KalturaTvmRule' => 'Kaltura\Client\Type\TvmRule',
 		'KalturaTvmRuleListResponse' => 'Kaltura\Client\Type\TvmRuleListResponse',

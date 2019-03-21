@@ -304,6 +304,11 @@ class Client extends Base
 	protected $inboxMessage = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\IngestProfileService
+	 */
+	protected $IngestProfile = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\LanguageService
 	 */
 	protected $language = null;
@@ -612,8 +617,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:19-03-20');
-		$this->setApiVersion('5.2.0.207');
+		$this->setClientTag('php5:19-03-21');
+		$this->setApiVersion('5.2.0.15395');
 	}
 	
 	/**
@@ -1092,6 +1097,15 @@ class Client extends Base
 		if (is_null($this->inboxMessage))
 			$this->inboxMessage = new \Kaltura\Client\Service\InboxMessageService($this);
 		return $this->inboxMessage;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\IngestProfileService
+	 */
+	public function getIngestProfileService()
+	{
+		if (is_null($this->IngestProfile))
+			$this->IngestProfile = new \Kaltura\Client\Service\IngestProfileService($this);
+		return $this->IngestProfile;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\LanguageService
