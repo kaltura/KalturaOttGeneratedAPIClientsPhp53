@@ -37,11 +37,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class BulkUploadXmlJobData extends \Kaltura\Client\Type\BulkUploadJobData
+class BulkUploadIngestJobData extends \Kaltura\Client\Type\BulkUploadJobData
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaBulkUploadXmlJobData';
+		return 'KalturaBulkUploadIngestJobData';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,5 +51,14 @@ class BulkUploadXmlJobData extends \Kaltura\Client\Type\BulkUploadJobData
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->ingestProfileId))
+			$this->ingestProfileId = (int)$xml->ingestProfileId;
 	}
+	/**
+	 * Identifies the ingest profile that will handle the ingest of programs
+	 *             Ingest profiles are created separately using the ingest profile service
+	 * @var int
+	 */
+	public $ingestProfileId = null;
+
 }

@@ -461,7 +461,7 @@ class TypeMap
 		'KalturaAdsContext' => 'Kaltura\Client\Type\AdsContext',
 		'KalturaBulkUploadJobData' => 'Kaltura\Client\Type\BulkUploadJobData',
 		'KalturaBulkUploadExcelJobData' => 'Kaltura\Client\Type\BulkUploadExcelJobData',
-		'KalturaBulkUploadXmlJobData' => 'Kaltura\Client\Type\BulkUploadXmlJobData',
+		'KalturaBulkUploadIngestJobData' => 'Kaltura\Client\Type\BulkUploadIngestJobData',
 		'KalturaBulkUploadObjectData' => 'Kaltura\Client\Type\BulkUploadObjectData',
 		'KalturaBulkUploadAssetData' => 'Kaltura\Client\Type\BulkUploadAssetData',
 		'KalturaAssetFileContext' => 'Kaltura\Client\Type\AssetFileContext',
