@@ -62,7 +62,12 @@ class IngestProfile extends \Kaltura\Client\ObjectBase
 		if(count($xml->transformationAdapterUrl))
 			$this->transformationAdapterUrl = (string)$xml->transformationAdapterUrl;
 		if(count($xml->transformationAdapterSettings))
-			$this->transformationAdapterSettings = (string)$xml->transformationAdapterSettings;
+		{
+			if(empty($xml->transformationAdapterSettings))
+				$this->transformationAdapterSettings = array();
+			else
+				$this->transformationAdapterSettings = \Kaltura\Client\ParseUtils::unmarshalMap($xml->transformationAdapterSettings, "KalturaStringValue");
+		}
 		if(count($xml->transformationAdapterSharedSecret))
 			$this->transformationAdapterSharedSecret = (string)$xml->transformationAdapterSharedSecret;
 		if(count($xml->defaultAutoFillPolicy))
@@ -103,9 +108,9 @@ class IngestProfile extends \Kaltura\Client\ObjectBase
 
 	/**
 	 * Transformation Adapter settings
-	 * @var string
+	 * @var array<string, KalturaStringValue>
 	 */
-	public $transformationAdapterSettings = null;
+	public $transformationAdapterSettings;
 
 	/**
 	 * Transformation Adapter shared secret
