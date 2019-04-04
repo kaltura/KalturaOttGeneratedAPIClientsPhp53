@@ -53,11 +53,19 @@ class LoginSession extends \Kaltura\Client\ObjectBase
 		
 		if(count($xml->ks))
 			$this->ks = (string)$xml->ks;
+		if(count($xml->expiration))
+			$this->expiration = (string)$xml->expiration;
 	}
 	/**
 	 * Access token in a KS format
 	 * @var string
 	 */
 	public $ks = null;
+
+	/**
+	 * Expiration
+	 * @var int
+	 */
+	public $expiration = null;
 
 }
