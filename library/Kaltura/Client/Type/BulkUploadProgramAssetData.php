@@ -37,11 +37,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class BulkUploadEpgAssetData extends \Kaltura\Client\Type\BulkUploadAssetData
+class BulkUploadProgramAssetData extends \Kaltura\Client\Type\BulkUploadAssetData
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaBulkUploadEpgAssetData';
+		return 'KalturaBulkUploadProgramAssetData';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)

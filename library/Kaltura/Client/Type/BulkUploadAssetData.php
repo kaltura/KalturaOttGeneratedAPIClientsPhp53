@@ -33,11 +33,11 @@
 namespace Kaltura\Client\Type;
 
 /**
- * indicates the asset object type in the bulk file (this class is not abstract for backward-compatibility)
+ * indicates the asset object type in the bulk file
  * @package Kaltura
  * @subpackage Client
  */
-class BulkUploadAssetData extends \Kaltura\Client\Type\BulkUploadObjectData
+abstract class BulkUploadAssetData extends \Kaltura\Client\Type\BulkUploadObjectData
 {
 	public function getKalturaObjectType()
 	{

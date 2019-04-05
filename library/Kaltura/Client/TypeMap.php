@@ -465,7 +465,7 @@ class TypeMap
 		'KalturaBulkUploadObjectData' => 'Kaltura\Client\Type\BulkUploadObjectData',
 		'KalturaBulkUploadAssetData' => 'Kaltura\Client\Type\BulkUploadAssetData',
 		'KalturaBulkUploadMediaAssetData' => 'Kaltura\Client\Type\BulkUploadMediaAssetData',
-		'KalturaBulkUploadEpgAssetData' => 'Kaltura\Client\Type\BulkUploadEpgAssetData',
+		'KalturaBulkUploadProgramAssetData' => 'Kaltura\Client\Type\BulkUploadProgramAssetData',
 		'KalturaAssetFileContext' => 'Kaltura\Client\Type\AssetFileContext',
 		'KalturaAssetStatisticsQuery' => 'Kaltura\Client\Type\AssetStatisticsQuery',
 		'KalturaUploadToken' => 'Kaltura\Client\Type\UploadToken',
