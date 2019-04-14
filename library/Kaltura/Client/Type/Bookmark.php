@@ -58,7 +58,7 @@ class Bookmark extends \Kaltura\Client\Type\SlimAsset
 			$this->positionOwner = (string)$xml->positionOwner;
 		if(count($xml->finishedWatching))
 		{
-			if(!empty($xml->finishedWatching))
+			if(!empty($xml->finishedWatching) && $xml->finishedWatching != 'false')
 				$this->finishedWatching = true;
 			else
 				$this->finishedWatching = false;
@@ -69,7 +69,7 @@ class Bookmark extends \Kaltura\Client\Type\SlimAsset
 			$this->programId = (string)$xml->programId;
 		if(count($xml->isReportingMode))
 		{
-			if(!empty($xml->isReportingMode))
+			if(!empty($xml->isReportingMode) && $xml->isReportingMode != 'false')
 				$this->isReportingMode = true;
 			else
 				$this->isReportingMode = false;

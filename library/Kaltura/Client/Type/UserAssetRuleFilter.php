@@ -63,7 +63,7 @@ class UserAssetRuleFilter extends \Kaltura\Client\Type\Filter
 	public $assetIdEqual = null;
 
 	/**
-	 * Asset type to filter by - 0 = EPG, 1 = media
+	 * Asset type to filter by - 0 = EPG, 1 = media, 2 = npvr
 	 * @var int
 	 */
 	public $assetTypeEqual = null;

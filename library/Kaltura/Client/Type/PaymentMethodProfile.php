@@ -58,7 +58,7 @@ class PaymentMethodProfile extends \Kaltura\Client\ObjectBase
 			$this->name = (string)$xml->name;
 		if(count($xml->allowMultiInstance))
 		{
-			if(!empty($xml->allowMultiInstance))
+			if(!empty($xml->allowMultiInstance) && $xml->allowMultiInstance != 'false')
 				$this->allowMultiInstance = true;
 			else
 				$this->allowMultiInstance = false;

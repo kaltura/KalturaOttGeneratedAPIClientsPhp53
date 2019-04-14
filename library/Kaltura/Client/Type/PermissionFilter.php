@@ -53,7 +53,7 @@ class PermissionFilter extends \Kaltura\Client\Type\Filter
 		
 		if(count($xml->currentUserPermissionsContains))
 		{
-			if(!empty($xml->currentUserPermissionsContains))
+			if(!empty($xml->currentUserPermissionsContains) && $xml->currentUserPermissionsContains != 'false')
 				$this->currentUserPermissionsContains = true;
 			else
 				$this->currentUserPermissionsContains = false;

@@ -65,14 +65,14 @@ class RequestConfiguration extends \Kaltura\Client\ObjectBase
 			$this->responseProfile = \Kaltura\Client\ParseUtils::unmarshalObject($xml->responseProfile, "KalturaBaseResponseProfile");
 		if(count($xml->abortOnError))
 		{
-			if(!empty($xml->abortOnError))
+			if(!empty($xml->abortOnError) && $xml->abortOnError != 'false')
 				$this->abortOnError = true;
 			else
 				$this->abortOnError = false;
 		}
 		if(count($xml->abortAllOnError))
 		{
-			if(!empty($xml->abortAllOnError))
+			if(!empty($xml->abortAllOnError) && $xml->abortAllOnError != 'false')
 				$this->abortAllOnError = true;
 			else
 				$this->abortAllOnError = false;

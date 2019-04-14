@@ -36,8 +36,10 @@ namespace Kaltura\Client\Enum;
  * @package Kaltura
  * @subpackage Client
  */
-class BulkOrderBy extends \Kaltura\Client\EnumBase
+class BulkUploadResultStatus extends \Kaltura\Client\EnumBase
 {
-	const NONE = "NONE";
+	const ERROR = "Error";
+	const OK = "Ok";
+	const INPROGRESS = "InProgress";
 }
 

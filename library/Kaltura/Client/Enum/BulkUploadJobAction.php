@@ -30,39 +30,15 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
- * Asset wrapper
  * @package Kaltura
  * @subpackage Client
  */
-class BulkListResponse extends \Kaltura\Client\Type\ListResponse
+class BulkUploadJobAction extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaBulkListResponse';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->objects))
-		{
-			if(empty($xml->objects))
-				$this->objects = array();
-			else
-				$this->objects = \Kaltura\Client\ParseUtils::unmarshalArray($xml->objects, "KalturaBulk");
-		}
-	}
-	/**
-	 * bulk items
-	 * @var array<KalturaBulk>
-	 */
-	public $objects;
-
+	const UPSERT = "Upsert";
+	const DELETE = "Delete";
 }
+

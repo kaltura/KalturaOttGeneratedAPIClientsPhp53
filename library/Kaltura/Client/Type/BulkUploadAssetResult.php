@@ -33,15 +33,14 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Country filter
  * @package Kaltura
  * @subpackage Client
  */
-class CountryFilter extends \Kaltura\Client\Type\Filter
+abstract class BulkUploadAssetResult extends \Kaltura\Client\Type\BulkUploadResult
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaCountryFilter';
+		return 'KalturaBulkUploadAssetResult';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,34 +50,24 @@ class CountryFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->idIn))
-			$this->idIn = (string)$xml->idIn;
-		if(count($xml->ipEqual))
-			$this->ipEqual = (string)$xml->ipEqual;
-		if(count($xml->ipEqualCurrent))
-		{
-			if(!empty($xml->ipEqualCurrent) && $xml->ipEqualCurrent != 'false')
-				$this->ipEqualCurrent = true;
-			else
-				$this->ipEqualCurrent = false;
-		}
+		if(count($xml->type))
+			$this->type = (int)$xml->type;
+		if(count($xml->externalId))
+			$this->externalId = (string)$xml->externalId;
 	}
 	/**
-	 * Country identifiers
-	 * @var string
+	 * Identifies the asset type (EPG, Recording, Movie, TV Series, etc). 
+	 *             Possible values: 0 – EPG linear programs, 1 - Recording; or any asset type ID according to the asset types IDs defined in the system.
+	 * @var int
+	 * @readonly
 	 */
-	public $idIn = null;
+	public $type = null;
 
 	/**
-	 * Ip to identify the country
+	 * External identifier for the asset
 	 * @var string
+	 * @readonly
 	 */
-	public $ipEqual = null;
-
-	/**
-	 * Indicates if to get the IP from the request
-	 * @var bool
-	 */
-	public $ipEqualCurrent = null;
+	public $externalId = null;
 
 }

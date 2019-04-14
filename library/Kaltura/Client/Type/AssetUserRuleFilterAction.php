@@ -52,7 +52,7 @@ class AssetUserRuleFilterAction extends \Kaltura\Client\Type\AssetUserRuleAction
 		
 		if(count($xml->applyOnChannel))
 		{
-			if(!empty($xml->applyOnChannel))
+			if(!empty($xml->applyOnChannel) && $xml->applyOnChannel != 'false')
 				$this->applyOnChannel = true;
 			else
 				$this->applyOnChannel = false;

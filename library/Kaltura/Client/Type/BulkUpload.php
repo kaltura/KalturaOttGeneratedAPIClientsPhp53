@@ -33,14 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
+ * Bulk Upload
  * @package Kaltura
  * @subpackage Client
  */
-class HouseholdPaymentMethod extends \Kaltura\Client\ObjectBase
+class BulkUpload extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaHouseholdPaymentMethod';
+		return 'KalturaBulkUpload';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,60 +52,90 @@ class HouseholdPaymentMethod extends \Kaltura\Client\ObjectBase
 			return;
 		
 		if(count($xml->id))
-			$this->id = (int)$xml->id;
-		if(count($xml->externalId))
-			$this->externalId = (string)$xml->externalId;
-		if(count($xml->paymentGatewayId))
-			$this->paymentGatewayId = (int)$xml->paymentGatewayId;
-		if(count($xml->details))
-			$this->details = (string)$xml->details;
-		if(count($xml->isDefault))
+			$this->id = (string)$xml->id;
+		if(count($xml->fileName))
+			$this->fileName = (string)$xml->fileName;
+		if(count($xml->status))
+			$this->status = (string)$xml->status;
+		if(count($xml->action))
+			$this->action = (string)$xml->action;
+		if(count($xml->numOfObjects))
+			$this->numOfObjects = (int)$xml->numOfObjects;
+		if(count($xml->createDate))
+			$this->createDate = (string)$xml->createDate;
+		if(count($xml->updateDate))
+			$this->updateDate = (string)$xml->updateDate;
+		if(count($xml->uploadedByUserId))
+			$this->uploadedByUserId = (string)$xml->uploadedByUserId;
+		if(count($xml->results))
 		{
-			if(!empty($xml->isDefault) && $xml->isDefault != 'false')
-				$this->isDefault = true;
+			if(empty($xml->results))
+				$this->results = array();
 			else
-				$this->isDefault = false;
+				$this->results = \Kaltura\Client\ParseUtils::unmarshalArray($xml->results, "KalturaBulkUploadResult");
 		}
-		if(count($xml->paymentMethodProfileId))
-			$this->paymentMethodProfileId = (int)$xml->paymentMethodProfileId;
 	}
 	/**
-	 * Household payment method identifier (internal)
+	 * Bulk identifier
 	 * @var int
 	 * @readonly
 	 */
 	public $id = null;
 
 	/**
-	 * External identifier for the household payment method
+	 * File Name
 	 * @var string
-	 * @insertonly
-	 */
-	public $externalId = null;
-
-	/**
-	 * Payment-gateway identifier
-	 * @var int
-	 */
-	public $paymentGatewayId = null;
-
-	/**
-	 * Description of the payment method details
-	 * @var string
-	 */
-	public $details = null;
-
-	/**
-	 * indicates whether the payment method is set as default for the household
-	 * @var bool
 	 * @readonly
 	 */
-	public $isDefault = null;
+	public $fileName = null;
 
 	/**
-	 * Payment method profile identifier
-	 * @var int
+	 * Status
+	 * @var \Kaltura\Client\Enum\BulkUploadJobStatus
+	 * @readonly
 	 */
-	public $paymentMethodProfileId = null;
+	public $status = null;
+
+	/**
+	 * Action
+	 * @var \Kaltura\Client\Enum\BulkUploadJobAction
+	 * @readonly
+	 */
+	public $action = null;
+
+	/**
+	 * Total number of objects in file
+	 * @var int
+	 * @readonly
+	 */
+	public $numOfObjects = null;
+
+	/**
+	 * Specifies when was the bulk action created. Date and time represented as epoch
+	 * @var int
+	 * @readonly
+	 */
+	public $createDate = null;
+
+	/**
+	 * Specifies when was the bulk action last updated. Date and time represented as epoch
+	 * @var int
+	 * @readonly
+	 */
+	public $updateDate = null;
+
+	/**
+	 * The user who uploaded this bulk
+	 * @var int
+	 * @readonly
+	 */
+	public $uploadedByUserId = null;
+
+	/**
+	 * A list of results
+	 * @var array<KalturaBulkUploadResult>
+	 * @readonly
+	 */
+	public $results;
 
 }

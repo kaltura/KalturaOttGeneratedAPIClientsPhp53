@@ -33,15 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Country filter
+ * instructions for upload data (the data file type, how to read the file, etc)
  * @package Kaltura
  * @subpackage Client
  */
-class CountryFilter extends \Kaltura\Client\Type\Filter
+abstract class BulkUploadJobData extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaCountryFilter';
+		return 'KalturaBulkUploadJobData';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,34 +51,5 @@ class CountryFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->idIn))
-			$this->idIn = (string)$xml->idIn;
-		if(count($xml->ipEqual))
-			$this->ipEqual = (string)$xml->ipEqual;
-		if(count($xml->ipEqualCurrent))
-		{
-			if(!empty($xml->ipEqualCurrent) && $xml->ipEqualCurrent != 'false')
-				$this->ipEqualCurrent = true;
-			else
-				$this->ipEqualCurrent = false;
-		}
 	}
-	/**
-	 * Country identifiers
-	 * @var string
-	 */
-	public $idIn = null;
-
-	/**
-	 * Ip to identify the country
-	 * @var string
-	 */
-	public $ipEqual = null;
-
-	/**
-	 * Indicates if to get the IP from the request
-	 * @var bool
-	 */
-	public $ipEqualCurrent = null;
-
 }

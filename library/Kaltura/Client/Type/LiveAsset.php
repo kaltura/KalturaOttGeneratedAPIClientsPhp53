@@ -71,21 +71,21 @@ class LiveAsset extends \Kaltura\Client\Type\MediaAsset
 			$this->externalCdvrId = (string)$xml->externalCdvrId;
 		if(count($xml->enableCdvr))
 		{
-			if(!empty($xml->enableCdvr))
+			if(!empty($xml->enableCdvr) && $xml->enableCdvr != 'false')
 				$this->enableCdvr = true;
 			else
 				$this->enableCdvr = false;
 		}
 		if(count($xml->enableCatchUp))
 		{
-			if(!empty($xml->enableCatchUp))
+			if(!empty($xml->enableCatchUp) && $xml->enableCatchUp != 'false')
 				$this->enableCatchUp = true;
 			else
 				$this->enableCatchUp = false;
 		}
 		if(count($xml->enableStartOver))
 		{
-			if(!empty($xml->enableStartOver))
+			if(!empty($xml->enableStartOver) && $xml->enableStartOver != 'false')
 				$this->enableStartOver = true;
 			else
 				$this->enableStartOver = false;
@@ -96,14 +96,14 @@ class LiveAsset extends \Kaltura\Client\Type\MediaAsset
 			$this->trickPlayBuffer = (string)$xml->trickPlayBuffer;
 		if(count($xml->enableRecordingPlaybackNonEntitledChannel))
 		{
-			if(!empty($xml->enableRecordingPlaybackNonEntitledChannel))
+			if(!empty($xml->enableRecordingPlaybackNonEntitledChannel) && $xml->enableRecordingPlaybackNonEntitledChannel != 'false')
 				$this->enableRecordingPlaybackNonEntitledChannel = true;
 			else
 				$this->enableRecordingPlaybackNonEntitledChannel = false;
 		}
 		if(count($xml->enableTrickPlay))
 		{
-			if(!empty($xml->enableTrickPlay))
+			if(!empty($xml->enableTrickPlay) && $xml->enableTrickPlay != 'false')
 				$this->enableTrickPlay = true;
 			else
 				$this->enableTrickPlay = false;

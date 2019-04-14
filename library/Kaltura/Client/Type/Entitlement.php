@@ -73,7 +73,7 @@ class Entitlement extends \Kaltura\Client\ObjectBase
 			$this->deviceName = (string)$xml->deviceName;
 		if(count($xml->isCancelationWindowEnabled))
 		{
-			if(!empty($xml->isCancelationWindowEnabled))
+			if(!empty($xml->isCancelationWindowEnabled) && $xml->isCancelationWindowEnabled != 'false')
 				$this->isCancelationWindowEnabled = true;
 			else
 				$this->isCancelationWindowEnabled = false;

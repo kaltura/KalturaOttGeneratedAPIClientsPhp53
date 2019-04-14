@@ -67,14 +67,14 @@ class UsageModule extends \Kaltura\Client\ObjectBase
 			$this->waiverPeriod = (int)$xml->waiverPeriod;
 		if(count($xml->isWaiverEnabled))
 		{
-			if(!empty($xml->isWaiverEnabled))
+			if(!empty($xml->isWaiverEnabled) && $xml->isWaiverEnabled != 'false')
 				$this->isWaiverEnabled = true;
 			else
 				$this->isWaiverEnabled = false;
 		}
 		if(count($xml->isOfflinePlayback))
 		{
-			if(!empty($xml->isOfflinePlayback))
+			if(!empty($xml->isOfflinePlayback) && $xml->isOfflinePlayback != 'false')
 				$this->isOfflinePlayback = true;
 			else
 				$this->isOfflinePlayback = false;

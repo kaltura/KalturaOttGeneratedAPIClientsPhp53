@@ -66,6 +66,29 @@ class AssetService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
+	 * Add new bulk upload batch job Conversion profile id can be specified in the API.
+	 * 
+	 * @return \Kaltura\Client\Type\BulkUpload
+	 */
+	function addFromBulkUpload($fileData, \Kaltura\Client\Type\BulkUploadJobData $bulkUploadJobData, \Kaltura\Client\Type\BulkUploadAssetData $bulkUploadAssetData)
+	{
+		$kparams = array();
+		$kfiles = array();
+		$this->client->addParam($kfiles, "fileData", $fileData);
+		$this->client->addParam($kparams, "bulkUploadJobData", $bulkUploadJobData->toParams());
+		$this->client->addParam($kparams, "bulkUploadAssetData", $bulkUploadAssetData->toParams());
+		$this->client->queueServiceActionCall("asset", "addFromBulkUpload", "KalturaBulkUpload", $kparams, $kfiles);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBulkUpload");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\BulkUpload");
+		return $resultObject;
+	}
+
+	/**
 	 * Returns a group-by result for media or EPG according to given filter. Lists values of each field and their respective count.
 	 * 
 	 * @return \Kaltura\Client\Type\AssetCount

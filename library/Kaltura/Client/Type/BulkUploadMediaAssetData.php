@@ -30,26 +30,26 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
+ * indicates the media asset object type in the bulk file
  * @package Kaltura
  * @subpackage Client
  */
-class BatchJobStatus extends \Kaltura\Client\EnumBase
+class BulkUploadMediaAssetData extends \Kaltura\Client\Type\BulkUploadAssetData
 {
-	const PENDING = "PENDING";
-	const QUEUED = "QUEUED";
-	const PROCESSING = "PROCESSING";
-	const PROCESSED = "PROCESSED";
-	const MOVEFILE = "MOVEFILE";
-	const FINISHED = "FINISHED";
-	const FAILED = "FAILED";
-	const ABORTED = "ABORTED";
-	const ALMOST_DONE = "ALMOST_DONE";
-	const RETRY = "RETRY";
-	const FATAL = "FATAL";
-	const DONT_PROCESS = "DONT_PROCESS";
-	const FINISHED_PARTIALLY = "FINISHED_PARTIALLY";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaBulkUploadMediaAssetData';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+	}
 }
-

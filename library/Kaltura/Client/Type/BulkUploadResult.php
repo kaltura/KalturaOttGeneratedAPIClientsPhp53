@@ -33,15 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Country filter
+ * Bulk Upload Result
  * @package Kaltura
  * @subpackage Client
  */
-class CountryFilter extends \Kaltura\Client\Type\Filter
+abstract class BulkUploadResult extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaCountryFilter';
+		return 'KalturaBulkUploadResult';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,34 +51,69 @@ class CountryFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->idIn))
-			$this->idIn = (string)$xml->idIn;
-		if(count($xml->ipEqual))
-			$this->ipEqual = (string)$xml->ipEqual;
-		if(count($xml->ipEqualCurrent))
+		if(count($xml->objectId))
+			$this->objectId = (string)$xml->objectId;
+		if(count($xml->index))
+			$this->index = (int)$xml->index;
+		if(count($xml->bulkUploadId))
+			$this->bulkUploadId = (string)$xml->bulkUploadId;
+		if(count($xml->status))
+			$this->status = (string)$xml->status;
+		if(count($xml->errors))
 		{
-			if(!empty($xml->ipEqualCurrent) && $xml->ipEqualCurrent != 'false')
-				$this->ipEqualCurrent = true;
+			if(empty($xml->errors))
+				$this->errors = array();
 			else
-				$this->ipEqualCurrent = false;
+				$this->errors = \Kaltura\Client\ParseUtils::unmarshalArray($xml->errors, "KalturaMessage");
+		}
+		if(count($xml->warnings))
+		{
+			if(empty($xml->warnings))
+				$this->warnings = array();
+			else
+				$this->warnings = \Kaltura\Client\ParseUtils::unmarshalArray($xml->warnings, "KalturaMessage");
 		}
 	}
 	/**
-	 * Country identifiers
-	 * @var string
+	 * the result ObjectId (assetId, userId etc)
+	 * @var int
+	 * @readonly
 	 */
-	public $idIn = null;
+	public $objectId = null;
 
 	/**
-	 * Ip to identify the country
-	 * @var string
+	 * result index
+	 * @var int
+	 * @readonly
 	 */
-	public $ipEqual = null;
+	public $index = null;
 
 	/**
-	 * Indicates if to get the IP from the request
-	 * @var bool
+	 * Bulk upload identifier
+	 * @var int
+	 * @readonly
 	 */
-	public $ipEqualCurrent = null;
+	public $bulkUploadId = null;
+
+	/**
+	 * status
+	 * @var \Kaltura\Client\Enum\BulkUploadResultStatus
+	 * @readonly
+	 */
+	public $status = null;
+
+	/**
+	 * A list of errors
+	 * @var array<KalturaMessage>
+	 * @readonly
+	 */
+	public $errors;
+
+	/**
+	 * A list of warnings
+	 * @var array<KalturaMessage>
+	 * @readonly
+	 */
+	public $warnings;
 
 }

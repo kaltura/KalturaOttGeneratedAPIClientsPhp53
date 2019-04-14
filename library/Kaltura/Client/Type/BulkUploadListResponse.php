@@ -33,15 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Country filter
+ * Asset wrapper
  * @package Kaltura
  * @subpackage Client
  */
-class CountryFilter extends \Kaltura\Client\Type\Filter
+class BulkUploadListResponse extends \Kaltura\Client\Type\ListResponse
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaCountryFilter';
+		return 'KalturaBulkUploadListResponse';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,34 +51,18 @@ class CountryFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->idIn))
-			$this->idIn = (string)$xml->idIn;
-		if(count($xml->ipEqual))
-			$this->ipEqual = (string)$xml->ipEqual;
-		if(count($xml->ipEqualCurrent))
+		if(count($xml->objects))
 		{
-			if(!empty($xml->ipEqualCurrent) && $xml->ipEqualCurrent != 'false')
-				$this->ipEqualCurrent = true;
+			if(empty($xml->objects))
+				$this->objects = array();
 			else
-				$this->ipEqualCurrent = false;
+				$this->objects = \Kaltura\Client\ParseUtils::unmarshalArray($xml->objects, "KalturaBulkUpload");
 		}
 	}
 	/**
-	 * Country identifiers
-	 * @var string
+	 * bulk upload items
+	 * @var array<KalturaBulkUpload>
 	 */
-	public $idIn = null;
-
-	/**
-	 * Ip to identify the country
-	 * @var string
-	 */
-	public $ipEqual = null;
-
-	/**
-	 * Indicates if to get the IP from the request
-	 * @var bool
-	 */
-	public $ipEqualCurrent = null;
+	public $objects;
 
 }

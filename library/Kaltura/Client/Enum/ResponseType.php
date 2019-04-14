@@ -30,61 +30,18 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class Bulk extends \Kaltura\Client\ObjectBase
+class ResponseType extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaBulk';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->id))
-			$this->id = (string)$xml->id;
-		if(count($xml->status))
-			$this->status = (string)$xml->status;
-		if(count($xml->createDate))
-			$this->createDate = (string)$xml->createDate;
-		if(count($xml->updateDate))
-			$this->updateDate = (string)$xml->updateDate;
-	}
-	/**
-	 * Bulk identifier
-	 * @var int
-	 * @readonly
-	 */
-	public $id = null;
-
-	/**
-	 * Status
-	 * @var \Kaltura\Client\Enum\BatchJobStatus
-	 * @readonly
-	 */
-	public $status = null;
-
-	/**
-	 * Specifies when was the bulk action created. Date and time represented as epoch
-	 * @var int
-	 * @readonly
-	 */
-	public $createDate = null;
-
-	/**
-	 * Specifies when was the bulk action last updated. Date and time represented as epoch
-	 * @var int
-	 * @readonly
-	 */
-	public $updateDate = null;
-
+	const JSON = 1;
+	const XML = 2;
+	const JSONP = 9;
+	const ASSET_XML = 30;
+	const EXCEL = 31;
 }
+

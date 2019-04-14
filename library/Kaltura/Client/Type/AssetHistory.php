@@ -63,7 +63,7 @@ class AssetHistory extends \Kaltura\Client\ObjectBase
 			$this->watchedDate = (string)$xml->watchedDate;
 		if(count($xml->finishedWatching))
 		{
-			if(!empty($xml->finishedWatching))
+			if(!empty($xml->finishedWatching) && $xml->finishedWatching != 'false')
 				$this->finishedWatching = true;
 			else
 				$this->finishedWatching = false;

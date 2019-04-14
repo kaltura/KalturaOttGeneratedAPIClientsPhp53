@@ -56,7 +56,7 @@ class Announcement extends \Kaltura\Client\ObjectBase
 			$this->message = (string)$xml->message;
 		if(count($xml->enabled))
 		{
-			if(!empty($xml->enabled))
+			if(!empty($xml->enabled) && $xml->enabled != 'false')
 				$this->enabled = true;
 			else
 				$this->enabled = false;
@@ -75,7 +75,7 @@ class Announcement extends \Kaltura\Client\ObjectBase
 			$this->imageUrl = (string)$xml->imageUrl;
 		if(count($xml->includeMail))
 		{
-			if(!empty($xml->includeMail))
+			if(!empty($xml->includeMail) && $xml->includeMail != 'false')
 				$this->includeMail = true;
 			else
 				$this->includeMail = false;
@@ -86,7 +86,7 @@ class Announcement extends \Kaltura\Client\ObjectBase
 			$this->mailSubject = (string)$xml->mailSubject;
 		if(count($xml->includeSms))
 		{
-			if(!empty($xml->includeSms))
+			if(!empty($xml->includeSms) && $xml->includeSms != 'false')
 				$this->includeSms = true;
 			else
 				$this->includeSms = false;

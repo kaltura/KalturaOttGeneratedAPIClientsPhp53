@@ -53,16 +53,24 @@ class AssetUserRuleFilter extends \Kaltura\Client\Type\Filter
 		
 		if(count($xml->attachedUserIdEqualCurrent))
 		{
-			if(!empty($xml->attachedUserIdEqualCurrent))
+			if(!empty($xml->attachedUserIdEqualCurrent) && $xml->attachedUserIdEqualCurrent != 'false')
 				$this->attachedUserIdEqualCurrent = true;
 			else
 				$this->attachedUserIdEqualCurrent = false;
 		}
+		if(count($xml->actionsContainType))
+			$this->actionsContainType = (string)$xml->actionsContainType;
 	}
 	/**
 	 * Indicates if to get the asset user rule list for the attached user or for the entire group
 	 * @var bool
 	 */
 	public $attachedUserIdEqualCurrent = null;
+
+	/**
+	 * Indicates which asset rule list to return by this KalturaRuleActionType.
+	 * @var \Kaltura\Client\Enum\RuleActionType
+	 */
+	public $actionsContainType = null;
 
 }

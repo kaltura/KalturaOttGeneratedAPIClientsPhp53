@@ -73,7 +73,7 @@ class Household extends \Kaltura\Client\ObjectBase
 			$this->state = (string)$xml->state;
 		if(count($xml->isFrequencyEnabled))
 		{
-			if(!empty($xml->isFrequencyEnabled))
+			if(!empty($xml->isFrequencyEnabled) && $xml->isFrequencyEnabled != 'false')
 				$this->isFrequencyEnabled = true;
 			else
 				$this->isFrequencyEnabled = false;

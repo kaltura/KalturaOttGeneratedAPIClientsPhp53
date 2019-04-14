@@ -56,7 +56,7 @@ class AssetFileContext extends \Kaltura\Client\ObjectBase
 			$this->fullLifeCycle = (string)$xml->fullLifeCycle;
 		if(count($xml->isOfflinePlayBack))
 		{
-			if(!empty($xml->isOfflinePlayBack))
+			if(!empty($xml->isOfflinePlayBack) && $xml->isOfflinePlayBack != 'false')
 				$this->isOfflinePlayBack = true;
 			else
 				$this->isOfflinePlayBack = false;

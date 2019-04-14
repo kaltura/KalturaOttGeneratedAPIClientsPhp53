@@ -56,6 +56,13 @@ class PlaybackContextOptions extends \Kaltura\Client\ObjectBase
 			$this->streamerType = (string)$xml->streamerType;
 		if(count($xml->assetFileIds))
 			$this->assetFileIds = (string)$xml->assetFileIds;
+		if(count($xml->adapterData))
+		{
+			if(empty($xml->adapterData))
+				$this->adapterData = array();
+			else
+				$this->adapterData = \Kaltura\Client\ParseUtils::unmarshalMap($xml->adapterData, "KalturaStringValue");
+		}
 		if(count($xml->context))
 			$this->context = (string)$xml->context;
 		if(count($xml->urlType))
@@ -78,6 +85,12 @@ class PlaybackContextOptions extends \Kaltura\Client\ObjectBase
 	 * @var string
 	 */
 	public $assetFileIds = null;
+
+	/**
+	 * key/value map field for extra data
+	 * @var array<string, KalturaStringValue>
+	 */
+	public $adapterData;
 
 	/**
 	 * Playback context type

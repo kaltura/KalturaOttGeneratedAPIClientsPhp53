@@ -33,14 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
+ * Message
  * @package Kaltura
  * @subpackage Client
  */
-class BulkFilter extends \Kaltura\Client\Type\PersistedFilter
+class Message extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaBulkFilter';
+		return 'KalturaMessage';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,13 +51,34 @@ class BulkFilter extends \Kaltura\Client\Type\PersistedFilter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->statusEqual))
-			$this->statusEqual = (string)$xml->statusEqual;
+		if(count($xml->code))
+			$this->code = (int)$xml->code;
+		if(count($xml->message))
+			$this->message = (string)$xml->message;
+		if(count($xml->args))
+		{
+			if(empty($xml->args))
+				$this->args = array();
+			else
+				$this->args = \Kaltura\Client\ParseUtils::unmarshalMap($xml->args, "KalturaStringValue");
+		}
 	}
 	/**
-	 * dynamicOrderBy - order by Meta
-	 * @var \Kaltura\Client\Enum\BatchJobStatus
+	 * Massage code
+	 * @var int
 	 */
-	public $statusEqual = null;
+	public $code = null;
+
+	/**
+	 * Message details
+	 * @var string
+	 */
+	public $message = null;
+
+	/**
+	 * Message args
+	 * @var array<string, KalturaStringValue>
+	 */
+	public $args;
 
 }

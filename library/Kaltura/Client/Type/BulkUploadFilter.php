@@ -33,15 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Country filter
+ * Bulk Upload Filter
  * @package Kaltura
  * @subpackage Client
  */
-class CountryFilter extends \Kaltura\Client\Type\Filter
+class BulkUploadFilter extends \Kaltura\Client\Type\Filter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaCountryFilter';
+		return 'KalturaBulkUploadFilter';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,34 +51,42 @@ class CountryFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->idIn))
-			$this->idIn = (string)$xml->idIn;
-		if(count($xml->ipEqual))
-			$this->ipEqual = (string)$xml->ipEqual;
-		if(count($xml->ipEqualCurrent))
+		if(count($xml->bulkObjectTypeEqual))
+			$this->bulkObjectTypeEqual = (string)$xml->bulkObjectTypeEqual;
+		if(count($xml->createDateGreaterThanOrEqual))
+			$this->createDateGreaterThanOrEqual = (string)$xml->createDateGreaterThanOrEqual;
+		if(count($xml->uploadedByUserIdEqualCurrent))
 		{
-			if(!empty($xml->ipEqualCurrent) && $xml->ipEqualCurrent != 'false')
-				$this->ipEqualCurrent = true;
+			if(!empty($xml->uploadedByUserIdEqualCurrent) && $xml->uploadedByUserIdEqualCurrent != 'false')
+				$this->uploadedByUserIdEqualCurrent = true;
 			else
-				$this->ipEqualCurrent = false;
+				$this->uploadedByUserIdEqualCurrent = false;
 		}
+		if(count($xml->statusIn))
+			$this->statusIn = (string)$xml->statusIn;
 	}
 	/**
-	 * Country identifiers
+	 * bulk objects Type name (must be type of KalturaOTTObject)
 	 * @var string
 	 */
-	public $idIn = null;
+	public $bulkObjectTypeEqual = null;
 
 	/**
-	 * Ip to identify the country
-	 * @var string
+	 * upload date to search within (search in the last 60 days)
+	 * @var int
 	 */
-	public $ipEqual = null;
+	public $createDateGreaterThanOrEqual = null;
 
 	/**
-	 * Indicates if to get the IP from the request
+	 * Indicates if to get the BulkUpload list that created by current user or by the entire group.
 	 * @var bool
 	 */
-	public $ipEqualCurrent = null;
+	public $uploadedByUserIdEqualCurrent = null;
+
+	/**
+	 * Comma separated list of BulkUpload Statuses to search\filter
+	 * @var string
+	 */
+	public $statusIn = null;
 
 }

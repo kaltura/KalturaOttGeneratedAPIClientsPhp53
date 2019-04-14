@@ -58,7 +58,7 @@ class ProductPriceFilter extends \Kaltura\Client\Type\Filter
 			$this->collectionIdIn = (string)$xml->collectionIdIn;
 		if(count($xml->isLowest))
 		{
-			if(!empty($xml->isLowest))
+			if(!empty($xml->isLowest) && $xml->isLowest != 'false')
 				$this->isLowest = true;
 			else
 				$this->isLowest = false;
