@@ -57,7 +57,7 @@ class HouseholdUser extends \Kaltura\Client\ObjectBase
 			$this->userId = (string)$xml->userId;
 		if(count($xml->isMaster))
 		{
-			if(!empty($xml->isMaster))
+			if(!empty($xml->isMaster) && $xml->isMaster != 'false')
 				$this->isMaster = true;
 			else
 				$this->isMaster = false;
@@ -68,7 +68,7 @@ class HouseholdUser extends \Kaltura\Client\ObjectBase
 			$this->status = (string)$xml->status;
 		if(count($xml->isDefault))
 		{
-			if(!empty($xml->isDefault))
+			if(!empty($xml->isDefault) && $xml->isDefault != 'false')
 				$this->isDefault = true;
 			else
 				$this->isDefault = false;

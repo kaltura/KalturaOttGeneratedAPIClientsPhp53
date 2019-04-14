@@ -57,7 +57,7 @@ class FavoriteFilter extends \Kaltura\Client\Type\Filter
 			$this->mediaIdIn = (string)$xml->mediaIdIn;
 		if(count($xml->udidEqualCurrent))
 		{
-			if(!empty($xml->udidEqualCurrent))
+			if(!empty($xml->udidEqualCurrent) && $xml->udidEqualCurrent != 'false')
 				$this->udidEqualCurrent = true;
 			else
 				$this->udidEqualCurrent = false;

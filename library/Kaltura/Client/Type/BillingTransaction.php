@@ -75,7 +75,7 @@ class BillingTransaction extends \Kaltura\Client\ObjectBase
 			$this->paymentMethodExtraDetails = (string)$xml->paymentMethodExtraDetails;
 		if(count($xml->isRecurring))
 		{
-			if(!empty($xml->isRecurring))
+			if(!empty($xml->isRecurring) && $xml->isRecurring != 'false')
 				$this->isRecurring = true;
 			else
 				$this->isRecurring = false;

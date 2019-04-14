@@ -58,7 +58,7 @@ class ImageFilter extends \Kaltura\Client\Type\Filter
 			$this->imageObjectTypeEqual = (string)$xml->imageObjectTypeEqual;
 		if(count($xml->isDefaultEqual))
 		{
-			if(!empty($xml->isDefaultEqual))
+			if(!empty($xml->isDefaultEqual) && $xml->isDefaultEqual != 'false')
 				$this->isDefaultEqual = true;
 			else
 				$this->isDefaultEqual = false;

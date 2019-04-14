@@ -59,7 +59,7 @@ class AssetStructMeta extends \Kaltura\Client\ObjectBase
 			$this->ingestReferencePath = (string)$xml->ingestReferencePath;
 		if(count($xml->protectFromIngest))
 		{
-			if(!empty($xml->protectFromIngest))
+			if(!empty($xml->protectFromIngest) && $xml->protectFromIngest != 'false')
 				$this->protectFromIngest = true;
 			else
 				$this->protectFromIngest = false;
@@ -72,7 +72,7 @@ class AssetStructMeta extends \Kaltura\Client\ObjectBase
 			$this->updateDate = (string)$xml->updateDate;
 		if(count($xml->isInherited))
 		{
-			if(!empty($xml->isInherited))
+			if(!empty($xml->isInherited) && $xml->isInherited != 'false')
 				$this->isInherited = true;
 			else
 				$this->isInherited = false;

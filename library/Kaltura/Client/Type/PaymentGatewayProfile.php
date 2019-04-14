@@ -82,7 +82,7 @@ class PaymentGatewayProfile extends \Kaltura\Client\Type\PaymentGatewayBaseProfi
 			$this->renewStartMinutes = (int)$xml->renewStartMinutes;
 		if(count($xml->externalVerification))
 		{
-			if(!empty($xml->externalVerification))
+			if(!empty($xml->externalVerification) && $xml->externalVerification != 'false')
 				$this->externalVerification = true;
 			else
 				$this->externalVerification = false;

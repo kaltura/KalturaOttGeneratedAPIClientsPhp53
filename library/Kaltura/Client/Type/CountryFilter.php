@@ -57,7 +57,7 @@ class CountryFilter extends \Kaltura\Client\Type\Filter
 			$this->ipEqual = (string)$xml->ipEqual;
 		if(count($xml->ipEqualCurrent))
 		{
-			if(!empty($xml->ipEqualCurrent))
+			if(!empty($xml->ipEqualCurrent) && $xml->ipEqualCurrent != 'false')
 				$this->ipEqualCurrent = true;
 			else
 				$this->ipEqualCurrent = false;

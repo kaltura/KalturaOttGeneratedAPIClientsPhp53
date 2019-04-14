@@ -52,14 +52,14 @@ class NotificationsPartnerSettings extends \Kaltura\Client\ObjectBase
 		
 		if(count($xml->pushNotificationEnabled))
 		{
-			if(!empty($xml->pushNotificationEnabled))
+			if(!empty($xml->pushNotificationEnabled) && $xml->pushNotificationEnabled != 'false')
 				$this->pushNotificationEnabled = true;
 			else
 				$this->pushNotificationEnabled = false;
 		}
 		if(count($xml->pushSystemAnnouncementsEnabled))
 		{
-			if(!empty($xml->pushSystemAnnouncementsEnabled))
+			if(!empty($xml->pushSystemAnnouncementsEnabled) && $xml->pushSystemAnnouncementsEnabled != 'false')
 				$this->pushSystemAnnouncementsEnabled = true;
 			else
 				$this->pushSystemAnnouncementsEnabled = false;
@@ -70,7 +70,7 @@ class NotificationsPartnerSettings extends \Kaltura\Client\ObjectBase
 			$this->pushEndHour = (int)$xml->pushEndHour;
 		if(count($xml->inboxEnabled))
 		{
-			if(!empty($xml->inboxEnabled))
+			if(!empty($xml->inboxEnabled) && $xml->inboxEnabled != 'false')
 				$this->inboxEnabled = true;
 			else
 				$this->inboxEnabled = false;
@@ -79,7 +79,7 @@ class NotificationsPartnerSettings extends \Kaltura\Client\ObjectBase
 			$this->messageTTLDays = (int)$xml->messageTTLDays;
 		if(count($xml->automaticIssueFollowNotification))
 		{
-			if(!empty($xml->automaticIssueFollowNotification))
+			if(!empty($xml->automaticIssueFollowNotification) && $xml->automaticIssueFollowNotification != 'false')
 				$this->automaticIssueFollowNotification = true;
 			else
 				$this->automaticIssueFollowNotification = false;
@@ -88,7 +88,7 @@ class NotificationsPartnerSettings extends \Kaltura\Client\ObjectBase
 			$this->topicExpirationDurationDays = (int)$xml->topicExpirationDurationDays;
 		if(count($xml->reminderEnabled))
 		{
-			if(!empty($xml->reminderEnabled))
+			if(!empty($xml->reminderEnabled) && $xml->reminderEnabled != 'false')
 				$this->reminderEnabled = true;
 			else
 				$this->reminderEnabled = false;
@@ -109,7 +109,7 @@ class NotificationsPartnerSettings extends \Kaltura\Client\ObjectBase
 			$this->mailNotificationAdapterId = (string)$xml->mailNotificationAdapterId;
 		if(count($xml->smsEnabled))
 		{
-			if(!empty($xml->smsEnabled))
+			if(!empty($xml->smsEnabled) && $xml->smsEnabled != 'false')
 				$this->smsEnabled = true;
 			else
 				$this->smsEnabled = false;

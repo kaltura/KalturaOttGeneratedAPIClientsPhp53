@@ -73,7 +73,7 @@ class Subscription extends \Kaltura\Client\ObjectBase
 		}
 		if(count($xml->isRenewable))
 		{
-			if(!empty($xml->isRenewable))
+			if(!empty($xml->isRenewable) && $xml->isRenewable != 'false')
 				$this->isRenewable = true;
 			else
 				$this->isRenewable = false;
@@ -82,7 +82,7 @@ class Subscription extends \Kaltura\Client\ObjectBase
 			$this->renewalsNumber = (int)$xml->renewalsNumber;
 		if(count($xml->isInfiniteRenewal))
 		{
-			if(!empty($xml->isInfiniteRenewal))
+			if(!empty($xml->isInfiniteRenewal) && $xml->isInfiniteRenewal != 'false')
 				$this->isInfiniteRenewal = true;
 			else
 				$this->isInfiniteRenewal = false;
@@ -136,7 +136,7 @@ class Subscription extends \Kaltura\Client\ObjectBase
 			$this->waiverPeriod = (int)$xml->waiverPeriod;
 		if(count($xml->isWaiverEnabled))
 		{
-			if(!empty($xml->isWaiverEnabled))
+			if(!empty($xml->isWaiverEnabled) && $xml->isWaiverEnabled != 'false')
 				$this->isWaiverEnabled = true;
 			else
 				$this->isWaiverEnabled = false;
@@ -168,7 +168,7 @@ class Subscription extends \Kaltura\Client\ObjectBase
 			$this->externalId = (string)$xml->externalId;
 		if(count($xml->isCancellationBlocked))
 		{
-			if(!empty($xml->isCancellationBlocked))
+			if(!empty($xml->isCancellationBlocked) && $xml->isCancellationBlocked != 'false')
 				$this->isCancellationBlocked = true;
 			else
 				$this->isCancellationBlocked = false;

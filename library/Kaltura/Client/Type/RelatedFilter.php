@@ -56,7 +56,7 @@ class RelatedFilter extends \Kaltura\Client\Type\BaseSearchAssetFilter
 			$this->typeIn = (string)$xml->typeIn;
 		if(count($xml->excludeWatched))
 		{
-			if(!empty($xml->excludeWatched))
+			if(!empty($xml->excludeWatched) && $xml->excludeWatched != 'false')
 				$this->excludeWatched = true;
 			else
 				$this->excludeWatched = false;

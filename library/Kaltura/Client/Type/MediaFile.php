@@ -81,7 +81,7 @@ class MediaFile extends \Kaltura\Client\Type\AssetFile
 			$this->externalStoreId = (string)$xml->externalStoreId;
 		if(count($xml->isDefaultLanguage))
 		{
-			if(!empty($xml->isDefaultLanguage))
+			if(!empty($xml->isDefaultLanguage) && $xml->isDefaultLanguage != 'false')
 				$this->isDefaultLanguage = true;
 			else
 				$this->isDefaultLanguage = false;
@@ -96,7 +96,7 @@ class MediaFile extends \Kaltura\Client\Type\AssetFile
 			$this->cdnAdapaterProfileId = (string)$xml->cdnAdapaterProfileId;
 		if(count($xml->status))
 		{
-			if(!empty($xml->status))
+			if(!empty($xml->status) && $xml->status != 'false')
 				$this->status = true;
 			else
 				$this->status = false;

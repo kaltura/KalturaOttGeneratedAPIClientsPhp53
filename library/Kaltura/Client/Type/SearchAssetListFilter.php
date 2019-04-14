@@ -52,7 +52,7 @@ class SearchAssetListFilter extends \Kaltura\Client\Type\SearchAssetFilter
 		
 		if(count($xml->excludeWatched))
 		{
-			if(!empty($xml->excludeWatched))
+			if(!empty($xml->excludeWatched) && $xml->excludeWatched != 'false')
 				$this->excludeWatched = true;
 			else
 				$this->excludeWatched = false;

@@ -55,7 +55,7 @@ abstract class TimeOffsetRuleAction extends \Kaltura\Client\Type\AssetRuleAction
 			$this->offset = (int)$xml->offset;
 		if(count($xml->timeZone))
 		{
-			if(!empty($xml->timeZone))
+			if(!empty($xml->timeZone) && $xml->timeZone != 'false')
 				$this->timeZone = true;
 			else
 				$this->timeZone = false;

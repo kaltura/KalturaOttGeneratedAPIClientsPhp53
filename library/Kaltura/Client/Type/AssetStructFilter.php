@@ -57,7 +57,7 @@ class AssetStructFilter extends \Kaltura\Client\Type\Filter
 			$this->metaIdEqual = (string)$xml->metaIdEqual;
 		if(count($xml->isProtectedEqual))
 		{
-			if(!empty($xml->isProtectedEqual))
+			if(!empty($xml->isProtectedEqual) && $xml->isProtectedEqual != 'false')
 				$this->isProtectedEqual = true;
 			else
 				$this->isProtectedEqual = false;

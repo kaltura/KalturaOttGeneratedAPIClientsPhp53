@@ -68,14 +68,14 @@ class Meta extends \Kaltura\Client\ObjectBase
 			$this->dataType = (string)$xml->dataType;
 		if(count($xml->multipleValue))
 		{
-			if(!empty($xml->multipleValue))
+			if(!empty($xml->multipleValue) && $xml->multipleValue != 'false')
 				$this->multipleValue = true;
 			else
 				$this->multipleValue = false;
 		}
 		if(count($xml->isProtected))
 		{
-			if(!empty($xml->isProtected))
+			if(!empty($xml->isProtected) && $xml->isProtected != 'false')
 				$this->isProtected = true;
 			else
 				$this->isProtected = false;

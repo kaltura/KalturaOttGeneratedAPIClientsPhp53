@@ -59,7 +59,7 @@ class MediaFileType extends \Kaltura\Client\ObjectBase
 			$this->description = (string)$xml->description;
 		if(count($xml->status))
 		{
-			if(!empty($xml->status))
+			if(!empty($xml->status) && $xml->status != 'false')
 				$this->status = true;
 			else
 				$this->status = false;
@@ -70,7 +70,7 @@ class MediaFileType extends \Kaltura\Client\ObjectBase
 			$this->updateDate = (string)$xml->updateDate;
 		if(count($xml->isTrailer))
 		{
-			if(!empty($xml->isTrailer))
+			if(!empty($xml->isTrailer) && $xml->isTrailer != 'false')
 				$this->isTrailer = true;
 			else
 				$this->isTrailer = false;

@@ -61,7 +61,7 @@ class MediaAsset extends \Kaltura\Client\Type\Asset
 			$this->geoBlockRuleId = (int)$xml->geoBlockRuleId;
 		if(count($xml->status))
 		{
-			if(!empty($xml->status))
+			if(!empty($xml->status) && $xml->status != 'false')
 				$this->status = true;
 			else
 				$this->status = false;
