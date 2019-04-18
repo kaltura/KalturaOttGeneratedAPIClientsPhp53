@@ -55,7 +55,7 @@ class UserRoleFilter extends \Kaltura\Client\Type\Filter
 			$this->idIn = (string)$xml->idIn;
 		if(count($xml->currentUserRoleIdsContains))
 		{
-			if(!empty($xml->currentUserRoleIdsContains))
+			if(!empty($xml->currentUserRoleIdsContains) && $xml->currentUserRoleIdsContains != 'false')
 				$this->currentUserRoleIdsContains = true;
 			else
 				$this->currentUserRoleIdsContains = false;

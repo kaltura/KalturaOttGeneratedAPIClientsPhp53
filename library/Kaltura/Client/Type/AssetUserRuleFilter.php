@@ -53,7 +53,7 @@ class AssetUserRuleFilter extends \Kaltura\Client\Type\Filter
 		
 		if(count($xml->attachedUserIdEqualCurrent))
 		{
-			if(!empty($xml->attachedUserIdEqualCurrent))
+			if(!empty($xml->attachedUserIdEqualCurrent) && $xml->attachedUserIdEqualCurrent != 'false')
 				$this->attachedUserIdEqualCurrent = true;
 			else
 				$this->attachedUserIdEqualCurrent = false;

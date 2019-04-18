@@ -65,7 +65,7 @@ class ParentalRule extends \Kaltura\Client\ObjectBase
 			$this->epgTag = (int)$xml->epgTag;
 		if(count($xml->blockAnonymousAccess))
 		{
-			if(!empty($xml->blockAnonymousAccess))
+			if(!empty($xml->blockAnonymousAccess) && $xml->blockAnonymousAccess != 'false')
 				$this->blockAnonymousAccess = true;
 			else
 				$this->blockAnonymousAccess = false;
@@ -88,7 +88,7 @@ class ParentalRule extends \Kaltura\Client\ObjectBase
 		}
 		if(count($xml->isDefault))
 		{
-			if(!empty($xml->isDefault))
+			if(!empty($xml->isDefault) && $xml->isDefault != 'false')
 				$this->isDefault = true;
 			else
 				$this->isDefault = false;

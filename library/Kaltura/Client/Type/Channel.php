@@ -73,7 +73,7 @@ class Channel extends \Kaltura\Client\Type\BaseChannel
 			$this->filterExpression = (string)$xml->filterExpression;
 		if(count($xml->isActive))
 		{
-			if(!empty($xml->isActive))
+			if(!empty($xml->isActive) && $xml->isActive != 'false')
 				$this->isActive = true;
 			else
 				$this->isActive = false;

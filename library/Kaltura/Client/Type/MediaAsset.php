@@ -59,7 +59,7 @@ class MediaAsset extends \Kaltura\Client\Type\Asset
 			$this->trickPlayBuffer = (string)$xml->trickPlayBuffer;
 		if(count($xml->enableRecordingPlaybackNonEntitledChannel))
 		{
-			if(!empty($xml->enableRecordingPlaybackNonEntitledChannel))
+			if(!empty($xml->enableRecordingPlaybackNonEntitledChannel) && $xml->enableRecordingPlaybackNonEntitledChannel != 'false')
 				$this->enableRecordingPlaybackNonEntitledChannel = true;
 			else
 				$this->enableRecordingPlaybackNonEntitledChannel = false;

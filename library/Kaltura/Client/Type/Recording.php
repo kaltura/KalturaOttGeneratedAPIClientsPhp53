@@ -62,7 +62,7 @@ class Recording extends \Kaltura\Client\ObjectBase
 			$this->viewableUntilDate = (string)$xml->viewableUntilDate;
 		if(count($xml->isProtected))
 		{
-			if(!empty($xml->isProtected))
+			if(!empty($xml->isProtected) && $xml->isProtected != 'false')
 				$this->isProtected = true;
 			else
 				$this->isProtected = false;

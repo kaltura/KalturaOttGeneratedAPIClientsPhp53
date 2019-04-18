@@ -57,7 +57,7 @@ class PpvPrice extends \Kaltura\Client\Type\ProductPrice
 			$this->ppvModuleId = (string)$xml->ppvModuleId;
 		if(count($xml->isSubscriptionOnly))
 		{
-			if(!empty($xml->isSubscriptionOnly))
+			if(!empty($xml->isSubscriptionOnly) && $xml->isSubscriptionOnly != 'false')
 				$this->isSubscriptionOnly = true;
 			else
 				$this->isSubscriptionOnly = false;
@@ -98,7 +98,7 @@ class PpvPrice extends \Kaltura\Client\Type\ProductPrice
 			$this->firstDeviceName = (string)$xml->firstDeviceName;
 		if(count($xml->isInCancelationPeriod))
 		{
-			if(!empty($xml->isInCancelationPeriod))
+			if(!empty($xml->isInCancelationPeriod) && $xml->isInCancelationPeriod != 'false')
 				$this->isInCancelationPeriod = true;
 			else
 				$this->isInCancelationPeriod = false;

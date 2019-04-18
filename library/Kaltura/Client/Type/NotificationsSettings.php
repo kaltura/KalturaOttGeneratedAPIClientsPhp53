@@ -52,28 +52,28 @@ class NotificationsSettings extends \Kaltura\Client\ObjectBase
 		
 		if(count($xml->pushNotificationEnabled))
 		{
-			if(!empty($xml->pushNotificationEnabled))
+			if(!empty($xml->pushNotificationEnabled) && $xml->pushNotificationEnabled != 'false')
 				$this->pushNotificationEnabled = true;
 			else
 				$this->pushNotificationEnabled = false;
 		}
 		if(count($xml->pushFollowEnabled))
 		{
-			if(!empty($xml->pushFollowEnabled))
+			if(!empty($xml->pushFollowEnabled) && $xml->pushFollowEnabled != 'false')
 				$this->pushFollowEnabled = true;
 			else
 				$this->pushFollowEnabled = false;
 		}
 		if(count($xml->mailEnabled))
 		{
-			if(!empty($xml->mailEnabled))
+			if(!empty($xml->mailEnabled) && $xml->mailEnabled != 'false')
 				$this->mailEnabled = true;
 			else
 				$this->mailEnabled = false;
 		}
 		if(count($xml->smsEnabled))
 		{
-			if(!empty($xml->smsEnabled))
+			if(!empty($xml->smsEnabled) && $xml->smsEnabled != 'false')
 				$this->smsEnabled = true;
 			else
 				$this->smsEnabled = false;

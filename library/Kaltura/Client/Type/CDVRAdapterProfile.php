@@ -57,7 +57,7 @@ class CDVRAdapterProfile extends \Kaltura\Client\ObjectBase
 			$this->name = (string)$xml->name;
 		if(count($xml->isActive))
 		{
-			if(!empty($xml->isActive))
+			if(!empty($xml->isActive) && $xml->isActive != 'false')
 				$this->isActive = true;
 			else
 				$this->isActive = false;
@@ -77,7 +77,7 @@ class CDVRAdapterProfile extends \Kaltura\Client\ObjectBase
 			$this->sharedSecret = (string)$xml->sharedSecret;
 		if(count($xml->dynamicLinksSupport))
 		{
-			if(!empty($xml->dynamicLinksSupport))
+			if(!empty($xml->dynamicLinksSupport) && $xml->dynamicLinksSupport != 'false')
 				$this->dynamicLinksSupport = true;
 			else
 				$this->dynamicLinksSupport = false;

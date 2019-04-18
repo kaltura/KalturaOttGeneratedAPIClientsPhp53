@@ -79,14 +79,14 @@ class Ppv extends \Kaltura\Client\ObjectBase
 			$this->productCode = (string)$xml->productCode;
 		if(count($xml->isSubscriptionOnly))
 		{
-			if(!empty($xml->isSubscriptionOnly))
+			if(!empty($xml->isSubscriptionOnly) && $xml->isSubscriptionOnly != 'false')
 				$this->isSubscriptionOnly = true;
 			else
 				$this->isSubscriptionOnly = false;
 		}
 		if(count($xml->firstDeviceLimitation))
 		{
-			if(!empty($xml->firstDeviceLimitation))
+			if(!empty($xml->firstDeviceLimitation) && $xml->firstDeviceLimitation != 'false')
 				$this->firstDeviceLimitation = true;
 			else
 				$this->firstDeviceLimitation = false;

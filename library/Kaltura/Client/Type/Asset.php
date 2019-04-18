@@ -107,28 +107,28 @@ abstract class Asset extends \Kaltura\Client\ObjectBase
 			$this->endDate = (string)$xml->endDate;
 		if(count($xml->enableCdvr))
 		{
-			if(!empty($xml->enableCdvr))
+			if(!empty($xml->enableCdvr) && $xml->enableCdvr != 'false')
 				$this->enableCdvr = true;
 			else
 				$this->enableCdvr = false;
 		}
 		if(count($xml->enableCatchUp))
 		{
-			if(!empty($xml->enableCatchUp))
+			if(!empty($xml->enableCatchUp) && $xml->enableCatchUp != 'false')
 				$this->enableCatchUp = true;
 			else
 				$this->enableCatchUp = false;
 		}
 		if(count($xml->enableStartOver))
 		{
-			if(!empty($xml->enableStartOver))
+			if(!empty($xml->enableStartOver) && $xml->enableStartOver != 'false')
 				$this->enableStartOver = true;
 			else
 				$this->enableStartOver = false;
 		}
 		if(count($xml->enableTrickPlay))
 		{
-			if(!empty($xml->enableTrickPlay))
+			if(!empty($xml->enableTrickPlay) && $xml->enableTrickPlay != 'false')
 				$this->enableTrickPlay = true;
 			else
 				$this->enableTrickPlay = false;

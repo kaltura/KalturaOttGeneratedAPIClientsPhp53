@@ -80,7 +80,7 @@ class OTTUser extends \Kaltura\Client\Type\BaseOTTUser
 		}
 		if(count($xml->isHouseholdMaster))
 		{
-			if(!empty($xml->isHouseholdMaster))
+			if(!empty($xml->isHouseholdMaster) && $xml->isHouseholdMaster != 'false')
 				$this->isHouseholdMaster = true;
 			else
 				$this->isHouseholdMaster = false;
