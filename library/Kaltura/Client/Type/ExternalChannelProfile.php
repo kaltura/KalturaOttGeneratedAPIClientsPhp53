@@ -57,7 +57,7 @@ class ExternalChannelProfile extends \Kaltura\Client\ObjectBase
 			$this->name = (string)$xml->name;
 		if(count($xml->isActive))
 		{
-			if(!empty($xml->isActive))
+			if(!empty($xml->isActive) && $xml->isActive != 'false')
 				$this->isActive = true;
 			else
 				$this->isActive = false;
@@ -77,6 +77,13 @@ class ExternalChannelProfile extends \Kaltura\Client\ObjectBase
 		}
 		if(count($xml->assetUserRuleId))
 			$this->assetUserRuleId = (string)$xml->assetUserRuleId;
+		if(count($xml->metaData))
+		{
+			if(empty($xml->metaData))
+				$this->metaData = array();
+			else
+				$this->metaData = \Kaltura\Client\ParseUtils::unmarshalMap($xml->metaData, "KalturaStringValue");
+		}
 	}
 	/**
 	 * External channel id
@@ -126,5 +133,11 @@ class ExternalChannelProfile extends \Kaltura\Client\ObjectBase
 	 * @var int
 	 */
 	public $assetUserRuleId = null;
+
+	/**
+	 * key/value map field for extra data
+	 * @var array<string, KalturaStringValue>
+	 */
+	public $metaData;
 
 }

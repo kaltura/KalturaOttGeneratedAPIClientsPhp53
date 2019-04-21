@@ -53,7 +53,7 @@ class PricePlan extends \Kaltura\Client\Type\UsageModule
 		
 		if(count($xml->isRenewable))
 		{
-			if(!empty($xml->isRenewable))
+			if(!empty($xml->isRenewable) && $xml->isRenewable != 'false')
 				$this->isRenewable = true;
 			else
 				$this->isRenewable = false;

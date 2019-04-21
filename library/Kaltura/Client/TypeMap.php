@@ -133,6 +133,8 @@ class TypeMap
 		'KalturaBulkUploadListResponse' => 'Kaltura\Client\Type\BulkUploadListResponse',
 		'KalturaBulkUploadAssetResult' => 'Kaltura\Client\Type\BulkUploadAssetResult',
 		'KalturaBulkUploadMediaAssetResult' => 'Kaltura\Client\Type\BulkUploadMediaAssetResult',
+		'KalturaBulkUploadProgramAssetResult' => 'Kaltura\Client\Type\BulkUploadProgramAssetResult',
+		'KalturaBulkUploadLiveAssetResult' => 'Kaltura\Client\Type\BulkUploadLiveAssetResult',
 		'KalturaBaseSegmentCondition' => 'Kaltura\Client\Type\BaseSegmentCondition',
 		'KalturaBaseSegmentValue' => 'Kaltura\Client\Type\BaseSegmentValue',
 		'KalturaSegmentationType' => 'Kaltura\Client\Type\SegmentationType',

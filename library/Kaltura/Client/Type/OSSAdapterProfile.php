@@ -53,7 +53,7 @@ class OSSAdapterProfile extends \Kaltura\Client\Type\OSSAdapterBaseProfile
 		
 		if(count($xml->isActive))
 		{
-			if(!empty($xml->isActive))
+			if(!empty($xml->isActive) && $xml->isActive != 'false')
 				$this->isActive = true;
 			else
 				$this->isActive = false;

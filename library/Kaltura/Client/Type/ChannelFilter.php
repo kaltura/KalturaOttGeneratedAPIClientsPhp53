@@ -56,7 +56,7 @@ class ChannelFilter extends \Kaltura\Client\Type\AssetFilter
 			$this->kSql = (string)$xml->kSql;
 		if(count($xml->excludeWatched))
 		{
-			if(!empty($xml->excludeWatched))
+			if(!empty($xml->excludeWatched) && $xml->excludeWatched != 'false')
 				$this->excludeWatched = true;
 			else
 				$this->excludeWatched = false;

@@ -30,55 +30,16 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
- * Country filter
  * @package Kaltura
  * @subpackage Client
  */
-class CountryFilter extends \Kaltura\Client\Type\Filter
+class IngestProfileAutofillPolicy extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaCountryFilter';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->idIn))
-			$this->idIn = (string)$xml->idIn;
-		if(count($xml->ipEqual))
-			$this->ipEqual = (string)$xml->ipEqual;
-		if(count($xml->ipEqualCurrent))
-		{
-			if(!empty($xml->ipEqualCurrent) && $xml->ipEqualCurrent != 'false')
-				$this->ipEqualCurrent = true;
-			else
-				$this->ipEqualCurrent = false;
-		}
-	}
-	/**
-	 * Country identifiers
-	 * @var string
-	 */
-	public $idIn = null;
-
-	/**
-	 * Ip to identify the country
-	 * @var string
-	 */
-	public $ipEqual = null;
-
-	/**
-	 * Indicates if to get the IP from the request
-	 * @var bool
-	 */
-	public $ipEqualCurrent = null;
-
+	const REJECT = "REJECT";
+	const AUTOFILL = "AUTOFILL";
+	const KEEP_HOLES = "KEEP_HOLES";
 }
+

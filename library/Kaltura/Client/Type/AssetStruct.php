@@ -65,7 +65,7 @@ class AssetStruct extends \Kaltura\Client\ObjectBase
 			$this->systemName = (string)$xml->systemName;
 		if(count($xml->isProtected))
 		{
-			if(!empty($xml->isProtected))
+			if(!empty($xml->isProtected) && $xml->isProtected != 'false')
 				$this->isProtected = true;
 			else
 				$this->isProtected = false;

@@ -77,7 +77,7 @@ class Channel extends \Kaltura\Client\Type\BaseChannel
 			$this->oldDescription = (string)$xml->oldDescription;
 		if(count($xml->isActive))
 		{
-			if(!empty($xml->isActive))
+			if(!empty($xml->isActive) && $xml->isActive != 'false')
 				$this->isActive = true;
 			else
 				$this->isActive = false;
@@ -90,13 +90,20 @@ class Channel extends \Kaltura\Client\Type\BaseChannel
 			$this->updateDate = (string)$xml->updateDate;
 		if(count($xml->supportSegmentBasedOrdering))
 		{
-			if(!empty($xml->supportSegmentBasedOrdering))
+			if(!empty($xml->supportSegmentBasedOrdering) && $xml->supportSegmentBasedOrdering != 'false')
 				$this->supportSegmentBasedOrdering = true;
 			else
 				$this->supportSegmentBasedOrdering = false;
 		}
 		if(count($xml->assetUserRuleId))
 			$this->assetUserRuleId = (string)$xml->assetUserRuleId;
+		if(count($xml->metaData))
+		{
+			if(empty($xml->metaData))
+				$this->metaData = array();
+			else
+				$this->metaData = \Kaltura\Client\ParseUtils::unmarshalMap($xml->metaData, "KalturaStringValue");
+		}
 	}
 	/**
 	 * Channel name
@@ -179,5 +186,11 @@ class Channel extends \Kaltura\Client\Type\BaseChannel
 	 * @var int
 	 */
 	public $assetUserRuleId = null;
+
+	/**
+	 * key/value map field for extra data
+	 * @var array<string, KalturaStringValue>
+	 */
+	public $metaData;
 
 }

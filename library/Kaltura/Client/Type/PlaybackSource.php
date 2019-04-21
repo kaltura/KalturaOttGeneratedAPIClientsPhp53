@@ -63,7 +63,7 @@ class PlaybackSource extends \Kaltura\Client\Type\MediaFile
 		}
 		if(count($xml->isTokenized))
 		{
-			if(!empty($xml->isTokenized))
+			if(!empty($xml->isTokenized) && $xml->isTokenized != 'false')
 				$this->isTokenized = true;
 			else
 				$this->isTokenized = false;

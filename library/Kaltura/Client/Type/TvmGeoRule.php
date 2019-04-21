@@ -53,7 +53,7 @@ class TvmGeoRule extends \Kaltura\Client\Type\TvmRule
 		
 		if(count($xml->onlyOrBut))
 		{
-			if(!empty($xml->onlyOrBut))
+			if(!empty($xml->onlyOrBut) && $xml->onlyOrBut != 'false')
 				$this->onlyOrBut = true;
 			else
 				$this->onlyOrBut = false;

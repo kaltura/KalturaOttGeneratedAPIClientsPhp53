@@ -57,7 +57,7 @@ class BulkUploadFilter extends \Kaltura\Client\Type\Filter
 			$this->createDateGreaterThanOrEqual = (string)$xml->createDateGreaterThanOrEqual;
 		if(count($xml->uploadedByUserIdEqualCurrent))
 		{
-			if(!empty($xml->uploadedByUserIdEqualCurrent))
+			if(!empty($xml->uploadedByUserIdEqualCurrent) && $xml->uploadedByUserIdEqualCurrent != 'false')
 				$this->uploadedByUserIdEqualCurrent = true;
 			else
 				$this->uploadedByUserIdEqualCurrent = false;

@@ -33,15 +33,14 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Country filter
  * @package Kaltura
  * @subpackage Client
  */
-class CountryFilter extends \Kaltura\Client\Type\Filter
+class BulkUploadProgramAssetResult extends \Kaltura\Client\Type\BulkUploadResult
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaCountryFilter';
+		return 'KalturaBulkUploadProgramAssetResult';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,34 +50,41 @@ class CountryFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->idIn))
-			$this->idIn = (string)$xml->idIn;
-		if(count($xml->ipEqual))
-			$this->ipEqual = (string)$xml->ipEqual;
-		if(count($xml->ipEqualCurrent))
-		{
-			if(!empty($xml->ipEqualCurrent) && $xml->ipEqualCurrent != 'false')
-				$this->ipEqualCurrent = true;
-			else
-				$this->ipEqualCurrent = false;
-		}
+		if(count($xml->programId))
+			$this->programId = (int)$xml->programId;
+		if(count($xml->programExternalId))
+			$this->programExternalId = (string)$xml->programExternalId;
+		if(count($xml->liveAssetId))
+			$this->liveAssetId = (int)$xml->liveAssetId;
+		if(count($xml->liveAssetExternalId))
+			$this->liveAssetExternalId = (string)$xml->liveAssetExternalId;
 	}
 	/**
-	 * Country identifiers
-	 * @var string
+	 * The programID that was created
+	 * @var int
+	 * @readonly
 	 */
-	public $idIn = null;
+	public $programId = null;
 
 	/**
-	 * Ip to identify the country
+	 * The external program Id as was sent in the bulk xml file
 	 * @var string
+	 * @readonly
 	 */
-	public $ipEqual = null;
+	public $programExternalId = null;
 
 	/**
-	 * Indicates if to get the IP from the request
-	 * @var bool
+	 * The  live asset Id that was identified according liveAssetExternalId that was sent in bulk xml file
+	 * @var int
+	 * @readonly
 	 */
-	public $ipEqualCurrent = null;
+	public $liveAssetId = null;
+
+	/**
+	 * The external live asset Id as was sent in bulk xml file
+	 * @var string
+	 * @readonly
+	 */
+	public $liveAssetExternalId = null;
 
 }

@@ -61,7 +61,7 @@ class Currency extends \Kaltura\Client\ObjectBase
 			$this->sign = (string)$xml->sign;
 		if(count($xml->isDefault))
 		{
-			if(!empty($xml->isDefault))
+			if(!empty($xml->isDefault) && $xml->isDefault != 'false')
 				$this->isDefault = true;
 			else
 				$this->isDefault = false;

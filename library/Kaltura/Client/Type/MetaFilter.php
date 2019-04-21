@@ -59,7 +59,7 @@ class MetaFilter extends \Kaltura\Client\Type\Filter
 			$this->dataTypeEqual = (string)$xml->dataTypeEqual;
 		if(count($xml->multipleValueEqual))
 		{
-			if(!empty($xml->multipleValueEqual))
+			if(!empty($xml->multipleValueEqual) && $xml->multipleValueEqual != 'false')
 				$this->multipleValueEqual = true;
 			else
 				$this->multipleValueEqual = false;

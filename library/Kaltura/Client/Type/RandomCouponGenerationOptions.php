@@ -54,21 +54,21 @@ class RandomCouponGenerationOptions extends \Kaltura\Client\Type\CouponGeneratio
 			$this->numberOfCoupons = (int)$xml->numberOfCoupons;
 		if(count($xml->useLetters))
 		{
-			if(!empty($xml->useLetters))
+			if(!empty($xml->useLetters) && $xml->useLetters != 'false')
 				$this->useLetters = true;
 			else
 				$this->useLetters = false;
 		}
 		if(count($xml->useNumbers))
 		{
-			if(!empty($xml->useNumbers))
+			if(!empty($xml->useNumbers) && $xml->useNumbers != 'false')
 				$this->useNumbers = true;
 			else
 				$this->useNumbers = false;
 		}
 		if(count($xml->useSpecialCharacters))
 		{
-			if(!empty($xml->useSpecialCharacters))
+			if(!empty($xml->useSpecialCharacters) && $xml->useSpecialCharacters != 'false')
 				$this->useSpecialCharacters = true;
 			else
 				$this->useSpecialCharacters = false;

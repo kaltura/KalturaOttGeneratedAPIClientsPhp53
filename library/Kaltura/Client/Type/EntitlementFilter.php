@@ -57,7 +57,7 @@ class EntitlementFilter extends \Kaltura\Client\Type\Filter
 			$this->entityReferenceEqual = (string)$xml->entityReferenceEqual;
 		if(count($xml->isExpiredEqual))
 		{
-			if(!empty($xml->isExpiredEqual))
+			if(!empty($xml->isExpiredEqual) && $xml->isExpiredEqual != 'false')
 				$this->isExpiredEqual = true;
 			else
 				$this->isExpiredEqual = false;

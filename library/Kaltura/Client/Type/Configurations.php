@@ -66,7 +66,7 @@ class Configurations extends \Kaltura\Client\ObjectBase
 			$this->externalPushId = (string)$xml->externalPushId;
 		if(count($xml->isForceUpdate))
 		{
-			if(!empty($xml->isForceUpdate))
+			if(!empty($xml->isForceUpdate) && $xml->isForceUpdate != 'false')
 				$this->isForceUpdate = true;
 			else
 				$this->isForceUpdate = false;

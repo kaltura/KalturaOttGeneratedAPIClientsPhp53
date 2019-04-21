@@ -71,9 +71,9 @@ class IngestProfile extends \Kaltura\Client\ObjectBase
 		if(count($xml->transformationAdapterSharedSecret))
 			$this->transformationAdapterSharedSecret = (string)$xml->transformationAdapterSharedSecret;
 		if(count($xml->defaultAutoFillPolicy))
-			$this->defaultAutoFillPolicy = (int)$xml->defaultAutoFillPolicy;
+			$this->defaultAutoFillPolicy = (string)$xml->defaultAutoFillPolicy;
 		if(count($xml->defaultOverlapPolicy))
-			$this->defaultOverlapPolicy = (int)$xml->defaultOverlapPolicy;
+			$this->defaultOverlapPolicy = (string)$xml->defaultOverlapPolicy;
 	}
 	/**
 	 * Ingest profile identifier
@@ -120,13 +120,13 @@ class IngestProfile extends \Kaltura\Client\ObjectBase
 
 	/**
 	 * Ingest profile default Auto-fill policy
-	 * @var int
+	 * @var \Kaltura\Client\Enum\IngestProfileAutofillPolicy
 	 */
 	public $defaultAutoFillPolicy = null;
 
 	/**
 	 * Ingest profile default Overlap policy
-	 * @var int
+	 * @var \Kaltura\Client\Enum\IngestProfileOverlapPolicy
 	 */
 	public $defaultOverlapPolicy = null;
 

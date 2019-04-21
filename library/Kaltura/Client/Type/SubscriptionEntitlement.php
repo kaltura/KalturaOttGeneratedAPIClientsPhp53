@@ -55,21 +55,21 @@ class SubscriptionEntitlement extends \Kaltura\Client\Type\Entitlement
 			$this->nextRenewalDate = (string)$xml->nextRenewalDate;
 		if(count($xml->isRenewableForPurchase))
 		{
-			if(!empty($xml->isRenewableForPurchase))
+			if(!empty($xml->isRenewableForPurchase) && $xml->isRenewableForPurchase != 'false')
 				$this->isRenewableForPurchase = true;
 			else
 				$this->isRenewableForPurchase = false;
 		}
 		if(count($xml->isRenewable))
 		{
-			if(!empty($xml->isRenewable))
+			if(!empty($xml->isRenewable) && $xml->isRenewable != 'false')
 				$this->isRenewable = true;
 			else
 				$this->isRenewable = false;
 		}
 		if(count($xml->isInGracePeriod))
 		{
-			if(!empty($xml->isInGracePeriod))
+			if(!empty($xml->isInGracePeriod) && $xml->isInGracePeriod != 'false')
 				$this->isInGracePeriod = true;
 			else
 				$this->isInGracePeriod = false;
@@ -84,7 +84,7 @@ class SubscriptionEntitlement extends \Kaltura\Client\Type\Entitlement
 			$this->unifiedPaymentId = (string)$xml->unifiedPaymentId;
 		if(count($xml->isSuspended))
 		{
-			if(!empty($xml->isSuspended))
+			if(!empty($xml->isSuspended) && $xml->isSuspended != 'false')
 				$this->isSuspended = true;
 			else
 				$this->isSuspended = false;

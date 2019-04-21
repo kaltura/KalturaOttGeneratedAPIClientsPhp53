@@ -55,7 +55,7 @@ class LanguageFilter extends \Kaltura\Client\Type\Filter
 			$this->codeIn = (string)$xml->codeIn;
 		if(count($xml->excludePartner))
 		{
-			if(!empty($xml->excludePartner))
+			if(!empty($xml->excludePartner) && $xml->excludePartner != 'false')
 				$this->excludePartner = true;
 			else
 				$this->excludePartner = false;

@@ -52,42 +52,42 @@ class TimeShiftedTvPartnerSettings extends \Kaltura\Client\ObjectBase
 		
 		if(count($xml->catchUpEnabled))
 		{
-			if(!empty($xml->catchUpEnabled))
+			if(!empty($xml->catchUpEnabled) && $xml->catchUpEnabled != 'false')
 				$this->catchUpEnabled = true;
 			else
 				$this->catchUpEnabled = false;
 		}
 		if(count($xml->cdvrEnabled))
 		{
-			if(!empty($xml->cdvrEnabled))
+			if(!empty($xml->cdvrEnabled) && $xml->cdvrEnabled != 'false')
 				$this->cdvrEnabled = true;
 			else
 				$this->cdvrEnabled = false;
 		}
 		if(count($xml->startOverEnabled))
 		{
-			if(!empty($xml->startOverEnabled))
+			if(!empty($xml->startOverEnabled) && $xml->startOverEnabled != 'false')
 				$this->startOverEnabled = true;
 			else
 				$this->startOverEnabled = false;
 		}
 		if(count($xml->trickPlayEnabled))
 		{
-			if(!empty($xml->trickPlayEnabled))
+			if(!empty($xml->trickPlayEnabled) && $xml->trickPlayEnabled != 'false')
 				$this->trickPlayEnabled = true;
 			else
 				$this->trickPlayEnabled = false;
 		}
 		if(count($xml->recordingScheduleWindowEnabled))
 		{
-			if(!empty($xml->recordingScheduleWindowEnabled))
+			if(!empty($xml->recordingScheduleWindowEnabled) && $xml->recordingScheduleWindowEnabled != 'false')
 				$this->recordingScheduleWindowEnabled = true;
 			else
 				$this->recordingScheduleWindowEnabled = false;
 		}
 		if(count($xml->protectionEnabled))
 		{
-			if(!empty($xml->protectionEnabled))
+			if(!empty($xml->protectionEnabled) && $xml->protectionEnabled != 'false')
 				$this->protectionEnabled = true;
 			else
 				$this->protectionEnabled = false;
@@ -112,21 +112,21 @@ class TimeShiftedTvPartnerSettings extends \Kaltura\Client\ObjectBase
 			$this->cleanupNoticePeriod = (int)$xml->cleanupNoticePeriod;
 		if(count($xml->seriesRecordingEnabled))
 		{
-			if(!empty($xml->seriesRecordingEnabled))
+			if(!empty($xml->seriesRecordingEnabled) && $xml->seriesRecordingEnabled != 'false')
 				$this->seriesRecordingEnabled = true;
 			else
 				$this->seriesRecordingEnabled = false;
 		}
 		if(count($xml->nonEntitledChannelPlaybackEnabled))
 		{
-			if(!empty($xml->nonEntitledChannelPlaybackEnabled))
+			if(!empty($xml->nonEntitledChannelPlaybackEnabled) && $xml->nonEntitledChannelPlaybackEnabled != 'false')
 				$this->nonEntitledChannelPlaybackEnabled = true;
 			else
 				$this->nonEntitledChannelPlaybackEnabled = false;
 		}
 		if(count($xml->nonExistingChannelPlaybackEnabled))
 		{
-			if(!empty($xml->nonExistingChannelPlaybackEnabled))
+			if(!empty($xml->nonExistingChannelPlaybackEnabled) && $xml->nonExistingChannelPlaybackEnabled != 'false')
 				$this->nonExistingChannelPlaybackEnabled = true;
 			else
 				$this->nonExistingChannelPlaybackEnabled = false;

@@ -33,15 +33,14 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Country filter
  * @package Kaltura
  * @subpackage Client
  */
-class CountryFilter extends \Kaltura\Client\Type\Filter
+class BulkUploadLiveAssetResult extends \Kaltura\Client\Type\BulkUploadResult
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaCountryFilter';
+		return 'KalturaBulkUploadLiveAssetResult';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,34 +50,37 @@ class CountryFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->idIn))
-			$this->idIn = (string)$xml->idIn;
-		if(count($xml->ipEqual))
-			$this->ipEqual = (string)$xml->ipEqual;
-		if(count($xml->ipEqualCurrent))
+		if(count($xml->id))
+			$this->id = (int)$xml->id;
+		if(count($xml->externalEpgIngestId))
+			$this->externalEpgIngestId = (string)$xml->externalEpgIngestId;
+		if(count($xml->programs))
 		{
-			if(!empty($xml->ipEqualCurrent) && $xml->ipEqualCurrent != 'false')
-				$this->ipEqualCurrent = true;
+			if(empty($xml->programs))
+				$this->programs = array();
 			else
-				$this->ipEqualCurrent = false;
+				$this->programs = \Kaltura\Client\ParseUtils::unmarshalArray($xml->programs, "KalturaBulkUploadProgramAssetResult");
 		}
 	}
 	/**
-	 * Country identifiers
-	 * @var string
+	 * The internal kaltura channel id
+	 * @var int
+	 * @readonly
 	 */
-	public $idIn = null;
+	public $id = null;
 
 	/**
-	 * Ip to identify the country
+	 * Indicates the epg asset object id in the bulk file
 	 * @var string
+	 * @readonly
 	 */
-	public $ipEqual = null;
+	public $externalEpgIngestId = null;
 
 	/**
-	 * Indicates if to get the IP from the request
-	 * @var bool
+	 * List of programs that were ingested to the channel
+	 * @var array<KalturaBulkUploadProgramAssetResult>
+	 * @readonly
 	 */
-	public $ipEqualCurrent = null;
+	public $programs;
 
 }
