@@ -58,11 +58,19 @@ class PermissionFilter extends \Kaltura\Client\Type\Filter
 			else
 				$this->currentUserPermissionsContains = false;
 		}
+		if(count($xml->roleIdIn))
+			$this->roleIdIn = (string)$xml->roleIdIn;
 	}
 	/**
 	 * Indicates whether the results should be filtered by userId using the current
 	 * @var bool
 	 */
 	public $currentUserPermissionsContains = null;
+
+	/**
+	 * Return permissions by role ID
+	 * @var int
+	 */
+	public $roleIdIn = null;
 
 }
