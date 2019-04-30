@@ -56,8 +56,6 @@ class BulkUploadProgramAssetResult extends \Kaltura\Client\Type\BulkUploadResult
 			$this->programExternalId = (string)$xml->programExternalId;
 		if(count($xml->liveAssetId))
 			$this->liveAssetId = (int)$xml->liveAssetId;
-		if(count($xml->liveAssetExternalId))
-			$this->liveAssetExternalId = (string)$xml->liveAssetExternalId;
 	}
 	/**
 	 * The programID that was created
@@ -79,12 +77,5 @@ class BulkUploadProgramAssetResult extends \Kaltura\Client\Type\BulkUploadResult
 	 * @readonly
 	 */
 	public $liveAssetId = null;
-
-	/**
-	 * The external live asset Id as was sent in bulk xml file
-	 * @var string
-	 * @readonly
-	 */
-	public $liveAssetExternalId = null;
 
 }
