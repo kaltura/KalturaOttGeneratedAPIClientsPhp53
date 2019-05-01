@@ -30,61 +30,15 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
- * Asset rule
  * @package Kaltura
  * @subpackage Client
  */
-class AssetRule extends \Kaltura\Client\Type\AssetRuleBase
+class AssetRuleStatus extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaAssetRule';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->conditions))
-		{
-			if(empty($xml->conditions))
-				$this->conditions = array();
-			else
-				$this->conditions = \Kaltura\Client\ParseUtils::unmarshalArray($xml->conditions, "KalturaCondition");
-		}
-		if(count($xml->actions))
-		{
-			if(empty($xml->actions))
-				$this->actions = array();
-			else
-				$this->actions = \Kaltura\Client\ParseUtils::unmarshalArray($xml->actions, "KalturaAssetRuleAction");
-		}
-		if(count($xml->status))
-			$this->status = (string)$xml->status;
-	}
-	/**
-	 * List of conditions for the rule
-	 * @var array<KalturaCondition>
-	 */
-	public $conditions;
-
-	/**
-	 * List of actions for the rule
-	 * @var array<KalturaAssetRuleAction>
-	 */
-	public $actions;
-
-	/**
-	 * List of actions for the rule
-	 * @var \Kaltura\Client\Enum\AssetRuleStatus
-	 * @readonly
-	 */
-	public $status = null;
-
+	const READY = "READY";
+	const IN_PROGRESS = "IN_PROGRESS";
 }
+
