@@ -30,19 +30,41 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class MetaDataType extends \Kaltura\Client\EnumBase
+class RelatedEntity extends \Kaltura\Client\ObjectBase
 {
-	const STRING = "STRING";
-	const MULTILINGUAL_STRING = "MULTILINGUAL_STRING";
-	const NUMBER = "NUMBER";
-	const BOOLEAN = "BOOLEAN";
-	const DATE = "DATE";
-	const RELEATED_ENTITY = "RELEATED_ENTITY";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaRelatedEntity';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->id))
+			$this->id = (string)$xml->id;
+		if(count($xml->type))
+			$this->type = (string)$xml->type;
+	}
+	/**
+	 * Unique identifier for the related entry
+	 * @var string
+	 */
+	public $id = null;
 
+	/**
+	 * Defines related entry type
+	 * @var \Kaltura\Client\Enum\RelatedEntityType
+	 */
+	public $type = null;
+
+}

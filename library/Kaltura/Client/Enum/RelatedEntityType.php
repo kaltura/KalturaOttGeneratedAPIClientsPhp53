@@ -36,13 +36,11 @@ namespace Kaltura\Client\Enum;
  * @package Kaltura
  * @subpackage Client
  */
-class MetaDataType extends \Kaltura\Client\EnumBase
+class RelatedEntityType extends \Kaltura\Client\EnumBase
 {
-	const STRING = "STRING";
-	const MULTILINGUAL_STRING = "MULTILINGUAL_STRING";
-	const NUMBER = "NUMBER";
-	const BOOLEAN = "BOOLEAN";
-	const DATE = "DATE";
-	const RELEATED_ENTITY = "RELEATED_ENTITY";
+	const CHANNEL = "CHANNEL";
+	const EXTERNAL_CHANNEL = "EXTERNAL_CHANNEL";
+	const MEDIA = "MEDIA";
+	const PROGRAM = "PROGRAM";
 }
 

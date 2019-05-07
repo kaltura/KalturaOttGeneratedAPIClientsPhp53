@@ -251,6 +251,8 @@ class TypeMap
 		'KalturaRatioListResponse' => 'Kaltura\Client\Type\RatioListResponse',
 		'KalturaTag' => 'Kaltura\Client\Type\Tag',
 		'KalturaTagListResponse' => 'Kaltura\Client\Type\TagListResponse',
+		'KalturaRelatedEntity' => 'Kaltura\Client\Type\RelatedEntity',
+		'KalturaRelatedEntityArray' => 'Kaltura\Client\Type\RelatedEntityArray',
 		'KalturaAsset' => 'Kaltura\Client\Type\Asset',
 		'KalturaAssetListResponse' => 'Kaltura\Client\Type\AssetListResponse',
 		'KalturaMediaAsset' => 'Kaltura\Client\Type\MediaAsset',
