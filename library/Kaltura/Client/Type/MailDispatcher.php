@@ -30,23 +30,41 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class RuleActionType extends \Kaltura\Client\EnumBase
+class MailDispatcher extends \Kaltura\Client\Type\Dispatcher
 {
-	const BLOCK = "BLOCK";
-	const START_DATE_OFFSET = "START_DATE_OFFSET";
-	const END_DATE_OFFSET = "END_DATE_OFFSET";
-	const USER_BLOCK = "USER_BLOCK";
-	const ALLOW_PLAYBACK = "ALLOW_PLAYBACK";
-	const BLOCK_PLAYBACK = "BLOCK_PLAYBACK";
-	const APPLY_DISCOUNT_MODULE = "APPLY_DISCOUNT_MODULE";
-	const APPLY_PLAYBACK_ADAPTER = "APPLY_PLAYBACK_ADAPTER";
-	const FILTER = "FILTER";
-	const ASSET_LIFE_CYCLE_TRANSITION = "ASSET_LIFE_CYCLE_TRANSITION";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaMailDispatcher';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->bodyTemplate))
+			$this->bodyTemplate = (string)$xml->bodyTemplate;
+		if(count($xml->subjectTemplate))
+			$this->subjectTemplate = (string)$xml->subjectTemplate;
+	}
+	/**
+	 * Mail body template
+	 * @var string
+	 */
+	public $bodyTemplate = null;
 
+	/**
+	 * Mail subjsct template
+	 * @var string
+	 */
+	public $subjectTemplate = null;
+
+}

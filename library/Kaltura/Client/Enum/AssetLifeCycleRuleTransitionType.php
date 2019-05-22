@@ -36,17 +36,9 @@ namespace Kaltura\Client\Enum;
  * @package Kaltura
  * @subpackage Client
  */
-class RuleActionType extends \Kaltura\Client\EnumBase
+class AssetLifeCycleRuleTransitionType extends \Kaltura\Client\EnumBase
 {
-	const BLOCK = "BLOCK";
-	const START_DATE_OFFSET = "START_DATE_OFFSET";
-	const END_DATE_OFFSET = "END_DATE_OFFSET";
-	const USER_BLOCK = "USER_BLOCK";
-	const ALLOW_PLAYBACK = "ALLOW_PLAYBACK";
-	const BLOCK_PLAYBACK = "BLOCK_PLAYBACK";
-	const APPLY_DISCOUNT_MODULE = "APPLY_DISCOUNT_MODULE";
-	const APPLY_PLAYBACK_ADAPTER = "APPLY_PLAYBACK_ADAPTER";
-	const FILTER = "FILTER";
-	const ASSET_LIFE_CYCLE_TRANSITION = "ASSET_LIFE_CYCLE_TRANSITION";
+	const TAG = "TAG";
+	const BUSINESS_MODEL = "BUSINESS_MODEL";
 }
 

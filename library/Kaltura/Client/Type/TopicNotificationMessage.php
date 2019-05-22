@@ -30,23 +30,71 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class RuleActionType extends \Kaltura\Client\EnumBase
+class TopicNotificationMessage extends \Kaltura\Client\ObjectBase
 {
-	const BLOCK = "BLOCK";
-	const START_DATE_OFFSET = "START_DATE_OFFSET";
-	const END_DATE_OFFSET = "END_DATE_OFFSET";
-	const USER_BLOCK = "USER_BLOCK";
-	const ALLOW_PLAYBACK = "ALLOW_PLAYBACK";
-	const BLOCK_PLAYBACK = "BLOCK_PLAYBACK";
-	const APPLY_DISCOUNT_MODULE = "APPLY_DISCOUNT_MODULE";
-	const APPLY_PLAYBACK_ADAPTER = "APPLY_PLAYBACK_ADAPTER";
-	const FILTER = "FILTER";
-	const ASSET_LIFE_CYCLE_TRANSITION = "ASSET_LIFE_CYCLE_TRANSITION";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaTopicNotificationMessage';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->id))
+			$this->id = (string)$xml->id;
+		if(count($xml->message))
+			$this->message = (string)$xml->message;
+		if(count($xml->topicNotificationId))
+			$this->topicNotificationId = (string)$xml->topicNotificationId;
+		if(count($xml->trigger) && !empty($xml->trigger))
+			$this->trigger = \Kaltura\Client\ParseUtils::unmarshalObject($xml->trigger, "KalturaTrigger");
+		if(count($xml->dispatchers))
+		{
+			if(empty($xml->dispatchers))
+				$this->dispatchers = array();
+			else
+				$this->dispatchers = \Kaltura\Client\ParseUtils::unmarshalArray($xml->dispatchers, "KalturaDispatcher");
+		}
+	}
+	/**
+	 * Topic notification message ID
+	 * @var int
+	 * @readonly
+	 */
+	public $id = null;
 
+	/**
+	 * Topic notification message
+	 * @var string
+	 */
+	public $message = null;
+
+	/**
+	 * Topic notification ID
+	 * @var int
+	 */
+	public $topicNotificationId = null;
+
+	/**
+	 * Topic notification message trigger
+	 * @var \Kaltura\Client\Type\Trigger
+	 */
+	public $trigger;
+
+	/**
+	 * Topic notification message dispatchers
+	 * @var array<KalturaDispatcher>
+	 */
+	public $dispatchers;
+
+}
