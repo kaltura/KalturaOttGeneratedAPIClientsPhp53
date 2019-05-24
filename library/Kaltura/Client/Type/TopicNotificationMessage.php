@@ -54,6 +54,8 @@ class TopicNotificationMessage extends \Kaltura\Client\ObjectBase
 			$this->id = (string)$xml->id;
 		if(count($xml->message))
 			$this->message = (string)$xml->message;
+		if(count($xml->imageUrl))
+			$this->imageUrl = (string)$xml->imageUrl;
 		if(count($xml->topicNotificationId))
 			$this->topicNotificationId = (string)$xml->topicNotificationId;
 		if(count($xml->trigger) && !empty($xml->trigger))
@@ -78,6 +80,12 @@ class TopicNotificationMessage extends \Kaltura\Client\ObjectBase
 	 * @var string
 	 */
 	public $message = null;
+
+	/**
+	 * Topic notification message image URL
+	 * @var string
+	 */
+	public $imageUrl = null;
 
 	/**
 	 * Topic notification ID
