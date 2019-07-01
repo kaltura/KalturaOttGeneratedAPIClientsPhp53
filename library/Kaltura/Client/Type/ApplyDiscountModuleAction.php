@@ -36,7 +36,7 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class ApplyDiscountModuleAction extends \Kaltura\Client\Type\RuleAction
+class ApplyDiscountModuleAction extends \Kaltura\Client\Type\BusinessModuleRuleAction
 {
 	public function getKalturaObjectType()
 	{
