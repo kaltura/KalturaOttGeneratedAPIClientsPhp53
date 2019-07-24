@@ -61,8 +61,6 @@ class MonetizationCondition extends \Kaltura\Client\Type\BaseSegmentCondition
 			$this->type = (string)$xml->type;
 		if(count($xml->operator))
 			$this->operator = (string)$xml->operator;
-		if(count($xml->businessModuleIdIn))
-			$this->businessModuleIdIn = (string)$xml->businessModuleIdIn;
 	}
 	/**
 	 * The minimum value to be met
@@ -93,11 +91,5 @@ class MonetizationCondition extends \Kaltura\Client\Type\BaseSegmentCondition
 	 * @var \Kaltura\Client\Enum\MathemticalOperatorType
 	 */
 	public $operator = null;
-
-	/**
-	 * Comma saperated list of business module IDs
-	 * @var string
-	 */
-	public $businessModuleIdIn = null;
 
 }

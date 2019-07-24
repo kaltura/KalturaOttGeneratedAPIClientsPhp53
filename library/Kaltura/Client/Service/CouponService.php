@@ -63,24 +63,4 @@ class CouponService extends \Kaltura\Client\ServiceBase
 		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\Coupon");
 		return $resultObject;
 	}
-
-	/**
-	 * Lists coupon codes.
-	 * 
-	 * @return \Kaltura\Client\Type\CouponListResponse
-	 */
-	function listAction(\Kaltura\Client\Type\CouponFilter $filter)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "filter", $filter->toParams());
-		$this->client->queueServiceActionCall("coupon", "list", "KalturaCouponListResponse", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCouponListResponse");
-		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\CouponListResponse");
-		return $resultObject;
-	}
 }

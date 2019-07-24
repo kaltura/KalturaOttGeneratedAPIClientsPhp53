@@ -45,23 +45,6 @@ class EntitlementService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Apply new coupon for existing subscription
-	 * 
-	 */
-	function applyCoupon($purchaseId, $couponCode)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "purchaseId", $purchaseId);
-		$this->client->addParam($kparams, "couponCode", $couponCode);
-		$this->client->queueServiceActionCall("entitlement", "applyCoupon", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-	}
-
-	/**
 	 * Immediately cancel a subscription, PPV or collection. Cancel is possible only if within cancellation window and content not already consumed
 	 * 
 	 * @return bool
