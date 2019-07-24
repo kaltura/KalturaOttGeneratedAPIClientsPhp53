@@ -30,71 +30,14 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
- * Coupon details container
  * @package Kaltura
  * @subpackage Client
  */
-class Coupon extends \Kaltura\Client\ObjectBase
+class HouseholdCouponOrderBy extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaCoupon';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->couponsGroup) && !empty($xml->couponsGroup))
-			$this->couponsGroup = \Kaltura\Client\ParseUtils::unmarshalObject($xml->couponsGroup, "KalturaCouponsGroup");
-		if(count($xml->status))
-			$this->status = (string)$xml->status;
-		if(count($xml->totalUses))
-			$this->totalUses = (int)$xml->totalUses;
-		if(count($xml->leftUses))
-			$this->leftUses = (int)$xml->leftUses;
-		if(count($xml->couponCode))
-			$this->couponCode = (string)$xml->couponCode;
-	}
-	/**
-	 * Coupons group details
-	 * @var \Kaltura\Client\Type\CouponsGroup
-	 * @readonly
-	 */
-	public $couponsGroup;
-
-	/**
-	 * Coupon status
-	 * @var \Kaltura\Client\Enum\CouponStatus
-	 * @readonly
-	 */
-	public $status = null;
-
-	/**
-	 * Total available coupon uses
-	 * @var int
-	 * @readonly
-	 */
-	public $totalUses = null;
-
-	/**
-	 * Left coupon uses
-	 * @var int
-	 * @readonly
-	 */
-	public $leftUses = null;
-
-	/**
-	 * Coupon code
-	 * @var string
-	 * @readonly
-	 */
-	public $couponCode = null;
-
+	const NONE = "NONE";
 }
+

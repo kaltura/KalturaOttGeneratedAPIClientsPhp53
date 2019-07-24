@@ -33,15 +33,14 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Defines a condition which is essentially a combination of several monetization-based actions, each has their own score multiplier
  * @package Kaltura
  * @subpackage Client
  */
-class MonetizationCondition extends \Kaltura\Client\Type\BaseSegmentCondition
+class HouseholdCouponFilter extends \Kaltura\Client\Type\CrudFilter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaMonetizationCondition';
+		return 'KalturaHouseholdCouponFilter';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,53 +50,21 @@ class MonetizationCondition extends \Kaltura\Client\Type\BaseSegmentCondition
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->minValue))
-			$this->minValue = (int)$xml->minValue;
-		if(count($xml->maxValue))
-			$this->maxValue = (int)$xml->maxValue;
-		if(count($xml->days))
-			$this->days = (int)$xml->days;
-		if(count($xml->type))
-			$this->type = (string)$xml->type;
-		if(count($xml->operator))
-			$this->operator = (string)$xml->operator;
-		if(count($xml->businessModuleIdIn))
-			$this->businessModuleIdIn = (string)$xml->businessModuleIdIn;
+		if(count($xml->businessModuleTypeEqual))
+			$this->businessModuleTypeEqual = (string)$xml->businessModuleTypeEqual;
+		if(count($xml->businessModuleIdEqual))
+			$this->businessModuleIdEqual = (string)$xml->businessModuleIdEqual;
 	}
 	/**
-	 * The minimum value to be met
+	 * Indicates which household coupons list to return by their business module type.
+	 * @var \Kaltura\Client\Enum\TransactionType
+	 */
+	public $businessModuleTypeEqual = null;
+
+	/**
+	 * Indicates which household coupons list to return by their business module ID.
 	 * @var int
 	 */
-	public $minValue = null;
-
-	/**
-	 * The maximum value to be met
-	 * @var int
-	 */
-	public $maxValue = null;
-
-	/**
-	 * How many days back should the actions be considered
-	 * @var int
-	 */
-	public $days = null;
-
-	/**
-	 * Purchase type
-	 * @var \Kaltura\Client\Enum\MonetizationType
-	 */
-	public $type = null;
-
-	/**
-	 * Mathermtical operator to calculate
-	 * @var \Kaltura\Client\Enum\MathemticalOperatorType
-	 */
-	public $operator = null;
-
-	/**
-	 * Comma saperated list of business module IDs
-	 * @var string
-	 */
-	public $businessModuleIdIn = null;
+	public $businessModuleIdEqual = null;
 
 }
