@@ -27,29 +27,3 @@
 // @ignore
 // ===================================================================================================
 
-/**
- * @namespace
- */
-namespace Kaltura\Client\Type;
-
-/**
- * Kaltura Houseold CouponCode Filter
- * @package Kaltura
- * @subpackage Client
- */
-class HouseoldCouponCodeFilter extends \Kaltura\Client\Type\RelatedObjectFilter
-{
-	public function getKalturaObjectType()
-	{
-		return 'KalturaHouseoldCouponCodeFilter';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-	}
-}

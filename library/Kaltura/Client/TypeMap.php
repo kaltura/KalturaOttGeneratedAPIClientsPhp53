@@ -439,7 +439,7 @@ class TypeMap
 		'KalturaDeviceReportFilter' => 'Kaltura\Client\Type\DeviceReportFilter',
 		'KalturaHouseholdDeviceFilter' => 'Kaltura\Client\Type\HouseholdDeviceFilter',
 		'KalturaHouseholdUserFilter' => 'Kaltura\Client\Type\HouseholdUserFilter',
-		'KalturaHouseoldCouponCodeFilter' => 'Kaltura\Client\Type\HouseoldCouponCodeFilter',
+		'KalturaHouseholdCouponCodeFilter' => 'Kaltura\Client\Type\HouseholdCouponCodeFilter',
 		'KalturaConfigurationGroupDeviceFilter' => 'Kaltura\Client\Type\ConfigurationGroupDeviceFilter',
 		'KalturaConfigurationGroupTagFilter' => 'Kaltura\Client\Type\ConfigurationGroupTagFilter',
 		'KalturaConfigurationsFilter' => 'Kaltura\Client\Type\ConfigurationsFilter',
