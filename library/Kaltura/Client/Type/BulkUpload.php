@@ -74,6 +74,13 @@ class BulkUpload extends \Kaltura\Client\ObjectBase
 			else
 				$this->results = \Kaltura\Client\ParseUtils::unmarshalArray($xml->results, "KalturaBulkUploadResult");
 		}
+		if(count($xml->errors))
+		{
+			if(empty($xml->errors))
+				$this->errors = array();
+			else
+				$this->errors = \Kaltura\Client\ParseUtils::unmarshalArray($xml->errors, "KalturaMessage");
+		}
 	}
 	/**
 	 * Bulk identifier
@@ -137,5 +144,12 @@ class BulkUpload extends \Kaltura\Client\ObjectBase
 	 * @readonly
 	 */
 	public $results;
+
+	/**
+	 * A list of errors
+	 * @var array<KalturaMessage>
+	 * @readonly
+	 */
+	public $errors;
 
 }

@@ -33,15 +33,14 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Filtering cloud external recordings
  * @package Kaltura
  * @subpackage Client
  */
-class CloudRecordingFilter extends \Kaltura\Client\Type\ExternalRecordingFilter
+class ExternalSeriesRecording extends \Kaltura\Client\Type\SeriesRecording
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaCloudRecordingFilter';
+		return 'KalturaExternalSeriesRecording';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,18 +50,18 @@ class CloudRecordingFilter extends \Kaltura\Client\Type\ExternalRecordingFilter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->adapterData))
+		if(count($xml->metaData))
 		{
-			if(empty($xml->adapterData))
-				$this->adapterData = array();
+			if(empty($xml->metaData))
+				$this->metaData = array();
 			else
-				$this->adapterData = \Kaltura\Client\ParseUtils::unmarshalMap($xml->adapterData, "KalturaStringValue");
+				$this->metaData = \Kaltura\Client\ParseUtils::unmarshalMap($xml->metaData, "KalturaStringValue");
 		}
 	}
 	/**
-	 * Adapter Data
+	 * MetaData filtering
 	 * @var array<string, KalturaStringValue>
 	 */
-	public $adapterData;
+	public $metaData;
 
 }

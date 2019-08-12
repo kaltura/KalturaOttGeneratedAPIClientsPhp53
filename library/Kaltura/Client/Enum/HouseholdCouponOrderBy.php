@@ -30,39 +30,14 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
- * Filtering cloud external recordings
  * @package Kaltura
  * @subpackage Client
  */
-class CloudRecordingFilter extends \Kaltura\Client\Type\ExternalRecordingFilter
+class HouseholdCouponOrderBy extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaCloudRecordingFilter';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->adapterData))
-		{
-			if(empty($xml->adapterData))
-				$this->adapterData = array();
-			else
-				$this->adapterData = \Kaltura\Client\ParseUtils::unmarshalMap($xml->adapterData, "KalturaStringValue");
-		}
-	}
-	/**
-	 * Adapter Data
-	 * @var array<string, KalturaStringValue>
-	 */
-	public $adapterData;
-
+	const NONE = "NONE";
 }
+

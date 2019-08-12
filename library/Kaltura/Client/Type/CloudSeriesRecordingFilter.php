@@ -52,12 +52,17 @@ class CloudSeriesRecordingFilter extends \Kaltura\Client\Type\SeriesRecordingFil
 			return;
 		
 		if(count($xml->adapterData))
-			$this->adapterData = (string)$xml->adapterData;
+		{
+			if(empty($xml->adapterData))
+				$this->adapterData = array();
+			else
+				$this->adapterData = \Kaltura\Client\ParseUtils::unmarshalMap($xml->adapterData, "KalturaStringValue");
+		}
 	}
 	/**
 	 * Adapter Data
-	 * @var string
+	 * @var array<string, KalturaStringValue>
 	 */
-	public $adapterData = null;
+	public $adapterData;
 
 }

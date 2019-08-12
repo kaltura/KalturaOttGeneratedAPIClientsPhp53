@@ -27,42 +27,39 @@
 // @ignore
 // ===================================================================================================
 
+
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Service;
 
 /**
- * Filtering cloud external recordings
  * @package Kaltura
  * @subpackage Client
  */
-class CloudRecordingFilter extends \Kaltura\Client\Type\ExternalRecordingFilter
+class PartnerService extends \Kaltura\Client\ServiceBase
 {
-	public function getKalturaObjectType()
+	function __construct(\Kaltura\Client\Client $client = null)
 	{
-		return 'KalturaCloudRecordingFilter';
+		parent::__construct($client);
 	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->adapterData))
-		{
-			if(empty($xml->adapterData))
-				$this->adapterData = array();
-			else
-				$this->adapterData = \Kaltura\Client\ParseUtils::unmarshalMap($xml->adapterData, "KalturaStringValue");
-		}
-	}
-	/**
-	 * Adapter Data
-	 * @var array<string, KalturaStringValue>
-	 */
-	public $adapterData;
 
+	/**
+	 * Returns a login session for external system (like OVP)
+	 * 
+	 * @return \Kaltura\Client\Type\LoginSession
+	 */
+	function externalLogin()
+	{
+		$kparams = array();
+		$this->client->queueServiceActionCall("partner", "externalLogin", "KalturaLoginSession", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaLoginSession");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\LoginSession");
+		return $resultObject;
+	}
 }
