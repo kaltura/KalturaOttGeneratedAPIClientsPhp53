@@ -95,10 +95,6 @@ class OTTUser extends \Kaltura\Client\Type\BaseOTTUser
 			$this->createDate = (string)$xml->createDate;
 		if(count($xml->updateDate))
 			$this->updateDate = (string)$xml->updateDate;
-		if(count($xml->lastLoginDate))
-			$this->lastLoginDate = (string)$xml->lastLoginDate;
-		if(count($xml->failedLoginCount))
-			$this->failedLoginCount = (int)$xml->failedLoginCount;
 	}
 	/**
 	 * Household identifier
@@ -208,19 +204,5 @@ class OTTUser extends \Kaltura\Client\Type\BaseOTTUser
 	 * @readonly
 	 */
 	public $updateDate = null;
-
-	/**
-	 * The date of the last successful login
-	 * @var int
-	 * @readonly
-	 */
-	public $lastLoginDate = null;
-
-	/**
-	 * The number of failed login attempts since the last successful login
-	 * @var int
-	 * @readonly
-	 */
-	public $failedLoginCount = null;
 
 }

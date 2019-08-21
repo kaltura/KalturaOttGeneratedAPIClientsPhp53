@@ -74,8 +74,6 @@ class IngestProfile extends \Kaltura\Client\ObjectBase
 			$this->defaultAutoFillPolicy = (string)$xml->defaultAutoFillPolicy;
 		if(count($xml->defaultOverlapPolicy))
 			$this->defaultOverlapPolicy = (string)$xml->defaultOverlapPolicy;
-		if(count($xml->overlapChannels))
-			$this->overlapChannels = (string)$xml->overlapChannels;
 	}
 	/**
 	 * Ingest profile identifier
@@ -131,11 +129,5 @@ class IngestProfile extends \Kaltura\Client\ObjectBase
 	 * @var \Kaltura\Client\Enum\IngestProfileOverlapPolicy
 	 */
 	public $defaultOverlapPolicy = null;
-
-	/**
-	 * Ingest profile overlap channels
-	 * @var string
-	 */
-	public $overlapChannels = null;
 
 }
