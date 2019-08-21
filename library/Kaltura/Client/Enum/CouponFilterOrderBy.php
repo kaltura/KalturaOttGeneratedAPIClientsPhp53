@@ -27,36 +27,3 @@
 // @ignore
 // ===================================================================================================
 
-/**
- * @namespace
- */
-namespace Kaltura\Client\Type;
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class ApplyDiscountModuleAction extends \Kaltura\Client\Type\BusinessModuleRuleAction
-{
-	public function getKalturaObjectType()
-	{
-		return 'KalturaApplyDiscountModuleAction';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->discountModuleId))
-			$this->discountModuleId = (string)$xml->discountModuleId;
-	}
-	/**
-	 * Discount module ID
-	 * @var int
-	 */
-	public $discountModuleId = null;
-
-}

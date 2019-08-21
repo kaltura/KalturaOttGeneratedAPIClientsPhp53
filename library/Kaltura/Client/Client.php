@@ -254,6 +254,11 @@ class Client extends Base
 	protected $household = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\HouseholdCouponService
+	 */
+	protected $householdCoupon = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\HouseholdDeviceService
 	 */
 	protected $householdDevice = null;
@@ -382,6 +387,11 @@ class Client extends Base
 	 * @var \Kaltura\Client\Service\PartnerConfigurationService
 	 */
 	protected $partnerConfiguration = null;
+
+	/**
+	 * @var \Kaltura\Client\Service\PartnerService
+	 */
+	protected $partner = null;
 
 	/**
 	 * @var \Kaltura\Client\Service\PaymentGatewayProfileService
@@ -627,8 +637,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:19-06-06');
-		$this->setApiVersion('5.2.0.16354');
+		$this->setClientTag('php5:19-08-21');
+		$this->setApiVersion('5.2.6.13424');
 	}
 	
 	/**
@@ -1019,6 +1029,15 @@ class Client extends Base
 		return $this->household;
 	}
 	/**
+	 * @return \Kaltura\Client\Service\HouseholdCouponService
+	 */
+	public function getHouseholdCouponService()
+	{
+		if (is_null($this->householdCoupon))
+			$this->householdCoupon = new \Kaltura\Client\Service\HouseholdCouponService($this);
+		return $this->householdCoupon;
+	}
+	/**
 	 * @return \Kaltura\Client\Service\HouseholdDeviceService
 	 */
 	public function getHouseholdDeviceService()
@@ -1251,6 +1270,15 @@ class Client extends Base
 		if (is_null($this->partnerConfiguration))
 			$this->partnerConfiguration = new \Kaltura\Client\Service\PartnerConfigurationService($this);
 		return $this->partnerConfiguration;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\PartnerService
+	 */
+	public function getPartnerService()
+	{
+		if (is_null($this->partner))
+			$this->partner = new \Kaltura\Client\Service\PartnerService($this);
+		return $this->partner;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\PaymentGatewayProfileService

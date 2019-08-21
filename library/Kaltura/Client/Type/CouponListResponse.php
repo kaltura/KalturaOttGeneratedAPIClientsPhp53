@@ -33,15 +33,14 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Business module rule filter
  * @package Kaltura
  * @subpackage Client
  */
-class BusinessModuleRuleFilter extends \Kaltura\Client\Type\Filter
+class CouponListResponse extends \Kaltura\Client\Type\ListResponse
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaBusinessModuleRuleFilter';
+		return 'KalturaCouponListResponse';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,37 +50,18 @@ class BusinessModuleRuleFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->businessModuleTypeApplied))
-			$this->businessModuleTypeApplied = (string)$xml->businessModuleTypeApplied;
-		if(count($xml->businessModuleIdApplied))
-			$this->businessModuleIdApplied = (string)$xml->businessModuleIdApplied;
-		if(count($xml->segmentIdsApplied))
-			$this->segmentIdsApplied = (string)$xml->segmentIdsApplied;
-		if(count($xml->actionsContainType))
-			$this->actionsContainType = (string)$xml->actionsContainType;
+		if(count($xml->objects))
+		{
+			if(empty($xml->objects))
+				$this->objects = array();
+			else
+				$this->objects = \Kaltura\Client\ParseUtils::unmarshalArray($xml->objects, "KalturaCoupon");
+		}
 	}
 	/**
-	 * Business module type the rules applied on
-	 * @var \Kaltura\Client\Enum\TransactionType
+	 * Coupons
+	 * @var array<KalturaCoupon>
 	 */
-	public $businessModuleTypeApplied = null;
-
-	/**
-	 * Business module ID the rules applied on
-	 * @var int
-	 */
-	public $businessModuleIdApplied = null;
-
-	/**
-	 * Comma separated segment IDs the rules applied on
-	 * @var string
-	 */
-	public $segmentIdsApplied = null;
-
-	/**
-	 * Indicates which business module rule list to return by their action.
-	 * @var \Kaltura\Client\Enum\RuleActionType
-	 */
-	public $actionsContainType = null;
+	public $objects;
 
 }

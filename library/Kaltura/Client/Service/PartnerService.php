@@ -37,7 +37,7 @@ namespace Kaltura\Client\Service;
  * @package Kaltura
  * @subpackage Client
  */
-class CouponService extends \Kaltura\Client\ServiceBase
+class PartnerService extends \Kaltura\Client\ServiceBase
 {
 	function __construct(\Kaltura\Client\Client $client = null)
 	{
@@ -45,42 +45,21 @@ class CouponService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Returns information about a coupon
+	 * Returns a login session for external system (like OVP)
 	 * 
-	 * @return \Kaltura\Client\Type\Coupon
+	 * @return \Kaltura\Client\Type\LoginSession
 	 */
-	function get($code)
+	function externalLogin()
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "code", $code);
-		$this->client->queueServiceActionCall("coupon", "get", "KalturaCoupon", $kparams);
+		$this->client->queueServiceActionCall("partner", "externalLogin", "KalturaLoginSession", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCoupon");
-		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\Coupon");
-		return $resultObject;
-	}
-
-	/**
-	 * Lists coupon codes.
-	 * 
-	 * @return \Kaltura\Client\Type\CouponListResponse
-	 */
-	function listAction(\Kaltura\Client\Type\CouponFilter $filter)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "filter", $filter->toParams());
-		$this->client->queueServiceActionCall("coupon", "list", "KalturaCouponListResponse", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCouponListResponse");
-		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\CouponListResponse");
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaLoginSession");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\LoginSession");
 		return $resultObject;
 	}
 }
