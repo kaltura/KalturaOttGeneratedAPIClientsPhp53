@@ -173,8 +173,6 @@ class Subscription extends \Kaltura\Client\ObjectBase
 			else
 				$this->isCancellationBlocked = false;
 		}
-		if(count($xml->preSaleDate))
-			$this->preSaleDate = (string)$xml->preSaleDate;
 	}
 	/**
 	 * Subscription identifier
@@ -363,11 +361,5 @@ class Subscription extends \Kaltura\Client\ObjectBase
 	 * @var bool
 	 */
 	public $isCancellationBlocked = null;
-
-	/**
-	 * The Pre-Sale date the subscription is available for purchasing
-	 * @var int
-	 */
-	public $preSaleDate = null;
 
 }

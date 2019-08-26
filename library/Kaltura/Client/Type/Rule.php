@@ -57,8 +57,6 @@ abstract class Rule extends \Kaltura\Client\ObjectBase
 			$this->name = (string)$xml->name;
 		if(count($xml->description))
 			$this->description = (string)$xml->description;
-		if(count($xml->label))
-			$this->label = (string)$xml->label;
 	}
 	/**
 	 * ID
@@ -78,11 +76,5 @@ abstract class Rule extends \Kaltura\Client\ObjectBase
 	 * @var string
 	 */
 	public $description = null;
-
-	/**
-	 * Label
-	 * @var string
-	 */
-	public $label = null;
 
 }

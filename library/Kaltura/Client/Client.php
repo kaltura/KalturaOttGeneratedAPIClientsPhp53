@@ -554,16 +554,6 @@ class Client extends Base
 	protected $topic = null;
 
 	/**
-	 * @var \Kaltura\Client\Service\TopicNotificationService
-	 */
-	protected $topicNotification = null;
-
-	/**
-	 * @var \Kaltura\Client\Service\TopicNotificationMessageService
-	 */
-	protected $topicNotificationMessage = null;
-
-	/**
 	 * @var \Kaltura\Client\Service\TransactionService
 	 */
 	protected $transaction = null;
@@ -627,8 +617,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:19-06-06');
-		$this->setApiVersion('5.2.0.16354');
+		$this->setClientTag('php5:19-08-26');
+		$this->setApiVersion('5.2.2.5493');
 	}
 	
 	/**
@@ -1557,24 +1547,6 @@ class Client extends Base
 		if (is_null($this->topic))
 			$this->topic = new \Kaltura\Client\Service\TopicService($this);
 		return $this->topic;
-	}
-	/**
-	 * @return \Kaltura\Client\Service\TopicNotificationService
-	 */
-	public function getTopicNotificationService()
-	{
-		if (is_null($this->topicNotification))
-			$this->topicNotification = new \Kaltura\Client\Service\TopicNotificationService($this);
-		return $this->topicNotification;
-	}
-	/**
-	 * @return \Kaltura\Client\Service\TopicNotificationMessageService
-	 */
-	public function getTopicNotificationMessageService()
-	{
-		if (is_null($this->topicNotificationMessage))
-			$this->topicNotificationMessage = new \Kaltura\Client\Service\TopicNotificationMessageService($this);
-		return $this->topicNotificationMessage;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\TransactionService

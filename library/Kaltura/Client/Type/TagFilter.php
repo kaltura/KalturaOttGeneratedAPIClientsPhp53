@@ -58,8 +58,6 @@ class TagFilter extends \Kaltura\Client\Type\Filter
 			$this->typeEqual = (int)$xml->typeEqual;
 		if(count($xml->languageEqual))
 			$this->languageEqual = (string)$xml->languageEqual;
-		if(count($xml->idIn))
-			$this->idIn = (string)$xml->idIn;
 	}
 	/**
 	 * Tag to filter by
@@ -84,11 +82,5 @@ class TagFilter extends \Kaltura\Client\Type\Filter
 	 * @var string
 	 */
 	public $languageEqual = null;
-
-	/**
-	 * Comma separated identifiers
-	 * @var string
-	 */
-	public $idIn = null;
 
 }

@@ -36,11 +36,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class TopicNotification extends \Kaltura\Client\ObjectBase
+abstract class BusinessModuleRuleAction extends \Kaltura\Client\Type\RuleAction
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaTopicNotification';
+		return 'KalturaBusinessModuleRuleAction';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,38 +50,5 @@ class TopicNotification extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->id))
-			$this->id = (string)$xml->id;
-		if(count($xml->name))
-			$this->name = (string)$xml->name;
-		if(count($xml->description))
-			$this->description = (string)$xml->description;
-		if(count($xml->subscribeReference) && !empty($xml->subscribeReference))
-			$this->subscribeReference = \Kaltura\Client\ParseUtils::unmarshalObject($xml->subscribeReference, "KalturaSubscribeReference");
 	}
-	/**
-	 * Topic notification ID
-	 * @var int
-	 * @readonly
-	 */
-	public $id = null;
-
-	/**
-	 * Topic notification name
-	 * @var string
-	 */
-	public $name = null;
-
-	/**
-	 * Topic notification description
-	 * @var string
-	 */
-	public $description = null;
-
-	/**
-	 * Announcement enabled
-	 * @var \Kaltura\Client\Type\SubscribeReference
-	 */
-	public $subscribeReference;
-
 }
