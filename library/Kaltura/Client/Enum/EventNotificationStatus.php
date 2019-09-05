@@ -36,12 +36,11 @@ namespace Kaltura\Client\Enum;
  * @package Kaltura
  * @subpackage Client
  */
-class LinearChannelType extends \Kaltura\Client\EnumBase
+class EventNotificationStatus extends \Kaltura\Client\EnumBase
 {
-	const UNKNOWN = "UNKNOWN";
-	const DTT = "DTT";
-	const OTT = "OTT";
-	const DTT_AND_OTT = "DTT_AND_OTT";
-	const VRM_EXPORT = "VRM_EXPORT";
+	const SENT = "SENT";
+	const FAILED = "FAILED";
+	const SUCCESS = "SUCCESS";
+	const FAILED_TO_SEND = "FAILED_TO_SEND";
 }
 
