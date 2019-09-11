@@ -71,6 +71,15 @@ class GeneralPartnerConfig extends \Kaltura\Client\Type\PartnerConfiguration
 			$this->dateFormat = (string)$xml->dateFormat;
 		if(count($xml->householdLimitationModule))
 			$this->householdLimitationModule = (int)$xml->householdLimitationModule;
+		if(count($xml->enableRegionFiltering))
+		{
+			if(!empty($xml->enableRegionFiltering) && $xml->enableRegionFiltering != 'false')
+				$this->enableRegionFiltering = true;
+			else
+				$this->enableRegionFiltering = false;
+		}
+		if(count($xml->defaultRegion))
+			$this->defaultRegion = (int)$xml->defaultRegion;
 	}
 	/**
 	 * Partner name
@@ -131,5 +140,17 @@ class GeneralPartnerConfig extends \Kaltura\Client\Type\PartnerConfiguration
 	 * @var int
 	 */
 	public $householdLimitationModule = null;
+
+	/**
+	 * Enable Region Filtering
+	 * @var bool
+	 */
+	public $enableRegionFiltering = null;
+
+	/**
+	 * Default Region
+	 * @var int
+	 */
+	public $defaultRegion = null;
 
 }
