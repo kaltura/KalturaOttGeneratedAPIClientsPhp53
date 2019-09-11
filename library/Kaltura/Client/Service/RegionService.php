@@ -45,42 +45,6 @@ class RegionService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Adds a new region for partner
-	 * 
-	 * @return \Kaltura\Client\Type\Region
-	 */
-	function add(\Kaltura\Client\Type\Region $region)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "region", $region->toParams());
-		$this->client->queueServiceActionCall("region", "add", "KalturaRegion", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaRegion");
-		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\Region");
-		return $resultObject;
-	}
-
-	/**
-	 * Delete an existing region
-	 * 
-	 */
-	function delete($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("region", "delete", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-	}
-
-	/**
 	 * Returns all regions for the partner
 	 * 
 	 * @return \Kaltura\Client\Type\RegionListResponse
@@ -97,27 +61,6 @@ class RegionService extends \Kaltura\Client\ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaRegionListResponse");
 		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\RegionListResponse");
-		return $resultObject;
-	}
-
-	/**
-	 * Update an existing region
-	 * 
-	 * @return \Kaltura\Client\Type\Region
-	 */
-	function update($id, \Kaltura\Client\Type\Region $region)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "region", $region->toParams());
-		$this->client->queueServiceActionCall("region", "update", "KalturaRegion", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaRegion");
-		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\Region");
 		return $resultObject;
 	}
 }

@@ -70,8 +70,6 @@ class Region extends \Kaltura\Client\ObjectBase
 			else
 				$this->linearChannels = \Kaltura\Client\ParseUtils::unmarshalArray($xml->linearChannels, "KalturaRegionalChannel");
 		}
-		if(count($xml->parentId))
-			$this->parentId = (string)$xml->parentId;
 	}
 	/**
 	 * Region identifier
@@ -94,7 +92,6 @@ class Region extends \Kaltura\Client\ObjectBase
 	/**
 	 * Indicates whether this is the default region for the partner
 	 * @var bool
-	 * @readonly
 	 */
 	public $isDefault = null;
 
@@ -103,11 +100,5 @@ class Region extends \Kaltura\Client\ObjectBase
 	 * @var array<KalturaRegionalChannel>
 	 */
 	public $linearChannels;
-
-	/**
-	 * Parent region ID
-	 * @var int
-	 */
-	public $parentId = null;
 
 }

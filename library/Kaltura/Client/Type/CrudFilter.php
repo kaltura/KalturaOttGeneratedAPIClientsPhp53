@@ -33,6 +33,7 @@
 namespace Kaltura\Client\Type;
 
 /**
+ * Base Crud filter
  * @package Kaltura
  * @subpackage Client
  */
