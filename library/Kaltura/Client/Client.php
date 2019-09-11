@@ -224,6 +224,11 @@ class Client extends Base
 	protected $entitlement = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\EventNotificationService
+	 */
+	protected $eventNotification = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\ExportTaskService
 	 */
 	protected $exportTask = null;
@@ -252,6 +257,11 @@ class Client extends Base
 	 * @var \Kaltura\Client\Service\HouseholdService
 	 */
 	protected $household = null;
+
+	/**
+	 * @var \Kaltura\Client\Service\HouseholdCouponService
+	 */
+	protected $householdCoupon = null;
 
 	/**
 	 * @var \Kaltura\Client\Service\HouseholdDeviceService
@@ -382,6 +392,16 @@ class Client extends Base
 	 * @var \Kaltura\Client\Service\PartnerConfigurationService
 	 */
 	protected $partnerConfiguration = null;
+
+	/**
+	 * @var \Kaltura\Client\Service\PartnerService
+	 */
+	protected $partner = null;
+
+	/**
+	 * @var \Kaltura\Client\Service\PasswordPolicyService
+	 */
+	protected $passwordPolicy = null;
 
 	/**
 	 * @var \Kaltura\Client\Service\PaymentGatewayProfileService
@@ -627,8 +647,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:19-06-06');
-		$this->setApiVersion('5.2.0.16354');
+		$this->setClientTag('php5:19-09-11');
+		$this->setApiVersion('5.2.6.13605');
 	}
 	
 	/**
@@ -965,6 +985,15 @@ class Client extends Base
 		return $this->entitlement;
 	}
 	/**
+	 * @return \Kaltura\Client\Service\EventNotificationService
+	 */
+	public function getEventNotificationService()
+	{
+		if (is_null($this->eventNotification))
+			$this->eventNotification = new \Kaltura\Client\Service\EventNotificationService($this);
+		return $this->eventNotification;
+	}
+	/**
 	 * @return \Kaltura\Client\Service\ExportTaskService
 	 */
 	public function getExportTaskService()
@@ -1017,6 +1046,15 @@ class Client extends Base
 		if (is_null($this->household))
 			$this->household = new \Kaltura\Client\Service\HouseholdService($this);
 		return $this->household;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\HouseholdCouponService
+	 */
+	public function getHouseholdCouponService()
+	{
+		if (is_null($this->householdCoupon))
+			$this->householdCoupon = new \Kaltura\Client\Service\HouseholdCouponService($this);
+		return $this->householdCoupon;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\HouseholdDeviceService
@@ -1251,6 +1289,24 @@ class Client extends Base
 		if (is_null($this->partnerConfiguration))
 			$this->partnerConfiguration = new \Kaltura\Client\Service\PartnerConfigurationService($this);
 		return $this->partnerConfiguration;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\PartnerService
+	 */
+	public function getPartnerService()
+	{
+		if (is_null($this->partner))
+			$this->partner = new \Kaltura\Client\Service\PartnerService($this);
+		return $this->partner;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\PasswordPolicyService
+	 */
+	public function getPasswordPolicyService()
+	{
+		if (is_null($this->passwordPolicy))
+			$this->passwordPolicy = new \Kaltura\Client\Service\PasswordPolicyService($this);
+		return $this->passwordPolicy;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\PaymentGatewayProfileService

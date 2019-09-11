@@ -143,7 +143,6 @@ class Household extends \Kaltura\Client\ObjectBase
 	/**
 	 * The households region identifier
 	 * @var int
-	 * @readonly
 	 */
 	public $regionId = null;
 
