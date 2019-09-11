@@ -36,11 +36,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-abstract class CrudFilter extends \Kaltura\Client\Type\Filter
+class PasswordPolicyListResponse extends \Kaltura\Client\Type\ListResponse
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaCrudFilter';
+		return 'KalturaPasswordPolicyListResponse';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,5 +50,18 @@ abstract class CrudFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->objects))
+		{
+			if(empty($xml->objects))
+				$this->objects = array();
+			else
+				$this->objects = \Kaltura\Client\ParseUtils::unmarshalArray($xml->objects, "KalturaPasswordPolicy");
+		}
 	}
+	/**
+	 * A list of objects
+	 * @var array<KalturaPasswordPolicy>
+	 */
+	public $objects;
+
 }

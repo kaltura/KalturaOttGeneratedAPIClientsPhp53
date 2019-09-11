@@ -33,14 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
+ * Password policy settings filter
  * @package Kaltura
  * @subpackage Client
  */
-abstract class CrudFilter extends \Kaltura\Client\Type\Filter
+class PasswordPolicyFilter extends \Kaltura\Client\Type\CrudFilter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaCrudFilter';
+		return 'KalturaPasswordPolicyFilter';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,5 +51,13 @@ abstract class CrudFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->userRoleIdIn))
+			$this->userRoleIdIn = (string)$xml->userRoleIdIn;
 	}
+	/**
+	 * Comma separated list of role Ids.
+	 * @var string
+	 */
+	public $userRoleIdIn = null;
+
 }
