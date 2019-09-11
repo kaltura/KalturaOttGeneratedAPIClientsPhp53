@@ -33,14 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
+ * Password policy settings
  * @package Kaltura
  * @subpackage Client
  */
-abstract class CrudFilter extends \Kaltura\Client\Type\Filter
+class PasswordPolicy extends \Kaltura\Client\Type\CrudObject
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaCrudFilter';
+		return 'KalturaPasswordPolicy';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,5 +51,67 @@ abstract class CrudFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->id))
+			$this->id = (string)$xml->id;
+		if(count($xml->name))
+			$this->name = (string)$xml->name;
+		if(count($xml->userRoleIds))
+			$this->userRoleIds = (string)$xml->userRoleIds;
+		if(count($xml->historyCount))
+			$this->historyCount = (int)$xml->historyCount;
+		if(count($xml->expiration))
+			$this->expiration = (int)$xml->expiration;
+		if(count($xml->complexities))
+		{
+			if(empty($xml->complexities))
+				$this->complexities = array();
+			else
+				$this->complexities = \Kaltura\Client\ParseUtils::unmarshalArray($xml->complexities, "KalturaRegex");
+		}
+		if(count($xml->lockoutFailuresCount))
+			$this->lockoutFailuresCount = (int)$xml->lockoutFailuresCount;
 	}
+	/**
+	 * id
+	 * @var int
+	 * @readonly
+	 */
+	public $id = null;
+
+	/**
+	 * Name
+	 * @var string
+	 */
+	public $name = null;
+
+	/**
+	 * Comma separated UserRole Ids list which the policy is applied on
+	 * @var string
+	 */
+	public $userRoleIds = null;
+
+	/**
+	 * The number of passwords that should be remembered for each user so that they cannot be reused.
+	 * @var int
+	 */
+	public $historyCount = null;
+
+	/**
+	 * When should the password expire (will represent time as days).
+	 * @var int
+	 */
+	public $expiration = null;
+
+	/**
+	 * array of  KalturaRegex
+	 * @var array<KalturaRegex>
+	 */
+	public $complexities;
+
+	/**
+	 * the number of passwords failures before the account is locked.
+	 * @var int
+	 */
+	public $lockoutFailuresCount = null;
+
 }

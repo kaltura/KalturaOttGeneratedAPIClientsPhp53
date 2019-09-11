@@ -399,6 +399,11 @@ class Client extends Base
 	protected $partner = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\PasswordPolicyService
+	 */
+	protected $passwordPolicy = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\PaymentGatewayProfileService
 	 */
 	protected $paymentGatewayProfile = null;
@@ -643,7 +648,7 @@ class Client extends Base
 		parent::__construct($config);
 		
 		$this->setClientTag('php5:19-09-11');
-		$this->setApiVersion('5.2.6.13553');
+		$this->setApiVersion('5.2.6.13597');
 	}
 	
 	/**
@@ -1293,6 +1298,15 @@ class Client extends Base
 		if (is_null($this->partner))
 			$this->partner = new \Kaltura\Client\Service\PartnerService($this);
 		return $this->partner;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\PasswordPolicyService
+	 */
+	public function getPasswordPolicyService()
+	{
+		if (is_null($this->passwordPolicy))
+			$this->passwordPolicy = new \Kaltura\Client\Service\PasswordPolicyService($this);
+		return $this->passwordPolicy;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\PaymentGatewayProfileService

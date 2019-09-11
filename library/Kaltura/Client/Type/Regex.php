@@ -33,14 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
+ * KalturaRegex
  * @package Kaltura
  * @subpackage Client
  */
-abstract class CrudFilter extends \Kaltura\Client\Type\Filter
+class Regex extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaCrudFilter';
+		return 'KalturaRegex';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,5 +51,21 @@ abstract class CrudFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->expression))
+			$this->expression = (string)$xml->expression;
+		if(count($xml->description))
+			$this->description = (string)$xml->description;
 	}
+	/**
+	 * regex expression
+	 * @var string
+	 */
+	public $expression = null;
+
+	/**
+	 * description
+	 * @var string
+	 */
+	public $description = null;
+
 }
