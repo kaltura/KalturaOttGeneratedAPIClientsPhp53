@@ -105,10 +105,11 @@ class PasswordPolicyService extends \Kaltura\Client\ServiceBase
 	 * 
 	 * @return \Kaltura\Client\Type\PasswordPolicyListResponse
 	 */
-	function listAction(\Kaltura\Client\Type\PasswordPolicyFilter $filter)
+	function listAction(\Kaltura\Client\Type\PasswordPolicyFilter $filter = null)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
 		$this->client->queueServiceActionCall("passwordpolicy", "list", "KalturaPasswordPolicyListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
