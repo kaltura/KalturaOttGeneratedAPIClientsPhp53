@@ -30,26 +30,14 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
- * Kaltura asset first image per ratio filter
  * @package Kaltura
  * @subpackage Client
  */
-class AssetFirstImagePerRatioFilter extends \Kaltura\Client\Type\RelatedObjectFilter
+class AssetImagePerRatioOrderBy extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaAssetFirstImagePerRatioFilter';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-	}
+	const NONE = "NONE";
 }
+
