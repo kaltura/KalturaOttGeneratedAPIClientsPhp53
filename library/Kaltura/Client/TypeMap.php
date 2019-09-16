@@ -131,6 +131,7 @@ class TypeMap
 		'KalturaRecordingContextFilter' => 'Kaltura\Client\Type\RecordingContextFilter',
 		'KalturaTransactionHistoryFilter' => 'Kaltura\Client\Type\TransactionHistoryFilter',
 		'KalturaAssetCommentFilter' => 'Kaltura\Client\Type\AssetCommentFilter',
+		'KalturaAssetFirstImagePerRatioFilter' => 'Kaltura\Client\Type\AssetFirstImagePerRatioFilter',
 		'KalturaAssetHistoryFilter' => 'Kaltura\Client\Type\AssetHistoryFilter',
 		'KalturaAssetStructFilter' => 'Kaltura\Client\Type\AssetStructFilter',
 		'KalturaAssetStructMetaFilter' => 'Kaltura\Client\Type\AssetStructMetaFilter',
