@@ -520,7 +520,7 @@ class TypeMap
 		'KalturaEntitlementRenewal' => 'Kaltura\Client\Type\EntitlementRenewal',
 		'KalturaCrudObject' => 'Kaltura\Client\Type\CrudObject',
 		'KalturaEventNotification' => 'Kaltura\Client\Type\EventNotification',
-		'KalturaRegex' => 'Kaltura\Client\Type\Regex',
+		'KalturaRegexExpression' => 'Kaltura\Client\Type\RegexExpression',
 		'KalturaPasswordPolicy' => 'Kaltura\Client\Type\PasswordPolicy',
 		'KalturaHouseholdCoupon' => 'Kaltura\Client\Type\HouseholdCoupon',
 		'KalturaEventNotificationListResponse' => 'Kaltura\Client\Type\EventNotificationListResponse',

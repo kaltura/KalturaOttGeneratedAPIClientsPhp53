@@ -37,11 +37,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class Regex extends \Kaltura\Client\ObjectBase
+class RegexExpression extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaRegex';
+		return 'KalturaRegexExpression';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
