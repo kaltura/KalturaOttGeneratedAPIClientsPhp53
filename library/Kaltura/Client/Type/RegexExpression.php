@@ -33,14 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
+ * KalturaRegexExpression
  * @package Kaltura
  * @subpackage Client
  */
-class SubscriptionFilter extends \Kaltura\Client\Type\Filter
+class RegexExpression extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaSubscriptionFilter';
+		return 'KalturaRegexExpression';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,37 +51,21 @@ class SubscriptionFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->subscriptionIdIn))
-			$this->subscriptionIdIn = (string)$xml->subscriptionIdIn;
-		if(count($xml->mediaFileIdEqual))
-			$this->mediaFileIdEqual = (int)$xml->mediaFileIdEqual;
-		if(count($xml->externalIdIn))
-			$this->externalIdIn = (string)$xml->externalIdIn;
-		if(count($xml->couponGroupIdEqual))
-			$this->couponGroupIdEqual = (int)$xml->couponGroupIdEqual;
+		if(count($xml->expression))
+			$this->expression = (string)$xml->expression;
+		if(count($xml->description))
+			$this->description = (string)$xml->description;
 	}
 	/**
-	 * Comma separated subscription IDs to get the subscriptions by
+	 * regex expression
 	 * @var string
 	 */
-	public $subscriptionIdIn = null;
+	public $expression = null;
 
 	/**
-	 * Media-file ID to get the subscriptions by
-	 * @var int
-	 */
-	public $mediaFileIdEqual = null;
-
-	/**
-	 * Comma separated subscription external IDs to get the subscriptions by
+	 * description
 	 * @var string
 	 */
-	public $externalIdIn = null;
-
-	/**
-	 * couponGroupIdEqual
-	 * @var int
-	 */
-	public $couponGroupIdEqual = null;
+	public $description = null;
 
 }

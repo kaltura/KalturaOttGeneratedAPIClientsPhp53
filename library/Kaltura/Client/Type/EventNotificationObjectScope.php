@@ -33,14 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
+ * Kaltura event notification object scope
  * @package Kaltura
  * @subpackage Client
  */
-class SubscriptionFilter extends \Kaltura\Client\Type\Filter
+class EventNotificationObjectScope extends \Kaltura\Client\Type\EventNotificationScope
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaSubscriptionFilter';
+		return 'KalturaEventNotificationObjectScope';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,37 +51,13 @@ class SubscriptionFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->subscriptionIdIn))
-			$this->subscriptionIdIn = (string)$xml->subscriptionIdIn;
-		if(count($xml->mediaFileIdEqual))
-			$this->mediaFileIdEqual = (int)$xml->mediaFileIdEqual;
-		if(count($xml->externalIdIn))
-			$this->externalIdIn = (string)$xml->externalIdIn;
-		if(count($xml->couponGroupIdEqual))
-			$this->couponGroupIdEqual = (int)$xml->couponGroupIdEqual;
+		if(count($xml->eventObject) && !empty($xml->eventObject))
+			$this->eventObject = \Kaltura\Client\ParseUtils::unmarshalObject($xml->eventObject, "KalturaEventObject");
 	}
 	/**
-	 * Comma separated subscription IDs to get the subscriptions by
-	 * @var string
+	 * Event object to fire
+	 * @var \Kaltura\Client\Type\EventObject
 	 */
-	public $subscriptionIdIn = null;
-
-	/**
-	 * Media-file ID to get the subscriptions by
-	 * @var int
-	 */
-	public $mediaFileIdEqual = null;
-
-	/**
-	 * Comma separated subscription external IDs to get the subscriptions by
-	 * @var string
-	 */
-	public $externalIdIn = null;
-
-	/**
-	 * couponGroupIdEqual
-	 * @var int
-	 */
-	public $couponGroupIdEqual = null;
+	public $eventObject;
 
 }

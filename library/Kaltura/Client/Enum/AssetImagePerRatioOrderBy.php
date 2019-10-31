@@ -30,57 +30,14 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class SubscriptionFilter extends \Kaltura\Client\Type\Filter
+class AssetImagePerRatioOrderBy extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaSubscriptionFilter';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->subscriptionIdIn))
-			$this->subscriptionIdIn = (string)$xml->subscriptionIdIn;
-		if(count($xml->mediaFileIdEqual))
-			$this->mediaFileIdEqual = (int)$xml->mediaFileIdEqual;
-		if(count($xml->externalIdIn))
-			$this->externalIdIn = (string)$xml->externalIdIn;
-		if(count($xml->couponGroupIdEqual))
-			$this->couponGroupIdEqual = (int)$xml->couponGroupIdEqual;
-	}
-	/**
-	 * Comma separated subscription IDs to get the subscriptions by
-	 * @var string
-	 */
-	public $subscriptionIdIn = null;
-
-	/**
-	 * Media-file ID to get the subscriptions by
-	 * @var int
-	 */
-	public $mediaFileIdEqual = null;
-
-	/**
-	 * Comma separated subscription external IDs to get the subscriptions by
-	 * @var string
-	 */
-	public $externalIdIn = null;
-
-	/**
-	 * couponGroupIdEqual
-	 * @var int
-	 */
-	public $couponGroupIdEqual = null;
-
+	const NONE = "NONE";
 }
+

@@ -53,11 +53,19 @@ class HouseholdCoupon extends \Kaltura\Client\Type\CrudObject
 		
 		if(count($xml->code))
 			$this->code = (string)$xml->code;
+		if(count($xml->lastUsageDate))
+			$this->lastUsageDate = (string)$xml->lastUsageDate;
 	}
 	/**
 	 * Coupon code
 	 * @var string
 	 */
 	public $code = null;
+
+	/**
+	 * Last Usage Date
+	 * @var int
+	 */
+	public $lastUsageDate = null;
 
 }

@@ -224,6 +224,11 @@ class Client extends Base
 	protected $entitlement = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\EventNotificationActionService
+	 */
+	protected $eventNotificationAction = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\EventNotificationService
 	 */
 	protected $eventNotification = null;
@@ -647,8 +652,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:19-09-18');
-		$this->setApiVersion('5.2.6.13610');
+		$this->setClientTag('php5:19-10-31');
+		$this->setApiVersion('5.2.7.0');
 	}
 	
 	/**
@@ -983,6 +988,15 @@ class Client extends Base
 		if (is_null($this->entitlement))
 			$this->entitlement = new \Kaltura\Client\Service\EntitlementService($this);
 		return $this->entitlement;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\EventNotificationActionService
+	 */
+	public function getEventNotificationActionService()
+	{
+		if (is_null($this->eventNotificationAction))
+			$this->eventNotificationAction = new \Kaltura\Client\Service\EventNotificationActionService($this);
+		return $this->eventNotificationAction;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\EventNotificationService

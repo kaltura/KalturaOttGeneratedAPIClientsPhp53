@@ -33,14 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
+ * Asset order segment action
  * @package Kaltura
  * @subpackage Client
  */
-class SubscriptionFilter extends \Kaltura\Client\Type\Filter
+class AssetOrderSegmentAction extends \Kaltura\Client\Type\BaseSegmentAction
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaSubscriptionFilter';
+		return 'KalturaAssetOrderSegmentAction';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,37 +51,26 @@ class SubscriptionFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->subscriptionIdIn))
-			$this->subscriptionIdIn = (string)$xml->subscriptionIdIn;
-		if(count($xml->mediaFileIdEqual))
-			$this->mediaFileIdEqual = (int)$xml->mediaFileIdEqual;
-		if(count($xml->externalIdIn))
-			$this->externalIdIn = (string)$xml->externalIdIn;
-		if(count($xml->couponGroupIdEqual))
-			$this->couponGroupIdEqual = (int)$xml->couponGroupIdEqual;
+		if(count($xml->name))
+			$this->name = (string)$xml->name;
+		if(count($xml->values))
+		{
+			if(empty($xml->values))
+				$this->values = array();
+			else
+				$this->values = \Kaltura\Client\ParseUtils::unmarshalArray($xml->values, "KalturaStringValue");
+		}
 	}
 	/**
-	 * Comma separated subscription IDs to get the subscriptions by
+	 * Action name
 	 * @var string
 	 */
-	public $subscriptionIdIn = null;
+	public $name = null;
 
 	/**
-	 * Media-file ID to get the subscriptions by
-	 * @var int
+	 * Action values
+	 * @var array<KalturaStringValue>
 	 */
-	public $mediaFileIdEqual = null;
-
-	/**
-	 * Comma separated subscription external IDs to get the subscriptions by
-	 * @var string
-	 */
-	public $externalIdIn = null;
-
-	/**
-	 * couponGroupIdEqual
-	 * @var int
-	 */
-	public $couponGroupIdEqual = null;
+	public $values;
 
 }

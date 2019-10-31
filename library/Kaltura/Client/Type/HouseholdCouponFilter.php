@@ -54,6 +54,10 @@ class HouseholdCouponFilter extends \Kaltura\Client\Type\CrudFilter
 			$this->businessModuleTypeEqual = (string)$xml->businessModuleTypeEqual;
 		if(count($xml->businessModuleIdEqual))
 			$this->businessModuleIdEqual = (string)$xml->businessModuleIdEqual;
+		if(count($xml->couponCode))
+			$this->couponCode = (string)$xml->couponCode;
+		if(count($xml->status))
+			$this->status = (string)$xml->status;
 	}
 	/**
 	 * Indicates which household coupons list to return by their business module type.
@@ -66,5 +70,17 @@ class HouseholdCouponFilter extends \Kaltura\Client\Type\CrudFilter
 	 * @var int
 	 */
 	public $businessModuleIdEqual = null;
+
+	/**
+	 * Allow clients to inquiry if a specific coupon is part of an HH’s wallet or not
+	 * @var string
+	 */
+	public $couponCode = null;
+
+	/**
+	 * Allow clients to filter out coupons which are valid/invalid
+	 * @var \Kaltura\Client\Enum\CouponStatus
+	 */
+	public $status = null;
 
 }

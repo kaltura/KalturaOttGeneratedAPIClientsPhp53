@@ -33,15 +33,14 @@
 namespace Kaltura\Client\Type;
 
 /**
- * KalturaRegex
  * @package Kaltura
  * @subpackage Client
  */
-class Regex extends \Kaltura\Client\ObjectBase
+class ConcurrencyViolation extends \Kaltura\Client\Type\EventObject
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaRegex';
+		return 'KalturaConcurrencyViolation';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,21 +50,53 @@ class Regex extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->expression))
-			$this->expression = (string)$xml->expression;
-		if(count($xml->description))
-			$this->description = (string)$xml->description;
+		if(count($xml->timestamp))
+			$this->timestamp = (string)$xml->timestamp;
+		if(count($xml->udid))
+			$this->udid = (string)$xml->udid;
+		if(count($xml->assetId))
+			$this->assetId = (string)$xml->assetId;
+		if(count($xml->violationRule))
+			$this->violationRule = (string)$xml->violationRule;
+		if(count($xml->householdId))
+			$this->householdId = (string)$xml->householdId;
+		if(count($xml->userId))
+			$this->userId = (string)$xml->userId;
 	}
 	/**
-	 * regex expression
-	 * @var string
+	 * Timestamp
+	 * @var int
 	 */
-	public $expression = null;
+	public $timestamp = null;
 
 	/**
-	 * description
+	 * UDID
 	 * @var string
 	 */
-	public $description = null;
+	public $udid = null;
+
+	/**
+	 * Asset Id
+	 * @var string
+	 */
+	public $assetId = null;
+
+	/**
+	 * Violation Rule
+	 * @var string
+	 */
+	public $violationRule = null;
+
+	/**
+	 * Household Id
+	 * @var string
+	 */
+	public $householdId = null;
+
+	/**
+	 * User Id
+	 * @var string
+	 */
+	public $userId = null;
 
 }
