@@ -55,6 +55,8 @@ class CollectionFilter extends \Kaltura\Client\Type\Filter
 			$this->collectionIdIn = (string)$xml->collectionIdIn;
 		if(count($xml->mediaFileIdEqual))
 			$this->mediaFileIdEqual = (int)$xml->mediaFileIdEqual;
+		if(count($xml->couponGroupIdEqual))
+			$this->couponGroupIdEqual = (int)$xml->couponGroupIdEqual;
 	}
 	/**
 	 * Comma separated collection IDs
@@ -67,5 +69,11 @@ class CollectionFilter extends \Kaltura\Client\Type\Filter
 	 * @var int
 	 */
 	public $mediaFileIdEqual = null;
+
+	/**
+	 * couponGroupIdEqual
+	 * @var int
+	 */
+	public $couponGroupIdEqual = null;
 
 }

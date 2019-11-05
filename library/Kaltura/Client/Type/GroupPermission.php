@@ -56,6 +56,7 @@ class GroupPermission extends \Kaltura\Client\Type\Permission
 	/**
 	 * Permission identifier
 	 * @var string
+	 * @readonly
 	 */
 	public $group = null;
 

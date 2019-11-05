@@ -56,6 +56,8 @@ class SubscriptionFilter extends \Kaltura\Client\Type\Filter
 			$this->mediaFileIdEqual = (int)$xml->mediaFileIdEqual;
 		if(count($xml->externalIdIn))
 			$this->externalIdIn = (string)$xml->externalIdIn;
+		if(count($xml->couponGroupIdEqual))
+			$this->couponGroupIdEqual = (int)$xml->couponGroupIdEqual;
 	}
 	/**
 	 * Comma separated subscription IDs to get the subscriptions by
@@ -74,5 +76,11 @@ class SubscriptionFilter extends \Kaltura\Client\Type\Filter
 	 * @var string
 	 */
 	public $externalIdIn = null;
+
+	/**
+	 * couponGroupIdEqual
+	 * @var int
+	 */
+	public $couponGroupIdEqual = null;
 
 }
