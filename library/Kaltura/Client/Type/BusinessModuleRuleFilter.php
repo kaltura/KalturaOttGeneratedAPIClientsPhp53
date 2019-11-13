@@ -57,6 +57,8 @@ class BusinessModuleRuleFilter extends \Kaltura\Client\Type\Filter
 			$this->businessModuleIdApplied = (string)$xml->businessModuleIdApplied;
 		if(count($xml->segmentIdsApplied))
 			$this->segmentIdsApplied = (string)$xml->segmentIdsApplied;
+		if(count($xml->actionsContainType))
+			$this->actionsContainType = (string)$xml->actionsContainType;
 	}
 	/**
 	 * Business module type the rules applied on
@@ -75,5 +77,11 @@ class BusinessModuleRuleFilter extends \Kaltura\Client\Type\Filter
 	 * @var string
 	 */
 	public $segmentIdsApplied = null;
+
+	/**
+	 * Indicates which business module rule list to return by their action.
+	 * @var \Kaltura\Client\Enum\RuleActionType
+	 */
+	public $actionsContainType = null;
 
 }

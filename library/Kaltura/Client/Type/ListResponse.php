@@ -33,7 +33,6 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Base list wrapper
  * @package Kaltura
  * @subpackage Client
  */
