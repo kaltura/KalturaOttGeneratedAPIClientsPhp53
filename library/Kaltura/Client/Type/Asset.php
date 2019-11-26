@@ -118,6 +118,8 @@ abstract class Asset extends \Kaltura\Client\ObjectBase
 			$this->updateDate = (string)$xml->updateDate;
 		if(count($xml->externalId))
 			$this->externalId = (string)$xml->externalId;
+		if(count($xml->indexStatus))
+			$this->indexStatus = (string)$xml->indexStatus;
 	}
 	/**
 	 * Unique identifier for the asset
@@ -223,5 +225,12 @@ abstract class Asset extends \Kaltura\Client\ObjectBase
 	 * @var string
 	 */
 	public $externalId = null;
+
+	/**
+	 * The media asset index status
+	 * @var \Kaltura\Client\Enum\AssetIndexStatus
+	 * @readonly
+	 */
+	public $indexStatus = null;
 
 }

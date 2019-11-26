@@ -56,6 +56,10 @@ class Permission extends \Kaltura\Client\ObjectBase
 			$this->name = (string)$xml->name;
 		if(count($xml->friendlyName))
 			$this->friendlyName = (string)$xml->friendlyName;
+		if(count($xml->dependsOnPermissionNames))
+			$this->dependsOnPermissionNames = (string)$xml->dependsOnPermissionNames;
+		if(count($xml->type))
+			$this->type = (string)$xml->type;
 	}
 	/**
 	 * Permission identifier
@@ -75,5 +79,18 @@ class Permission extends \Kaltura\Client\ObjectBase
 	 * @var string
 	 */
 	public $friendlyName = null;
+
+	/**
+	 * Comma separated permissions names from type SPECIAL_FEATURE
+	 * @var string
+	 * @readonly
+	 */
+	public $dependsOnPermissionNames = null;
+
+	/**
+	 * Comma separated permissions names from type SPECIAL_FEATURE
+	 * @var \Kaltura\Client\Enum\PermissionType
+	 */
+	public $type = null;
 
 }

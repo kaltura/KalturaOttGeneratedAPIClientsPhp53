@@ -64,6 +64,13 @@ class SegmentationType extends \Kaltura\Client\ObjectBase
 			else
 				$this->conditions = \Kaltura\Client\ParseUtils::unmarshalArray($xml->conditions, "KalturaBaseSegmentCondition");
 		}
+		if(count($xml->actions))
+		{
+			if(empty($xml->actions))
+				$this->actions = array();
+			else
+				$this->actions = \Kaltura\Client\ParseUtils::unmarshalArray($xml->actions, "KalturaBaseSegmentAction");
+		}
 		if(count($xml->value) && !empty($xml->value))
 			$this->value = \Kaltura\Client\ParseUtils::unmarshalObject($xml->value, "KalturaBaseSegmentValue");
 		if(count($xml->createDate))
@@ -95,6 +102,12 @@ class SegmentationType extends \Kaltura\Client\ObjectBase
 	 * @var array<KalturaBaseSegmentCondition>
 	 */
 	public $conditions;
+
+	/**
+	 * Segmentation conditions - can be empty
+	 * @var array<KalturaBaseSegmentAction>
+	 */
+	public $actions;
 
 	/**
 	 * Segmentation values - can be empty (so only one segment will be created)

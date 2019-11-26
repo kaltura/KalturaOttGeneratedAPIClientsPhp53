@@ -53,11 +53,19 @@ class PpvFilter extends \Kaltura\Client\Type\Filter
 		
 		if(count($xml->idIn))
 			$this->idIn = (string)$xml->idIn;
+		if(count($xml->couponGroupIdEqual))
+			$this->couponGroupIdEqual = (int)$xml->couponGroupIdEqual;
 	}
 	/**
 	 * Comma separated identifiers
 	 * @var string
 	 */
 	public $idIn = null;
+
+	/**
+	 * couponGroupIdEqual
+	 * @var int
+	 */
+	public $couponGroupIdEqual = null;
 
 }
