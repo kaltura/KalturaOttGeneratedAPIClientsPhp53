@@ -43,5 +43,6 @@ class PartnerConfigurationType extends \Kaltura\Client\EnumBase
 	const OSSADAPTER = "OSSAdapter";
 	const CONCURRENCY = "Concurrency";
 	const GENERAL = "General";
+	const OBJECTVIRTUALASSET = "ObjectVirtualAsset";
 }
 

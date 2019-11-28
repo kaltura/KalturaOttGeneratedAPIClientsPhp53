@@ -58,6 +58,8 @@ class SubscriptionFilter extends \Kaltura\Client\Type\Filter
 			$this->externalIdIn = (string)$xml->externalIdIn;
 		if(count($xml->couponGroupIdEqual))
 			$this->couponGroupIdEqual = (int)$xml->couponGroupIdEqual;
+		if(count($xml->kSql))
+			$this->kSql = (string)$xml->kSql;
 	}
 	/**
 	 * Comma separated subscription IDs to get the subscriptions by
@@ -82,5 +84,11 @@ class SubscriptionFilter extends \Kaltura\Client\Type\Filter
 	 * @var int
 	 */
 	public $couponGroupIdEqual = null;
+
+	/**
+	 * KSQL expression
+	 * @var string
+	 */
+	public $kSql = null;
 
 }

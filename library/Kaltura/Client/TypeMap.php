@@ -322,6 +322,8 @@ class TypeMap
 		'KalturaBillingPartnerConfig' => 'Kaltura\Client\Type\BillingPartnerConfig',
 		'KalturaConcurrencyPartnerConfig' => 'Kaltura\Client\Type\ConcurrencyPartnerConfig',
 		'KalturaGeneralPartnerConfig' => 'Kaltura\Client\Type\GeneralPartnerConfig',
+		'KalturaObjectVirtualAssetInfo' => 'Kaltura\Client\Type\ObjectVirtualAssetInfo',
+		'KalturaObjectVirtualAssetPartnerConfig' => 'Kaltura\Client\Type\ObjectVirtualAssetPartnerConfig',
 		'KalturaPersonalList' => 'Kaltura\Client\Type\PersonalList',
 		'KalturaPersonalListListResponse' => 'Kaltura\Client\Type\PersonalListListResponse',
 		'KalturaEngagementAdapterBase' => 'Kaltura\Client\Type\EngagementAdapterBase',
