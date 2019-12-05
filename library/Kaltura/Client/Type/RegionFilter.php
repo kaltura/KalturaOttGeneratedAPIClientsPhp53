@@ -58,13 +58,6 @@ class RegionFilter extends \Kaltura\Client\Type\Filter
 			$this->parentIdEqual = (int)$xml->parentIdEqual;
 		if(count($xml->liveAssetIdEqual))
 			$this->liveAssetIdEqual = (int)$xml->liveAssetIdEqual;
-		if(count($xml->parentOnly))
-		{
-			if(!empty($xml->parentOnly) && $xml->parentOnly != 'false')
-				$this->parentOnly = true;
-			else
-				$this->parentOnly = false;
-		}
 	}
 	/**
 	 * List of comma separated regions external IDs
@@ -89,11 +82,5 @@ class RegionFilter extends \Kaltura\Client\Type\Filter
 	 * @var int
 	 */
 	public $liveAssetIdEqual = null;
-
-	/**
-	 * Parent region to filter by
-	 * @var bool
-	 */
-	public $parentOnly = null;
 
 }
