@@ -30,42 +30,15 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
- * Filter for segmentation types
  * @package Kaltura
  * @subpackage Client
  */
-class SegmentationTypeFilter extends \Kaltura\Client\Type\Filter
+class ObjectVirtualAssetInfoType extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaSegmentationTypeFilter';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->idIn))
-			$this->idIn = (string)$xml->idIn;
-		if(count($xml->kSql))
-			$this->kSql = (string)$xml->kSql;
-	}
-	/**
-	 * Comma separated segmentation types identifieridentifiers
-	 * @var string
-	 */
-	public $idIn = null;
-
-	/**
-	 * KSQL expression
-	 * @var string
-	 */
-	public $kSql = null;
-
+	const SUBSCRIPTION = "Subscription";
+	const SEGMENT = "Segment";
 }
+

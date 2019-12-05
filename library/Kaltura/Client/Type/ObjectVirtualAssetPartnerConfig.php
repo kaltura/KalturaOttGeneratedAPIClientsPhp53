@@ -33,15 +33,14 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Filter for segmentation types
  * @package Kaltura
  * @subpackage Client
  */
-class SegmentationTypeFilter extends \Kaltura\Client\Type\Filter
+class ObjectVirtualAssetPartnerConfig extends \Kaltura\Client\Type\PartnerConfiguration
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaSegmentationTypeFilter';
+		return 'KalturaObjectVirtualAssetPartnerConfig';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,21 +50,18 @@ class SegmentationTypeFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->idIn))
-			$this->idIn = (string)$xml->idIn;
-		if(count($xml->kSql))
-			$this->kSql = (string)$xml->kSql;
+		if(count($xml->objectVirtualAssets))
+		{
+			if(empty($xml->objectVirtualAssets))
+				$this->objectVirtualAssets = array();
+			else
+				$this->objectVirtualAssets = \Kaltura\Client\ParseUtils::unmarshalArray($xml->objectVirtualAssets, "KalturaObjectVirtualAssetInfo");
+		}
 	}
 	/**
-	 * Comma separated segmentation types identifieridentifiers
-	 * @var string
+	 * List of object virtual asset info
+	 * @var array<KalturaObjectVirtualAssetInfo>
 	 */
-	public $idIn = null;
-
-	/**
-	 * KSQL expression
-	 * @var string
-	 */
-	public $kSql = null;
+	public $objectVirtualAssets;
 
 }
