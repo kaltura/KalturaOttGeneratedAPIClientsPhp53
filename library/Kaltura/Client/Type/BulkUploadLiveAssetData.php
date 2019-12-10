@@ -33,14 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
+ * indicates the media asset object type in the bulk file
  * @package Kaltura
  * @subpackage Client
  */
-class BulkUploadLiveAssetResult extends \Kaltura\Client\Type\BulkUploadMediaAssetResult
+class BulkUploadLiveAssetData extends \Kaltura\Client\Type\BulkUploadMediaAssetData
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaBulkUploadLiveAssetResult';
+		return 'KalturaBulkUploadLiveAssetData';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
