@@ -299,6 +299,11 @@ class Client extends Base
 	protected $householdQuota = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\HouseholdSegmentService
+	 */
+	protected $householdSegment = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\HouseholdUserService
 	 */
 	protected $householdUser = null;
@@ -652,8 +657,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:19-12-18');
-		$this->setApiVersion('5.3.0.14268');
+		$this->setClientTag('php5:19-12-19');
+		$this->setApiVersion('5.3.0.14286');
 	}
 	
 	/**
@@ -1123,6 +1128,15 @@ class Client extends Base
 		if (is_null($this->householdQuota))
 			$this->householdQuota = new \Kaltura\Client\Service\HouseholdQuotaService($this);
 		return $this->householdQuota;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\HouseholdSegmentService
+	 */
+	public function getHouseholdSegmentService()
+	{
+		if (is_null($this->householdSegment))
+			$this->householdSegment = new \Kaltura\Client\Service\HouseholdSegmentService($this);
+		return $this->householdSegment;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\HouseholdUserService

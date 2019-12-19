@@ -33,15 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Filter for user segments
+ * segment block subscription for purchase action
  * @package Kaltura
  * @subpackage Client
  */
-class UserSegmentFilter extends \Kaltura\Client\Type\Filter
+class SegmentBlockPurchaseSubscriptionAction extends \Kaltura\Client\Type\BlockSubscriptionSegmentAction
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaUserSegmentFilter';
+		return 'KalturaSegmentBlockPurchaseSubscriptionAction';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,21 +51,5 @@ class UserSegmentFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->userIdEqual))
-			$this->userIdEqual = (string)$xml->userIdEqual;
-		if(count($xml->kSql))
-			$this->kSql = (string)$xml->kSql;
 	}
-	/**
-	 * User ID
-	 * @var string
-	 */
-	public $userIdEqual = null;
-
-	/**
-	 * KSQL expression
-	 * @var string
-	 */
-	public $kSql = null;
-
 }
