@@ -33,15 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
- * segment asset filter for segment action
+ * Asset filter action
  * @package Kaltura
  * @subpackage Client
  */
-class SegementAssetFilterSegmentAction extends \Kaltura\Client\Type\SegementAssetFilterAction
+abstract class SegmentAssetFilterAction extends \Kaltura\Client\Type\KsqlSegmentAction
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaSegementAssetFilterSegmentAction';
+		return 'KalturaSegmentAssetFilterAction';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)

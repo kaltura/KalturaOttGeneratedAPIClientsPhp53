@@ -37,7 +37,7 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class SegementAssetFilterSubscriptionAction extends \Kaltura\Client\Type\SegementAssetFilterAction
+class SegementAssetFilterSubscriptionAction extends \Kaltura\Client\Type\SegmentAssetFilterAction
 {
 	public function getKalturaObjectType()
 	{
