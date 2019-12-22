@@ -45,14 +45,14 @@ class HouseholdSegmentService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Adds a segment to a household
+	 * householdSegment add
 	 * 
 	 * @return \Kaltura\Client\Type\HouseholdSegment
 	 */
-	function add(\Kaltura\Client\Type\HouseholdSegment $householdSegment)
+	function add(\Kaltura\Client\Type\HouseholdSegment $objectToAdd)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "householdSegment", $householdSegment->toParams());
+		$this->client->addParam($kparams, "objectToAdd", $objectToAdd->toParams());
 		$this->client->queueServiceActionCall("householdsegment", "add", "KalturaHouseholdSegment", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -65,33 +65,31 @@ class HouseholdSegmentService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Deletes a segment from a household
+	 * Remove segment from household
 	 * 
-	 * @return bool
 	 */
-	function delete($householdId, $segmentId)
+	function delete($id)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "householdId", $householdId);
-		$this->client->addParam($kparams, "segmentId", $segmentId);
+		$this->client->addParam($kparams, "id", $id);
 		$this->client->queueServiceActionCall("householdsegment", "delete", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (bool)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
 	}
 
 	/**
-	 * Retrieve all the segments that apply for given household
+	 * Gets all HouseholdSegment items for a household
 	 * 
 	 * @return \Kaltura\Client\Type\HouseholdSegmentListResponse
 	 */
-	function listAction()
+	function listAction(\Kaltura\Client\Type\HouseholdSegmentFilter $filter = null)
 	{
 		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
 		$this->client->queueServiceActionCall("householdsegment", "list", "KalturaHouseholdSegmentListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();

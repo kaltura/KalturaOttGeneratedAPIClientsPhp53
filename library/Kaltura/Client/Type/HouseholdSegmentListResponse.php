@@ -33,7 +33,6 @@
 namespace Kaltura\Client\Type;
 
 /**
- * List of user segments
  * @package Kaltura
  * @subpackage Client
  */
@@ -60,7 +59,7 @@ class HouseholdSegmentListResponse extends \Kaltura\Client\Type\ListResponse
 		}
 	}
 	/**
-	 * Segmentation Types
+	 * A list of objects
 	 * @var array<KalturaHouseholdSegment>
 	 */
 	public $objects;

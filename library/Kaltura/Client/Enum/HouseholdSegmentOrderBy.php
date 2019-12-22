@@ -30,42 +30,14 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
- * Indicates a segment of a household
  * @package Kaltura
  * @subpackage Client
  */
-class HouseholdSegment extends \Kaltura\Client\Type\CrudObject
+class HouseholdSegmentOrderBy extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaHouseholdSegment';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->segmentId))
-			$this->segmentId = (string)$xml->segmentId;
-		if(count($xml->householdId))
-			$this->householdId = (string)$xml->householdId;
-	}
-	/**
-	 * Segment Id
-	 * @var int
-	 */
-	public $segmentId = null;
-
-	/**
-	 * Segment Id
-	 * @var int
-	 */
-	public $householdId = null;
-
+	const NONE = "NONE";
 }
+
