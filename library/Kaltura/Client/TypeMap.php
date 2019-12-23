@@ -225,7 +225,7 @@ class TypeMap
 		'KalturaKsqlSegmentAction' => 'Kaltura\Client\Type\KsqlSegmentAction',
 		'KalturaSegmentAssetFilterAction' => 'Kaltura\Client\Type\SegmentAssetFilterAction',
 		'KalturaSegmentAssetFilterSegmentAction' => 'Kaltura\Client\Type\SegmentAssetFilterSegmentAction',
-		'KalturaSegementAssetFilterSubscriptionAction' => 'Kaltura\Client\Type\SegementAssetFilterSubscriptionAction',
+		'KalturaSegmentAssetFilterSubscriptionAction' => 'Kaltura\Client\Type\SegmentAssetFilterSubscriptionAction',
 		'KalturaBlockSubscriptionSegmentAction' => 'Kaltura\Client\Type\BlockSubscriptionSegmentAction',
 		'KalturaSegmentBlockPlaybackSubscriptionAction' => 'Kaltura\Client\Type\SegmentBlockPlaybackSubscriptionAction',
 		'KalturaSegmentBlockCancelSubscriptionAction' => 'Kaltura\Client\Type\SegmentBlockCancelSubscriptionAction',

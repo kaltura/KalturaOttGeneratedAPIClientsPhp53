@@ -37,11 +37,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class SegementAssetFilterSubscriptionAction extends \Kaltura\Client\Type\SegmentAssetFilterAction
+class SegmentAssetFilterSubscriptionAction extends \Kaltura\Client\Type\SegmentAssetFilterAction
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaSegementAssetFilterSubscriptionAction';
+		return 'KalturaSegmentAssetFilterSubscriptionAction';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
