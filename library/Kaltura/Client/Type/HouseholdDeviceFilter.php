@@ -54,6 +54,8 @@ class HouseholdDeviceFilter extends \Kaltura\Client\Type\Filter
 			$this->householdIdEqual = (int)$xml->householdIdEqual;
 		if(count($xml->deviceFamilyIdIn))
 			$this->deviceFamilyIdIn = (string)$xml->deviceFamilyIdIn;
+		if(count($xml->externalIdEqual))
+			$this->externalIdEqual = (string)$xml->externalIdEqual;
 	}
 	/**
 	 * The identifier of the household
@@ -66,5 +68,11 @@ class HouseholdDeviceFilter extends \Kaltura\Client\Type\Filter
 	 * @var string
 	 */
 	public $deviceFamilyIdIn = null;
+
+	/**
+	 * External Id
+	 * @var string
+	 */
+	public $externalIdEqual = null;
 
 }
