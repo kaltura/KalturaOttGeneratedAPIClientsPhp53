@@ -30,42 +30,14 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
- * Filter for user segments
  * @package Kaltura
  * @subpackage Client
  */
-class UserSegmentFilter extends \Kaltura\Client\Type\Filter
+class HouseholdSegmentOrderBy extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaUserSegmentFilter';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->userIdEqual))
-			$this->userIdEqual = (string)$xml->userIdEqual;
-		if(count($xml->kSql))
-			$this->kSql = (string)$xml->kSql;
-	}
-	/**
-	 * User ID
-	 * @var string
-	 */
-	public $userIdEqual = null;
-
-	/**
-	 * KSQL expression
-	 * @var string
-	 */
-	public $kSql = null;
-
+	const NONE = "NONE";
 }
+

@@ -33,15 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Filter for user segments
+ * Indicates a segment of a household
  * @package Kaltura
  * @subpackage Client
  */
-class UserSegmentFilter extends \Kaltura\Client\Type\Filter
+class HouseholdSegment extends \Kaltura\Client\Type\CrudObject
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaUserSegmentFilter';
+		return 'KalturaHouseholdSegment';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,21 +51,21 @@ class UserSegmentFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->userIdEqual))
-			$this->userIdEqual = (string)$xml->userIdEqual;
-		if(count($xml->kSql))
-			$this->kSql = (string)$xml->kSql;
+		if(count($xml->segmentId))
+			$this->segmentId = (string)$xml->segmentId;
+		if(count($xml->householdId))
+			$this->householdId = (string)$xml->householdId;
 	}
 	/**
-	 * User ID
-	 * @var string
+	 * Segment Id
+	 * @var int
 	 */
-	public $userIdEqual = null;
+	public $segmentId = null;
 
 	/**
-	 * KSQL expression
-	 * @var string
+	 * Segment Id
+	 * @var int
 	 */
-	public $kSql = null;
+	public $householdId = null;
 
 }
