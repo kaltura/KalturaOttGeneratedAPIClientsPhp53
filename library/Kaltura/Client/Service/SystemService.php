@@ -49,10 +49,10 @@ class SystemService extends \Kaltura\Client\ServiceBase
 	 * 
 	 * @return bool
 	 */
-	function clearLocalServerCache($action = null, $key = null)
+	function clearLocalServerCache($clearCacheAction = null, $key = null)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "action", $action);
+		$this->client->addParam($kparams, "clearCacheAction", $clearCacheAction);
 		$this->client->addParam($kparams, "key", $key);
 		$this->client->queueServiceActionCall("system", "clearLocalServerCache", null, $kparams);
 		if ($this->client->isMultiRequest())
