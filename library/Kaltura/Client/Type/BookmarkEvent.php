@@ -30,20 +30,73 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class PartnerConfigurationType extends \Kaltura\Client\EnumBase
+class BookmarkEvent extends \Kaltura\Client\Type\EventObject
 {
-	const DEFAULTPAYMENTGATEWAY = "DefaultPaymentGateway";
-	const ENABLEPAYMENTGATEWAYSELECTION = "EnablePaymentGatewaySelection";
-	const OSSADAPTER = "OSSAdapter";
-	const CONCURRENCY = "Concurrency";
-	const GENERAL = "General";
-	const OBJECTVIRTUALASSET = "ObjectVirtualAsset";
-	const COMMERCE = "Commerce";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaBookmarkEvent';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->userId))
+			$this->userId = (string)$xml->userId;
+		if(count($xml->householdId))
+			$this->householdId = (string)$xml->householdId;
+		if(count($xml->assetId))
+			$this->assetId = (string)$xml->assetId;
+		if(count($xml->fileId))
+			$this->fileId = (string)$xml->fileId;
+		if(count($xml->position))
+			$this->position = (int)$xml->position;
+		if(count($xml->action))
+			$this->action = (string)$xml->action;
+	}
+	/**
+	 * User Id
+	 * @var int
+	 */
+	public $userId = null;
 
+	/**
+	 * Household Id
+	 * @var int
+	 */
+	public $householdId = null;
+
+	/**
+	 * Asset Id
+	 * @var int
+	 */
+	public $assetId = null;
+
+	/**
+	 * File Id
+	 * @var int
+	 */
+	public $fileId = null;
+
+	/**
+	 * position
+	 * @var int
+	 */
+	public $position = null;
+
+	/**
+	 * Bookmark Action Type
+	 * @var \Kaltura\Client\Enum\BookmarkActionType
+	 */
+	public $action = null;
+
+}

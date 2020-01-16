@@ -65,7 +65,7 @@ class PartnerConfigurationService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Update Partner Configuration
+	 * Update/set Partner Configuration
 	 * 
 	 * @return bool
 	 */

@@ -30,20 +30,39 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
+ * partner configuration for commerce
  * @package Kaltura
  * @subpackage Client
  */
-class PartnerConfigurationType extends \Kaltura\Client\EnumBase
+class CommercePartnerConfig extends \Kaltura\Client\Type\PartnerConfiguration
 {
-	const DEFAULTPAYMENTGATEWAY = "DefaultPaymentGateway";
-	const ENABLEPAYMENTGATEWAYSELECTION = "EnablePaymentGatewaySelection";
-	const OSSADAPTER = "OSSAdapter";
-	const CONCURRENCY = "Concurrency";
-	const GENERAL = "General";
-	const OBJECTVIRTUALASSET = "ObjectVirtualAsset";
-	const COMMERCE = "Commerce";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaCommercePartnerConfig';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->bookmarkEventThresholds))
+		{
+			if(empty($xml->bookmarkEventThresholds))
+				$this->bookmarkEventThresholds = array();
+			else
+				$this->bookmarkEventThresholds = \Kaltura\Client\ParseUtils::unmarshalArray($xml->bookmarkEventThresholds, "KalturaBookmarkEventThreshold");
+		}
+	}
+	/**
+	 * configuration for bookmark event threshold (when to dispatch the event) in seconds.
+	 * @var array<KalturaBookmarkEventThreshold>
+	 */
+	public $bookmarkEventThresholds;
 
+}
