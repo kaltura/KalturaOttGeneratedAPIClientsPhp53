@@ -62,6 +62,10 @@ class BookmarkEvent extends \Kaltura\Client\Type\EventObject
 			$this->position = (int)$xml->position;
 		if(count($xml->action))
 			$this->action = (string)$xml->action;
+		if(count($xml->productType))
+			$this->productType = (string)$xml->productType;
+		if(count($xml->productId))
+			$this->productId = (int)$xml->productId;
 	}
 	/**
 	 * User Id
@@ -98,5 +102,17 @@ class BookmarkEvent extends \Kaltura\Client\Type\EventObject
 	 * @var \Kaltura\Client\Enum\BookmarkActionType
 	 */
 	public $action = null;
+
+	/**
+	 * Product Type
+	 * @var \Kaltura\Client\Enum\TransactionType
+	 */
+	public $productType = null;
+
+	/**
+	 * Product Id
+	 * @var int
+	 */
+	public $productId = null;
 
 }
