@@ -36,11 +36,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class RegionFilter extends \Kaltura\Client\Type\BaseRegionFilter
+abstract class BaseRegionFilter extends \Kaltura\Client\Type\Filter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaRegionFilter';
+		return 'KalturaBaseRegionFilter';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,50 +50,5 @@ class RegionFilter extends \Kaltura\Client\Type\BaseRegionFilter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->externalIdIn))
-			$this->externalIdIn = (string)$xml->externalIdIn;
-		if(count($xml->idIn))
-			$this->idIn = (string)$xml->idIn;
-		if(count($xml->parentIdEqual))
-			$this->parentIdEqual = (int)$xml->parentIdEqual;
-		if(count($xml->liveAssetIdEqual))
-			$this->liveAssetIdEqual = (int)$xml->liveAssetIdEqual;
-		if(count($xml->parentOnly))
-		{
-			if(!empty($xml->parentOnly) && $xml->parentOnly != 'false')
-				$this->parentOnly = true;
-			else
-				$this->parentOnly = false;
-		}
 	}
-	/**
-	 * List of comma separated regions external IDs
-	 * @var string
-	 */
-	public $externalIdIn = null;
-
-	/**
-	 * List of comma separated regions Ids
-	 * @var string
-	 */
-	public $idIn = null;
-
-	/**
-	 * Region parent ID to filter by
-	 * @var int
-	 */
-	public $parentIdEqual = null;
-
-	/**
-	 * Region parent ID to filter by
-	 * @var int
-	 */
-	public $liveAssetIdEqual = null;
-
-	/**
-	 * Parent region to filter by
-	 * @var bool
-	 */
-	public $parentOnly = null;
-
 }
