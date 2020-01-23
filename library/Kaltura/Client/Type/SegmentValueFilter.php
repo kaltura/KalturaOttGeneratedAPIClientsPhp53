@@ -33,15 +33,14 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Filter for segmentation types
  * @package Kaltura
  * @subpackage Client
  */
-class SegmentationTypeFilter extends \Kaltura\Client\Type\BaseSegmentationTypeFilter
+class SegmentValueFilter extends \Kaltura\Client\Type\BaseSegmentationTypeFilter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaSegmentationTypeFilter';
+		return 'KalturaSegmentValueFilter';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -53,19 +52,11 @@ class SegmentationTypeFilter extends \Kaltura\Client\Type\BaseSegmentationTypeFi
 		
 		if(count($xml->idIn))
 			$this->idIn = (string)$xml->idIn;
-		if(count($xml->kSql))
-			$this->kSql = (string)$xml->kSql;
 	}
 	/**
-	 * Comma separated segmentation types identifiers
+	 * Comma separated segmentation identifiers
 	 * @var string
 	 */
 	public $idIn = null;
-
-	/**
-	 * KSQL expression
-	 * @var string
-	 */
-	public $kSql = null;
 
 }

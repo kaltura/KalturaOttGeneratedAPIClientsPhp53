@@ -88,7 +88,7 @@ class SegmentationTypeService extends \Kaltura\Client\ServiceBase
 	 * 
 	 * @return \Kaltura\Client\Type\SegmentationTypeListResponse
 	 */
-	function listAction(\Kaltura\Client\Type\SegmentationTypeFilter $filter = null, \Kaltura\Client\Type\FilterPager $pager = null)
+	function listAction(\Kaltura\Client\Type\BaseSegmentationTypeFilter $filter = null, \Kaltura\Client\Type\FilterPager $pager = null)
 	{
 		$kparams = array();
 		if ($filter !== null)
