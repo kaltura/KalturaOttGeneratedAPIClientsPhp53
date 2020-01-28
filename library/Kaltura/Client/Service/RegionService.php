@@ -85,7 +85,7 @@ class RegionService extends \Kaltura\Client\ServiceBase
 	 * 
 	 * @return \Kaltura\Client\Type\RegionListResponse
 	 */
-	function listAction(\Kaltura\Client\Type\BaseRegionFilter $filter, \Kaltura\Client\Type\FilterPager $pager = null)
+	function listAction(\Kaltura\Client\Type\RegionFilter $filter, \Kaltura\Client\Type\FilterPager $pager = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "filter", $filter->toParams());

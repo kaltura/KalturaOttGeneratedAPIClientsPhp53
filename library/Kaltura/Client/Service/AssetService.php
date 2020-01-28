@@ -196,29 +196,6 @@ class AssetService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * This action delivers all data relevant for player
-	 * 
-	 * @return \Kaltura\Client\Type\PlaybackContext
-	 */
-	function getPlaybackManifest($assetId, $assetType, \Kaltura\Client\Type\PlaybackContextOptions $contextDataParams, $sourceType = null)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "assetId", $assetId);
-		$this->client->addParam($kparams, "assetType", $assetType);
-		$this->client->addParam($kparams, "contextDataParams", $contextDataParams->toParams());
-		$this->client->addParam($kparams, "sourceType", $sourceType);
-		$this->client->queueServiceActionCall("asset", "getPlaybackManifest", "KalturaPlaybackContext", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPlaybackContext");
-		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\PlaybackContext");
-		return $resultObject;
-	}
-
-	/**
 	 * Returns media or EPG assets. Filters by media identifiers or by EPG internal or external identifier.
 	 * 
 	 * @return \Kaltura\Client\Type\AssetListResponse
