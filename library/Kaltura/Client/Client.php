@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2019  Kaltura Inc.
+// Copyright (C) 2006-2020  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -627,8 +627,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:19-11-12');
-		$this->setApiVersion('5.2.4.5682');
+		$this->setClientTag('php5:20-02-04');
+		$this->setApiVersion('5.2.4.5693');
 	}
 	
 	/**
