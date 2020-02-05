@@ -36,7 +36,7 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class RegionFilter extends \Kaltura\Client\Type\BaseRegionFilter
+class RegionFilter extends \Kaltura\Client\Type\Filter
 {
 	public function getKalturaObjectType()
 	{
