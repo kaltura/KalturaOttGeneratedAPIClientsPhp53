@@ -44,6 +44,5 @@ class PartnerConfigurationType extends \Kaltura\Client\EnumBase
 	const CONCURRENCY = "Concurrency";
 	const GENERAL = "General";
 	const OBJECTVIRTUALASSET = "ObjectVirtualAsset";
-	const COMMERCE = "Commerce";
 }
 
