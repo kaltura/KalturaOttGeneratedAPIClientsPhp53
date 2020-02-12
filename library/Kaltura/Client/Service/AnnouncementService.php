@@ -102,6 +102,26 @@ class AnnouncementService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
+	 * Get announcement by Id
+	 * 
+	 * @return \Kaltura\Client\Type\Announcement
+	 */
+	function get($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("announcement", "get", "KalturaAnnouncement", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAnnouncement");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\Announcement");
+		return $resultObject;
+	}
+
+	/**
 	 * Lists all announcements in the system.
 	 * 
 	 * @return \Kaltura\Client\Type\AnnouncementListResponse
