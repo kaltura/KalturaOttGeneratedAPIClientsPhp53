@@ -90,13 +90,13 @@ class CategoryItem extends \Kaltura\Client\Type\CrudObject
 	/**
 	 * Category parent identifier
 	 * @var int
+	 * @readonly
 	 */
 	public $parentCategoryId = null;
 
 	/**
 	 * Comma separated list of child categories&#39; Ids.
 	 * @var string
-	 * @readonly
 	 */
 	public $childCategoriesIds = null;
 

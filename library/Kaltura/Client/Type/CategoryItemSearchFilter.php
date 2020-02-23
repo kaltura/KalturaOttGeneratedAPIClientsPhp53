@@ -36,11 +36,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class CategoryItemByKsqlFilter extends \Kaltura\Client\Type\CategoryItemFilter
+class CategoryItemSearchFilter extends \Kaltura\Client\Type\CategoryItemFilter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaCategoryItemByKsqlFilter';
+		return 'KalturaCategoryItemSearchFilter';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -52,11 +52,24 @@ class CategoryItemByKsqlFilter extends \Kaltura\Client\Type\CategoryItemFilter
 		
 		if(count($xml->kSql))
 			$this->kSql = (string)$xml->kSql;
+		if(count($xml->rootOnly))
+		{
+			if(!empty($xml->rootOnly) && $xml->rootOnly != 'false')
+				$this->rootOnly = true;
+			else
+				$this->rootOnly = false;
+		}
 	}
 	/**
 	 * KSQL expression
 	 * @var string
 	 */
 	public $kSql = null;
+
+	/**
+	 * Root only
+	 * @var bool
+	 */
+	public $rootOnly = null;
 
 }
