@@ -49,10 +49,11 @@ class CategoryTreeService extends \Kaltura\Client\ServiceBase
 	 * 
 	 * @return \Kaltura\Client\Type\CategoryTree
 	 */
-	function duplicate($categoryItemId)
+	function duplicate($categoryItemId, $name)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "categoryItemId", $categoryItemId);
+		$this->client->addParam($kparams, "name", $name);
 		$this->client->queueServiceActionCall("categorytree", "duplicate", "KalturaCategoryTree", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
