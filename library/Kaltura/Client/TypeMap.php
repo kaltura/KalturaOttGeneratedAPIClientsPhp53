@@ -66,6 +66,7 @@ class TypeMap
 		'KalturaCategoryItemFilter' => 'Kaltura\Client\Type\CategoryItemFilter',
 		'KalturaCategoryItemByIdInFilter' => 'Kaltura\Client\Type\CategoryItemByIdInFilter',
 		'KalturaCategoryItemSearchFilter' => 'Kaltura\Client\Type\CategoryItemSearchFilter',
+		'KalturaCategoryItemAncestorsFilter' => 'Kaltura\Client\Type\CategoryItemAncestorsFilter',
 		'KalturaEventNotificationFilter' => 'Kaltura\Client\Type\EventNotificationFilter',
 		'KalturaBulkUploadFilter' => 'Kaltura\Client\Type\BulkUploadFilter',
 		'KalturaSocialActionFilter' => 'Kaltura\Client\Type\SocialActionFilter',
