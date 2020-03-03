@@ -55,6 +55,13 @@ class CategoryTree extends \Kaltura\Client\ObjectBase
 			$this->id = (string)$xml->id;
 		if(count($xml->name))
 			$this->name = (string)$xml->name;
+		if(count($xml->multilingualName))
+		{
+			if(empty($xml->multilingualName))
+				$this->multilingualName = array();
+			else
+				$this->multilingualName = \Kaltura\Client\ParseUtils::unmarshalArray($xml->multilingualName, "KalturaTranslationToken");
+		}
 		if(count($xml->children))
 		{
 			if(empty($xml->children))
@@ -94,8 +101,15 @@ class CategoryTree extends \Kaltura\Client\ObjectBase
 	/**
 	 * Category name
 	 * @var string
+	 * @readonly
 	 */
 	public $name = null;
+
+	/**
+	 * Category name
+	 * @var array<KalturaTranslationToken>
+	 */
+	public $multilingualName;
 
 	/**
 	 * List of category tree
