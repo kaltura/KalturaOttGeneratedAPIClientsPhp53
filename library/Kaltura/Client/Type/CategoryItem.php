@@ -80,6 +80,8 @@ class CategoryItem extends \Kaltura\Client\Type\CrudObject
 			else
 				$this->dynamicData = \Kaltura\Client\ParseUtils::unmarshalMap($xml->dynamicData, "KalturaStringValue");
 		}
+		if(count($xml->updateDate))
+			$this->updateDate = (string)$xml->updateDate;
 	}
 	/**
 	 * Unique identifier for the category
@@ -125,5 +127,12 @@ class CategoryItem extends \Kaltura\Client\Type\CrudObject
 	 * @var array<string, KalturaStringValue>
 	 */
 	public $dynamicData;
+
+	/**
+	 * Specifies when was the Category last updated. Date and time represented as epoch.
+	 * @var int
+	 * @readonly
+	 */
+	public $updateDate = null;
 
 }
