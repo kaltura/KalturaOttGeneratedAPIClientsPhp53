@@ -114,6 +114,16 @@ class Client extends Base
 	protected $businessModuleRule = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\CategoryItemService
+	 */
+	protected $categoryItem = null;
+
+	/**
+	 * @var \Kaltura\Client\Service\CategoryTreeService
+	 */
+	protected $categoryTree = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\CdnAdapterProfileService
 	 */
 	protected $cdnAdapterProfile = null;
@@ -658,7 +668,7 @@ class Client extends Base
 		parent::__construct($config);
 		
 		$this->setClientTag('php5:20-03-10');
-		$this->setApiVersion('5.3.2.14809');
+		$this->setApiVersion('5.3.2.14880');
 	}
 	
 	/**
@@ -795,6 +805,24 @@ class Client extends Base
 		if (is_null($this->businessModuleRule))
 			$this->businessModuleRule = new \Kaltura\Client\Service\BusinessModuleRuleService($this);
 		return $this->businessModuleRule;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\CategoryItemService
+	 */
+	public function getCategoryItemService()
+	{
+		if (is_null($this->categoryItem))
+			$this->categoryItem = new \Kaltura\Client\Service\CategoryItemService($this);
+		return $this->categoryItem;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\CategoryTreeService
+	 */
+	public function getCategoryTreeService()
+	{
+		if (is_null($this->categoryTree))
+			$this->categoryTree = new \Kaltura\Client\Service\CategoryTreeService($this);
+		return $this->categoryTree;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\CdnAdapterProfileService

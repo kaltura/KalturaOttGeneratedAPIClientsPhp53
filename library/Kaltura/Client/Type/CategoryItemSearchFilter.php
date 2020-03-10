@@ -30,16 +30,46 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class ObjectVirtualAssetInfoType extends \Kaltura\Client\EnumBase
+class CategoryItemSearchFilter extends \Kaltura\Client\Type\CategoryItemFilter
 {
-	const SUBSCRIPTION = "Subscription";
-	const SEGMENT = "Segment";
-	const CATEGORY = "Category";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaCategoryItemSearchFilter';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->kSql))
+			$this->kSql = (string)$xml->kSql;
+		if(count($xml->rootOnly))
+		{
+			if(!empty($xml->rootOnly) && $xml->rootOnly != 'false')
+				$this->rootOnly = true;
+			else
+				$this->rootOnly = false;
+		}
+	}
+	/**
+	 * KSQL expression
+	 * @var string
+	 */
+	public $kSql = null;
 
+	/**
+	 * Root only
+	 * @var bool
+	 */
+	public $rootOnly = null;
+
+}
