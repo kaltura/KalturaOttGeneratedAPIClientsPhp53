@@ -340,6 +340,7 @@ class TypeMap
 		'KalturaBookmarkEventThreshold' => 'Kaltura\Client\Type\BookmarkEventThreshold',
 		'KalturaCommercePartnerConfig' => 'Kaltura\Client\Type\CommercePartnerConfig',
 		'KalturaConcurrencyPartnerConfig' => 'Kaltura\Client\Type\ConcurrencyPartnerConfig',
+		'KalturaRollingDeviceRemovalData' => 'Kaltura\Client\Type\RollingDeviceRemovalData',
 		'KalturaGeneralPartnerConfig' => 'Kaltura\Client\Type\GeneralPartnerConfig',
 		'KalturaObjectVirtualAssetInfo' => 'Kaltura\Client\Type\ObjectVirtualAssetInfo',
 		'KalturaObjectVirtualAssetPartnerConfig' => 'Kaltura\Client\Type\ObjectVirtualAssetPartnerConfig',
