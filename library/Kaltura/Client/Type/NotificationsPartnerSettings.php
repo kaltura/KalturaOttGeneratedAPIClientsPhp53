@@ -114,6 +114,15 @@ class NotificationsPartnerSettings extends \Kaltura\Client\ObjectBase
 			else
 				$this->smsEnabled = false;
 		}
+		if(count($xml->iotEnabled))
+		{
+			if(!empty($xml->iotEnabled) && $xml->iotEnabled != 'false')
+				$this->iotEnabled = true;
+			else
+				$this->iotEnabled = false;
+		}
+		if(count($xml->iotAdapterUrl))
+			$this->iotAdapterUrl = (string)$xml->iotAdapterUrl;
 	}
 	/**
 	 * Push notification capability is enabled for the account
@@ -216,5 +225,17 @@ class NotificationsPartnerSettings extends \Kaltura\Client\ObjectBase
 	 * @var bool
 	 */
 	public $smsEnabled = null;
+
+	/**
+	 * IOT capability is enabled for the account
+	 * @var bool
+	 */
+	public $iotEnabled = null;
+
+	/**
+	 * IOT adapter url and port
+	 * @var string
+	 */
+	public $iotAdapterUrl = null;
 
 }

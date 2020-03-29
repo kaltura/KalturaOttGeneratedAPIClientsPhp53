@@ -339,6 +339,16 @@ class Client extends Base
 	protected $IngestProfile = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\IotService
+	 */
+	protected $iot = null;
+
+	/**
+	 * @var \Kaltura\Client\Service\IotProfileService
+	 */
+	protected $iotProfile = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\LanguageService
 	 */
 	protected $language = null;
@@ -667,8 +677,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:20-03-17');
-		$this->setApiVersion('5.3.3.27668');
+		$this->setClientTag('php5:20-03-29');
+		$this->setApiVersion('5.3.3.27780');
 	}
 	
 	/**
@@ -1210,6 +1220,24 @@ class Client extends Base
 		if (is_null($this->IngestProfile))
 			$this->IngestProfile = new \Kaltura\Client\Service\IngestProfileService($this);
 		return $this->IngestProfile;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\IotService
+	 */
+	public function getIotService()
+	{
+		if (is_null($this->iot))
+			$this->iot = new \Kaltura\Client\Service\IotService($this);
+		return $this->iot;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\IotProfileService
+	 */
+	public function getIotProfileService()
+	{
+		if (is_null($this->iotProfile))
+			$this->iotProfile = new \Kaltura\Client\Service\IotProfileService($this);
+		return $this->iotProfile;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\LanguageService
