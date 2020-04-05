@@ -36,11 +36,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class PushMessage extends \Kaltura\Client\ObjectBase
+class Default extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaPushMessage';
+		return 'KalturaDefault';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,53 +50,29 @@ class PushMessage extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->message))
-			$this->message = (string)$xml->message;
-		if(count($xml->sound))
-			$this->sound = (string)$xml->sound;
-		if(count($xml->action))
-			$this->action = (string)$xml->action;
-		if(count($xml->url))
-			$this->url = (string)$xml->url;
-		if(count($xml->udid))
-			$this->udid = (string)$xml->udid;
-		if(count($xml->pushChannels))
-			$this->pushChannels = (string)$xml->pushChannels;
+		if(count($xml->poolId))
+			$this->poolId = (string)$xml->poolId;
+		if(count($xml->region))
+			$this->region = (string)$xml->region;
+		if(count($xml->appClientId))
+			$this->appClientId = (string)$xml->appClientId;
 	}
 	/**
-	 * The message that will be presented to the user.
+	 * PoolId
 	 * @var string
 	 */
-	public $message = null;
+	public $poolId = null;
 
 	/**
-	 * Optional. Can be used to change the default push sound on the user device.
+	 * Region
 	 * @var string
 	 */
-	public $sound = null;
+	public $region = null;
 
 	/**
-	 * Optional. Used to change the default action of the application when a push is received.
+	 * AppClientId
 	 * @var string
 	 */
-	public $action = null;
-
-	/**
-	 * Optional. Used to direct the application to the relevant page.
-	 * @var string
-	 */
-	public $url = null;
-
-	/**
-	 * Device unique identifier
-	 * @var string
-	 */
-	public $udid = null;
-
-	/**
-	 * PushChannels - separated with comma
-	 * @var string
-	 */
-	public $pushChannels = null;
+	public $appClientId = null;
 
 }

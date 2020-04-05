@@ -36,11 +36,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class PushMessage extends \Kaltura\Client\ObjectBase
+class DefaultPlaybackAdapters extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaPushMessage';
+		return 'KalturaDefaultPlaybackAdapters';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,53 +50,29 @@ class PushMessage extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->message))
-			$this->message = (string)$xml->message;
-		if(count($xml->sound))
-			$this->sound = (string)$xml->sound;
-		if(count($xml->action))
-			$this->action = (string)$xml->action;
-		if(count($xml->url))
-			$this->url = (string)$xml->url;
-		if(count($xml->udid))
-			$this->udid = (string)$xml->udid;
-		if(count($xml->pushChannels))
-			$this->pushChannels = (string)$xml->pushChannels;
+		if(count($xml->mediaAdapterId))
+			$this->mediaAdapterId = (string)$xml->mediaAdapterId;
+		if(count($xml->epgAdapterId))
+			$this->epgAdapterId = (string)$xml->epgAdapterId;
+		if(count($xml->recordingAdapterId))
+			$this->recordingAdapterId = (string)$xml->recordingAdapterId;
 	}
 	/**
-	 * The message that will be presented to the user.
-	 * @var string
+	 * Default adapter identifier for media
+	 * @var int
 	 */
-	public $message = null;
+	public $mediaAdapterId = null;
 
 	/**
-	 * Optional. Can be used to change the default push sound on the user device.
-	 * @var string
+	 * Default adapter identifier for epg
+	 * @var int
 	 */
-	public $sound = null;
+	public $epgAdapterId = null;
 
 	/**
-	 * Optional. Used to change the default action of the application when a push is received.
-	 * @var string
+	 * Default adapter identifier for recording
+	 * @var int
 	 */
-	public $action = null;
-
-	/**
-	 * Optional. Used to direct the application to the relevant page.
-	 * @var string
-	 */
-	public $url = null;
-
-	/**
-	 * Device unique identifier
-	 * @var string
-	 */
-	public $udid = null;
-
-	/**
-	 * PushChannels - separated with comma
-	 * @var string
-	 */
-	public $pushChannels = null;
+	public $recordingAdapterId = null;
 
 }
