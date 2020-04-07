@@ -50,13 +50,13 @@ class CognitoIdentity extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->default) && !empty($xml->default))
-			$this->default = \Kaltura\Client\ParseUtils::unmarshalObject($xml->default, "KalturaDefault");
+		if(count($xml->iotDefault) && !empty($xml->iotDefault))
+			$this->iotDefault = \Kaltura\Client\ParseUtils::unmarshalObject($xml->iotDefault, "KalturaIotDefault");
 	}
 	/**
 	 * Default
-	 * @var \Kaltura\Client\Type\Default
+	 * @var \Kaltura\Client\Type\IotDefault
 	 */
-	public $default;
+	public $iotDefault;
 
 }
