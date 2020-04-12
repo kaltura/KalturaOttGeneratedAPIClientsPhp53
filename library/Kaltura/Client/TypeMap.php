@@ -578,7 +578,7 @@ class TypeMap
 		'KalturaContentResource' => 'Kaltura\Client\Type\ContentResource',
 		'KalturaUploadedFileTokenResource' => 'Kaltura\Client\Type\UploadedFileTokenResource',
 		'KalturaUrlResource' => 'Kaltura\Client\Type\UrlResource',
-		'KalturaDefault' => 'Kaltura\Client\Type\Default',
+		'KalturaIotDefault' => 'Kaltura\Client\Type\IotDefault',
 		'KalturaCognitoIdentity' => 'Kaltura\Client\Type\CognitoIdentity',
 		'KalturaCredentialsProvider' => 'Kaltura\Client\Type\CredentialsProvider',
 		'KalturaCognitoUserPool' => 'Kaltura\Client\Type\CognitoUserPool',

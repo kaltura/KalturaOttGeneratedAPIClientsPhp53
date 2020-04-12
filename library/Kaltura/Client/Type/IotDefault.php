@@ -36,11 +36,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class Default extends \Kaltura\Client\ObjectBase
+class IotDefault extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaDefault';
+		return 'KalturaIotDefault';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
