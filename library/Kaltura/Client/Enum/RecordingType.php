@@ -41,5 +41,6 @@ class RecordingType extends \Kaltura\Client\EnumBase
 	const SINGLE = "SINGLE";
 	const SEASON = "SEASON";
 	const SERIES = "SERIES";
+	const ORIGINALBROADCAST = "OriginalBroadcast";
 }
 
