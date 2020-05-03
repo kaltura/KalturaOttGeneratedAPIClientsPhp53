@@ -53,20 +53,10 @@ class IotProfileAws extends \Kaltura\Client\Type\CrudObject
 		
 		if(count($xml->iotEndPoint))
 			$this->iotEndPoint = (string)$xml->iotEndPoint;
-		if(count($xml->pfxPath))
-			$this->pfxPath = (string)$xml->pfxPath;
-		if(count($xml->pfxPassword))
-			$this->pfxPassword = (string)$xml->pfxPassword;
-		if(count($xml->certificatePath))
-			$this->certificatePath = (string)$xml->certificatePath;
-		if(count($xml->brokerPort))
-			$this->brokerPort = (int)$xml->brokerPort;
 		if(count($xml->accessKeyId))
 			$this->accessKeyId = (string)$xml->accessKeyId;
 		if(count($xml->secretAccessKey))
 			$this->secretAccessKey = (string)$xml->secretAccessKey;
-		if(count($xml->iotPolicyName))
-			$this->iotPolicyName = (string)$xml->iotPolicyName;
 		if(count($xml->userPoolId))
 			$this->userPoolId = (string)$xml->userPoolId;
 		if(count($xml->clientId))
@@ -85,30 +75,6 @@ class IotProfileAws extends \Kaltura\Client\Type\CrudObject
 	public $iotEndPoint = null;
 
 	/**
-	 * pfxPath
-	 * @var string
-	 */
-	public $pfxPath = null;
-
-	/**
-	 * pfxPassword
-	 * @var string
-	 */
-	public $pfxPassword = null;
-
-	/**
-	 * certificatePath
-	 * @var string
-	 */
-	public $certificatePath = null;
-
-	/**
-	 * brokerPort
-	 * @var int
-	 */
-	public $brokerPort = null;
-
-	/**
 	 * accessKeyId
 	 * @var string
 	 */
@@ -119,12 +85,6 @@ class IotProfileAws extends \Kaltura\Client\Type\CrudObject
 	 * @var string
 	 */
 	public $secretAccessKey = null;
-
-	/**
-	 * iotPolicyName
-	 * @var string
-	 */
-	public $iotPolicyName = null;
 
 	/**
 	 * userPoolId
