@@ -136,6 +136,7 @@ class TypeMap
 		'KalturaSeriesRecordingFilter' => 'Kaltura\Client\Type\SeriesRecordingFilter',
 		'KalturaCloudSeriesRecordingFilter' => 'Kaltura\Client\Type\CloudSeriesRecordingFilter',
 		'KalturaEntitlementFilter' => 'Kaltura\Client\Type\EntitlementFilter',
+		'KalturaExternalRecordingResponseProfileFilter' => 'Kaltura\Client\Type\ExternalRecordingResponseProfileFilter',
 		'KalturaProductPriceFilter' => 'Kaltura\Client\Type\ProductPriceFilter',
 		'KalturaRecordingContextFilter' => 'Kaltura\Client\Type\RecordingContextFilter',
 		'KalturaTransactionHistoryFilter' => 'Kaltura\Client\Type\TransactionHistoryFilter',
