@@ -30,17 +30,54 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class RecordingType extends \Kaltura\Client\EnumBase
+class SSOAdapterProfileInvoke extends \Kaltura\Client\ObjectBase
 {
-	const SINGLE = "SINGLE";
-	const SEASON = "SEASON";
-	const SERIES = "SERIES";
-	const ORIGINALBROADCAST = "OriginalBroadcast";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaSSOAdapterProfileInvoke';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->adapterData))
+		{
+			if(empty($xml->adapterData))
+				$this->adapterData = array();
+			else
+				$this->adapterData = \Kaltura\Client\ParseUtils::unmarshalMap($xml->adapterData, "KalturaStringValue");
+		}
+		if(count($xml->code))
+			$this->code = (string)$xml->code;
+		if(count($xml->message))
+			$this->message = (string)$xml->message;
+	}
+	/**
+	 * key/value map field for adapter data
+	 * @var array<string, KalturaStringValue>
+	 */
+	public $adapterData;
 
+	/**
+	 * code
+	 * @var string
+	 */
+	public $code = null;
+
+	/**
+	 * message
+	 * @var string
+	 */
+	public $message = null;
+
+}

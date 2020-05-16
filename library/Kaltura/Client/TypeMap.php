@@ -608,6 +608,7 @@ class TypeMap
 		'KalturaSocialFacebookConfig' => 'Kaltura\Client\Type\SocialFacebookConfig',
 		'KalturaActionPermissionItem' => 'Kaltura\Client\Type\ActionPermissionItem',
 		'KalturaSocialUserConfig' => 'Kaltura\Client\Type\SocialUserConfig',
+		'KalturaSSOAdapterProfileInvoke' => 'Kaltura\Client\Type\SSOAdapterProfileInvoke',
 		'KalturaTimeShiftedTvPartnerSettings' => 'Kaltura\Client\Type\TimeShiftedTvPartnerSettings',
 		'KalturaPurchaseBase' => 'Kaltura\Client\Type\PurchaseBase',
 		'KalturaPurchase' => 'Kaltura\Client\Type\Purchase',
