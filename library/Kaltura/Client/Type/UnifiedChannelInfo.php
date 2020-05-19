@@ -52,11 +52,27 @@ class UnifiedChannelInfo extends \Kaltura\Client\Type\UnifiedChannel
 		
 		if(count($xml->name))
 			$this->name = (string)$xml->name;
+		if(count($xml->startDateInSeconds))
+			$this->startDateInSeconds = (string)$xml->startDateInSeconds;
+		if(count($xml->endDateInSeconds))
+			$this->endDateInSeconds = (string)$xml->endDateInSeconds;
 	}
 	/**
 	 * Channel&#160;name
 	 * @var string
 	 */
 	public $name = null;
+
+	/**
+	 * Start date in seconds
+	 * @var int
+	 */
+	public $startDateInSeconds = null;
+
+	/**
+	 * End date in seconds
+	 * @var int
+	 */
+	public $endDateInSeconds = null;
 
 }
