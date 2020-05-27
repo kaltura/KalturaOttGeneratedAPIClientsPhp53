@@ -30,65 +30,14 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class ChannelsFilter extends \Kaltura\Client\Type\Filter
+class ExternalChannelProfileOrderBy extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaChannelsFilter';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->idEqual))
-			$this->idEqual = (int)$xml->idEqual;
-		if(count($xml->mediaIdEqual))
-			$this->mediaIdEqual = (string)$xml->mediaIdEqual;
-		if(count($xml->nameEqual))
-			$this->nameEqual = (string)$xml->nameEqual;
-		if(count($xml->nameStartsWith))
-			$this->nameStartsWith = (string)$xml->nameStartsWith;
-		if(count($xml->idIn))
-			$this->idIn = (string)$xml->idIn;
-	}
-	/**
-	 * channel identifier to filter by
-	 * @var int
-	 */
-	public $idEqual = null;
-
-	/**
-	 * media identifier to filter by
-	 * @var int
-	 */
-	public $mediaIdEqual = null;
-
-	/**
-	 * Exact channel name to filter by
-	 * @var string
-	 */
-	public $nameEqual = null;
-
-	/**
-	 * Channel name starts with (auto-complete)
-	 * @var string
-	 */
-	public $nameStartsWith = null;
-
-	/**
-	 * Comma separated channel ids
-	 * @var string
-	 */
-	public $idIn = null;
-
+	const NONE = "NONE";
 }
+

@@ -33,14 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
+ * Kaltura External Recording ResponseProfile Filter
  * @package Kaltura
  * @subpackage Client
  */
-class ImageFilter extends \Kaltura\Client\Type\Filter
+class ExternalRecordingResponseProfileFilter extends \Kaltura\Client\Type\RelatedObjectFilter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaImageFilter';
+		return 'KalturaExternalRecordingResponseProfileFilter';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,50 +51,5 @@ class ImageFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->idIn))
-			$this->idIn = (string)$xml->idIn;
-		if(count($xml->imageObjectIdEqual))
-			$this->imageObjectIdEqual = (string)$xml->imageObjectIdEqual;
-		if(count($xml->imageObjectTypeEqual))
-			$this->imageObjectTypeEqual = (string)$xml->imageObjectTypeEqual;
-		if(count($xml->isDefaultEqual))
-		{
-			if(!empty($xml->isDefaultEqual) && $xml->isDefaultEqual != 'false')
-				$this->isDefaultEqual = true;
-			else
-				$this->isDefaultEqual = false;
-		}
-		if(count($xml->imageObjectIdIn))
-			$this->imageObjectIdIn = (string)$xml->imageObjectIdIn;
 	}
-	/**
-	 * IDs to filter by
-	 * @var string
-	 */
-	public $idIn = null;
-
-	/**
-	 * ID of the object the is related to, to filter by
-	 * @var int
-	 */
-	public $imageObjectIdEqual = null;
-
-	/**
-	 * Type of the object the image is related to, to filter by
-	 * @var \Kaltura\Client\Enum\ImageObjectType
-	 */
-	public $imageObjectTypeEqual = null;
-
-	/**
-	 * Filter images that are default on at least on image type or not default at any
-	 * @var bool
-	 */
-	public $isDefaultEqual = null;
-
-	/**
-	 * Comma separated imageObject ids list
-	 * @var string
-	 */
-	public $imageObjectIdIn = null;
-
 }
