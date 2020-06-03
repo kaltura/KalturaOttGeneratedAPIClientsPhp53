@@ -82,6 +82,17 @@ class CategoryItem extends \Kaltura\Client\Type\CrudObject
 		}
 		if(count($xml->updateDate))
 			$this->updateDate = (string)$xml->updateDate;
+		if(count($xml->isActive))
+		{
+			if(!empty($xml->isActive) && $xml->isActive != 'false')
+				$this->isActive = true;
+			else
+				$this->isActive = false;
+		}
+		if(count($xml->startDateInSeconds))
+			$this->startDateInSeconds = (string)$xml->startDateInSeconds;
+		if(count($xml->endDateInSeconds))
+			$this->endDateInSeconds = (string)$xml->endDateInSeconds;
 	}
 	/**
 	 * Unique identifier for the category
@@ -134,5 +145,23 @@ class CategoryItem extends \Kaltura\Client\Type\CrudObject
 	 * @readonly
 	 */
 	public $updateDate = null;
+
+	/**
+	 * Category active status
+	 * @var bool
+	 */
+	public $isActive = null;
+
+	/**
+	 * Start date in seconds
+	 * @var int
+	 */
+	public $startDateInSeconds = null;
+
+	/**
+	 * End date in seconds
+	 * @var int
+	 */
+	public $endDateInSeconds = null;
 
 }

@@ -58,6 +58,8 @@ class ChannelsFilter extends \Kaltura\Client\Type\Filter
 			$this->nameEqual = (string)$xml->nameEqual;
 		if(count($xml->nameStartsWith))
 			$this->nameStartsWith = (string)$xml->nameStartsWith;
+		if(count($xml->idIn))
+			$this->idIn = (string)$xml->idIn;
 	}
 	/**
 	 * channel identifier to filter by
@@ -82,5 +84,11 @@ class ChannelsFilter extends \Kaltura\Client\Type\Filter
 	 * @var string
 	 */
 	public $nameStartsWith = null;
+
+	/**
+	 * Comma separated channel ids
+	 * @var string
+	 */
+	public $idIn = null;
 
 }

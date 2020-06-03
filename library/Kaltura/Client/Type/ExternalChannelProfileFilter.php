@@ -33,14 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
+ * External channel profile filter
  * @package Kaltura
  * @subpackage Client
  */
-abstract class CrudObject extends \Kaltura\Client\Type\OTTObjectSupportNullable
+class ExternalChannelProfileFilter extends \Kaltura\Client\Type\Filter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaCrudObject';
+		return 'KalturaExternalChannelProfileFilter';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)

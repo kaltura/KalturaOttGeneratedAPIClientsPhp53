@@ -33,14 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
+ * Kaltura External Recording ResponseProfile Filter
  * @package Kaltura
  * @subpackage Client
  */
-abstract class CrudObject extends \Kaltura\Client\Type\OTTObjectSupportNullable
+class ExternalRecordingResponseProfileFilter extends \Kaltura\Client\Type\RelatedObjectFilter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaCrudObject';
+		return 'KalturaExternalRecordingResponseProfileFilter';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)

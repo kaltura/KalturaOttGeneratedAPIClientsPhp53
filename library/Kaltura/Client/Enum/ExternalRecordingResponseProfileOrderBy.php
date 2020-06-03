@@ -30,25 +30,14 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-abstract class CrudObject extends \Kaltura\Client\Type\OTTObjectSupportNullable
+class ExternalRecordingResponseProfileOrderBy extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaCrudObject';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-	}
+	const NONE = "NONE";
 }
+

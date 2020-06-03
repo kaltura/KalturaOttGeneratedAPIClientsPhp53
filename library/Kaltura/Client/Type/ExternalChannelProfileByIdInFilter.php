@@ -36,11 +36,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-abstract class CrudObject extends \Kaltura\Client\Type\OTTObjectSupportNullable
+class ExternalChannelProfileByIdInFilter extends \Kaltura\Client\Type\ExternalChannelProfileFilter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaCrudObject';
+		return 'KalturaExternalChannelProfileByIdInFilter';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,5 +50,13 @@ abstract class CrudObject extends \Kaltura\Client\Type\OTTObjectSupportNullable
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->idIn))
+			$this->idIn = (string)$xml->idIn;
 	}
+	/**
+	 * Comma separated external channel profile ids
+	 * @var string
+	 */
+	public $idIn = null;
+
 }
