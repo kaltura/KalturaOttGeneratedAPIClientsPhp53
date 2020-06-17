@@ -70,10 +70,11 @@ class CategoryTreeService extends \Kaltura\Client\ServiceBase
 	 * 
 	 * @return \Kaltura\Client\Type\CategoryTree
 	 */
-	function get($categoryItemId)
+	function get($categoryItemId, $filter)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "categoryItemId", $categoryItemId);
+		$this->client->addParam($kparams, "filter", $filter);
 		$this->client->queueServiceActionCall("categorytree", "get", "KalturaCategoryTree", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
