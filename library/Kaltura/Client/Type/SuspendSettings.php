@@ -33,14 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
+ * Suspend Settings
  * @package Kaltura
  * @subpackage Client
  */
-class HouseholdPaymentGateway extends \Kaltura\Client\ObjectBase
+class SuspendSettings extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaHouseholdPaymentGateway';
+		return 'KalturaSuspendSettings';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,52 +51,31 @@ class HouseholdPaymentGateway extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->id))
-			$this->id = (int)$xml->id;
-		if(count($xml->name))
-			$this->name = (string)$xml->name;
-		if(count($xml->isDefault))
+		if(count($xml->revokeEntitlements))
 		{
-			if(!empty($xml->isDefault) && $xml->isDefault != 'false')
-				$this->isDefault = true;
+			if(!empty($xml->revokeEntitlements) && $xml->revokeEntitlements != 'false')
+				$this->revokeEntitlements = true;
 			else
-				$this->isDefault = false;
+				$this->revokeEntitlements = false;
 		}
-		if(count($xml->selectedBy))
-			$this->selectedBy = (string)$xml->selectedBy;
-		if(count($xml->suspendSettings) && !empty($xml->suspendSettings))
-			$this->suspendSettings = \Kaltura\Client\ParseUtils::unmarshalObject($xml->suspendSettings, "KalturaSuspendSettings");
+		if(count($xml->stopRenew))
+		{
+			if(!empty($xml->stopRenew) && $xml->stopRenew != 'false')
+				$this->stopRenew = true;
+			else
+				$this->stopRenew = false;
+		}
 	}
 	/**
-	 * payment gateway id
-	 * @var int
-	 * @readonly
-	 */
-	public $id = null;
-
-	/**
-	 * payment gateway name
-	 * @var string
-	 */
-	public $name = null;
-
-	/**
-	 * Payment gateway default (true/false)
+	 * revoke entitlements
 	 * @var bool
 	 */
-	public $isDefault = null;
+	public $revokeEntitlements = null;
 
 	/**
-	 * distinction payment gateway selected by account or household
-	 * @var \Kaltura\Client\Enum\HouseholdPaymentGatewaySelectedBy
+	 * stop renew
+	 * @var bool
 	 */
-	public $selectedBy = null;
-
-	/**
-	 * suspend settings
-	 * @var \Kaltura\Client\Type\SuspendSettings
-	 * @readonly
-	 */
-	public $suspendSettings;
+	public $stopRenew = null;
 
 }

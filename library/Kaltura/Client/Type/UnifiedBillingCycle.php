@@ -70,7 +70,7 @@ class UnifiedBillingCycle extends \Kaltura\Client\ObjectBase
 	public $duration;
 
 	/**
-	 * paymentGateway Id
+	 * Payment Gateway Id
 	 * @var int
 	 */
 	public $paymentGatewayId = null;
