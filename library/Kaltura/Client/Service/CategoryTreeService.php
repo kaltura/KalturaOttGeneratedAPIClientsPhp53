@@ -70,7 +70,7 @@ class CategoryTreeService extends \Kaltura\Client\ServiceBase
 	 * 
 	 * @return \Kaltura\Client\Type\CategoryTree
 	 */
-	function get($categoryItemId, $filter)
+	function get($categoryItemId, $filter = false)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "categoryItemId", $categoryItemId);
