@@ -142,6 +142,7 @@ class TypeMap
 		'KalturaTransactionHistoryFilter' => 'Kaltura\Client\Type\TransactionHistoryFilter',
 		'KalturaAssetCommentFilter' => 'Kaltura\Client\Type\AssetCommentFilter',
 		'KalturaAssetHistoryFilter' => 'Kaltura\Client\Type\AssetHistoryFilter',
+		'KalturaAssetHistorySuppressFilter' => 'Kaltura\Client\Type\AssetHistorySuppressFilter',
 		'KalturaAssetImagePerRatioFilter' => 'Kaltura\Client\Type\AssetImagePerRatioFilter',
 		'KalturaAssetStructFilter' => 'Kaltura\Client\Type\AssetStructFilter',
 		'KalturaAssetStructMetaFilter' => 'Kaltura\Client\Type\AssetStructMetaFilter',
