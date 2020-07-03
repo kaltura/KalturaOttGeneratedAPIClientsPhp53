@@ -63,8 +63,6 @@ class ImageFilter extends \Kaltura\Client\Type\Filter
 			else
 				$this->isDefaultEqual = false;
 		}
-		if(count($xml->imageObjectIdIn))
-			$this->imageObjectIdIn = (string)$xml->imageObjectIdIn;
 	}
 	/**
 	 * IDs to filter by
@@ -89,11 +87,5 @@ class ImageFilter extends \Kaltura\Client\Type\Filter
 	 * @var bool
 	 */
 	public $isDefaultEqual = null;
-
-	/**
-	 * Comma separated imageObject ids list
-	 * @var string
-	 */
-	public $imageObjectIdIn = null;
 
 }

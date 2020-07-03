@@ -91,13 +91,6 @@ class Announcement extends \Kaltura\Client\ObjectBase
 			else
 				$this->includeSms = false;
 		}
-		if(count($xml->includeIot))
-		{
-			if(!empty($xml->includeIot) && $xml->includeIot != 'false')
-				$this->includeIot = true;
-			else
-				$this->includeIot = false;
-		}
 	}
 	/**
 	 * Announcement name
@@ -178,11 +171,5 @@ class Announcement extends \Kaltura\Client\ObjectBase
 	 * @var bool
 	 */
 	public $includeSms = null;
-
-	/**
-	 * Include IOT
-	 * @var bool
-	 */
-	public $includeIot = null;
 
 }

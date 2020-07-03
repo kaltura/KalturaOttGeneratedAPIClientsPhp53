@@ -114,13 +114,6 @@ class NotificationsPartnerSettings extends \Kaltura\Client\ObjectBase
 			else
 				$this->smsEnabled = false;
 		}
-		if(count($xml->iotEnabled))
-		{
-			if(!empty($xml->iotEnabled) && $xml->iotEnabled != 'false')
-				$this->iotEnabled = true;
-			else
-				$this->iotEnabled = false;
-		}
 	}
 	/**
 	 * Push notification capability is enabled for the account
@@ -223,11 +216,5 @@ class NotificationsPartnerSettings extends \Kaltura\Client\ObjectBase
 	 * @var bool
 	 */
 	public $smsEnabled = null;
-
-	/**
-	 * IOT capability is enabled for the account
-	 * @var bool
-	 */
-	public $iotEnabled = null;
 
 }
