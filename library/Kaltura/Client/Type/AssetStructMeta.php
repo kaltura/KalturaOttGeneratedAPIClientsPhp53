@@ -77,6 +77,13 @@ class AssetStructMeta extends \Kaltura\Client\ObjectBase
 			else
 				$this->isInherited = false;
 		}
+		if(count($xml->isLocationTag))
+		{
+			if(!empty($xml->isLocationTag) && $xml->isLocationTag != 'false')
+				$this->isLocationTag = true;
+			else
+				$this->isLocationTag = false;
+		}
 	}
 	/**
 	 * Asset Struct id (template_id)
@@ -129,5 +136,11 @@ class AssetStructMeta extends \Kaltura\Client\ObjectBase
 	 * @var bool
 	 */
 	public $isInherited = null;
+
+	/**
+	 * Is Location Tag
+	 * @var bool
+	 */
+	public $isLocationTag = null;
 
 }

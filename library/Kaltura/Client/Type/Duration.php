@@ -33,14 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
+ * representation of duration time unit and value
  * @package Kaltura
  * @subpackage Client
  */
-class HouseholdPaymentGateway extends \Kaltura\Client\ObjectBase
+class Duration extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaHouseholdPaymentGateway';
+		return 'KalturaDuration';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,52 +51,21 @@ class HouseholdPaymentGateway extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->id))
-			$this->id = (int)$xml->id;
-		if(count($xml->name))
-			$this->name = (string)$xml->name;
-		if(count($xml->isDefault))
-		{
-			if(!empty($xml->isDefault) && $xml->isDefault != 'false')
-				$this->isDefault = true;
-			else
-				$this->isDefault = false;
-		}
-		if(count($xml->selectedBy))
-			$this->selectedBy = (string)$xml->selectedBy;
-		if(count($xml->suspendSettings) && !empty($xml->suspendSettings))
-			$this->suspendSettings = \Kaltura\Client\ParseUtils::unmarshalObject($xml->suspendSettings, "KalturaSuspendSettings");
+		if(count($xml->unit))
+			$this->unit = (string)$xml->unit;
+		if(count($xml->value))
+			$this->value = (int)$xml->value;
 	}
 	/**
-	 * payment gateway id
+	 * duration unit
+	 * @var \Kaltura\Client\Enum\DurationUnit
+	 */
+	public $unit = null;
+
+	/**
+	 * duration value
 	 * @var int
-	 * @readonly
 	 */
-	public $id = null;
-
-	/**
-	 * payment gateway name
-	 * @var string
-	 */
-	public $name = null;
-
-	/**
-	 * Payment gateway default (true/false)
-	 * @var bool
-	 */
-	public $isDefault = null;
-
-	/**
-	 * distinction payment gateway selected by account or household
-	 * @var \Kaltura\Client\Enum\HouseholdPaymentGatewaySelectedBy
-	 */
-	public $selectedBy = null;
-
-	/**
-	 * suspend settings
-	 * @var \Kaltura\Client\Type\SuspendSettings
-	 * @readonly
-	 */
-	public $suspendSettings;
+	public $value = null;
 
 }

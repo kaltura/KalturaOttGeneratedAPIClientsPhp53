@@ -30,72 +30,18 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class HouseholdPaymentGateway extends \Kaltura\Client\ObjectBase
+class DurationUnit extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaHouseholdPaymentGateway';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->id))
-			$this->id = (int)$xml->id;
-		if(count($xml->name))
-			$this->name = (string)$xml->name;
-		if(count($xml->isDefault))
-		{
-			if(!empty($xml->isDefault) && $xml->isDefault != 'false')
-				$this->isDefault = true;
-			else
-				$this->isDefault = false;
-		}
-		if(count($xml->selectedBy))
-			$this->selectedBy = (string)$xml->selectedBy;
-		if(count($xml->suspendSettings) && !empty($xml->suspendSettings))
-			$this->suspendSettings = \Kaltura\Client\ParseUtils::unmarshalObject($xml->suspendSettings, "KalturaSuspendSettings");
-	}
-	/**
-	 * payment gateway id
-	 * @var int
-	 * @readonly
-	 */
-	public $id = null;
-
-	/**
-	 * payment gateway name
-	 * @var string
-	 */
-	public $name = null;
-
-	/**
-	 * Payment gateway default (true/false)
-	 * @var bool
-	 */
-	public $isDefault = null;
-
-	/**
-	 * distinction payment gateway selected by account or household
-	 * @var \Kaltura\Client\Enum\HouseholdPaymentGatewaySelectedBy
-	 */
-	public $selectedBy = null;
-
-	/**
-	 * suspend settings
-	 * @var \Kaltura\Client\Type\SuspendSettings
-	 * @readonly
-	 */
-	public $suspendSettings;
-
+	const MINUTES = "Minutes";
+	const HOURS = "Hours";
+	const DAYS = "Days";
+	const MONTHS = "Months";
+	const YEARS = "Years";
 }
+

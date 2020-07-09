@@ -36,11 +36,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class HouseholdPaymentGateway extends \Kaltura\Client\ObjectBase
+class UnifiedBillingCycle extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaHouseholdPaymentGateway';
+		return 'KalturaUnifiedBillingCycle';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,52 +50,29 @@ class HouseholdPaymentGateway extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->id))
-			$this->id = (int)$xml->id;
 		if(count($xml->name))
 			$this->name = (string)$xml->name;
-		if(count($xml->isDefault))
-		{
-			if(!empty($xml->isDefault) && $xml->isDefault != 'false')
-				$this->isDefault = true;
-			else
-				$this->isDefault = false;
-		}
-		if(count($xml->selectedBy))
-			$this->selectedBy = (string)$xml->selectedBy;
-		if(count($xml->suspendSettings) && !empty($xml->suspendSettings))
-			$this->suspendSettings = \Kaltura\Client\ParseUtils::unmarshalObject($xml->suspendSettings, "KalturaSuspendSettings");
+		if(count($xml->duration) && !empty($xml->duration))
+			$this->duration = \Kaltura\Client\ParseUtils::unmarshalObject($xml->duration, "KalturaDuration");
+		if(count($xml->paymentGatewayId))
+			$this->paymentGatewayId = (int)$xml->paymentGatewayId;
 	}
 	/**
-	 * payment gateway id
-	 * @var int
-	 * @readonly
-	 */
-	public $id = null;
-
-	/**
-	 * payment gateway name
+	 * UnifiedBillingCycle name
 	 * @var string
 	 */
 	public $name = null;
 
 	/**
-	 * Payment gateway default (true/false)
-	 * @var bool
+	 * cycle duration
+	 * @var \Kaltura\Client\Type\Duration
 	 */
-	public $isDefault = null;
+	public $duration;
 
 	/**
-	 * distinction payment gateway selected by account or household
-	 * @var \Kaltura\Client\Enum\HouseholdPaymentGatewaySelectedBy
+	 * Payment Gateway Id
+	 * @var int
 	 */
-	public $selectedBy = null;
-
-	/**
-	 * suspend settings
-	 * @var \Kaltura\Client\Type\SuspendSettings
-	 * @readonly
-	 */
-	public $suspendSettings;
+	public $paymentGatewayId = null;
 
 }

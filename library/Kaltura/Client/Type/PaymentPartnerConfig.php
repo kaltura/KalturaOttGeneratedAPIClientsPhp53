@@ -33,14 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
+ * Partner billing configuration
  * @package Kaltura
  * @subpackage Client
  */
-class HouseholdPaymentGateway extends \Kaltura\Client\ObjectBase
+class PaymentPartnerConfig extends \Kaltura\Client\Type\PartnerConfiguration
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaHouseholdPaymentGateway';
+		return 'KalturaPaymentPartnerConfig';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,52 +51,18 @@ class HouseholdPaymentGateway extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->id))
-			$this->id = (int)$xml->id;
-		if(count($xml->name))
-			$this->name = (string)$xml->name;
-		if(count($xml->isDefault))
+		if(count($xml->unifiedBillingCycles))
 		{
-			if(!empty($xml->isDefault) && $xml->isDefault != 'false')
-				$this->isDefault = true;
+			if(empty($xml->unifiedBillingCycles))
+				$this->unifiedBillingCycles = array();
 			else
-				$this->isDefault = false;
+				$this->unifiedBillingCycles = \Kaltura\Client\ParseUtils::unmarshalArray($xml->unifiedBillingCycles, "KalturaUnifiedBillingCycle");
 		}
-		if(count($xml->selectedBy))
-			$this->selectedBy = (string)$xml->selectedBy;
-		if(count($xml->suspendSettings) && !empty($xml->suspendSettings))
-			$this->suspendSettings = \Kaltura\Client\ParseUtils::unmarshalObject($xml->suspendSettings, "KalturaSuspendSettings");
 	}
 	/**
-	 * payment gateway id
-	 * @var int
-	 * @readonly
+	 * configuration for unified billing cycles.
+	 * @var array<KalturaUnifiedBillingCycle>
 	 */
-	public $id = null;
-
-	/**
-	 * payment gateway name
-	 * @var string
-	 */
-	public $name = null;
-
-	/**
-	 * Payment gateway default (true/false)
-	 * @var bool
-	 */
-	public $isDefault = null;
-
-	/**
-	 * distinction payment gateway selected by account or household
-	 * @var \Kaltura\Client\Enum\HouseholdPaymentGatewaySelectedBy
-	 */
-	public $selectedBy = null;
-
-	/**
-	 * suspend settings
-	 * @var \Kaltura\Client\Type\SuspendSettings
-	 * @readonly
-	 */
-	public $suspendSettings;
+	public $unifiedBillingCycles;
 
 }
