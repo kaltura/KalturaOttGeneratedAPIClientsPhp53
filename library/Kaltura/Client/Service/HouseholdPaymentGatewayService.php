@@ -149,15 +149,10 @@ class HouseholdPaymentGatewayService extends \Kaltura\Client\ServiceBase
 	 * Resumes all the entitlements of the given payment gateway
 	 * 
 	 */
-	function resume($paymentGatewayId, array $adapterData = null)
+	function resume($paymentGatewayId)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "paymentGatewayId", $paymentGatewayId);
-		if ($adapterData !== null)
-			foreach($adapterData as $index => $obj)
-			{
-				$this->client->addParam($kparams, "adapterData:$index", $obj->toParams());
-			}
 		$this->client->queueServiceActionCall("householdpaymentgateway", "resume", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -190,12 +185,10 @@ class HouseholdPaymentGatewayService extends \Kaltura\Client\ServiceBase
 	 * Suspends all the entitlements of the given payment gateway
 	 * 
 	 */
-	function suspend($paymentGatewayId, \Kaltura\Client\Type\SuspendSettings $suspendSettings = null)
+	function suspend($paymentGatewayId)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "paymentGatewayId", $paymentGatewayId);
-		if ($suspendSettings !== null)
-			$this->client->addParam($kparams, "suspendSettings", $suspendSettings->toParams());
 		$this->client->queueServiceActionCall("householdpaymentgateway", "suspend", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();

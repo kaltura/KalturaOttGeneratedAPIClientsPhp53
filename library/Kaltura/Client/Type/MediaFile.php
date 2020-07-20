@@ -103,6 +103,8 @@ class MediaFile extends \Kaltura\Client\Type\AssetFile
 		}
 		if(count($xml->catalogEndDate))
 			$this->catalogEndDate = (string)$xml->catalogEndDate;
+		if(count($xml->opl))
+			$this->opl = (string)$xml->opl;
 	}
 	/**
 	 * Unique identifier for the asset
@@ -231,5 +233,11 @@ class MediaFile extends \Kaltura\Client\Type\AssetFile
 	 * @var int
 	 */
 	public $catalogEndDate = null;
+
+	/**
+	 * OPL
+	 * @var string
+	 */
+	public $opl = null;
 
 }
