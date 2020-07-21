@@ -56,6 +56,13 @@ class ObjectVirtualAssetInfo extends \Kaltura\Client\ObjectBase
 			$this->metaId = (int)$xml->metaId;
 		if(count($xml->type))
 			$this->type = (string)$xml->type;
+		if(count($xml->extendedTypes))
+		{
+			if(empty($xml->extendedTypes))
+				$this->extendedTypes = array();
+			else
+				$this->extendedTypes = \Kaltura\Client\ParseUtils::unmarshalMap($xml->extendedTypes, "KalturaLongValue");
+		}
 	}
 	/**
 	 * Asset struct identifier
@@ -74,5 +81,11 @@ class ObjectVirtualAssetInfo extends \Kaltura\Client\ObjectBase
 	 * @var \Kaltura\Client\Enum\ObjectVirtualAssetInfoType
 	 */
 	public $type = null;
+
+	/**
+	 * Extended types mapping
+	 * @var array<string, KalturaLongValue>
+	 */
+	public $extendedTypes;
 
 }

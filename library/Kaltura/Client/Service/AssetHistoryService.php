@@ -62,26 +62,6 @@ class AssetHistoryService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Get next episode by last watch asset in given assetId
-	 * 
-	 * @return \Kaltura\Client\Type\AssetHistory
-	 */
-	function getNextEpisode($assetId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "assetId", $assetId);
-		$this->client->queueServiceActionCall("assethistory", "getNextEpisode", "KalturaAssetHistory", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAssetHistory");
-		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\AssetHistory");
-		return $resultObject;
-	}
-
-	/**
 	 * Get recently watched media for user, ordered by recently watched first.
 	 * 
 	 * @return \Kaltura\Client\Type\AssetHistoryListResponse

@@ -82,8 +82,6 @@ class GeneralPartnerConfig extends \Kaltura\Client\Type\PartnerConfiguration
 			$this->defaultRegion = (int)$xml->defaultRegion;
 		if(count($xml->rollingDeviceData) && !empty($xml->rollingDeviceData))
 			$this->rollingDeviceData = \Kaltura\Client\ParseUtils::unmarshalObject($xml->rollingDeviceData, "KalturaRollingDeviceRemovalData");
-		if(count($xml->finishedPercentThreshold))
-			$this->finishedPercentThreshold = (int)$xml->finishedPercentThreshold;
 	}
 	/**
 	 * Partner name
@@ -162,11 +160,5 @@ class GeneralPartnerConfig extends \Kaltura\Client\Type\PartnerConfiguration
 	 * @var \Kaltura\Client\Type\RollingDeviceRemovalData
 	 */
 	public $rollingDeviceData;
-
-	/**
-	 * Finished PercentThreshold
-	 * @var int
-	 */
-	public $finishedPercentThreshold = null;
 
 }
