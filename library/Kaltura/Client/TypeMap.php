@@ -47,6 +47,7 @@ class TypeMap
 		'KalturaRequestConfiguration' => 'Kaltura\Client\Type\RequestConfiguration',
 		'KalturaFilter' => 'Kaltura\Client\Type\Filter',
 		'KalturaDetachedResponseProfile' => 'Kaltura\Client\Type\DetachedResponseProfile',
+		'KalturaOnDemandResponseProfile' => 'Kaltura\Client\Type\OnDemandResponseProfile',
 		'KalturaRelatedObjectFilter' => 'Kaltura\Client\Type\RelatedObjectFilter',
 		'KalturaValue' => 'Kaltura\Client\Type\Value',
 		'KalturaIntegerValue' => 'Kaltura\Client\Type\IntegerValue',
