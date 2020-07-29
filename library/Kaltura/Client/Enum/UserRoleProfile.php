@@ -30,63 +30,17 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
- * User roles filter
  * @package Kaltura
  * @subpackage Client
  */
-class UserRoleFilter extends \Kaltura\Client\Type\Filter
+class UserRoleProfile extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaUserRoleFilter';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->idIn))
-			$this->idIn = (string)$xml->idIn;
-		if(count($xml->currentUserRoleIdsContains))
-		{
-			if(!empty($xml->currentUserRoleIdsContains) && $xml->currentUserRoleIdsContains != 'false')
-				$this->currentUserRoleIdsContains = true;
-			else
-				$this->currentUserRoleIdsContains = false;
-		}
-		if(count($xml->typeEqual))
-			$this->typeEqual = (string)$xml->typeEqual;
-		if(count($xml->profileEqual))
-			$this->profileEqual = (string)$xml->profileEqual;
-	}
-	/**
-	 * Comma separated roles identifiers
-	 * @var string
-	 */
-	public $idIn = null;
-
-	/**
-	 * Indicates whether the results should be filtered by userId using the current
-	 * @var bool
-	 */
-	public $currentUserRoleIdsContains = null;
-
-	/**
-	 * User role type
-	 * @var \Kaltura\Client\Enum\UserRoleType
-	 */
-	public $typeEqual = null;
-
-	/**
-	 * User role profile
-	 * @var \Kaltura\Client\Enum\UserRoleProfile
-	 */
-	public $profileEqual = null;
-
+	const USER = "USER";
+	const PARTNER = "PARTNER";
+	const PROFILE = "PROFILE";
+	const SYSTEM = "SYSTEM";
 }
+

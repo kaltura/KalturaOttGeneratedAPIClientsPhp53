@@ -449,6 +449,11 @@ class Client extends Base
 	protected $permission = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\PermissionItemService
+	 */
+	protected $permissionItem = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\PersonalFeedService
 	 */
 	protected $personalFeed = null;
@@ -677,8 +682,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:20-07-09');
-		$this->setApiVersion('5.3.7.28193');
+		$this->setClientTag('php5:20-07-29');
+		$this->setApiVersion('5.4.0.28224');
 	}
 	
 	/**
@@ -1418,6 +1423,15 @@ class Client extends Base
 		if (is_null($this->permission))
 			$this->permission = new \Kaltura\Client\Service\PermissionService($this);
 		return $this->permission;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\PermissionItemService
+	 */
+	public function getPermissionItemService()
+	{
+		if (is_null($this->permissionItem))
+			$this->permissionItem = new \Kaltura\Client\Service\PermissionItemService($this);
+		return $this->permissionItem;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\PersonalFeedService
