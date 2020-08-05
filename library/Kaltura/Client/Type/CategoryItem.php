@@ -93,8 +93,6 @@ class CategoryItem extends \Kaltura\Client\Type\CrudObject
 			$this->startDateInSeconds = (string)$xml->startDateInSeconds;
 		if(count($xml->endDateInSeconds))
 			$this->endDateInSeconds = (string)$xml->endDateInSeconds;
-		if(count($xml->type))
-			$this->type = (string)$xml->type;
 	}
 	/**
 	 * Unique identifier for the category
@@ -165,12 +163,5 @@ class CategoryItem extends \Kaltura\Client\Type\CrudObject
 	 * @var int
 	 */
 	public $endDateInSeconds = null;
-
-	/**
-	 * Category type
-	 * @var string
-	 * @insertonly
-	 */
-	public $type = null;
 
 }

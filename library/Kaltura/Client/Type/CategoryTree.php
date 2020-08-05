@@ -101,8 +101,6 @@ class CategoryTree extends \Kaltura\Client\ObjectBase
 			$this->startDateInSeconds = (string)$xml->startDateInSeconds;
 		if(count($xml->endDateInSeconds))
 			$this->endDateInSeconds = (string)$xml->endDateInSeconds;
-		if(count($xml->type))
-			$this->type = (string)$xml->type;
 	}
 	/**
 	 * Unique identifier for the category item
@@ -166,12 +164,5 @@ class CategoryTree extends \Kaltura\Client\ObjectBase
 	 * @var int
 	 */
 	public $endDateInSeconds = null;
-
-	/**
-	 * Category type
-	 * @var string
-	 * @insertonly
-	 */
-	public $type = null;
 
 }
