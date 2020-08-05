@@ -59,6 +59,8 @@ class CategoryItemSearchFilter extends \Kaltura\Client\Type\CategoryItemFilter
 			else
 				$this->rootOnly = false;
 		}
+		if(count($xml->typeEqual))
+			$this->typeEqual = (string)$xml->typeEqual;
 	}
 	/**
 	 * KSQL expression
@@ -71,5 +73,11 @@ class CategoryItemSearchFilter extends \Kaltura\Client\Type\CategoryItemFilter
 	 * @var bool
 	 */
 	public $rootOnly = null;
+
+	/**
+	 * Indicates which category to return by their type.
+	 * @var string
+	 */
+	public $typeEqual = null;
 
 }
