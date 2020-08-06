@@ -36,11 +36,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class Permission extends \Kaltura\Client\ObjectBase
+class ApiPriviligesPermissionItem extends \Kaltura\Client\Type\PermissionItem
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaPermission';
+		return 'KalturaApiPriviligesPermissionItem';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,56 +50,21 @@ class Permission extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->id))
-			$this->id = (string)$xml->id;
-		if(count($xml->name))
-			$this->name = (string)$xml->name;
-		if(count($xml->friendlyName))
-			$this->friendlyName = (string)$xml->friendlyName;
-		if(count($xml->dependsOnPermissionNames))
-			$this->dependsOnPermissionNames = (string)$xml->dependsOnPermissionNames;
-		if(count($xml->type))
-			$this->type = (string)$xml->type;
-		if(count($xml->permissionItemsIds))
-			$this->permissionItemsIds = (string)$xml->permissionItemsIds;
+		if(count($xml->object))
+			$this->object = (string)$xml->object;
+		if(count($xml->parameter))
+			$this->parameter = (string)$xml->parameter;
 	}
 	/**
-	 * Permission identifier
-	 * @var int
-	 * @readonly
-	 */
-	public $id = null;
-
-	/**
-	 * Permission name
+	 * API object name
 	 * @var string
 	 */
-	public $name = null;
+	public $object = null;
 
 	/**
-	 * Permission friendly name
+	 * API parameter name
 	 * @var string
 	 */
-	public $friendlyName = null;
-
-	/**
-	 * Comma separated permissions names from type SPECIAL_FEATURE
-	 * @var string
-	 * @readonly
-	 */
-	public $dependsOnPermissionNames = null;
-
-	/**
-	 * Comma separated permissions names from type SPECIAL_FEATURE
-	 * @var \Kaltura\Client\Enum\PermissionType
-	 */
-	public $type = null;
-
-	/**
-	 * Comma separated assosiated permission items IDs
-	 * @var string
-	 * @readonly
-	 */
-	public $permissionItemsIds = null;
+	public $parameter = null;
 
 }

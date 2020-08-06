@@ -27,79 +27,43 @@
 // @ignore
 // ===================================================================================================
 
+
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Service;
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class Permission extends \Kaltura\Client\ObjectBase
+class PermissionItemService extends \Kaltura\Client\ServiceBase
 {
-	public function getKalturaObjectType()
+	function __construct(\Kaltura\Client\Client $client = null)
 	{
-		return 'KalturaPermission';
+		parent::__construct($client);
 	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
+
+	/**
+	 * Return a list of permission items with filtering options
+	 * 
+	 * @return \Kaltura\Client\Type\PermissionItemListResponse
+	 */
+	function listAction(\Kaltura\Client\Type\PermissionItemFilter $filter = null, \Kaltura\Client\Type\FilterPager $pager = null)
 	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->id))
-			$this->id = (string)$xml->id;
-		if(count($xml->name))
-			$this->name = (string)$xml->name;
-		if(count($xml->friendlyName))
-			$this->friendlyName = (string)$xml->friendlyName;
-		if(count($xml->dependsOnPermissionNames))
-			$this->dependsOnPermissionNames = (string)$xml->dependsOnPermissionNames;
-		if(count($xml->type))
-			$this->type = (string)$xml->type;
-		if(count($xml->permissionItemsIds))
-			$this->permissionItemsIds = (string)$xml->permissionItemsIds;
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("permissionitem", "list", "KalturaPermissionItemListResponse", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPermissionItemListResponse");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\PermissionItemListResponse");
+		return $resultObject;
 	}
-	/**
-	 * Permission identifier
-	 * @var int
-	 * @readonly
-	 */
-	public $id = null;
-
-	/**
-	 * Permission name
-	 * @var string
-	 */
-	public $name = null;
-
-	/**
-	 * Permission friendly name
-	 * @var string
-	 */
-	public $friendlyName = null;
-
-	/**
-	 * Comma separated permissions names from type SPECIAL_FEATURE
-	 * @var string
-	 * @readonly
-	 */
-	public $dependsOnPermissionNames = null;
-
-	/**
-	 * Comma separated permissions names from type SPECIAL_FEATURE
-	 * @var \Kaltura\Client\Enum\PermissionType
-	 */
-	public $type = null;
-
-	/**
-	 * Comma separated assosiated permission items IDs
-	 * @var string
-	 * @readonly
-	 */
-	public $permissionItemsIds = null;
-
 }

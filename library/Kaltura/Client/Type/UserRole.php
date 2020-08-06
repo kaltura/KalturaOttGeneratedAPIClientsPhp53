@@ -58,6 +58,10 @@ class UserRole extends \Kaltura\Client\ObjectBase
 			$this->permissionNames = (string)$xml->permissionNames;
 		if(count($xml->excludedPermissionNames))
 			$this->excludedPermissionNames = (string)$xml->excludedPermissionNames;
+		if(count($xml->type))
+			$this->type = (string)$xml->type;
+		if(count($xml->profile))
+			$this->profile = (string)$xml->profile;
 	}
 	/**
 	 * User role identifier
@@ -83,5 +87,18 @@ class UserRole extends \Kaltura\Client\ObjectBase
 	 * @var string
 	 */
 	public $excludedPermissionNames = null;
+
+	/**
+	 * Role type
+	 * @var \Kaltura\Client\Enum\UserRoleType
+	 * @readonly
+	 */
+	public $type = null;
+
+	/**
+	 * Role profile
+	 * @var \Kaltura\Client\Enum\UserRoleProfile
+	 */
+	public $profile = null;
 
 }

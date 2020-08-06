@@ -65,6 +65,23 @@ class PermissionService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
+	 * Adds permission item to permission
+	 * 
+	 */
+	function addPermissionItem($permissionId, $permissionItemId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "permissionId", $permissionId);
+		$this->client->addParam($kparams, "permissionItemId", $permissionItemId);
+		$this->client->queueServiceActionCall("permission", "addPermissionItem", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
+
+	/**
 	 * Deletes an existing permission
 	 * 
 	 */
@@ -117,5 +134,22 @@ class PermissionService extends \Kaltura\Client\ServiceBase
 		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPermissionListResponse");
 		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\PermissionListResponse");
 		return $resultObject;
+	}
+
+	/**
+	 * Removes permission item from permission
+	 * 
+	 */
+	function removePermissionItem($permissionId, $permissionItemId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "permissionId", $permissionId);
+		$this->client->addParam($kparams, "permissionItemId", $permissionItemId);
+		$this->client->queueServiceActionCall("permission", "removePermissionItem", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
 	}
 }
