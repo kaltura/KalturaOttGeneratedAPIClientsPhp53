@@ -37,7 +37,7 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class BaseChannel extends \Kaltura\Client\ObjectBase
+class BaseChannel extends \Kaltura\Client\Type\OTTObjectSupportNullable
 {
 	public function getKalturaObjectType()
 	{
