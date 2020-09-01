@@ -36,11 +36,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class UnifiedBillingCycle extends \Kaltura\Client\ObjectBase
+class SmsAdapterProfileListResponse extends \Kaltura\Client\Type\ListResponse
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaUnifiedBillingCycle';
+		return 'KalturaSmsAdapterProfileListResponse';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,29 +50,18 @@ class UnifiedBillingCycle extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->name))
-			$this->name = (string)$xml->name;
-		if(count($xml->duration) && !empty($xml->duration))
-			$this->duration = \Kaltura\Client\ParseUtils::unmarshalObject($xml->duration, "KalturaDuration");
-		if(count($xml->paymentGatewayId))
-			$this->paymentGatewayId = (int)$xml->paymentGatewayId;
+		if(count($xml->objects))
+		{
+			if(empty($xml->objects))
+				$this->objects = array();
+			else
+				$this->objects = \Kaltura\Client\ParseUtils::unmarshalArray($xml->objects, "KalturaSmsAdapterProfile");
+		}
 	}
 	/**
-	 * UnifiedBillingCycle name
-	 * @var string
+	 * A list of objects
+	 * @var array<KalturaSmsAdapterProfile>
 	 */
-	public $name = null;
-
-	/**
-	 * cycle duration
-	 * @var \Kaltura\Client\Type\Duration
-	 */
-	public $duration;
-
-	/**
-	 * Payment Gateway Id
-	 * @var int
-	 */
-	public $paymentGatewayId = null;
+	public $objects;
 
 }

@@ -30,34 +30,14 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
- * Define on demand response
  * @package Kaltura
  * @subpackage Client
  */
-class OnDemandResponseProfile extends \Kaltura\Client\Type\DetachedResponseProfile
+class SmsAdapterProfileOrderBy extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaOnDemandResponseProfile';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->retrievedProperties))
-			$this->retrievedProperties = (string)$xml->retrievedProperties;
-	}
-	/**
-	 * Comma seperated properties names
-	 * @var string
-	 */
-	public $retrievedProperties = null;
-
+	const NONE = "NONE";
 }
+

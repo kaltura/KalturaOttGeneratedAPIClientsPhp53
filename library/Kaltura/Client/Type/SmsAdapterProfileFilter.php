@@ -36,11 +36,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class UnifiedBillingCycle extends \Kaltura\Client\ObjectBase
+class SmsAdapterProfileFilter extends \Kaltura\Client\Type\CrudFilter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaUnifiedBillingCycle';
+		return 'KalturaSmsAdapterProfileFilter';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,29 +50,5 @@ class UnifiedBillingCycle extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->name))
-			$this->name = (string)$xml->name;
-		if(count($xml->duration) && !empty($xml->duration))
-			$this->duration = \Kaltura\Client\ParseUtils::unmarshalObject($xml->duration, "KalturaDuration");
-		if(count($xml->paymentGatewayId))
-			$this->paymentGatewayId = (int)$xml->paymentGatewayId;
 	}
-	/**
-	 * UnifiedBillingCycle name
-	 * @var string
-	 */
-	public $name = null;
-
-	/**
-	 * cycle duration
-	 * @var \Kaltura\Client\Type\Duration
-	 */
-	public $duration;
-
-	/**
-	 * Payment Gateway Id
-	 * @var int
-	 */
-	public $paymentGatewayId = null;
-
 }
