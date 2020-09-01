@@ -45,17 +45,14 @@ class UserLoginPinService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Generate a time and usage expiry login-PIN that can allow a single/multiple login/s per PIN. 
-	 *             If an active login-PIN already exists. Calling this API again for same user will add another login-PIN
+	 * Generate a time and usage expiry login-PIN that can allow a single login per PIN. If an active login-PIN already exists. Calling this API again for same user will add another login-PIN
 	 * 
 	 * @return \Kaltura\Client\Type\UserLoginPin
 	 */
-	function add($secret = null, $pinUsages = null, $pinDuration = null)
+	function add($secret = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "secret", $secret);
-		$this->client->addParam($kparams, "pinUsages", $pinUsages);
-		$this->client->addParam($kparams, "pinDuration", $pinDuration);
 		$this->client->queueServiceActionCall("userloginpin", "add", "KalturaUserLoginPin", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -109,13 +106,11 @@ class UserLoginPinService extends \Kaltura\Client\ServiceBase
 	 * 
 	 * @return \Kaltura\Client\Type\UserLoginPin
 	 */
-	function update($pinCode, $secret = null, $pinUsages = null, $pinDuration = null)
+	function update($pinCode, $secret = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "pinCode", $pinCode);
 		$this->client->addParam($kparams, "secret", $secret);
-		$this->client->addParam($kparams, "pinUsages", $pinUsages);
-		$this->client->addParam($kparams, "pinDuration", $pinDuration);
 		$this->client->queueServiceActionCall("userloginpin", "update", "KalturaUserLoginPin", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
