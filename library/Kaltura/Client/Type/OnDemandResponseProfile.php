@@ -33,15 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Slim channel
+ * Define on demand response
  * @package Kaltura
  * @subpackage Client
  */
-class BaseChannel extends \Kaltura\Client\Type\OTTObjectSupportNullable
+class OnDemandResponseProfile extends \Kaltura\Client\Type\DetachedResponseProfile
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaBaseChannel';
+		return 'KalturaOnDemandResponseProfile';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,14 +51,13 @@ class BaseChannel extends \Kaltura\Client\Type\OTTObjectSupportNullable
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->id))
-			$this->id = (string)$xml->id;
+		if(count($xml->retrievedProperties))
+			$this->retrievedProperties = (string)$xml->retrievedProperties;
 	}
 	/**
-	 * Unique identifier for the channel
-	 * @var int
-	 * @readonly
+	 * Comma seperated properties names
+	 * @var string
 	 */
-	public $id = null;
+	public $retrievedProperties = null;
 
 }
