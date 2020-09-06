@@ -554,6 +554,11 @@ class Client extends Base
 	protected $session = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\SmsAdapterProfileService
+	 */
+	protected $smsAdapterProfile = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\SocialActionService
 	 */
 	protected $socialAction = null;
@@ -682,8 +687,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:20-08-26');
-		$this->setApiVersion('5.5.0.28283');
+		$this->setClientTag('php5:20-09-06');
+		$this->setApiVersion('5.5.1.28355');
 	}
 	
 	/**
@@ -1612,6 +1617,15 @@ class Client extends Base
 		if (is_null($this->session))
 			$this->session = new \Kaltura\Client\Service\SessionService($this);
 		return $this->session;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\SmsAdapterProfileService
+	 */
+	public function getSmsAdapterProfileService()
+	{
+		if (is_null($this->smsAdapterProfile))
+			$this->smsAdapterProfile = new \Kaltura\Client\Service\SmsAdapterProfileService($this);
+		return $this->smsAdapterProfile;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\SocialActionService

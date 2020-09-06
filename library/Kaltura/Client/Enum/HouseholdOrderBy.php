@@ -30,35 +30,14 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
- * Slim channel
  * @package Kaltura
  * @subpackage Client
  */
-class BaseChannel extends \Kaltura\Client\Type\OTTObjectSupportNullable
+class HouseholdOrderBy extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaBaseChannel';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->id))
-			$this->id = (string)$xml->id;
-	}
-	/**
-	 * Unique identifier for the channel
-	 * @var int
-	 * @readonly
-	 */
-	public $id = null;
-
+	const CREATE_DATE_DESC = "CREATE_DATE_DESC";
 }
+

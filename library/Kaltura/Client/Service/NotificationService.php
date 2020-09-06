@@ -90,10 +90,16 @@ class NotificationService extends \Kaltura\Client\ServiceBase
 	 * 
 	 * @return bool
 	 */
-	function sendSms($message)
+	function sendSms($message, $phoneNumber = null, array $adapterData = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "message", $message);
+		$this->client->addParam($kparams, "phoneNumber", $phoneNumber);
+		if ($adapterData !== null)
+			foreach($adapterData as $index => $obj)
+			{
+				$this->client->addParam($kparams, "adapterData:$index", $obj->toParams());
+			}
 		$this->client->queueServiceActionCall("notification", "sendSms", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();

@@ -33,15 +33,14 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Slim channel
  * @package Kaltura
  * @subpackage Client
  */
-class BaseChannel extends \Kaltura\Client\Type\OTTObjectSupportNullable
+class SmsAdapterProfileFilter extends \Kaltura\Client\Type\CrudFilter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaBaseChannel';
+		return 'KalturaSmsAdapterProfileFilter';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,14 +50,5 @@ class BaseChannel extends \Kaltura\Client\Type\OTTObjectSupportNullable
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->id))
-			$this->id = (string)$xml->id;
 	}
-	/**
-	 * Unique identifier for the channel
-	 * @var int
-	 * @readonly
-	 */
-	public $id = null;
-
 }

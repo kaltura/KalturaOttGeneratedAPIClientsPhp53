@@ -86,6 +86,10 @@ class Household extends \Kaltura\Client\ObjectBase
 			$this->restriction = (string)$xml->restriction;
 		if(count($xml->roleId))
 			$this->roleId = (int)$xml->roleId;
+		if(count($xml->createDate))
+			$this->createDate = (string)$xml->createDate;
+		if(count($xml->updateDate))
+			$this->updateDate = (string)$xml->updateDate;
 	}
 	/**
 	 * Household identifier
@@ -187,5 +191,19 @@ class Household extends \Kaltura\Client\ObjectBase
 	 * @readonly
 	 */
 	public $roleId = null;
+
+	/**
+	 * create date
+	 * @var int
+	 * @readonly
+	 */
+	public $createDate = null;
+
+	/**
+	 * update date
+	 * @var int
+	 * @readonly
+	 */
+	public $updateDate = null;
 
 }

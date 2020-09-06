@@ -39,5 +39,7 @@ namespace Kaltura\Client\Enum;
 class HouseholdDeviceOrderBy extends \Kaltura\Client\EnumBase
 {
 	const NONE = "NONE";
+	const CREATED_DATE_ASC = "CREATED_DATE_ASC";
+	const CREATED_DATE_DESC = "CREATED_DATE_DESC";
 }
 

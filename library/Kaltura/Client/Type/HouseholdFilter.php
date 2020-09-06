@@ -33,15 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Transactions filter
+ * Household details
  * @package Kaltura
  * @subpackage Client
  */
-class TransactionHistoryFilter extends \Kaltura\Client\Type\Filter
+class HouseholdFilter extends \Kaltura\Client\Type\Filter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaTransactionHistoryFilter';
+		return 'KalturaHouseholdFilter';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,61 +51,13 @@ class TransactionHistoryFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->entityReferenceEqual))
-			$this->entityReferenceEqual = (string)$xml->entityReferenceEqual;
-		if(count($xml->startDateGreaterThanOrEqual))
-			$this->startDateGreaterThanOrEqual = (int)$xml->startDateGreaterThanOrEqual;
-		if(count($xml->endDateLessThanOrEqual))
-			$this->endDateLessThanOrEqual = (int)$xml->endDateLessThanOrEqual;
-		if(count($xml->entitlementIdEqual))
-			$this->entitlementIdEqual = (string)$xml->entitlementIdEqual;
 		if(count($xml->externalIdEqual))
 			$this->externalIdEqual = (string)$xml->externalIdEqual;
-		if(count($xml->billingItemsTypeEqual))
-			$this->billingItemsTypeEqual = (string)$xml->billingItemsTypeEqual;
-		if(count($xml->billingActionEqual))
-			$this->billingActionEqual = (string)$xml->billingActionEqual;
 	}
 	/**
-	 * Reference type to filter by
-	 * @var \Kaltura\Client\Enum\EntityReferenceBy
-	 */
-	public $entityReferenceEqual = null;
-
-	/**
-	 * Filter transactions later than specific date
-	 * @var int
-	 */
-	public $startDateGreaterThanOrEqual = null;
-
-	/**
-	 * Filter transactions earlier than specific date
-	 * @var int
-	 */
-	public $endDateLessThanOrEqual = null;
-
-	/**
-	 * Filter transaction by entitlement id
-	 * @var int
-	 */
-	public $entitlementIdEqual = null;
-
-	/**
-	 * Filter transaction by external Id
+	 * Household external identifier to search by
 	 * @var string
 	 */
 	public $externalIdEqual = null;
-
-	/**
-	 * Filter transaction by billing item type
-	 * @var \Kaltura\Client\Enum\BillingItemsType
-	 */
-	public $billingItemsTypeEqual = null;
-
-	/**
-	 * Filter transaction by billing action
-	 * @var \Kaltura\Client\Enum\BillingAction
-	 */
-	public $billingActionEqual = null;
 
 }

@@ -33,15 +33,14 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Slim channel
  * @package Kaltura
  * @subpackage Client
  */
-class BaseChannel extends \Kaltura\Client\Type\OTTObjectSupportNullable
+class HouseholdListResponse extends \Kaltura\Client\Type\ListResponse
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaBaseChannel';
+		return 'KalturaHouseholdListResponse';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,14 +50,18 @@ class BaseChannel extends \Kaltura\Client\Type\OTTObjectSupportNullable
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->id))
-			$this->id = (string)$xml->id;
+		if(count($xml->objects))
+		{
+			if(empty($xml->objects))
+				$this->objects = array();
+			else
+				$this->objects = \Kaltura\Client\ParseUtils::unmarshalArray($xml->objects, "KalturaHousehold");
+		}
 	}
 	/**
-	 * Unique identifier for the channel
-	 * @var int
-	 * @readonly
+	 * A list of objects
+	 * @var array<KalturaHousehold>
 	 */
-	public $id = null;
+	public $objects;
 
 }
