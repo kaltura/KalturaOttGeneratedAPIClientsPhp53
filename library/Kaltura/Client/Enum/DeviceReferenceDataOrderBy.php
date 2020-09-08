@@ -36,7 +36,7 @@ namespace Kaltura\Client\Enum;
  * @package Kaltura
  * @subpackage Client
  */
-class SmsAdapterProfileOrderBy extends \Kaltura\Client\EnumBase
+class DeviceReferenceDataOrderBy extends \Kaltura\Client\EnumBase
 {
 	const NONE = "NONE";
 }

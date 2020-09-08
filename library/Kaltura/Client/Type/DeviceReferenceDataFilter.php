@@ -33,15 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Household details
+ * Device Reference Data Filter
  * @package Kaltura
  * @subpackage Client
  */
-class HouseholdFilter extends \Kaltura\Client\Type\Filter
+class DeviceReferenceDataFilter extends \Kaltura\Client\Type\CrudFilter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaHouseholdFilter';
+		return 'KalturaDeviceReferenceDataFilter';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,13 +51,13 @@ class HouseholdFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->externalIdEqual))
-			$this->externalIdEqual = (string)$xml->externalIdEqual;
+		if(count($xml->idIn))
+			$this->idIn = (string)$xml->idIn;
 	}
 	/**
-	 * Household external identifier to search by
+	 * IdIn
 	 * @var string
 	 */
-	public $externalIdEqual = null;
+	public $idIn = null;
 
 }

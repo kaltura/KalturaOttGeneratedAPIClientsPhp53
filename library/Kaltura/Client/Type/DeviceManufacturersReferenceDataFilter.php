@@ -36,11 +36,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class HouseholdListResponse extends \Kaltura\Client\Type\ListResponse
+class DeviceManufacturersReferenceDataFilter extends \Kaltura\Client\Type\DeviceReferenceDataFilter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaHouseholdListResponse';
+		return 'KalturaDeviceManufacturersReferenceDataFilter';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,18 +50,5 @@ class HouseholdListResponse extends \Kaltura\Client\Type\ListResponse
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->objects))
-		{
-			if(empty($xml->objects))
-				$this->objects = array();
-			else
-				$this->objects = \Kaltura\Client\ParseUtils::unmarshalArray($xml->objects, "KalturaHousehold");
-		}
 	}
-	/**
-	 * A list of objects
-	 * @var array<KalturaHousehold>
-	 */
-	public $objects;
-
 }

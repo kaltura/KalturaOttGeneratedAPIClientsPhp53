@@ -204,6 +204,11 @@ class Client extends Base
 	protected $deviceFamily = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\DeviceReferenceDataService
+	 */
+	protected $deviceReferenceData = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\DiscountDetailsService
 	 */
 	protected $discountDetails = null;
@@ -554,11 +559,6 @@ class Client extends Base
 	protected $session = null;
 
 	/**
-	 * @var \Kaltura\Client\Service\SmsAdapterProfileService
-	 */
-	protected $smsAdapterProfile = null;
-
-	/**
 	 * @var \Kaltura\Client\Service\SocialActionService
 	 */
 	protected $socialAction = null;
@@ -687,8 +687,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:20-09-06');
-		$this->setApiVersion('5.5.1.28355');
+		$this->setClientTag('php5:20-09-08');
+		$this->setApiVersion('5.5.0.28305');
 	}
 	
 	/**
@@ -987,6 +987,15 @@ class Client extends Base
 		if (is_null($this->deviceFamily))
 			$this->deviceFamily = new \Kaltura\Client\Service\DeviceFamilyService($this);
 		return $this->deviceFamily;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\DeviceReferenceDataService
+	 */
+	public function getDeviceReferenceDataService()
+	{
+		if (is_null($this->deviceReferenceData))
+			$this->deviceReferenceData = new \Kaltura\Client\Service\DeviceReferenceDataService($this);
+		return $this->deviceReferenceData;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\DiscountDetailsService
@@ -1617,15 +1626,6 @@ class Client extends Base
 		if (is_null($this->session))
 			$this->session = new \Kaltura\Client\Service\SessionService($this);
 		return $this->session;
-	}
-	/**
-	 * @return \Kaltura\Client\Service\SmsAdapterProfileService
-	 */
-	public function getSmsAdapterProfileService()
-	{
-		if (is_null($this->smsAdapterProfile))
-			$this->smsAdapterProfile = new \Kaltura\Client\Service\SmsAdapterProfileService($this);
-		return $this->smsAdapterProfile;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\SocialActionService

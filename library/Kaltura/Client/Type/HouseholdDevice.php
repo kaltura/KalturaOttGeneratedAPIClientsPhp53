@@ -71,6 +71,10 @@ class HouseholdDevice extends \Kaltura\Client\Type\OTTObjectSupportNullable
 			$this->externalId = (string)$xml->externalId;
 		if(count($xml->macAddress))
 			$this->macAddress = (string)$xml->macAddress;
+		if(count($xml->model))
+			$this->model = (string)$xml->model;
+		if(count($xml->manufacturerId))
+			$this->manufacturerId = (string)$xml->manufacturerId;
 	}
 	/**
 	 * Household identifier
@@ -135,5 +139,17 @@ class HouseholdDevice extends \Kaltura\Client\Type\OTTObjectSupportNullable
 	 * @var string
 	 */
 	public $macAddress = null;
+
+	/**
+	 * model
+	 * @var string
+	 */
+	public $model = null;
+
+	/**
+	 * manufacturer
+	 * @var int
+	 */
+	public $manufacturerId = null;
 
 }

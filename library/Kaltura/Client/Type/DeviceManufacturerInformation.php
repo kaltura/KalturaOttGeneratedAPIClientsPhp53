@@ -30,14 +30,26 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
+ * Device Manufacturer Information
  * @package Kaltura
  * @subpackage Client
  */
-class HouseholdOrderBy extends \Kaltura\Client\EnumBase
+class DeviceManufacturerInformation extends \Kaltura\Client\Type\DeviceReferenceData
 {
-	const CREATE_DATE_DESC = "CREATE_DATE_DESC";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaDeviceManufacturerInformation';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+	}
 }
-

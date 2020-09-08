@@ -36,11 +36,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class SmsAdapterProfileListResponse extends \Kaltura\Client\Type\ListResponse
+class DeviceReferenceDataListResponse extends \Kaltura\Client\Type\ListResponse
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaSmsAdapterProfileListResponse';
+		return 'KalturaDeviceReferenceDataListResponse';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -55,12 +55,12 @@ class SmsAdapterProfileListResponse extends \Kaltura\Client\Type\ListResponse
 			if(empty($xml->objects))
 				$this->objects = array();
 			else
-				$this->objects = \Kaltura\Client\ParseUtils::unmarshalArray($xml->objects, "KalturaSmsAdapterProfile");
+				$this->objects = \Kaltura\Client\ParseUtils::unmarshalArray($xml->objects, "KalturaDeviceReferenceData");
 		}
 	}
 	/**
 	 * A list of objects
-	 * @var array<KalturaSmsAdapterProfile>
+	 * @var array<KalturaDeviceReferenceData>
 	 */
 	public $objects;
 
