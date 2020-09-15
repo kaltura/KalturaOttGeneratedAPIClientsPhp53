@@ -33,14 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
+ * Device Information
  * @package Kaltura
  * @subpackage Client
  */
-abstract class ProductPrice extends \Kaltura\Client\ObjectBase
+class DeviceReferenceData extends \Kaltura\Client\Type\CrudObject
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaProductPrice';
+		return 'KalturaDeviceReferenceData';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,53 +51,35 @@ abstract class ProductPrice extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->productId))
-			$this->productId = (string)$xml->productId;
-		if(count($xml->productType))
-			$this->productType = (string)$xml->productType;
-		if(count($xml->price) && !empty($xml->price))
-			$this->price = \Kaltura\Client\ParseUtils::unmarshalObject($xml->price, "KalturaPrice");
-		if(count($xml->fullPrice) && !empty($xml->fullPrice))
-			$this->fullPrice = \Kaltura\Client\ParseUtils::unmarshalObject($xml->fullPrice, "KalturaPrice");
-		if(count($xml->purchaseStatus))
-			$this->purchaseStatus = (string)$xml->purchaseStatus;
-		if(count($xml->promotionInfo) && !empty($xml->promotionInfo))
-			$this->promotionInfo = \Kaltura\Client\ParseUtils::unmarshalObject($xml->promotionInfo, "KalturaPromotionInfo");
+		if(count($xml->id))
+			$this->id = (string)$xml->id;
+		if(count($xml->name))
+			$this->name = (string)$xml->name;
+		if(count($xml->status))
+		{
+			if(!empty($xml->status) && $xml->status != 'false')
+				$this->status = true;
+			else
+				$this->status = false;
+		}
 	}
 	/**
-	 * Product identifier
+	 * id
+	 * @var int
+	 * @readonly
+	 */
+	public $id = null;
+
+	/**
+	 * Name
 	 * @var string
 	 */
-	public $productId = null;
+	public $name = null;
 
 	/**
-	 * Product Type
-	 * @var \Kaltura\Client\Enum\TransactionType
+	 * Status
+	 * @var bool
 	 */
-	public $productType = null;
-
-	/**
-	 * Product price
-	 * @var \Kaltura\Client\Type\Price
-	 */
-	public $price;
-
-	/**
-	 * The full price of the item (with no discounts)
-	 * @var \Kaltura\Client\Type\Price
-	 */
-	public $fullPrice;
-
-	/**
-	 * Product purchase status
-	 * @var \Kaltura\Client\Enum\PurchaseStatus
-	 */
-	public $purchaseStatus = null;
-
-	/**
-	 * Promotion Info
-	 * @var \Kaltura\Client\Type\PromotionInfo
-	 */
-	public $promotionInfo;
+	public $status = null;
 
 }

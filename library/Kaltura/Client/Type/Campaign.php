@@ -33,15 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Device details
+ * Campaign
  * @package Kaltura
  * @subpackage Client
  */
-class HouseholdDevice extends \Kaltura\Client\Type\OTTObjectSupportNullable
+class Campaign extends \Kaltura\Client\Type\CrudObject
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaHouseholdDevice';
+		return 'KalturaCampaign';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,105 +51,105 @@ class HouseholdDevice extends \Kaltura\Client\Type\OTTObjectSupportNullable
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->householdId))
-			$this->householdId = (int)$xml->householdId;
-		if(count($xml->udid))
-			$this->udid = (string)$xml->udid;
+		if(count($xml->id))
+			$this->id = (string)$xml->id;
+		if(count($xml->createDate))
+			$this->createDate = (string)$xml->createDate;
+		if(count($xml->updateDate))
+			$this->updateDate = (string)$xml->updateDate;
+		if(count($xml->startDate))
+			$this->startDate = (string)$xml->startDate;
+		if(count($xml->endDate))
+			$this->endDate = (string)$xml->endDate;
 		if(count($xml->name))
 			$this->name = (string)$xml->name;
-		if(count($xml->brandId))
-			$this->brandId = (int)$xml->brandId;
-		if(count($xml->activatedOn))
-			$this->activatedOn = (string)$xml->activatedOn;
-		if(count($xml->status))
-			$this->status = (string)$xml->status;
-		if(count($xml->deviceFamilyId))
-			$this->deviceFamilyId = (string)$xml->deviceFamilyId;
-		if(count($xml->drm) && !empty($xml->drm))
-			$this->drm = \Kaltura\Client\ParseUtils::unmarshalObject($xml->drm, "KalturaCustomDrmPlaybackPluginData");
-		if(count($xml->externalId))
-			$this->externalId = (string)$xml->externalId;
-		if(count($xml->macAddress))
-			$this->macAddress = (string)$xml->macAddress;
-		if(count($xml->model))
-			$this->model = (string)$xml->model;
-		if(count($xml->manufacturerId))
-			$this->manufacturerId = (string)$xml->manufacturerId;
+		if(count($xml->systemName))
+			$this->systemName = (string)$xml->systemName;
+		if(count($xml->description))
+			$this->description = (string)$xml->description;
+		if(count($xml->state))
+			$this->state = (string)$xml->state;
+		if(count($xml->promotion) && !empty($xml->promotion))
+			$this->promotion = \Kaltura\Client\ParseUtils::unmarshalObject($xml->promotion, "KalturaPromotion");
+		if(count($xml->message))
+			$this->message = (string)$xml->message;
+		if(count($xml->collectionIdIn))
+			$this->collectionIdIn = (string)$xml->collectionIdIn;
 	}
 	/**
-	 * Household identifier
+	 * ID
+	 * @var int
+	 * @readonly
+	 */
+	public $id = null;
+
+	/**
+	 * Create date of the rule
+	 * @var int
+	 * @readonly
+	 */
+	public $createDate = null;
+
+	/**
+	 * Update date of the rule
+	 * @var int
+	 * @readonly
+	 */
+	public $updateDate = null;
+
+	/**
+	 * Start date of the rule
 	 * @var int
 	 */
-	public $householdId = null;
+	public $startDate = null;
 
 	/**
-	 * Device UDID
-	 * @var string
-	 * @insertonly
+	 * End date of the rule
+	 * @var int
 	 */
-	public $udid = null;
+	public $endDate = null;
 
 	/**
-	 * Device name
+	 * Name
 	 * @var string
 	 */
 	public $name = null;
 
 	/**
-	 * Device brand identifier
-	 * @var int
-	 */
-	public $brandId = null;
-
-	/**
-	 * Device activation date (epoch)
-	 * @var int
-	 */
-	public $activatedOn = null;
-
-	/**
-	 * Device state
-	 * @var \Kaltura\Client\Enum\DeviceStatus
-	 * @readonly
-	 */
-	public $status = null;
-
-	/**
-	 * Device family id
-	 * @var int
-	 * @readonly
-	 */
-	public $deviceFamilyId = null;
-
-	/**
-	 * Device DRM data
-	 * @var \Kaltura\Client\Type\CustomDrmPlaybackPluginData
-	 * @readonly
-	 */
-	public $drm;
-
-	/**
-	 * external Id
+	 * systemName
 	 * @var string
 	 */
-	public $externalId = null;
+	public $systemName = null;
 
 	/**
-	 * mac address
+	 * Description
 	 * @var string
 	 */
-	public $macAddress = null;
+	public $description = null;
 
 	/**
-	 * model
+	 * state
+	 * @var \Kaltura\Client\Enum\ObjectState
+	 * @readonly
+	 */
+	public $state = null;
+
+	/**
+	 * The Promotion that is promoted to the user
+	 * @var \Kaltura\Client\Type\Promotion
+	 */
+	public $promotion;
+
+	/**
+	 * Free text message to the user that gives information about the campaign.
 	 * @var string
 	 */
-	public $model = null;
+	public $message = null;
 
 	/**
-	 * manufacturer
-	 * @var int
+	 * Comma separated collection IDs list
+	 * @var string
 	 */
-	public $manufacturerId = null;
+	public $collectionIdIn = null;
 
 }

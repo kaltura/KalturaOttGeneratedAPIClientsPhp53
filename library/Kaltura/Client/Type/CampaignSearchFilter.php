@@ -36,11 +36,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-abstract class ProductPrice extends \Kaltura\Client\ObjectBase
+class CampaignSearchFilter extends \Kaltura\Client\Type\CampaignFilter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaProductPrice';
+		return 'KalturaCampaignSearchFilter';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,53 +50,42 @@ abstract class ProductPrice extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->productId))
-			$this->productId = (string)$xml->productId;
-		if(count($xml->productType))
-			$this->productType = (string)$xml->productType;
-		if(count($xml->price) && !empty($xml->price))
-			$this->price = \Kaltura\Client\ParseUtils::unmarshalObject($xml->price, "KalturaPrice");
-		if(count($xml->fullPrice) && !empty($xml->fullPrice))
-			$this->fullPrice = \Kaltura\Client\ParseUtils::unmarshalObject($xml->fullPrice, "KalturaPrice");
-		if(count($xml->purchaseStatus))
-			$this->purchaseStatus = (string)$xml->purchaseStatus;
-		if(count($xml->promotionInfo) && !empty($xml->promotionInfo))
-			$this->promotionInfo = \Kaltura\Client\ParseUtils::unmarshalObject($xml->promotionInfo, "KalturaPromotionInfo");
+		if(count($xml->startDateGreaterThanOrEqual))
+			$this->startDateGreaterThanOrEqual = (string)$xml->startDateGreaterThanOrEqual;
+		if(count($xml->endDateLessThanOrEqual))
+			$this->endDateLessThanOrEqual = (string)$xml->endDateLessThanOrEqual;
+		if(count($xml->stateEqual))
+			$this->stateEqual = (string)$xml->stateEqual;
+		if(count($xml->hasPromotion))
+		{
+			if(!empty($xml->hasPromotion) && $xml->hasPromotion != 'false')
+				$this->hasPromotion = true;
+			else
+				$this->hasPromotion = false;
+		}
 	}
 	/**
-	 * Product identifier
-	 * @var string
+	 * start Date Greater Than Or Equal
+	 * @var int
 	 */
-	public $productId = null;
+	public $startDateGreaterThanOrEqual = null;
 
 	/**
-	 * Product Type
-	 * @var \Kaltura\Client\Enum\TransactionType
+	 * end Date Greater Than Or Equal
+	 * @var int
 	 */
-	public $productType = null;
+	public $endDateLessThanOrEqual = null;
 
 	/**
-	 * Product price
-	 * @var \Kaltura\Client\Type\Price
+	 * state Equal
+	 * @var \Kaltura\Client\Enum\ObjectState
 	 */
-	public $price;
+	public $stateEqual = null;
 
 	/**
-	 * The full price of the item (with no discounts)
-	 * @var \Kaltura\Client\Type\Price
+	 * has Promotion
+	 * @var bool
 	 */
-	public $fullPrice;
-
-	/**
-	 * Product purchase status
-	 * @var \Kaltura\Client\Enum\PurchaseStatus
-	 */
-	public $purchaseStatus = null;
-
-	/**
-	 * Promotion Info
-	 * @var \Kaltura\Client\Type\PromotionInfo
-	 */
-	public $promotionInfo;
+	public $hasPromotion = null;
 
 }
