@@ -104,30 +104,6 @@ class SsoAdapterProfileService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Request validation against 3rd party
-	 * 
-	 * @return \Kaltura\Client\Type\SSOAdapterProfileInvoke
-	 */
-	function invoke($intent, array $adapterData)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "intent", $intent);
-		foreach($adapterData as $index => $obj)
-		{
-			$this->client->addParam($kparams, "adapterData:$index", $obj->toParams());
-		}
-		$this->client->queueServiceActionCall("ssoadapterprofile", "invoke", "KalturaSSOAdapterProfileInvoke", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaSSOAdapterProfileInvoke");
-		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\SSOAdapterProfileInvoke");
-		return $resultObject;
-	}
-
-	/**
 	 * Returns all sso adapters for partner : id + name
 	 * 
 	 * @return \Kaltura\Client\Type\SSOAdapterProfileListResponse

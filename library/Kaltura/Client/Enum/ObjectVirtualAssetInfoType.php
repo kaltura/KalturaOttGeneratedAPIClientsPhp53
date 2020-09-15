@@ -40,6 +40,5 @@ class ObjectVirtualAssetInfoType extends \Kaltura\Client\EnumBase
 {
 	const SUBSCRIPTION = "Subscription";
 	const SEGMENT = "Segment";
-	const CATEGORY = "Category";
 }
 

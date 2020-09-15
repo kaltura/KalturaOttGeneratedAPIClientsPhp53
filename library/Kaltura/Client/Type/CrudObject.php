@@ -36,7 +36,7 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-abstract class CrudObject extends \Kaltura\Client\Type\OTTObjectSupportNullable
+abstract class CrudObject extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{

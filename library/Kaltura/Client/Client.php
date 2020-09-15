@@ -114,16 +114,6 @@ class Client extends Base
 	protected $businessModuleRule = null;
 
 	/**
-	 * @var \Kaltura\Client\Service\CategoryItemService
-	 */
-	protected $categoryItem = null;
-
-	/**
-	 * @var \Kaltura\Client\Service\CategoryTreeService
-	 */
-	protected $categoryTree = null;
-
-	/**
 	 * @var \Kaltura\Client\Service\CdnAdapterProfileService
 	 */
 	protected $cdnAdapterProfile = null;
@@ -339,16 +329,6 @@ class Client extends Base
 	protected $IngestProfile = null;
 
 	/**
-	 * @var \Kaltura\Client\Service\IotService
-	 */
-	protected $iot = null;
-
-	/**
-	 * @var \Kaltura\Client\Service\IotProfileService
-	 */
-	protected $iotProfile = null;
-
-	/**
 	 * @var \Kaltura\Client\Service\LanguageService
 	 */
 	protected $language = null;
@@ -449,11 +429,6 @@ class Client extends Base
 	protected $permission = null;
 
 	/**
-	 * @var \Kaltura\Client\Service\PermissionItemService
-	 */
-	protected $permissionItem = null;
-
-	/**
 	 * @var \Kaltura\Client\Service\PersonalFeedService
 	 */
 	protected $personalFeed = null;
@@ -552,11 +527,6 @@ class Client extends Base
 	 * @var \Kaltura\Client\Service\SessionService
 	 */
 	protected $session = null;
-
-	/**
-	 * @var \Kaltura\Client\Service\SmsAdapterProfileService
-	 */
-	protected $smsAdapterProfile = null;
 
 	/**
 	 * @var \Kaltura\Client\Service\SocialActionService
@@ -687,8 +657,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:20-09-06');
-		$this->setApiVersion('5.5.1.28355');
+		$this->setClientTag('php5:20-09-15');
+		$this->setApiVersion('5.3.2.27544');
 	}
 	
 	/**
@@ -825,24 +795,6 @@ class Client extends Base
 		if (is_null($this->businessModuleRule))
 			$this->businessModuleRule = new \Kaltura\Client\Service\BusinessModuleRuleService($this);
 		return $this->businessModuleRule;
-	}
-	/**
-	 * @return \Kaltura\Client\Service\CategoryItemService
-	 */
-	public function getCategoryItemService()
-	{
-		if (is_null($this->categoryItem))
-			$this->categoryItem = new \Kaltura\Client\Service\CategoryItemService($this);
-		return $this->categoryItem;
-	}
-	/**
-	 * @return \Kaltura\Client\Service\CategoryTreeService
-	 */
-	public function getCategoryTreeService()
-	{
-		if (is_null($this->categoryTree))
-			$this->categoryTree = new \Kaltura\Client\Service\CategoryTreeService($this);
-		return $this->categoryTree;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\CdnAdapterProfileService
@@ -1232,24 +1184,6 @@ class Client extends Base
 		return $this->IngestProfile;
 	}
 	/**
-	 * @return \Kaltura\Client\Service\IotService
-	 */
-	public function getIotService()
-	{
-		if (is_null($this->iot))
-			$this->iot = new \Kaltura\Client\Service\IotService($this);
-		return $this->iot;
-	}
-	/**
-	 * @return \Kaltura\Client\Service\IotProfileService
-	 */
-	public function getIotProfileService()
-	{
-		if (is_null($this->iotProfile))
-			$this->iotProfile = new \Kaltura\Client\Service\IotProfileService($this);
-		return $this->iotProfile;
-	}
-	/**
 	 * @return \Kaltura\Client\Service\LanguageService
 	 */
 	public function getLanguageService()
@@ -1430,15 +1364,6 @@ class Client extends Base
 		return $this->permission;
 	}
 	/**
-	 * @return \Kaltura\Client\Service\PermissionItemService
-	 */
-	public function getPermissionItemService()
-	{
-		if (is_null($this->permissionItem))
-			$this->permissionItem = new \Kaltura\Client\Service\PermissionItemService($this);
-		return $this->permissionItem;
-	}
-	/**
 	 * @return \Kaltura\Client\Service\PersonalFeedService
 	 */
 	public function getPersonalFeedService()
@@ -1617,15 +1542,6 @@ class Client extends Base
 		if (is_null($this->session))
 			$this->session = new \Kaltura\Client\Service\SessionService($this);
 		return $this->session;
-	}
-	/**
-	 * @return \Kaltura\Client\Service\SmsAdapterProfileService
-	 */
-	public function getSmsAdapterProfileService()
-	{
-		if (is_null($this->smsAdapterProfile))
-			$this->smsAdapterProfile = new \Kaltura\Client\Service\SmsAdapterProfileService($this);
-		return $this->smsAdapterProfile;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\SocialActionService

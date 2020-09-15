@@ -104,28 +104,6 @@ class HouseholdService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Get recently watched media for user, ordered by recently watched first.
-	 * 
-	 * @return \Kaltura\Client\Type\HouseholdListResponse
-	 */
-	function listAction(\Kaltura\Client\Type\HouseholdFilter $filter, \Kaltura\Client\Type\FilterPager $pager = null)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("household", "list", "KalturaHouseholdListResponse", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaHouseholdListResponse");
-		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\HouseholdListResponse");
-		return $resultObject;
-	}
-
-	/**
 	 * Purge a household. Delete all of the household information, including users, devices, entitlements, payment methods and notification date.
 	 * 
 	 * @return bool

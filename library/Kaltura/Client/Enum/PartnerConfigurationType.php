@@ -45,7 +45,5 @@ class PartnerConfigurationType extends \Kaltura\Client\EnumBase
 	const GENERAL = "General";
 	const OBJECTVIRTUALASSET = "ObjectVirtualAsset";
 	const COMMERCE = "Commerce";
-	const PLAYBACK = "Playback";
-	const PAYMENT = "Payment";
 }
 

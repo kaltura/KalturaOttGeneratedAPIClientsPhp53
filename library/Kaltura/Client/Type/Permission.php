@@ -60,8 +60,6 @@ class Permission extends \Kaltura\Client\ObjectBase
 			$this->dependsOnPermissionNames = (string)$xml->dependsOnPermissionNames;
 		if(count($xml->type))
 			$this->type = (string)$xml->type;
-		if(count($xml->permissionItemsIds))
-			$this->permissionItemsIds = (string)$xml->permissionItemsIds;
 	}
 	/**
 	 * Permission identifier
@@ -94,12 +92,5 @@ class Permission extends \Kaltura\Client\ObjectBase
 	 * @var \Kaltura\Client\Enum\PermissionType
 	 */
 	public $type = null;
-
-	/**
-	 * Comma separated assosiated permission items IDs
-	 * @var string
-	 * @readonly
-	 */
-	public $permissionItemsIds = null;
 
 }

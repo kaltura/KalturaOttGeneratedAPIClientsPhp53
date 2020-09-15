@@ -109,6 +109,7 @@ class Entitlement extends \Kaltura\Client\ObjectBase
 	/**
 	 * The end date of the entitlement
 	 * @var int
+	 * @readonly
 	 */
 	public $endDate = null;
 
