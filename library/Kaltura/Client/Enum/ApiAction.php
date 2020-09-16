@@ -38,7 +38,6 @@ namespace Kaltura\Client\Enum;
  */
 class ApiAction extends \Kaltura\Client\EnumBase
 {
-	const INSERT = "INSERT";
-	const UPDATE = "UPDATE";
+	const ADD = "ADD";
 }
 

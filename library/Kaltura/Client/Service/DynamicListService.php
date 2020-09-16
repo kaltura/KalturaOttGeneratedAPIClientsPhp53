@@ -121,4 +121,27 @@ class DynamicListService extends \Kaltura\Client\ServiceBase
 		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\DynamicListListResponse");
 		return $resultObject;
 	}
+
+	/**
+	 * Add new bulk upload batch job Conversion profile id can be specified in the API.
+	 * 
+	 * @return \Kaltura\Client\Type\BulkUpload
+	 */
+	function addFromBulkUpload($fileData, \Kaltura\Client\Type\BulkUploadExcelJobData $jobData, \Kaltura\Client\Type\BulkUploadAssetData $bulkUploadAssetData)
+	{
+		$kparams = array();
+		$kfiles = array();
+		$this->client->addParam($kfiles, "fileData", $fileData);
+		$this->client->addParam($kparams, "jobData", $jobData->toParams());
+		$this->client->addParam($kparams, "bulkUploadAssetData", $bulkUploadAssetData->toParams());
+		$this->client->queueServiceActionCall("dynamiclist", "addFromBulkUpload", "KalturaBulkUpload", $kparams, $kfiles);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBulkUpload");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\BulkUpload");
+		return $resultObject;
+	}
 }
