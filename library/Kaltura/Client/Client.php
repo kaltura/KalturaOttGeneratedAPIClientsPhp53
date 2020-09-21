@@ -449,11 +449,6 @@ class Client extends Base
 	protected $permission = null;
 
 	/**
-	 * @var \Kaltura\Client\Service\PermissionItemService
-	 */
-	protected $permissionItem = null;
-
-	/**
 	 * @var \Kaltura\Client\Service\PersonalFeedService
 	 */
 	protected $personalFeed = null;
@@ -552,11 +547,6 @@ class Client extends Base
 	 * @var \Kaltura\Client\Service\SessionService
 	 */
 	protected $session = null;
-
-	/**
-	 * @var \Kaltura\Client\Service\SmsAdapterProfileService
-	 */
-	protected $smsAdapterProfile = null;
 
 	/**
 	 * @var \Kaltura\Client\Service\SocialActionService
@@ -687,8 +677,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:20-09-15');
-		$this->setApiVersion('5.6.0.28362');
+		$this->setClientTag('php5:20-09-20');
+		$this->setApiVersion('5.4.0.28241');
 	}
 	
 	/**
@@ -1430,15 +1420,6 @@ class Client extends Base
 		return $this->permission;
 	}
 	/**
-	 * @return \Kaltura\Client\Service\PermissionItemService
-	 */
-	public function getPermissionItemService()
-	{
-		if (is_null($this->permissionItem))
-			$this->permissionItem = new \Kaltura\Client\Service\PermissionItemService($this);
-		return $this->permissionItem;
-	}
-	/**
 	 * @return \Kaltura\Client\Service\PersonalFeedService
 	 */
 	public function getPersonalFeedService()
@@ -1617,15 +1598,6 @@ class Client extends Base
 		if (is_null($this->session))
 			$this->session = new \Kaltura\Client\Service\SessionService($this);
 		return $this->session;
-	}
-	/**
-	 * @return \Kaltura\Client\Service\SmsAdapterProfileService
-	 */
-	public function getSmsAdapterProfileService()
-	{
-		if (is_null($this->smsAdapterProfile))
-			$this->smsAdapterProfile = new \Kaltura\Client\Service\SmsAdapterProfileService($this);
-		return $this->smsAdapterProfile;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\SocialActionService
