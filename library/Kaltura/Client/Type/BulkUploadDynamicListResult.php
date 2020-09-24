@@ -30,14 +30,25 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class CampaignOrderBy extends \Kaltura\Client\EnumBase
+abstract class BulkUploadDynamicListResult extends \Kaltura\Client\Type\BulkUploadResult
 {
-	const START_DATE_DESC = "START_DATE_DESC";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaBulkUploadDynamicListResult';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+	}
 }
-

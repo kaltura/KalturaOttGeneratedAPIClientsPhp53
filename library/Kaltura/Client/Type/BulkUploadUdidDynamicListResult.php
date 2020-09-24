@@ -30,14 +30,34 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class CampaignOrderBy extends \Kaltura\Client\EnumBase
+class BulkUploadUdidDynamicListResult extends \Kaltura\Client\Type\BulkUploadDynamicListResult
 {
-	const START_DATE_DESC = "START_DATE_DESC";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaBulkUploadUdidDynamicListResult';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->udid))
+			$this->udid = (string)$xml->udid;
+	}
+	/**
+	 * The udid from the excel to add to DynamicLis values
+	 * @var string
+	 * @readonly
+	 */
+	public $udid = null;
 
+}

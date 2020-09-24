@@ -33,14 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
+ * indicates the UDID DynamicList object type in the bulk file
  * @package Kaltura
  * @subpackage Client
  */
-class DeviceUdidCondition extends \Kaltura\Client\Type\Condition
+class BulkUploadUdidDynamicListData extends \Kaltura\Client\Type\BulkUploadDynamicListData
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaDeviceUdidCondition';
+		return 'KalturaBulkUploadUdidDynamicListData';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,13 +51,5 @@ class DeviceUdidCondition extends \Kaltura\Client\Type\Condition
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->udidIn))
-			$this->udidIn = (string)$xml->udidIn;
 	}
-	/**
-	 * Comma separated Device Udid IDs list
-	 * @var string
-	 */
-	public $udidIn = null;
-
 }

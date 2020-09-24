@@ -30,14 +30,33 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class CampaignOrderBy extends \Kaltura\Client\EnumBase
+class UdidDynamicListCondition extends \Kaltura\Client\Type\Condition
 {
-	const START_DATE_DESC = "START_DATE_DESC";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaUdidDynamicListCondition';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->id))
+			$this->id = (string)$xml->id;
+	}
+	/**
+	 * KalturaUdidDynamicList.id
+	 * @var int
+	 */
+	public $id = null;
 
+}

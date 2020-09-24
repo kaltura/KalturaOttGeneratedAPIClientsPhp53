@@ -127,13 +127,13 @@ class DynamicListService extends \Kaltura\Client\ServiceBase
 	 * 
 	 * @return \Kaltura\Client\Type\BulkUpload
 	 */
-	function addFromBulkUpload($fileData, \Kaltura\Client\Type\BulkUploadExcelJobData $jobData, \Kaltura\Client\Type\BulkUploadAssetData $bulkUploadAssetData)
+	function addFromBulkUpload($fileData, \Kaltura\Client\Type\BulkUploadExcelJobData $jobData, \Kaltura\Client\Type\BulkUploadDynamicListData $bulkUploadData)
 	{
 		$kparams = array();
 		$kfiles = array();
 		$this->client->addParam($kfiles, "fileData", $fileData);
 		$this->client->addParam($kparams, "jobData", $jobData->toParams());
-		$this->client->addParam($kparams, "bulkUploadAssetData", $bulkUploadAssetData->toParams());
+		$this->client->addParam($kparams, "bulkUploadData", $bulkUploadData->toParams());
 		$this->client->queueServiceActionCall("dynamiclist", "addFromBulkUpload", "KalturaBulkUpload", $kparams, $kfiles);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();

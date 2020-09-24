@@ -37,7 +37,7 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class UdidDynamicListSearchFilter extends \Kaltura\Client\Type\DynamicListFilter
+class UdidDynamicListSearchFilter extends \Kaltura\Client\Type\DynamicListSearchFilter
 {
 	public function getKalturaObjectType()
 	{

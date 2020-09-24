@@ -30,14 +30,34 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
+ * indicates the DynamicList object type in the bulk file
  * @package Kaltura
  * @subpackage Client
  */
-class CampaignOrderBy extends \Kaltura\Client\EnumBase
+abstract class BulkUploadDynamicListData extends \Kaltura\Client\Type\BulkUploadObjectData
 {
-	const START_DATE_DESC = "START_DATE_DESC";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaBulkUploadDynamicListData';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->dynamicListId))
+			$this->dynamicListId = (string)$xml->dynamicListId;
+	}
+	/**
+	 * Identifies the dynamicList Id
+	 * @var int
+	 */
+	public $dynamicListId = null;
 
+}
