@@ -105,10 +105,12 @@ class CampaignService extends \Kaltura\Client\ServiceBase
 	 * 
 	 * @return \Kaltura\Client\Type\CampaignListResponse
 	 */
-	function listAction(\Kaltura\Client\Type\CampaignFilter $filter)
+	function listAction(\Kaltura\Client\Type\CampaignFilter $filter, \Kaltura\Client\Type\FilterPager $pager = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
 		$this->client->queueServiceActionCall("campaign", "list", "KalturaCampaignListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();

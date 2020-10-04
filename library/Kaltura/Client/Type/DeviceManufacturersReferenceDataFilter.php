@@ -50,5 +50,13 @@ class DeviceManufacturersReferenceDataFilter extends \Kaltura\Client\Type\Device
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->nameEqual))
+			$this->nameEqual = (string)$xml->nameEqual;
 	}
+	/**
+	 * name equal
+	 * @var string
+	 */
+	public $nameEqual = null;
+
 }

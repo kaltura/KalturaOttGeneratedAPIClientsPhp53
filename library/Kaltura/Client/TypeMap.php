@@ -391,6 +391,7 @@ class TypeMap
 		'KalturaPartnerConfiguration' => 'Kaltura\Client\Type\PartnerConfiguration',
 		'KalturaPartnerConfigurationListResponse' => 'Kaltura\Client\Type\PartnerConfigurationListResponse',
 		'KalturaBillingPartnerConfig' => 'Kaltura\Client\Type\BillingPartnerConfig',
+		'KalturaCatalogPartnerConfig' => 'Kaltura\Client\Type\CatalogPartnerConfig',
 		'KalturaBookmarkEventThreshold' => 'Kaltura\Client\Type\BookmarkEventThreshold',
 		'KalturaCommercePartnerConfig' => 'Kaltura\Client\Type\CommercePartnerConfig',
 		'KalturaConcurrencyPartnerConfig' => 'Kaltura\Client\Type\ConcurrencyPartnerConfig',

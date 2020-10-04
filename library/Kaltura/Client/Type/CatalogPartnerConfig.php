@@ -33,14 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
+ * Partner catalog configuration
  * @package Kaltura
  * @subpackage Client
  */
-class RegionFilter extends \Kaltura\Client\Type\BaseRegionFilter
+class CatalogPartnerConfig extends \Kaltura\Client\Type\PartnerConfiguration
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaRegionFilter';
+		return 'KalturaCatalogPartnerConfig';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,63 +51,18 @@ class RegionFilter extends \Kaltura\Client\Type\BaseRegionFilter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->externalIdIn))
-			$this->externalIdIn = (string)$xml->externalIdIn;
-		if(count($xml->idIn))
-			$this->idIn = (string)$xml->idIn;
-		if(count($xml->parentIdEqual))
-			$this->parentIdEqual = (int)$xml->parentIdEqual;
-		if(count($xml->liveAssetIdEqual))
-			$this->liveAssetIdEqual = (int)$xml->liveAssetIdEqual;
-		if(count($xml->parentOnly))
+		if(count($xml->singleMultilingualMode))
 		{
-			if(!empty($xml->parentOnly) && $xml->parentOnly != 'false')
-				$this->parentOnly = true;
+			if(!empty($xml->singleMultilingualMode) && $xml->singleMultilingualMode != 'false')
+				$this->singleMultilingualMode = true;
 			else
-				$this->parentOnly = false;
-		}
-		if(count($xml->exclusiveLcn))
-		{
-			if(!empty($xml->exclusiveLcn) && $xml->exclusiveLcn != 'false')
-				$this->exclusiveLcn = true;
-			else
-				$this->exclusiveLcn = false;
+				$this->singleMultilingualMode = false;
 		}
 	}
 	/**
-	 * List of comma separated regions external IDs
-	 * @var string
-	 */
-	public $externalIdIn = null;
-
-	/**
-	 * List of comma separated regions Ids
-	 * @var string
-	 */
-	public $idIn = null;
-
-	/**
-	 * Region parent ID to filter by
-	 * @var int
-	 */
-	public $parentIdEqual = null;
-
-	/**
-	 * Region parent ID to filter by
-	 * @var int
-	 */
-	public $liveAssetIdEqual = null;
-
-	/**
-	 * Parent region to filter by
+	 * Single multilingual mode
 	 * @var bool
 	 */
-	public $parentOnly = null;
-
-	/**
-	 * Retrieves only the channels belonging specifically to the child region
-	 * @var bool
-	 */
-	public $exclusiveLcn = null;
+	public $singleMultilingualMode = null;
 
 }
