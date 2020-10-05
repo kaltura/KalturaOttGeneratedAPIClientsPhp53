@@ -84,6 +84,13 @@ class Entitlement extends \Kaltura\Client\ObjectBase
 			$this->userId = (string)$xml->userId;
 		if(count($xml->householdId))
 			$this->householdId = (string)$xml->householdId;
+		if(count($xml->isPending))
+		{
+			if(!empty($xml->isPending) && $xml->isPending != 'false')
+				$this->isPending = true;
+			else
+				$this->isPending = false;
+		}
 	}
 	/**
 	 * Purchase identifier (for subscriptions and collections only)
@@ -181,5 +188,11 @@ class Entitlement extends \Kaltura\Client\ObjectBase
 	 * @readonly
 	 */
 	public $householdId = null;
+
+	/**
+	 * Indicates whether the asynchronous purchase is pending
+	 * @var bool
+	 */
+	public $isPending = null;
 
 }

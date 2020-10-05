@@ -33,15 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
- * DynamicListIdInFilter
+ * Partner catalog configuration
  * @package Kaltura
  * @subpackage Client
  */
-class DynamicListIdInFilter extends \Kaltura\Client\Type\DynamicListFilter
+class CatalogPartnerConfig extends \Kaltura\Client\Type\PartnerConfiguration
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaDynamicListIdInFilter';
+		return 'KalturaCatalogPartnerConfig';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,13 +51,18 @@ class DynamicListIdInFilter extends \Kaltura\Client\Type\DynamicListFilter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->idIn))
-			$this->idIn = (string)$xml->idIn;
+		if(count($xml->singleMultilingualMode))
+		{
+			if(!empty($xml->singleMultilingualMode) && $xml->singleMultilingualMode != 'false')
+				$this->singleMultilingualMode = true;
+			else
+				$this->singleMultilingualMode = false;
+		}
 	}
 	/**
-	 * DynamicList identifiers
-	 * @var string
+	 * Single multilingual mode
+	 * @var bool
 	 */
-	public $idIn = null;
+	public $singleMultilingualMode = null;
 
 }

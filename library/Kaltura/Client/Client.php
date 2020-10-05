@@ -114,11 +114,6 @@ class Client extends Base
 	protected $businessModuleRule = null;
 
 	/**
-	 * @var \Kaltura\Client\Service\CampaignService
-	 */
-	protected $campaign = null;
-
-	/**
 	 * @var \Kaltura\Client\Service\CategoryItemService
 	 */
 	protected $categoryItem = null;
@@ -209,11 +204,6 @@ class Client extends Base
 	protected $deviceFamily = null;
 
 	/**
-	 * @var \Kaltura\Client\Service\DeviceReferenceDataService
-	 */
-	protected $deviceReferenceData = null;
-
-	/**
 	 * @var \Kaltura\Client\Service\DiscountDetailsService
 	 */
 	protected $discountDetails = null;
@@ -222,11 +212,6 @@ class Client extends Base
 	 * @var \Kaltura\Client\Service\DrmProfileService
 	 */
 	protected $drmProfile = null;
-
-	/**
-	 * @var \Kaltura\Client\Service\DynamicListService
-	 */
-	protected $dynamicList = null;
 
 	/**
 	 * @var \Kaltura\Client\Service\EmailService
@@ -702,8 +687,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:20-09-16');
-		$this->setApiVersion('5.6.0.28480');
+		$this->setClientTag('php5:20-10-05');
+		$this->setApiVersion('5.6.0.28388');
 	}
 	
 	/**
@@ -840,15 +825,6 @@ class Client extends Base
 		if (is_null($this->businessModuleRule))
 			$this->businessModuleRule = new \Kaltura\Client\Service\BusinessModuleRuleService($this);
 		return $this->businessModuleRule;
-	}
-	/**
-	 * @return \Kaltura\Client\Service\CampaignService
-	 */
-	public function getCampaignService()
-	{
-		if (is_null($this->campaign))
-			$this->campaign = new \Kaltura\Client\Service\CampaignService($this);
-		return $this->campaign;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\CategoryItemService
@@ -1013,15 +989,6 @@ class Client extends Base
 		return $this->deviceFamily;
 	}
 	/**
-	 * @return \Kaltura\Client\Service\DeviceReferenceDataService
-	 */
-	public function getDeviceReferenceDataService()
-	{
-		if (is_null($this->deviceReferenceData))
-			$this->deviceReferenceData = new \Kaltura\Client\Service\DeviceReferenceDataService($this);
-		return $this->deviceReferenceData;
-	}
-	/**
 	 * @return \Kaltura\Client\Service\DiscountDetailsService
 	 */
 	public function getDiscountDetailsService()
@@ -1038,15 +1005,6 @@ class Client extends Base
 		if (is_null($this->drmProfile))
 			$this->drmProfile = new \Kaltura\Client\Service\DrmProfileService($this);
 		return $this->drmProfile;
-	}
-	/**
-	 * @return \Kaltura\Client\Service\DynamicListService
-	 */
-	public function getDynamicListService()
-	{
-		if (is_null($this->dynamicList))
-			$this->dynamicList = new \Kaltura\Client\Service\DynamicListService($this);
-		return $this->dynamicList;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\EmailService
