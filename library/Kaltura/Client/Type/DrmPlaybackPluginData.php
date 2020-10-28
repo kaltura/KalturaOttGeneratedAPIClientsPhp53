@@ -54,6 +54,13 @@ class DrmPlaybackPluginData extends \Kaltura\Client\Type\PluginData
 			$this->scheme = (string)$xml->scheme;
 		if(count($xml->licenseURL))
 			$this->licenseURL = (string)$xml->licenseURL;
+		if(count($xml->dynamicData))
+		{
+			if(empty($xml->dynamicData))
+				$this->dynamicData = array();
+			else
+				$this->dynamicData = \Kaltura\Client\ParseUtils::unmarshalMap($xml->dynamicData, "KalturaStringValue");
+		}
 	}
 	/**
 	 * Scheme
@@ -66,5 +73,11 @@ class DrmPlaybackPluginData extends \Kaltura\Client\Type\PluginData
 	 * @var string
 	 */
 	public $licenseURL = null;
+
+	/**
+	 * Dynamic data
+	 * @var array<string, KalturaStringValue>
+	 */
+	public $dynamicData;
 
 }

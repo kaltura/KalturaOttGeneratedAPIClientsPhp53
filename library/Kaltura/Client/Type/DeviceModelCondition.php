@@ -36,11 +36,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-abstract class ProductPrice extends \Kaltura\Client\ObjectBase
+class DeviceModelCondition extends \Kaltura\Client\Type\Condition
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaProductPrice';
+		return 'KalturaDeviceModelCondition';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,53 +50,13 @@ abstract class ProductPrice extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->productId))
-			$this->productId = (string)$xml->productId;
-		if(count($xml->productType))
-			$this->productType = (string)$xml->productType;
-		if(count($xml->price) && !empty($xml->price))
-			$this->price = \Kaltura\Client\ParseUtils::unmarshalObject($xml->price, "KalturaPrice");
-		if(count($xml->fullPrice) && !empty($xml->fullPrice))
-			$this->fullPrice = \Kaltura\Client\ParseUtils::unmarshalObject($xml->fullPrice, "KalturaPrice");
-		if(count($xml->purchaseStatus))
-			$this->purchaseStatus = (string)$xml->purchaseStatus;
-		if(count($xml->promotionInfo) && !empty($xml->promotionInfo))
-			$this->promotionInfo = \Kaltura\Client\ParseUtils::unmarshalObject($xml->promotionInfo, "KalturaPromotionInfo");
+		if(count($xml->regexEqual))
+			$this->regexEqual = (string)$xml->regexEqual;
 	}
 	/**
-	 * Product identifier
+	 * regex of device model that is compared to
 	 * @var string
 	 */
-	public $productId = null;
-
-	/**
-	 * Product Type
-	 * @var \Kaltura\Client\Enum\TransactionType
-	 */
-	public $productType = null;
-
-	/**
-	 * Product price
-	 * @var \Kaltura\Client\Type\Price
-	 */
-	public $price;
-
-	/**
-	 * The full price of the item (with no discounts)
-	 * @var \Kaltura\Client\Type\Price
-	 */
-	public $fullPrice;
-
-	/**
-	 * Product purchase status
-	 * @var \Kaltura\Client\Enum\PurchaseStatus
-	 */
-	public $purchaseStatus = null;
-
-	/**
-	 * Promotion Info
-	 * @var \Kaltura\Client\Type\PromotionInfo
-	 */
-	public $promotionInfo;
+	public $regexEqual = null;
 
 }

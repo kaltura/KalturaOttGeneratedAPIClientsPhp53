@@ -36,24 +36,8 @@ namespace Kaltura\Client\Enum;
  * @package Kaltura
  * @subpackage Client
  */
-class RuleConditionType extends \Kaltura\Client\EnumBase
+class ApiAction extends \Kaltura\Client\EnumBase
 {
-	const ASSET = "ASSET";
-	const COUNTRY = "COUNTRY";
-	const CONCURRENCY = "CONCURRENCY";
-	const IP_RANGE = "IP_RANGE";
-	const BUSINESS_MODULE = "BUSINESS_MODULE";
-	const SEGMENTS = "SEGMENTS";
-	const DATE = "DATE";
-	const OR = "OR";
-	const HEADER = "HEADER";
-	const USER_SUBSCRIPTION = "USER_SUBSCRIPTION";
-	const ASSET_SUBSCRIPTION = "ASSET_SUBSCRIPTION";
-	const USER_ROLE = "USER_ROLE";
-	const DEVICE_BRAND = "DEVICE_BRAND";
-	const DEVICE_FAMILY = "DEVICE_FAMILY";
-	const DEVICE_MANUFACTURER = "DEVICE_MANUFACTURER";
-	const DEVICE_MODEL = "DEVICE_MODEL";
-	const DEVICE_UDID_DYNAMIC_LIST = "DEVICE_UDID_DYNAMIC_LIST";
+	const ADD = "ADD";
 }
 

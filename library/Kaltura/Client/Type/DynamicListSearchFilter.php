@@ -33,14 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
+ * DynamicListSearchFilter
  * @package Kaltura
  * @subpackage Client
  */
-abstract class ProductPrice extends \Kaltura\Client\ObjectBase
+abstract class DynamicListSearchFilter extends \Kaltura\Client\Type\DynamicListFilter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaProductPrice';
+		return 'KalturaDynamicListSearchFilter';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,53 +51,21 @@ abstract class ProductPrice extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->productId))
-			$this->productId = (string)$xml->productId;
-		if(count($xml->productType))
-			$this->productType = (string)$xml->productType;
-		if(count($xml->price) && !empty($xml->price))
-			$this->price = \Kaltura\Client\ParseUtils::unmarshalObject($xml->price, "KalturaPrice");
-		if(count($xml->fullPrice) && !empty($xml->fullPrice))
-			$this->fullPrice = \Kaltura\Client\ParseUtils::unmarshalObject($xml->fullPrice, "KalturaPrice");
-		if(count($xml->purchaseStatus))
-			$this->purchaseStatus = (string)$xml->purchaseStatus;
-		if(count($xml->promotionInfo) && !empty($xml->promotionInfo))
-			$this->promotionInfo = \Kaltura\Client\ParseUtils::unmarshalObject($xml->promotionInfo, "KalturaPromotionInfo");
+		if(count($xml->idEqual))
+			$this->idEqual = (string)$xml->idEqual;
+		if(count($xml->valueEqual))
+			$this->valueEqual = (string)$xml->valueEqual;
 	}
 	/**
-	 * Product identifier
+	 * DynamicList id to search by
+	 * @var int
+	 */
+	public $idEqual = null;
+
+	/**
+	 * udid value that should be in the DynamicList
 	 * @var string
 	 */
-	public $productId = null;
-
-	/**
-	 * Product Type
-	 * @var \Kaltura\Client\Enum\TransactionType
-	 */
-	public $productType = null;
-
-	/**
-	 * Product price
-	 * @var \Kaltura\Client\Type\Price
-	 */
-	public $price;
-
-	/**
-	 * The full price of the item (with no discounts)
-	 * @var \Kaltura\Client\Type\Price
-	 */
-	public $fullPrice;
-
-	/**
-	 * Product purchase status
-	 * @var \Kaltura\Client\Enum\PurchaseStatus
-	 */
-	public $purchaseStatus = null;
-
-	/**
-	 * Promotion Info
-	 * @var \Kaltura\Client\Type\PromotionInfo
-	 */
-	public $promotionInfo;
+	public $valueEqual = null;
 
 }

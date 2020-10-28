@@ -33,14 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
+ * Campaign
  * @package Kaltura
  * @subpackage Client
  */
-class InboxMessage extends \Kaltura\Client\ObjectBase
+class Campaign extends \Kaltura\Client\Type\CrudObject
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaInboxMessage';
+		return 'KalturaCampaign';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -52,63 +53,103 @@ class InboxMessage extends \Kaltura\Client\ObjectBase
 		
 		if(count($xml->id))
 			$this->id = (string)$xml->id;
+		if(count($xml->createDate))
+			$this->createDate = (string)$xml->createDate;
+		if(count($xml->updateDate))
+			$this->updateDate = (string)$xml->updateDate;
+		if(count($xml->startDate))
+			$this->startDate = (string)$xml->startDate;
+		if(count($xml->endDate))
+			$this->endDate = (string)$xml->endDate;
+		if(count($xml->name))
+			$this->name = (string)$xml->name;
+		if(count($xml->systemName))
+			$this->systemName = (string)$xml->systemName;
+		if(count($xml->description))
+			$this->description = (string)$xml->description;
+		if(count($xml->state))
+			$this->state = (string)$xml->state;
+		if(count($xml->promotion) && !empty($xml->promotion))
+			$this->promotion = \Kaltura\Client\ParseUtils::unmarshalObject($xml->promotion, "KalturaPromotion");
 		if(count($xml->message))
 			$this->message = (string)$xml->message;
-		if(count($xml->status))
-			$this->status = (string)$xml->status;
-		if(count($xml->type))
-			$this->type = (string)$xml->type;
-		if(count($xml->createdAt))
-			$this->createdAt = (string)$xml->createdAt;
-		if(count($xml->url))
-			$this->url = (string)$xml->url;
-		if(count($xml->campaignId))
-			$this->campaignId = (string)$xml->campaignId;
+		if(count($xml->collectionIdIn))
+			$this->collectionIdIn = (string)$xml->collectionIdIn;
 	}
 	/**
-	 * message id
-	 * @var string
+	 * ID
+	 * @var int
 	 * @readonly
 	 */
 	public $id = null;
 
 	/**
-	 * message
+	 * Create date of the rule
+	 * @var int
+	 * @readonly
+	 */
+	public $createDate = null;
+
+	/**
+	 * Update date of the rule
+	 * @var int
+	 * @readonly
+	 */
+	public $updateDate = null;
+
+	/**
+	 * Start date of the rule
+	 * @var int
+	 */
+	public $startDate = null;
+
+	/**
+	 * End date of the rule
+	 * @var int
+	 */
+	public $endDate = null;
+
+	/**
+	 * Name
+	 * @var string
+	 */
+	public $name = null;
+
+	/**
+	 * systemName
+	 * @var string
+	 */
+	public $systemName = null;
+
+	/**
+	 * Description
+	 * @var string
+	 */
+	public $description = null;
+
+	/**
+	 * state
+	 * @var \Kaltura\Client\Enum\ObjectState
+	 * @readonly
+	 */
+	public $state = null;
+
+	/**
+	 * The Promotion that is promoted to the user
+	 * @var \Kaltura\Client\Type\Promotion
+	 */
+	public $promotion;
+
+	/**
+	 * Free text message to the user that gives information about the campaign.
 	 * @var string
 	 */
 	public $message = null;
 
 	/**
-	 * Status
-	 * @var \Kaltura\Client\Enum\InboxMessageStatus
-	 * @readonly
-	 */
-	public $status = null;
-
-	/**
-	 * Type
-	 * @var \Kaltura\Client\Enum\InboxMessageType
-	 */
-	public $type = null;
-
-	/**
-	 * Created at
-	 * @var int
-	 * @readonly
-	 */
-	public $createdAt = null;
-
-	/**
-	 * url
+	 * Comma separated collection IDs list
 	 * @var string
 	 */
-	public $url = null;
-
-	/**
-	 * campaignId
-	 * @var int
-	 * @readonly
-	 */
-	public $campaignId = null;
+	public $collectionIdIn = null;
 
 }

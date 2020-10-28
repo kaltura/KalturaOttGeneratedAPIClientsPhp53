@@ -33,14 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
+ * Promotion
  * @package Kaltura
  * @subpackage Client
  */
-abstract class ProductPrice extends \Kaltura\Client\ObjectBase
+class Promotion extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaProductPrice';
+		return 'KalturaPromotion';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,53 +51,34 @@ abstract class ProductPrice extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->productId))
-			$this->productId = (string)$xml->productId;
-		if(count($xml->productType))
-			$this->productType = (string)$xml->productType;
-		if(count($xml->price) && !empty($xml->price))
-			$this->price = \Kaltura\Client\ParseUtils::unmarshalObject($xml->price, "KalturaPrice");
-		if(count($xml->fullPrice) && !empty($xml->fullPrice))
-			$this->fullPrice = \Kaltura\Client\ParseUtils::unmarshalObject($xml->fullPrice, "KalturaPrice");
-		if(count($xml->purchaseStatus))
-			$this->purchaseStatus = (string)$xml->purchaseStatus;
-		if(count($xml->promotionInfo) && !empty($xml->promotionInfo))
-			$this->promotionInfo = \Kaltura\Client\ParseUtils::unmarshalObject($xml->promotionInfo, "KalturaPromotionInfo");
+		if(count($xml->discountModuleId))
+			$this->discountModuleId = (string)$xml->discountModuleId;
+		if(count($xml->conditions))
+		{
+			if(empty($xml->conditions))
+				$this->conditions = array();
+			else
+				$this->conditions = \Kaltura\Client\ParseUtils::unmarshalArray($xml->conditions, "KalturaCondition");
+		}
+		if(count($xml->numberOfRecurring))
+			$this->numberOfRecurring = (int)$xml->numberOfRecurring;
 	}
 	/**
-	 * Product identifier
-	 * @var string
+	 * The discount module id that is promoted to the user
+	 * @var int
 	 */
-	public $productId = null;
+	public $discountModuleId = null;
 
 	/**
-	 * Product Type
-	 * @var \Kaltura\Client\Enum\TransactionType
+	 * These conditions define the Promotion that applies on
+	 * @var array<KalturaCondition>
 	 */
-	public $productType = null;
+	public $conditions;
 
 	/**
-	 * Product price
-	 * @var \Kaltura\Client\Type\Price
+	 * the numer of recurring for this promotion
+	 * @var int
 	 */
-	public $price;
-
-	/**
-	 * The full price of the item (with no discounts)
-	 * @var \Kaltura\Client\Type\Price
-	 */
-	public $fullPrice;
-
-	/**
-	 * Product purchase status
-	 * @var \Kaltura\Client\Enum\PurchaseStatus
-	 */
-	public $purchaseStatus = null;
-
-	/**
-	 * Promotion Info
-	 * @var \Kaltura\Client\Type\PromotionInfo
-	 */
-	public $promotionInfo;
+	public $numberOfRecurring = null;
 
 }
