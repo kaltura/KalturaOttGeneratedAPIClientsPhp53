@@ -105,6 +105,8 @@ class MediaFile extends \Kaltura\Client\Type\AssetFile
 			$this->catalogEndDate = (string)$xml->catalogEndDate;
 		if(count($xml->opl))
 			$this->opl = (string)$xml->opl;
+		if(count($xml->businessModuleDetails) && !empty($xml->businessModuleDetails))
+			$this->businessModuleDetails = \Kaltura\Client\ParseUtils::unmarshalObject($xml->businessModuleDetails, "KalturaBusinessModuleDetails");
 	}
 	/**
 	 * Unique identifier for the asset
@@ -239,5 +241,11 @@ class MediaFile extends \Kaltura\Client\Type\AssetFile
 	 * @var string
 	 */
 	public $opl = null;
+
+	/**
+	 * businessModuleDetails
+	 * @var \Kaltura\Client\Type\BusinessModuleDetails
+	 */
+	public $businessModuleDetails;
 
 }

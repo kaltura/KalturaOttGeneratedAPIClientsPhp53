@@ -36,11 +36,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class PlaybackSource extends \Kaltura\Client\Type\MediaFile
+class ProgramAssetEvent extends \Kaltura\Client\Type\AssetEvent
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaPlaybackSource';
+		return 'KalturaProgramAssetEvent';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,65 +50,14 @@ class PlaybackSource extends \Kaltura\Client\Type\MediaFile
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->format))
-			$this->format = (string)$xml->format;
-		if(count($xml->protocols))
-			$this->protocols = (string)$xml->protocols;
-		if(count($xml->drm))
-		{
-			if(empty($xml->drm))
-				$this->drm = array();
-			else
-				$this->drm = \Kaltura\Client\ParseUtils::unmarshalArray($xml->drm, "KalturaDrmPlaybackPluginData");
-		}
-		if(count($xml->isTokenized))
-		{
-			if(!empty($xml->isTokenized) && $xml->isTokenized != 'false')
-				$this->isTokenized = true;
-			else
-				$this->isTokenized = false;
-		}
-		if(count($xml->businessModuleId))
-			$this->businessModuleId = (int)$xml->businessModuleId;
-		if(count($xml->businessModuleType))
-			$this->businessModuleType = (string)$xml->businessModuleType;
+		if(count($xml->liveAssetId))
+			$this->liveAssetId = (int)$xml->liveAssetId;
 	}
 	/**
-	 * Source format according to delivery profile streamer type (applehttp, mpegdash etc.)
-	 * @var string
-	 */
-	public $format = null;
-
-	/**
-	 * Comma separated string according to deliveryProfile media protocols (&#39;http,https&#39; etc.)
-	 * @var string
-	 */
-	public $protocols = null;
-
-	/**
-	 * DRM data object containing relevant license URL ,scheme name and certificate
-	 * @var array<KalturaDrmPlaybackPluginData>
-	 */
-	public $drm;
-
-	/**
-	 * Is Tokenized
-	 * @var bool
-	 */
-	public $isTokenized = null;
-
-	/**
-	 * Business Module Id
+	 * The  live asset Id that was identified according liveAssetExternalId
 	 * @var int
 	 * @readonly
 	 */
-	public $businessModuleId = null;
-
-	/**
-	 * Business Module Type
-	 * @var \Kaltura\Client\Enum\TransactionType
-	 * @readonly
-	 */
-	public $businessModuleType = null;
+	public $liveAssetId = null;
 
 }
