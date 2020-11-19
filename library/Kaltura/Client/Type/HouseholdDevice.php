@@ -77,6 +77,8 @@ class HouseholdDevice extends \Kaltura\Client\Type\OTTObjectSupportNullable
 			$this->manufacturer = (string)$xml->manufacturer;
 		if(count($xml->manufacturerId))
 			$this->manufacturerId = (string)$xml->manufacturerId;
+		if(count($xml->lastActivityTime))
+			$this->lastActivityTime = (string)$xml->lastActivityTime;
 	}
 	/**
 	 * Household identifier
@@ -160,5 +162,12 @@ class HouseholdDevice extends \Kaltura\Client\Type\OTTObjectSupportNullable
 	 * @readonly
 	 */
 	public $manufacturerId = null;
+
+	/**
+	 * Last Activity Time, read only
+	 * @var int
+	 * @readonly
+	 */
+	public $lastActivityTime = null;
 
 }
