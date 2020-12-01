@@ -30,24 +30,53 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
+ * Watch history asset info
  * @package Kaltura
  * @subpackage Client
  */
-class PartnerConfigurationType extends \Kaltura\Client\EnumBase
+class StreamingDevice extends \Kaltura\Client\ObjectBase
 {
-	const DEFAULTPAYMENTGATEWAY = "DefaultPaymentGateway";
-	const ENABLEPAYMENTGATEWAYSELECTION = "EnablePaymentGatewaySelection";
-	const OSSADAPTER = "OSSAdapter";
-	const CONCURRENCY = "Concurrency";
-	const GENERAL = "General";
-	const OBJECTVIRTUALASSET = "ObjectVirtualAsset";
-	const COMMERCE = "Commerce";
-	const PLAYBACK = "Playback";
-	const PAYMENT = "Payment";
-	const CATALOG = "Catalog";
-	const SECURITY = "Security";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaStreamingDevice';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->asset) && !empty($xml->asset))
+			$this->asset = \Kaltura\Client\ParseUtils::unmarshalObject($xml->asset, "KalturaSlimAsset");
+		if(count($xml->userId))
+			$this->userId = (string)$xml->userId;
+		if(count($xml->udid))
+			$this->udid = (string)$xml->udid;
+	}
+	/**
+	 * Asset
+	 * @var \Kaltura\Client\Type\SlimAsset
+	 * @readonly
+	 */
+	public $asset;
 
+	/**
+	 * User identifier
+	 * @var string
+	 * @readonly
+	 */
+	public $userId = null;
+
+	/**
+	 * Device UDID
+	 * @var string
+	 * @insertonly
+	 */
+	public $udid = null;
+
+}

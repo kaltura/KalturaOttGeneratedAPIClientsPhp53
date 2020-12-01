@@ -599,6 +599,11 @@ class Client extends Base
 	protected $ssoAdapterProfile = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\StreamingDeviceService
+	 */
+	protected $streamingDevice = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\SubscriptionService
 	 */
 	protected $subscription = null;
@@ -702,8 +707,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:20-11-19');
-		$this->setApiVersion('5.8.0.28728');
+		$this->setClientTag('php5:20-12-01');
+		$this->setApiVersion('5.8.0.28736');
 	}
 	
 	/**
@@ -1713,6 +1718,15 @@ class Client extends Base
 		if (is_null($this->ssoAdapterProfile))
 			$this->ssoAdapterProfile = new \Kaltura\Client\Service\SsoAdapterProfileService($this);
 		return $this->ssoAdapterProfile;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\StreamingDeviceService
+	 */
+	public function getStreamingDeviceService()
+	{
+		if (is_null($this->streamingDevice))
+			$this->streamingDevice = new \Kaltura\Client\Service\StreamingDeviceService($this);
+		return $this->streamingDevice;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\SubscriptionService

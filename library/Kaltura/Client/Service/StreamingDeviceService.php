@@ -27,27 +27,41 @@
 // @ignore
 // ===================================================================================================
 
+
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Service;
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class PartnerConfigurationType extends \Kaltura\Client\EnumBase
+class StreamingDeviceService extends \Kaltura\Client\ServiceBase
 {
-	const DEFAULTPAYMENTGATEWAY = "DefaultPaymentGateway";
-	const ENABLEPAYMENTGATEWAYSELECTION = "EnablePaymentGatewaySelection";
-	const OSSADAPTER = "OSSAdapter";
-	const CONCURRENCY = "Concurrency";
-	const GENERAL = "General";
-	const OBJECTVIRTUALASSET = "ObjectVirtualAsset";
-	const COMMERCE = "Commerce";
-	const PLAYBACK = "Playback";
-	const PAYMENT = "Payment";
-	const CATALOG = "Catalog";
-	const SECURITY = "Security";
-}
+	function __construct(\Kaltura\Client\Client $client = null)
+	{
+		parent::__construct($client);
+	}
 
+	/**
+	 * Lists of devices that are streaming at that moment
+	 * 
+	 * @return \Kaltura\Client\Type\StreamingDeviceListResponse
+	 */
+	function listAction(\Kaltura\Client\Type\StreamingDeviceFilter $filter = null)
+	{
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		$this->client->queueServiceActionCall("streamingdevice", "list", "KalturaStreamingDeviceListResponse", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaStreamingDeviceListResponse");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\StreamingDeviceListResponse");
+		return $resultObject;
+	}
+}

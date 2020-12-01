@@ -89,6 +89,8 @@ class SubscriptionEntitlement extends \Kaltura\Client\Type\Entitlement
 			else
 				$this->isSuspended = false;
 		}
+		if(count($xml->priceDetails) && !empty($xml->priceDetails))
+			$this->priceDetails = \Kaltura\Client\ParseUtils::unmarshalObject($xml->priceDetails, "KalturaEntitlementPriceDetails");
 	}
 	/**
 	 * The date of the next renewal (only for subscription)
@@ -150,5 +152,12 @@ class SubscriptionEntitlement extends \Kaltura\Client\Type\Entitlement
 	 * @readonly
 	 */
 	public $isSuspended = null;
+
+	/**
+	 * Price details
+	 * @var \Kaltura\Client\Type\EntitlementPriceDetails
+	 * @readonly
+	 */
+	public $priceDetails;
 
 }

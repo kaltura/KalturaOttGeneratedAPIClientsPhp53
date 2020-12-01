@@ -30,24 +30,53 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
+ * Entitlement discount details
  * @package Kaltura
  * @subpackage Client
  */
-class PartnerConfigurationType extends \Kaltura\Client\EnumBase
+class EntitlementDiscountDetails extends \Kaltura\Client\ObjectBase
 {
-	const DEFAULTPAYMENTGATEWAY = "DefaultPaymentGateway";
-	const ENABLEPAYMENTGATEWAYSELECTION = "EnablePaymentGatewaySelection";
-	const OSSADAPTER = "OSSAdapter";
-	const CONCURRENCY = "Concurrency";
-	const GENERAL = "General";
-	const OBJECTVIRTUALASSET = "ObjectVirtualAsset";
-	const COMMERCE = "Commerce";
-	const PLAYBACK = "Playback";
-	const PAYMENT = "Payment";
-	const CATALOG = "Catalog";
-	const SECURITY = "Security";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaEntitlementDiscountDetails';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->amount))
+			$this->amount = (float)$xml->amount;
+		if(count($xml->startDate))
+			$this->startDate = (string)$xml->startDate;
+		if(count($xml->endDate))
+			$this->endDate = (string)$xml->endDate;
+	}
+	/**
+	 * Amount
+	 * @var float
+	 * @readonly
+	 */
+	public $amount = null;
 
+	/**
+	 * Start date
+	 * @var int
+	 * @readonly
+	 */
+	public $startDate = null;
+
+	/**
+	 * End date
+	 * @var int
+	 * @readonly
+	 */
+	public $endDate = null;
+
+}
