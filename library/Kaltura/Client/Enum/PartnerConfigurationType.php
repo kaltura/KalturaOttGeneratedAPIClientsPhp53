@@ -48,6 +48,5 @@ class PartnerConfigurationType extends \Kaltura\Client\EnumBase
 	const PLAYBACK = "Playback";
 	const PAYMENT = "Payment";
 	const CATALOG = "Catalog";
-	const SECURITY = "Security";
 }
 
