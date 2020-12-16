@@ -33,15 +33,14 @@
 namespace Kaltura\Client\Type;
 
 /**
- * instructions for upload data type with xml
  * @package Kaltura
  * @subpackage Client
  */
-class BulkUploadIngestJobData extends \Kaltura\Client\Type\BulkUploadJobData
+class EpgNotificationSettings extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaBulkUploadIngestJobData';
+		return 'KalturaEpgNotificationSettings';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,28 +50,43 @@ class BulkUploadIngestJobData extends \Kaltura\Client\Type\BulkUploadJobData
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->ingestProfileId))
-			$this->ingestProfileId = (int)$xml->ingestProfileId;
-		if(count($xml->disableEpgNotification))
+		if(count($xml->enabled))
 		{
-			if(!empty($xml->disableEpgNotification) && $xml->disableEpgNotification != 'false')
-				$this->disableEpgNotification = true;
+			if(!empty($xml->enabled) && $xml->enabled != 'false')
+				$this->enabled = true;
 			else
-				$this->disableEpgNotification = false;
+				$this->enabled = false;
 		}
+		if(count($xml->deviceFamilyIds))
+			$this->deviceFamilyIds = (string)$xml->deviceFamilyIds;
+		if(count($xml->liveAssetIds))
+			$this->liveAssetIds = (string)$xml->liveAssetIds;
+		if(count($xml->timeRange))
+			$this->timeRange = (int)$xml->timeRange;
 	}
 	/**
-	 * Identifies the ingest profile that will handle the ingest of programs
-	 *             Ingest profiles are created separately using the ingest profile service
-	 * @var int
-	 */
-	public $ingestProfileId = null;
-
-	/**
-	 * By default, after the successful ingest, devices will be notified about changes in epg channels.
-	 *             This parameter disables this notification.
+	 * EPG notification capability is enabled for the account
 	 * @var bool
 	 */
-	public $disableEpgNotification = null;
+	public $enabled = null;
+
+	/**
+	 * Specify which devices should receive notifications
+	 * @var string
+	 */
+	public $deviceFamilyIds = null;
+
+	/**
+	 * Specify which live assets should fire notifications
+	 * @var string
+	 */
+	public $liveAssetIds = null;
+
+	/**
+	 * The range (in hours), in which, EPG updates triggers a notification,
+	 *             every program that is updated and it’s starts time falls within this range shall trigger a notification
+	 * @var int
+	 */
+	public $timeRange = null;
 
 }
