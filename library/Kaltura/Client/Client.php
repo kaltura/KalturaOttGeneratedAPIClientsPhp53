@@ -707,8 +707,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:20-12-15');
-		$this->setApiVersion('5.9.0.28744');
+		$this->setClientTag('php5:20-12-22');
+		$this->setApiVersion('5.9.0.28745');
 	}
 	
 	/**
