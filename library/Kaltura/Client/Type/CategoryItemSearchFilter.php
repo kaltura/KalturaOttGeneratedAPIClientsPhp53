@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2020  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -59,8 +59,6 @@ class CategoryItemSearchFilter extends \Kaltura\Client\Type\CategoryItemFilter
 			else
 				$this->rootOnly = false;
 		}
-		if(count($xml->typeEqual))
-			$this->typeEqual = (string)$xml->typeEqual;
 	}
 	/**
 	 * KSQL expression
@@ -73,11 +71,5 @@ class CategoryItemSearchFilter extends \Kaltura\Client\Type\CategoryItemFilter
 	 * @var bool
 	 */
 	public $rootOnly = null;
-
-	/**
-	 * Indicates which category to return by their type.
-	 * @var string
-	 */
-	public $typeEqual = null;
 
 }

@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2020  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -93,8 +93,6 @@ class CategoryItem extends \Kaltura\Client\Type\CrudObject
 			$this->startDateInSeconds = (string)$xml->startDateInSeconds;
 		if(count($xml->endDateInSeconds))
 			$this->endDateInSeconds = (string)$xml->endDateInSeconds;
-		if(count($xml->type))
-			$this->type = (string)$xml->type;
 	}
 	/**
 	 * Unique identifier for the category
@@ -165,12 +163,5 @@ class CategoryItem extends \Kaltura\Client\Type\CrudObject
 	 * @var int
 	 */
 	public $endDateInSeconds = null;
-
-	/**
-	 * Category type
-	 * @var string
-	 * @insertonly
-	 */
-	public $type = null;
 
 }

@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2020  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -58,10 +58,6 @@ class UserRole extends \Kaltura\Client\ObjectBase
 			$this->permissionNames = (string)$xml->permissionNames;
 		if(count($xml->excludedPermissionNames))
 			$this->excludedPermissionNames = (string)$xml->excludedPermissionNames;
-		if(count($xml->type))
-			$this->type = (string)$xml->type;
-		if(count($xml->profile))
-			$this->profile = (string)$xml->profile;
 	}
 	/**
 	 * User role identifier
@@ -87,18 +83,5 @@ class UserRole extends \Kaltura\Client\ObjectBase
 	 * @var string
 	 */
 	public $excludedPermissionNames = null;
-
-	/**
-	 * Role type
-	 * @var \Kaltura\Client\Enum\UserRoleType
-	 * @readonly
-	 */
-	public $type = null;
-
-	/**
-	 * Role profile
-	 * @var \Kaltura\Client\Enum\UserRoleProfile
-	 */
-	public $profile = null;
 
 }

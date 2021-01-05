@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2020  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -65,13 +65,6 @@ class RegionFilter extends \Kaltura\Client\Type\BaseRegionFilter
 			else
 				$this->parentOnly = false;
 		}
-		if(count($xml->exclusiveLcn))
-		{
-			if(!empty($xml->exclusiveLcn) && $xml->exclusiveLcn != 'false')
-				$this->exclusiveLcn = true;
-			else
-				$this->exclusiveLcn = false;
-		}
 	}
 	/**
 	 * List of comma separated regions external IDs
@@ -102,11 +95,5 @@ class RegionFilter extends \Kaltura\Client\Type\BaseRegionFilter
 	 * @var bool
 	 */
 	public $parentOnly = null;
-
-	/**
-	 * Retrieves only the channels belonging specifically to the child region
-	 * @var bool
-	 */
-	public $exclusiveLcn = null;
 
 }

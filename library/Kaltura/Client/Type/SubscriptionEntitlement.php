@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2020  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -89,8 +89,6 @@ class SubscriptionEntitlement extends \Kaltura\Client\Type\Entitlement
 			else
 				$this->isSuspended = false;
 		}
-		if(count($xml->priceDetails) && !empty($xml->priceDetails))
-			$this->priceDetails = \Kaltura\Client\ParseUtils::unmarshalObject($xml->priceDetails, "KalturaEntitlementPriceDetails");
 	}
 	/**
 	 * The date of the next renewal (only for subscription)
@@ -152,12 +150,5 @@ class SubscriptionEntitlement extends \Kaltura\Client\Type\Entitlement
 	 * @readonly
 	 */
 	public $isSuspended = null;
-
-	/**
-	 * Price details
-	 * @var \Kaltura\Client\Type\EntitlementPriceDetails
-	 * @readonly
-	 */
-	public $priceDetails;
 
 }

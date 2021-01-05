@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2020  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -103,10 +103,6 @@ class MediaFile extends \Kaltura\Client\Type\AssetFile
 		}
 		if(count($xml->catalogEndDate))
 			$this->catalogEndDate = (string)$xml->catalogEndDate;
-		if(count($xml->opl))
-			$this->opl = (string)$xml->opl;
-		if(count($xml->businessModuleDetails) && !empty($xml->businessModuleDetails))
-			$this->businessModuleDetails = \Kaltura\Client\ParseUtils::unmarshalObject($xml->businessModuleDetails, "KalturaBusinessModuleDetails");
 	}
 	/**
 	 * Unique identifier for the asset
@@ -235,17 +231,5 @@ class MediaFile extends \Kaltura\Client\Type\AssetFile
 	 * @var int
 	 */
 	public $catalogEndDate = null;
-
-	/**
-	 * OPL
-	 * @var string
-	 */
-	public $opl = null;
-
-	/**
-	 * businessModuleDetails
-	 * @var \Kaltura\Client\Type\BusinessModuleDetails
-	 */
-	public $businessModuleDetails;
 
 }

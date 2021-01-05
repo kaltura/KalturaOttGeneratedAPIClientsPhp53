@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2020  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -60,10 +60,6 @@ class UserRoleFilter extends \Kaltura\Client\Type\Filter
 			else
 				$this->currentUserRoleIdsContains = false;
 		}
-		if(count($xml->typeEqual))
-			$this->typeEqual = (string)$xml->typeEqual;
-		if(count($xml->profileEqual))
-			$this->profileEqual = (string)$xml->profileEqual;
 	}
 	/**
 	 * Comma separated roles identifiers
@@ -76,17 +72,5 @@ class UserRoleFilter extends \Kaltura\Client\Type\Filter
 	 * @var bool
 	 */
 	public $currentUserRoleIdsContains = null;
-
-	/**
-	 * User role type
-	 * @var \Kaltura\Client\Enum\UserRoleType
-	 */
-	public $typeEqual = null;
-
-	/**
-	 * User role profile
-	 * @var \Kaltura\Client\Enum\UserRoleProfile
-	 */
-	public $profileEqual = null;
 
 }

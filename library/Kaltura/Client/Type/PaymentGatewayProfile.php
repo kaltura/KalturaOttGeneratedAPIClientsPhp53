@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2020  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -86,13 +86,6 @@ class PaymentGatewayProfile extends \Kaltura\Client\Type\PaymentGatewayBaseProfi
 				$this->externalVerification = true;
 			else
 				$this->externalVerification = false;
-		}
-		if(count($xml->isAsyncPolicy))
-		{
-			if(!empty($xml->isAsyncPolicy) && $xml->isAsyncPolicy != 'false')
-				$this->isAsyncPolicy = true;
-			else
-				$this->isAsyncPolicy = false;
 		}
 	}
 	/**
@@ -172,11 +165,5 @@ class PaymentGatewayProfile extends \Kaltura\Client\Type\PaymentGatewayBaseProfi
 	 * @var bool
 	 */
 	public $externalVerification = null;
-
-	/**
-	 * Payment gateway - Support asynchronous purchase
-	 * @var bool
-	 */
-	public $isAsyncPolicy = null;
 
 }

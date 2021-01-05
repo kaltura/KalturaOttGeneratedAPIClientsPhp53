@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2020  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -56,13 +56,6 @@ class ObjectVirtualAssetInfo extends \Kaltura\Client\ObjectBase
 			$this->metaId = (int)$xml->metaId;
 		if(count($xml->type))
 			$this->type = (string)$xml->type;
-		if(count($xml->extendedTypes))
-		{
-			if(empty($xml->extendedTypes))
-				$this->extendedTypes = array();
-			else
-				$this->extendedTypes = \Kaltura\Client\ParseUtils::unmarshalMap($xml->extendedTypes, "KalturaLongValue");
-		}
 	}
 	/**
 	 * Asset struct identifier
@@ -81,11 +74,5 @@ class ObjectVirtualAssetInfo extends \Kaltura\Client\ObjectBase
 	 * @var \Kaltura\Client\Enum\ObjectVirtualAssetInfoType
 	 */
 	public $type = null;
-
-	/**
-	 * Extended types mapping
-	 * @var array<string, KalturaLongValue>
-	 */
-	public $extendedTypes;
 
 }

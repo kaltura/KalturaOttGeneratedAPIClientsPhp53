@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2020  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -100,28 +100,6 @@ class HouseholdService extends \Kaltura\Client\ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaHousehold");
 		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\Household");
-		return $resultObject;
-	}
-
-	/**
-	 * Get recently watched media for user, ordered by recently watched first.
-	 * 
-	 * @return \Kaltura\Client\Type\HouseholdListResponse
-	 */
-	function listAction(\Kaltura\Client\Type\HouseholdFilter $filter, \Kaltura\Client\Type\FilterPager $pager = null)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("household", "list", "KalturaHouseholdListResponse", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaHouseholdListResponse");
-		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\HouseholdListResponse");
 		return $resultObject;
 	}
 

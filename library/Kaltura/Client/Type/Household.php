@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2020  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -86,10 +86,6 @@ class Household extends \Kaltura\Client\ObjectBase
 			$this->restriction = (string)$xml->restriction;
 		if(count($xml->roleId))
 			$this->roleId = (int)$xml->roleId;
-		if(count($xml->createDate))
-			$this->createDate = (string)$xml->createDate;
-		if(count($xml->updateDate))
-			$this->updateDate = (string)$xml->updateDate;
 	}
 	/**
 	 * Household identifier
@@ -191,19 +187,5 @@ class Household extends \Kaltura\Client\ObjectBase
 	 * @readonly
 	 */
 	public $roleId = null;
-
-	/**
-	 * create date
-	 * @var int
-	 * @readonly
-	 */
-	public $createDate = null;
-
-	/**
-	 * update date
-	 * @var int
-	 * @readonly
-	 */
-	public $updateDate = null;
 
 }
