@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2020  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -121,6 +121,8 @@ class NotificationsPartnerSettings extends \Kaltura\Client\ObjectBase
 			else
 				$this->iotEnabled = false;
 		}
+		if(count($xml->epgNotification) && !empty($xml->epgNotification))
+			$this->epgNotification = \Kaltura\Client\ParseUtils::unmarshalObject($xml->epgNotification, "KalturaEpgNotificationSettings");
 	}
 	/**
 	 * Push notification capability is enabled for the account
@@ -229,5 +231,11 @@ class NotificationsPartnerSettings extends \Kaltura\Client\ObjectBase
 	 * @var bool
 	 */
 	public $iotEnabled = null;
+
+	/**
+	 * Settings for epg notifications
+	 * @var \Kaltura\Client\Type\EpgNotificationSettings
+	 */
+	public $epgNotification;
 
 }

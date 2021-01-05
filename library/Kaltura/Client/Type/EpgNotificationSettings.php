@@ -36,11 +36,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class LoginResponse extends \Kaltura\Client\ObjectBase
+class EpgNotificationSettings extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaLoginResponse';
+		return 'KalturaEpgNotificationSettings';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,21 +50,43 @@ class LoginResponse extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->user) && !empty($xml->user))
-			$this->user = \Kaltura\Client\ParseUtils::unmarshalObject($xml->user, "KalturaOTTUser");
-		if(count($xml->loginSession) && !empty($xml->loginSession))
-			$this->loginSession = \Kaltura\Client\ParseUtils::unmarshalObject($xml->loginSession, "KalturaLoginSession");
+		if(count($xml->enabled))
+		{
+			if(!empty($xml->enabled) && $xml->enabled != 'false')
+				$this->enabled = true;
+			else
+				$this->enabled = false;
+		}
+		if(count($xml->deviceFamilyIds))
+			$this->deviceFamilyIds = (string)$xml->deviceFamilyIds;
+		if(count($xml->liveAssetIds))
+			$this->liveAssetIds = (string)$xml->liveAssetIds;
+		if(count($xml->timeRange))
+			$this->timeRange = (int)$xml->timeRange;
 	}
 	/**
-	 * User
-	 * @var \Kaltura\Client\Type\OTTUser
+	 * EPG notification capability is enabled for the account
+	 * @var bool
 	 */
-	public $user;
+	public $enabled = null;
 
 	/**
-	 * Kaltura login session details
-	 * @var \Kaltura\Client\Type\LoginSession
+	 * Specify which devices should receive notifications
+	 * @var string
 	 */
-	public $loginSession;
+	public $deviceFamilyIds = null;
+
+	/**
+	 * Specify which live assets should fire notifications
+	 * @var string
+	 */
+	public $liveAssetIds = null;
+
+	/**
+	 * The range (in hours), in which, EPG updates triggers a notification,
+	 *             every program that is updated and it’s starts time falls within this range shall trigger a notification
+	 * @var int
+	 */
+	public $timeRange = null;
 
 }

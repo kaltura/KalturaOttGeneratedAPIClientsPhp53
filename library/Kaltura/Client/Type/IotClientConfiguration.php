@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2020  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -59,6 +59,8 @@ class IotClientConfiguration extends \Kaltura\Client\ObjectBase
 			$this->cognitoUserPool = \Kaltura\Client\ParseUtils::unmarshalObject($xml->cognitoUserPool, "KalturaCognitoUserPool");
 		if(count($xml->json))
 			$this->json = (string)$xml->json;
+		if(count($xml->topics))
+			$this->topics = (string)$xml->topics;
 	}
 	/**
 	 * announcementTopic
@@ -83,5 +85,11 @@ class IotClientConfiguration extends \Kaltura\Client\ObjectBase
 	 * @var string
 	 */
 	public $json = null;
+
+	/**
+	 * topics
+	 * @var string
+	 */
+	public $topics = null;
 
 }
