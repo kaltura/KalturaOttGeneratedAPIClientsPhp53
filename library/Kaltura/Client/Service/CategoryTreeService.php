@@ -85,4 +85,24 @@ class CategoryTreeService extends \Kaltura\Client\ServiceBase
 		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\CategoryTree");
 		return $resultObject;
 	}
+
+	/**
+	 * Retrieve default category tree of deviceFamilyId by KS or specific one if versionId is set.
+	 * 
+	 * @return \Kaltura\Client\Type\CategoryTree
+	 */
+	function getByVersion ($versionId = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "versionId", $versionId);
+		$this->client->queueServiceActionCall("categorytree", "getByVersion ", "KalturaCategoryTree", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCategoryTree");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\CategoryTree");
+		return $resultObject;
+	}
 }

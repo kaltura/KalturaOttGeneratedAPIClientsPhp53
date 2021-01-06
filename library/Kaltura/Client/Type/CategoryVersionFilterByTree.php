@@ -33,15 +33,14 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Iot client Configuration
  * @package Kaltura
  * @subpackage Client
  */
-class IotClientConfiguration extends \Kaltura\Client\ObjectBase
+class CategoryVersionFilterByTree extends \Kaltura\Client\Type\CategoryVersionFilter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaIotClientConfiguration';
+		return 'KalturaCategoryVersionFilterByTree';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,37 +50,21 @@ class IotClientConfiguration extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->announcementTopic))
-			$this->announcementTopic = (string)$xml->announcementTopic;
-		if(count($xml->credentialsProvider) && !empty($xml->credentialsProvider))
-			$this->credentialsProvider = \Kaltura\Client\ParseUtils::unmarshalObject($xml->credentialsProvider, "KalturaCredentialsProvider");
-		if(count($xml->cognitoUserPool) && !empty($xml->cognitoUserPool))
-			$this->cognitoUserPool = \Kaltura\Client\ParseUtils::unmarshalObject($xml->cognitoUserPool, "KalturaCognitoUserPool");
-		if(count($xml->json))
-			$this->json = (string)$xml->json;
+		if(count($xml->treeIdEqual))
+			$this->treeIdEqual = (string)$xml->treeIdEqual;
+		if(count($xml->stateEqual))
+			$this->stateEqual = (string)$xml->stateEqual;
 	}
 	/**
-	 * announcementTopic
-	 * @var string
+	 * Category version tree identifier
+	 * @var int
 	 */
-	public $announcementTopic = null;
+	public $treeIdEqual = null;
 
 	/**
-	 * KalturaCredentialsProvider
-	 * @var \Kaltura\Client\Type\CredentialsProvider
+	 * Category version state
+	 * @var \Kaltura\Client\Enum\CategoryVersionState
 	 */
-	public $credentialsProvider;
-
-	/**
-	 * CognitoUserPool
-	 * @var \Kaltura\Client\Type\CognitoUserPool
-	 */
-	public $cognitoUserPool;
-
-	/**
-	 * json
-	 * @var string
-	 */
-	public $json = null;
+	public $stateEqual = null;
 
 }

@@ -30,58 +30,16 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
- * Iot client Configuration
  * @package Kaltura
  * @subpackage Client
  */
-class IotClientConfiguration extends \Kaltura\Client\ObjectBase
+class CategoryVersionState extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaIotClientConfiguration';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->announcementTopic))
-			$this->announcementTopic = (string)$xml->announcementTopic;
-		if(count($xml->credentialsProvider) && !empty($xml->credentialsProvider))
-			$this->credentialsProvider = \Kaltura\Client\ParseUtils::unmarshalObject($xml->credentialsProvider, "KalturaCredentialsProvider");
-		if(count($xml->cognitoUserPool) && !empty($xml->cognitoUserPool))
-			$this->cognitoUserPool = \Kaltura\Client\ParseUtils::unmarshalObject($xml->cognitoUserPool, "KalturaCognitoUserPool");
-		if(count($xml->json))
-			$this->json = (string)$xml->json;
-	}
-	/**
-	 * announcementTopic
-	 * @var string
-	 */
-	public $announcementTopic = null;
-
-	/**
-	 * KalturaCredentialsProvider
-	 * @var \Kaltura\Client\Type\CredentialsProvider
-	 */
-	public $credentialsProvider;
-
-	/**
-	 * CognitoUserPool
-	 * @var \Kaltura\Client\Type\CognitoUserPool
-	 */
-	public $cognitoUserPool;
-
-	/**
-	 * json
-	 * @var string
-	 */
-	public $json = null;
-
+	const DRAFT = "DRAFT";
+	const DEFAULT = "DEFAULT";
+	const RELEASED = "RELEASED";
 }
+

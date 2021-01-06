@@ -33,15 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Iot client Configuration
+ * Category management
  * @package Kaltura
  * @subpackage Client
  */
-class IotClientConfiguration extends \Kaltura\Client\ObjectBase
+class CategoryManagement extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaIotClientConfiguration';
+		return 'KalturaCategoryManagement';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,37 +51,26 @@ class IotClientConfiguration extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->announcementTopic))
-			$this->announcementTopic = (string)$xml->announcementTopic;
-		if(count($xml->credentialsProvider) && !empty($xml->credentialsProvider))
-			$this->credentialsProvider = \Kaltura\Client\ParseUtils::unmarshalObject($xml->credentialsProvider, "KalturaCredentialsProvider");
-		if(count($xml->cognitoUserPool) && !empty($xml->cognitoUserPool))
-			$this->cognitoUserPool = \Kaltura\Client\ParseUtils::unmarshalObject($xml->cognitoUserPool, "KalturaCognitoUserPool");
-		if(count($xml->json))
-			$this->json = (string)$xml->json;
+		if(count($xml->defaultTreeId))
+			$this->defaultTreeId = (string)$xml->defaultTreeId;
+		if(count($xml->deviceFamilyToCategoryTree))
+		{
+			if(empty($xml->deviceFamilyToCategoryTree))
+				$this->deviceFamilyToCategoryTree = array();
+			else
+				$this->deviceFamilyToCategoryTree = \Kaltura\Client\ParseUtils::unmarshalMap($xml->deviceFamilyToCategoryTree, "KalturaLongValue");
+		}
 	}
 	/**
-	 * announcementTopic
-	 * @var string
+	 * Default CategoryVersion tree id
+	 * @var int
 	 */
-	public $announcementTopic = null;
+	public $defaultTreeId = null;
 
 	/**
-	 * KalturaCredentialsProvider
-	 * @var \Kaltura\Client\Type\CredentialsProvider
+	 * Device family to Category TreeId mapping
+	 * @var array<string, KalturaLongValue>
 	 */
-	public $credentialsProvider;
-
-	/**
-	 * CognitoUserPool
-	 * @var \Kaltura\Client\Type\CognitoUserPool
-	 */
-	public $cognitoUserPool;
-
-	/**
-	 * json
-	 * @var string
-	 */
-	public $json = null;
+	public $deviceFamilyToCategoryTree;
 
 }
