@@ -121,6 +121,8 @@ class NotificationsPartnerSettings extends \Kaltura\Client\ObjectBase
 			else
 				$this->iotEnabled = false;
 		}
+		if(count($xml->epgNotification) && !empty($xml->epgNotification))
+			$this->epgNotification = \Kaltura\Client\ParseUtils::unmarshalObject($xml->epgNotification, "KalturaEpgNotificationSettings");
 	}
 	/**
 	 * Push notification capability is enabled for the account
@@ -229,5 +231,11 @@ class NotificationsPartnerSettings extends \Kaltura\Client\ObjectBase
 	 * @var bool
 	 */
 	public $iotEnabled = null;
+
+	/**
+	 * Settings for epg notifications
+	 * @var \Kaltura\Client\Type\EpgNotificationSettings
+	 */
+	public $epgNotification;
 
 }

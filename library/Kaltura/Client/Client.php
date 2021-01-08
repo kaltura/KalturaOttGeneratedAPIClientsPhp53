@@ -129,11 +129,6 @@ class Client extends Base
 	protected $categoryTree = null;
 
 	/**
-	 * @var \Kaltura\Client\Service\CategoryVersionService
-	 */
-	protected $categoryVersion = null;
-
-	/**
 	 * @var \Kaltura\Client\Service\CdnAdapterProfileService
 	 */
 	protected $cdnAdapterProfile = null;
@@ -712,8 +707,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:21-01-06');
-		$this->setApiVersion('5.9.0.28773');
+		$this->setClientTag('php5:21-01-08');
+		$this->setApiVersion('6.0.0.28792');
 	}
 	
 	/**
@@ -877,15 +872,6 @@ class Client extends Base
 		if (is_null($this->categoryTree))
 			$this->categoryTree = new \Kaltura\Client\Service\CategoryTreeService($this);
 		return $this->categoryTree;
-	}
-	/**
-	 * @return \Kaltura\Client\Service\CategoryVersionService
-	 */
-	public function getCategoryVersionService()
-	{
-		if (is_null($this->categoryVersion))
-			$this->categoryVersion = new \Kaltura\Client\Service\CategoryVersionService($this);
-		return $this->categoryVersion;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\CdnAdapterProfileService
