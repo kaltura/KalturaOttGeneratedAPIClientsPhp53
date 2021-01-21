@@ -659,7 +659,6 @@ class TypeMap
 		'KalturaMessageTemplate' => 'Kaltura\Client\Type\MessageTemplate',
 		'KalturaRegistryResponse' => 'Kaltura\Client\Type\RegistryResponse',
 		'KalturaPushMessage' => 'Kaltura\Client\Type\PushMessage',
-		'KalturaEpgNotificationSettings' => 'Kaltura\Client\Type\EpgNotificationSettings',
 		'KalturaNotificationsPartnerSettings' => 'Kaltura\Client\Type\NotificationsPartnerSettings',
 		'KalturaNotificationsSettings' => 'Kaltura\Client\Type\NotificationsSettings',
 		'KalturaOTTUserDynamicData' => 'Kaltura\Client\Type\OTTUserDynamicData',
