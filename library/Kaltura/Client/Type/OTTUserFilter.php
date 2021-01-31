@@ -59,6 +59,8 @@ class OTTUserFilter extends \Kaltura\Client\Type\Filter
 			$this->idIn = (string)$xml->idIn;
 		if(count($xml->roleIdsIn))
 			$this->roleIdsIn = (string)$xml->roleIdsIn;
+		if(count($xml->emailEqual))
+			$this->emailEqual = (string)$xml->emailEqual;
 	}
 	/**
 	 * Username
@@ -83,5 +85,11 @@ class OTTUserFilter extends \Kaltura\Client\Type\Filter
 	 * @var string
 	 */
 	public $roleIdsIn = null;
+
+	/**
+	 * User email
+	 * @var string
+	 */
+	public $emailEqual = null;
 
 }
