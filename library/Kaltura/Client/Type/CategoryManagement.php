@@ -33,15 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
- * OTT User filter
+ * Category management
  * @package Kaltura
  * @subpackage Client
  */
-class OTTUserFilter extends \Kaltura\Client\Type\Filter
+class CategoryManagement extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaOTTUserFilter';
+		return 'KalturaCategoryManagement';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,45 +51,26 @@ class OTTUserFilter extends \Kaltura\Client\Type\Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->usernameEqual))
-			$this->usernameEqual = (string)$xml->usernameEqual;
-		if(count($xml->externalIdEqual))
-			$this->externalIdEqual = (string)$xml->externalIdEqual;
-		if(count($xml->idIn))
-			$this->idIn = (string)$xml->idIn;
-		if(count($xml->roleIdsIn))
-			$this->roleIdsIn = (string)$xml->roleIdsIn;
-		if(count($xml->emailEqual))
-			$this->emailEqual = (string)$xml->emailEqual;
+		if(count($xml->defaultTreeId))
+			$this->defaultTreeId = (string)$xml->defaultTreeId;
+		if(count($xml->deviceFamilyToCategoryTree))
+		{
+			if(empty($xml->deviceFamilyToCategoryTree))
+				$this->deviceFamilyToCategoryTree = array();
+			else
+				$this->deviceFamilyToCategoryTree = \Kaltura\Client\ParseUtils::unmarshalMap($xml->deviceFamilyToCategoryTree, "KalturaLongValue");
+		}
 	}
 	/**
-	 * Username
-	 * @var string
+	 * Default CategoryVersion tree id
+	 * @var int
 	 */
-	public $usernameEqual = null;
+	public $defaultTreeId = null;
 
 	/**
-	 * User external identifier
-	 * @var string
+	 * Device family to Category TreeId mapping
+	 * @var array<string, KalturaLongValue>
 	 */
-	public $externalIdEqual = null;
-
-	/**
-	 * List of user identifiers separated by &#39;,&#39;
-	 * @var string
-	 */
-	public $idIn = null;
-
-	/**
-	 * Comma separated list of role Ids.
-	 * @var string
-	 */
-	public $roleIdsIn = null;
-
-	/**
-	 * User email
-	 * @var string
-	 */
-	public $emailEqual = null;
+	public $deviceFamilyToCategoryTree;
 
 }

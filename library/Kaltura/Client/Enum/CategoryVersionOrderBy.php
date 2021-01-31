@@ -30,66 +30,15 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
- * OTT User filter
  * @package Kaltura
  * @subpackage Client
  */
-class OTTUserFilter extends \Kaltura\Client\Type\Filter
+class CategoryVersionOrderBy extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaOTTUserFilter';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->usernameEqual))
-			$this->usernameEqual = (string)$xml->usernameEqual;
-		if(count($xml->externalIdEqual))
-			$this->externalIdEqual = (string)$xml->externalIdEqual;
-		if(count($xml->idIn))
-			$this->idIn = (string)$xml->idIn;
-		if(count($xml->roleIdsIn))
-			$this->roleIdsIn = (string)$xml->roleIdsIn;
-		if(count($xml->emailEqual))
-			$this->emailEqual = (string)$xml->emailEqual;
-	}
-	/**
-	 * Username
-	 * @var string
-	 */
-	public $usernameEqual = null;
-
-	/**
-	 * User external identifier
-	 * @var string
-	 */
-	public $externalIdEqual = null;
-
-	/**
-	 * List of user identifiers separated by &#39;,&#39;
-	 * @var string
-	 */
-	public $idIn = null;
-
-	/**
-	 * Comma separated list of role Ids.
-	 * @var string
-	 */
-	public $roleIdsIn = null;
-
-	/**
-	 * User email
-	 * @var string
-	 */
-	public $emailEqual = null;
-
+	const UPDATE_DATE_DESC = "UPDATE_DATE_DESC";
+	const NONE = "NONE";
 }
+
