@@ -30,25 +30,33 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class PartnerConfigurationType extends \Kaltura\Client\EnumBase
+class OpcPartnerConfiguration extends \Kaltura\Client\Type\PartnerConfiguration
 {
-	const DEFAULTPAYMENTGATEWAY = "DefaultPaymentGateway";
-	const ENABLEPAYMENTGATEWAYSELECTION = "EnablePaymentGatewaySelection";
-	const OSSADAPTER = "OSSAdapter";
-	const CONCURRENCY = "Concurrency";
-	const GENERAL = "General";
-	const OBJECTVIRTUALASSET = "ObjectVirtualAsset";
-	const COMMERCE = "Commerce";
-	const PLAYBACK = "Playback";
-	const PAYMENT = "Payment";
-	const CATALOG = "Catalog";
-	const SECURITY = "Security";
-	const OPC = "Opc";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaOpcPartnerConfiguration';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->resetPassword) && !empty($xml->resetPassword))
+			$this->resetPassword = \Kaltura\Client\ParseUtils::unmarshalObject($xml->resetPassword, "KalturaResetPasswordPartnerConfig");
+	}
+	/**
+	 * Reset Password
+	 * @var \Kaltura\Client\Type\ResetPasswordPartnerConfig
+	 */
+	public $resetPassword;
 
+}

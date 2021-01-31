@@ -30,25 +30,46 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class PartnerConfigurationType extends \Kaltura\Client\EnumBase
+class ResetPasswordPartnerConfig extends \Kaltura\Client\ObjectBase
 {
-	const DEFAULTPAYMENTGATEWAY = "DefaultPaymentGateway";
-	const ENABLEPAYMENTGATEWAYSELECTION = "EnablePaymentGatewaySelection";
-	const OSSADAPTER = "OSSAdapter";
-	const CONCURRENCY = "Concurrency";
-	const GENERAL = "General";
-	const OBJECTVIRTUALASSET = "ObjectVirtualAsset";
-	const COMMERCE = "Commerce";
-	const PLAYBACK = "Playback";
-	const PAYMENT = "Payment";
-	const CATALOG = "Catalog";
-	const SECURITY = "Security";
-	const OPC = "Opc";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaResetPasswordPartnerConfig';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->templateListLabel))
+			$this->templateListLabel = (string)$xml->templateListLabel;
+		if(count($xml->templates))
+		{
+			if(empty($xml->templates))
+				$this->templates = array();
+			else
+				$this->templates = \Kaltura\Client\ParseUtils::unmarshalArray($xml->templates, "KalturaResetPasswordPartnerConfigTemplate");
+		}
+	}
+	/**
+	 * template List Label
+	 * @var string
+	 */
+	public $templateListLabel = null;
 
+	/**
+	 * templates
+	 * @var array<KalturaResetPasswordPartnerConfigTemplate>
+	 */
+	public $templates;
+
+}
