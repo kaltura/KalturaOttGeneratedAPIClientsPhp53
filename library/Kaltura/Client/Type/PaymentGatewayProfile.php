@@ -87,13 +87,6 @@ class PaymentGatewayProfile extends \Kaltura\Client\Type\PaymentGatewayBaseProfi
 			else
 				$this->externalVerification = false;
 		}
-		if(count($xml->isAsyncPolicy))
-		{
-			if(!empty($xml->isAsyncPolicy) && $xml->isAsyncPolicy != 'false')
-				$this->isAsyncPolicy = true;
-			else
-				$this->isAsyncPolicy = false;
-		}
 	}
 	/**
 	 * Payment gateway is active status
@@ -172,11 +165,5 @@ class PaymentGatewayProfile extends \Kaltura\Client\Type\PaymentGatewayBaseProfi
 	 * @var bool
 	 */
 	public $externalVerification = null;
-
-	/**
-	 * Payment gateway - Support asynchronous purchase
-	 * @var bool
-	 */
-	public $isAsyncPolicy = null;
 
 }
