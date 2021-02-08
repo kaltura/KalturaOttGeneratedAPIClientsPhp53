@@ -58,19 +58,11 @@ class CatalogPartnerConfig extends \Kaltura\Client\Type\PartnerConfiguration
 			else
 				$this->singleMultilingualMode = false;
 		}
-		if(count($xml->categoryManagement) && !empty($xml->categoryManagement))
-			$this->categoryManagement = \Kaltura\Client\ParseUtils::unmarshalObject($xml->categoryManagement, "KalturaCategoryManagement");
 	}
 	/**
 	 * Single multilingual mode
 	 * @var bool
 	 */
 	public $singleMultilingualMode = null;
-
-	/**
-	 * Category management
-	 * @var \Kaltura\Client\Type\CategoryManagement
-	 */
-	public $categoryManagement;
 
 }

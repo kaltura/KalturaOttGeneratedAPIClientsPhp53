@@ -59,8 +59,6 @@ class IotClientConfiguration extends \Kaltura\Client\ObjectBase
 			$this->cognitoUserPool = \Kaltura\Client\ParseUtils::unmarshalObject($xml->cognitoUserPool, "KalturaCognitoUserPool");
 		if(count($xml->json))
 			$this->json = (string)$xml->json;
-		if(count($xml->topics))
-			$this->topics = (string)$xml->topics;
 	}
 	/**
 	 * announcementTopic
@@ -85,11 +83,5 @@ class IotClientConfiguration extends \Kaltura\Client\ObjectBase
 	 * @var string
 	 */
 	public $json = null;
-
-	/**
-	 * topics
-	 * @var string
-	 */
-	public $topics = null;
 
 }
