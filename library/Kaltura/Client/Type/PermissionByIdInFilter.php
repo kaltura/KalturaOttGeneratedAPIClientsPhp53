@@ -27,3 +27,36 @@
 // @ignore
 // ===================================================================================================
 
+/**
+ * @namespace
+ */
+namespace Kaltura\Client\Type;
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class PermissionByIdInFilter extends \Kaltura\Client\Type\BasePermissionFilter
+{
+	public function getKalturaObjectType()
+	{
+		return 'KalturaPermissionByIdInFilter';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->idIn))
+			$this->idIn = (string)$xml->idIn;
+	}
+	/**
+	 * Category item identifiers
+	 * @var string
+	 */
+	public $idIn = null;
+
+}

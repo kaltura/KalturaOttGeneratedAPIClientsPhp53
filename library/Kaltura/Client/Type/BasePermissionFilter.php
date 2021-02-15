@@ -27,3 +27,28 @@
 // @ignore
 // ===================================================================================================
 
+/**
+ * @namespace
+ */
+namespace Kaltura\Client\Type;
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class BasePermissionFilter extends \Kaltura\Client\Type\Filter
+{
+	public function getKalturaObjectType()
+	{
+		return 'KalturaBasePermissionFilter';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+	}
+}
