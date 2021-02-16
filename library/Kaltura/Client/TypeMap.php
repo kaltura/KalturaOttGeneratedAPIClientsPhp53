@@ -623,7 +623,6 @@ class TypeMap
 		'KalturaCDNPartnerSettings' => 'Kaltura\Client\Type\CDNPartnerSettings',
 		'KalturaCompensation' => 'Kaltura\Client\Type\Compensation',
 		'KalturaCoupon' => 'Kaltura\Client\Type\Coupon',
-		'KalturaCouponListResponse' => 'Kaltura\Client\Type\CouponListResponse',
 		'KalturaCouponGenerationOptions' => 'Kaltura\Client\Type\CouponGenerationOptions',
 		'KalturaPublicCouponGenerationOptions' => 'Kaltura\Client\Type\PublicCouponGenerationOptions',
 		'KalturaRandomCouponGenerationOptions' => 'Kaltura\Client\Type\RandomCouponGenerationOptions',
