@@ -239,14 +239,9 @@ class OttUserService extends \Kaltura\Client\ServiceBase
 	 * 
 	 * @return bool
 	 */
-	function logout(array $adapterData = null)
+	function logout()
 	{
 		$kparams = array();
-		if ($adapterData !== null)
-			foreach($adapterData as $index => $obj)
-			{
-				$this->client->addParam($kparams, "adapterData:$index", $obj->toParams());
-			}
 		$this->client->queueServiceActionCall("ottuser", "logout", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();

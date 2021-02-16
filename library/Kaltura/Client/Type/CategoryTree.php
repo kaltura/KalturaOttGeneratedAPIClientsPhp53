@@ -101,12 +101,6 @@ class CategoryTree extends \Kaltura\Client\ObjectBase
 			$this->startDateInSeconds = (string)$xml->startDateInSeconds;
 		if(count($xml->endDateInSeconds))
 			$this->endDateInSeconds = (string)$xml->endDateInSeconds;
-		if(count($xml->type))
-			$this->type = (string)$xml->type;
-		if(count($xml->versionId))
-			$this->versionId = (string)$xml->versionId;
-		if(count($xml->virtualAssetId))
-			$this->virtualAssetId = (string)$xml->virtualAssetId;
 	}
 	/**
 	 * Unique identifier for the category item
@@ -170,26 +164,5 @@ class CategoryTree extends \Kaltura\Client\ObjectBase
 	 * @var int
 	 */
 	public $endDateInSeconds = null;
-
-	/**
-	 * Category type
-	 * @var string
-	 * @insertonly
-	 */
-	public $type = null;
-
-	/**
-	 * Unique identifier for the category version
-	 * @var int
-	 * @readonly
-	 */
-	public $versionId = null;
-
-	/**
-	 * Virtual asset id
-	 * @var int
-	 * @readonly
-	 */
-	public $virtualAssetId = null;
 
 }

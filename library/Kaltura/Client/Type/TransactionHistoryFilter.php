@@ -57,14 +57,6 @@ class TransactionHistoryFilter extends \Kaltura\Client\Type\Filter
 			$this->startDateGreaterThanOrEqual = (int)$xml->startDateGreaterThanOrEqual;
 		if(count($xml->endDateLessThanOrEqual))
 			$this->endDateLessThanOrEqual = (int)$xml->endDateLessThanOrEqual;
-		if(count($xml->entitlementIdEqual))
-			$this->entitlementIdEqual = (string)$xml->entitlementIdEqual;
-		if(count($xml->externalIdEqual))
-			$this->externalIdEqual = (string)$xml->externalIdEqual;
-		if(count($xml->billingItemsTypeEqual))
-			$this->billingItemsTypeEqual = (string)$xml->billingItemsTypeEqual;
-		if(count($xml->billingActionEqual))
-			$this->billingActionEqual = (string)$xml->billingActionEqual;
 	}
 	/**
 	 * Reference type to filter by
@@ -83,29 +75,5 @@ class TransactionHistoryFilter extends \Kaltura\Client\Type\Filter
 	 * @var int
 	 */
 	public $endDateLessThanOrEqual = null;
-
-	/**
-	 * Filter transaction by entitlement id
-	 * @var int
-	 */
-	public $entitlementIdEqual = null;
-
-	/**
-	 * Filter transaction by external Id
-	 * @var string
-	 */
-	public $externalIdEqual = null;
-
-	/**
-	 * Filter transaction by billing item type
-	 * @var \Kaltura\Client\Enum\BillingItemsType
-	 */
-	public $billingItemsTypeEqual = null;
-
-	/**
-	 * Filter transaction by billing action
-	 * @var \Kaltura\Client\Enum\BillingAction
-	 */
-	public $billingActionEqual = null;
 
 }

@@ -71,14 +71,6 @@ class HouseholdDevice extends \Kaltura\Client\Type\OTTObjectSupportNullable
 			$this->externalId = (string)$xml->externalId;
 		if(count($xml->macAddress))
 			$this->macAddress = (string)$xml->macAddress;
-		if(count($xml->model))
-			$this->model = (string)$xml->model;
-		if(count($xml->manufacturer))
-			$this->manufacturer = (string)$xml->manufacturer;
-		if(count($xml->manufacturerId))
-			$this->manufacturerId = (string)$xml->manufacturerId;
-		if(count($xml->lastActivityTime))
-			$this->lastActivityTime = (string)$xml->lastActivityTime;
 	}
 	/**
 	 * Household identifier
@@ -143,31 +135,5 @@ class HouseholdDevice extends \Kaltura\Client\Type\OTTObjectSupportNullable
 	 * @var string
 	 */
 	public $macAddress = null;
-
-	/**
-	 * model
-	 * @var string
-	 */
-	public $model = null;
-
-	/**
-	 * manufacturer
-	 * @var string
-	 */
-	public $manufacturer = null;
-
-	/**
-	 * manufacturer Id, read only
-	 * @var int
-	 * @readonly
-	 */
-	public $manufacturerId = null;
-
-	/**
-	 * Last Activity Time, read only
-	 * @var int
-	 * @readonly
-	 */
-	public $lastActivityTime = null;
 
 }
