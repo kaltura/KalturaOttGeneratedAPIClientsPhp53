@@ -65,24 +65,6 @@ class SystemService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Gets the current level of the KLogger
-	 * 
-	 * @return string
-	 */
-	function getLogLevel()
-	{
-		$kparams = array();
-		$this->client->queueServiceActionCall("system", "getLogLevel", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (String)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
-	}
-
-	/**
 	 * Returns current server timestamp
 	 * 
 	 * @return bigint
@@ -146,25 +128,6 @@ class SystemService extends \Kaltura\Client\ServiceBase
 	{
 		$kparams = array();
 		$this->client->queueServiceActionCall("system", "ping", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (bool)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
-	}
-
-	/**
-	 * Sets the current level of the KLogger
-	 * 
-	 * @return bool
-	 */
-	function setLogLevel($level)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "level", $level);
-		$this->client->queueServiceActionCall("system", "setLogLevel", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
