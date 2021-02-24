@@ -36,7 +36,7 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class Epg extends \Kaltura\Client\Type\Asset
+class Epg extends \Kaltura\Client\Type\ProgramAsset
 {
 	public function getKalturaObjectType()
 	{
