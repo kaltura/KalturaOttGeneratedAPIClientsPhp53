@@ -33,15 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Partner catalog configuration
+ * EPG wrapper
  * @package Kaltura
  * @subpackage Client
  */
-class CatalogPartnerConfig extends \Kaltura\Client\Type\PartnerConfiguration
+class EpgListResponse extends \Kaltura\Client\Type\ListResponse
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaCatalogPartnerConfig';
+		return 'KalturaEpgListResponse';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,39 +51,18 @@ class CatalogPartnerConfig extends \Kaltura\Client\Type\PartnerConfiguration
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->singleMultilingualMode))
+		if(count($xml->objects))
 		{
-			if(!empty($xml->singleMultilingualMode) && $xml->singleMultilingualMode != 'false')
-				$this->singleMultilingualMode = true;
+			if(empty($xml->objects))
+				$this->objects = array();
 			else
-				$this->singleMultilingualMode = false;
-		}
-		if(count($xml->categoryManagement) && !empty($xml->categoryManagement))
-			$this->categoryManagement = \Kaltura\Client\ParseUtils::unmarshalObject($xml->categoryManagement, "KalturaCategoryManagement");
-		if(count($xml->epgMultilingualFallbackSupport))
-		{
-			if(!empty($xml->epgMultilingualFallbackSupport) && $xml->epgMultilingualFallbackSupport != 'false')
-				$this->epgMultilingualFallbackSupport = true;
-			else
-				$this->epgMultilingualFallbackSupport = false;
+				$this->objects = \Kaltura\Client\ParseUtils::unmarshalArray($xml->objects, "KalturaEpg");
 		}
 	}
 	/**
-	 * Single multilingual mode
-	 * @var bool
+	 * Assets
+	 * @var array<KalturaEpg>
 	 */
-	public $singleMultilingualMode = null;
-
-	/**
-	 * Category management
-	 * @var \Kaltura\Client\Type\CategoryManagement
-	 */
-	public $categoryManagement;
-
-	/**
-	 * EPG Multilingual Fallback Support
-	 * @var bool
-	 */
-	public $epgMultilingualFallbackSupport = null;
+	public $objects;
 
 }
