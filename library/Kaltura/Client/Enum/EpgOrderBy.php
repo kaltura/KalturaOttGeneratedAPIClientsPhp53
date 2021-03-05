@@ -30,60 +30,13 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Type;
+namespace Kaltura\Client\Enum;
 
 /**
- * Partner catalog configuration
  * @package Kaltura
  * @subpackage Client
  */
-class CatalogPartnerConfig extends \Kaltura\Client\Type\PartnerConfiguration
+class EpgOrderBy extends \Kaltura\Client\EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaCatalogPartnerConfig';
-	}
-	
-	public function __construct(\SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->singleMultilingualMode))
-		{
-			if(!empty($xml->singleMultilingualMode) && $xml->singleMultilingualMode != 'false')
-				$this->singleMultilingualMode = true;
-			else
-				$this->singleMultilingualMode = false;
-		}
-		if(count($xml->categoryManagement) && !empty($xml->categoryManagement))
-			$this->categoryManagement = \Kaltura\Client\ParseUtils::unmarshalObject($xml->categoryManagement, "KalturaCategoryManagement");
-		if(count($xml->epgMultilingualFallbackSupport))
-		{
-			if(!empty($xml->epgMultilingualFallbackSupport) && $xml->epgMultilingualFallbackSupport != 'false')
-				$this->epgMultilingualFallbackSupport = true;
-			else
-				$this->epgMultilingualFallbackSupport = false;
-		}
-	}
-	/**
-	 * Single multilingual mode
-	 * @var bool
-	 */
-	public $singleMultilingualMode = null;
-
-	/**
-	 * Category management
-	 * @var \Kaltura\Client\Type\CategoryManagement
-	 */
-	public $categoryManagement;
-
-	/**
-	 * EPG Multilingual Fallback Support
-	 * @var bool
-	 */
-	public $epgMultilingualFallbackSupport = null;
-
 }
+

@@ -90,9 +90,8 @@ class Permission extends \Kaltura\Client\ObjectBase
 	public $dependsOnPermissionNames = null;
 
 	/**
-	 * Comma separated permissions names from type SPECIAL_FEATURE
+	 * Permission type
 	 * @var \Kaltura\Client\Enum\PermissionType
-	 * @insertonly
 	 */
 	public $type = null;
 
