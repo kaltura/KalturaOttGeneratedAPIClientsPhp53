@@ -92,13 +92,13 @@ class Permission extends \Kaltura\Client\ObjectBase
 	/**
 	 * Comma separated permissions names from type SPECIAL_FEATURE
 	 * @var \Kaltura\Client\Enum\PermissionType
-	 * @insertonly
 	 */
 	public $type = null;
 
 	/**
-	 * Comma separated associated permission items IDs
+	 * Comma separated assosiated permission items IDs
 	 * @var string
+	 * @readonly
 	 */
 	public $permissionItemsIds = null;
 

@@ -33,15 +33,14 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Discount entitlement discount details
  * @package Kaltura
  * @subpackage Client
  */
-class DiscountEntitlementDiscountDetails extends \Kaltura\Client\Type\EntitlementDiscountDetailsIdentifier
+class CouponListResponse extends \Kaltura\Client\Type\ListResponse
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaDiscountEntitlementDiscountDetails';
+		return 'KalturaCouponListResponse';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,5 +50,18 @@ class DiscountEntitlementDiscountDetails extends \Kaltura\Client\Type\Entitlemen
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->objects))
+		{
+			if(empty($xml->objects))
+				$this->objects = array();
+			else
+				$this->objects = \Kaltura\Client\ParseUtils::unmarshalArray($xml->objects, "KalturaCoupon");
+		}
 	}
+	/**
+	 * Coupons
+	 * @var array<KalturaCoupon>
+	 */
+	public $objects;
+
 }
