@@ -37,7 +37,7 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class PermissionFilter extends \Kaltura\Client\Type\BasePermissionFilter
+class PermissionFilter extends \Kaltura\Client\Type\Filter
 {
 	public function getKalturaObjectType()
 	{
