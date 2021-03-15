@@ -90,6 +90,13 @@ class Meta extends \Kaltura\Client\ObjectBase
 			$this->createDate = (string)$xml->createDate;
 		if(count($xml->updateDate))
 			$this->updateDate = (string)$xml->updateDate;
+		if(count($xml->dynamicData))
+		{
+			if(empty($xml->dynamicData))
+				$this->dynamicData = array();
+			else
+				$this->dynamicData = \Kaltura\Client\ParseUtils::unmarshalMap($xml->dynamicData, "KalturaStringValue");
+		}
 	}
 	/**
 	 * Meta id
@@ -169,5 +176,11 @@ class Meta extends \Kaltura\Client\ObjectBase
 	 * @readonly
 	 */
 	public $updateDate = null;
+
+	/**
+	 * Dynamic data
+	 * @var array<string, KalturaStringValue>
+	 */
+	public $dynamicData;
 
 }
