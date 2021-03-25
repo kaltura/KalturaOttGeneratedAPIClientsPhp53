@@ -6,7 +6,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -59,8 +59,6 @@ class OTTUserFilter extends \Kaltura\Client\Type\Filter
 			$this->idIn = (string)$xml->idIn;
 		if(count($xml->roleIdsIn))
 			$this->roleIdsIn = (string)$xml->roleIdsIn;
-		if(count($xml->emailEqual))
-			$this->emailEqual = (string)$xml->emailEqual;
 	}
 	/**
 	 * Username
@@ -85,11 +83,5 @@ class OTTUserFilter extends \Kaltura\Client\Type\Filter
 	 * @var string
 	 */
 	public $roleIdsIn = null;
-
-	/**
-	 * User email
-	 * @var string
-	 */
-	public $emailEqual = null;
 
 }

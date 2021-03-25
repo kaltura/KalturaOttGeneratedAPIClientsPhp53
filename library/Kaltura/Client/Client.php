@@ -6,7 +6,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -114,11 +114,6 @@ class Client extends Base
 	protected $businessModuleRule = null;
 
 	/**
-	 * @var \Kaltura\Client\Service\CampaignService
-	 */
-	protected $campaign = null;
-
-	/**
 	 * @var \Kaltura\Client\Service\CategoryItemService
 	 */
 	protected $categoryItem = null;
@@ -127,11 +122,6 @@ class Client extends Base
 	 * @var \Kaltura\Client\Service\CategoryTreeService
 	 */
 	protected $categoryTree = null;
-
-	/**
-	 * @var \Kaltura\Client\Service\CategoryVersionService
-	 */
-	protected $categoryVersion = null;
 
 	/**
 	 * @var \Kaltura\Client\Service\CdnAdapterProfileService
@@ -214,11 +204,6 @@ class Client extends Base
 	protected $deviceFamily = null;
 
 	/**
-	 * @var \Kaltura\Client\Service\DeviceReferenceDataService
-	 */
-	protected $deviceReferenceData = null;
-
-	/**
 	 * @var \Kaltura\Client\Service\DiscountDetailsService
 	 */
 	protected $discountDetails = null;
@@ -227,11 +212,6 @@ class Client extends Base
 	 * @var \Kaltura\Client\Service\DrmProfileService
 	 */
 	protected $drmProfile = null;
-
-	/**
-	 * @var \Kaltura\Client\Service\DynamicListService
-	 */
-	protected $dynamicList = null;
 
 	/**
 	 * @var \Kaltura\Client\Service\EmailService
@@ -252,11 +232,6 @@ class Client extends Base
 	 * @var \Kaltura\Client\Service\EntitlementService
 	 */
 	protected $entitlement = null;
-
-	/**
-	 * @var \Kaltura\Client\Service\EpgService
-	 */
-	protected $epg = null;
 
 	/**
 	 * @var \Kaltura\Client\Service\EventNotificationActionService
@@ -474,11 +449,6 @@ class Client extends Base
 	protected $permission = null;
 
 	/**
-	 * @var \Kaltura\Client\Service\PermissionItemService
-	 */
-	protected $permissionItem = null;
-
-	/**
 	 * @var \Kaltura\Client\Service\PersonalFeedService
 	 */
 	protected $personalFeed = null;
@@ -579,11 +549,6 @@ class Client extends Base
 	protected $session = null;
 
 	/**
-	 * @var \Kaltura\Client\Service\SmsAdapterProfileService
-	 */
-	protected $smsAdapterProfile = null;
-
-	/**
 	 * @var \Kaltura\Client\Service\SocialActionService
 	 */
 	protected $socialAction = null;
@@ -607,11 +572,6 @@ class Client extends Base
 	 * @var \Kaltura\Client\Service\SsoAdapterProfileService
 	 */
 	protected $ssoAdapterProfile = null;
-
-	/**
-	 * @var \Kaltura\Client\Service\StreamingDeviceService
-	 */
-	protected $streamingDevice = null;
 
 	/**
 	 * @var \Kaltura\Client\Service\SubscriptionService
@@ -717,8 +677,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:21-03-15');
-		$this->setApiVersion('6.2.0.28984');
+		$this->setClientTag('php5:21-03-25');
+		$this->setApiVersion('5.4.0.28290');
 	}
 	
 	/**
@@ -857,15 +817,6 @@ class Client extends Base
 		return $this->businessModuleRule;
 	}
 	/**
-	 * @return \Kaltura\Client\Service\CampaignService
-	 */
-	public function getCampaignService()
-	{
-		if (is_null($this->campaign))
-			$this->campaign = new \Kaltura\Client\Service\CampaignService($this);
-		return $this->campaign;
-	}
-	/**
 	 * @return \Kaltura\Client\Service\CategoryItemService
 	 */
 	public function getCategoryItemService()
@@ -882,15 +833,6 @@ class Client extends Base
 		if (is_null($this->categoryTree))
 			$this->categoryTree = new \Kaltura\Client\Service\CategoryTreeService($this);
 		return $this->categoryTree;
-	}
-	/**
-	 * @return \Kaltura\Client\Service\CategoryVersionService
-	 */
-	public function getCategoryVersionService()
-	{
-		if (is_null($this->categoryVersion))
-			$this->categoryVersion = new \Kaltura\Client\Service\CategoryVersionService($this);
-		return $this->categoryVersion;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\CdnAdapterProfileService
@@ -1037,15 +979,6 @@ class Client extends Base
 		return $this->deviceFamily;
 	}
 	/**
-	 * @return \Kaltura\Client\Service\DeviceReferenceDataService
-	 */
-	public function getDeviceReferenceDataService()
-	{
-		if (is_null($this->deviceReferenceData))
-			$this->deviceReferenceData = new \Kaltura\Client\Service\DeviceReferenceDataService($this);
-		return $this->deviceReferenceData;
-	}
-	/**
 	 * @return \Kaltura\Client\Service\DiscountDetailsService
 	 */
 	public function getDiscountDetailsService()
@@ -1062,15 +995,6 @@ class Client extends Base
 		if (is_null($this->drmProfile))
 			$this->drmProfile = new \Kaltura\Client\Service\DrmProfileService($this);
 		return $this->drmProfile;
-	}
-	/**
-	 * @return \Kaltura\Client\Service\DynamicListService
-	 */
-	public function getDynamicListService()
-	{
-		if (is_null($this->dynamicList))
-			$this->dynamicList = new \Kaltura\Client\Service\DynamicListService($this);
-		return $this->dynamicList;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\EmailService
@@ -1107,15 +1031,6 @@ class Client extends Base
 		if (is_null($this->entitlement))
 			$this->entitlement = new \Kaltura\Client\Service\EntitlementService($this);
 		return $this->entitlement;
-	}
-	/**
-	 * @return \Kaltura\Client\Service\EpgService
-	 */
-	public function getEpgService()
-	{
-		if (is_null($this->epg))
-			$this->epg = new \Kaltura\Client\Service\EpgService($this);
-		return $this->epg;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\EventNotificationActionService
@@ -1505,15 +1420,6 @@ class Client extends Base
 		return $this->permission;
 	}
 	/**
-	 * @return \Kaltura\Client\Service\PermissionItemService
-	 */
-	public function getPermissionItemService()
-	{
-		if (is_null($this->permissionItem))
-			$this->permissionItem = new \Kaltura\Client\Service\PermissionItemService($this);
-		return $this->permissionItem;
-	}
-	/**
 	 * @return \Kaltura\Client\Service\PersonalFeedService
 	 */
 	public function getPersonalFeedService()
@@ -1694,15 +1600,6 @@ class Client extends Base
 		return $this->session;
 	}
 	/**
-	 * @return \Kaltura\Client\Service\SmsAdapterProfileService
-	 */
-	public function getSmsAdapterProfileService()
-	{
-		if (is_null($this->smsAdapterProfile))
-			$this->smsAdapterProfile = new \Kaltura\Client\Service\SmsAdapterProfileService($this);
-		return $this->smsAdapterProfile;
-	}
-	/**
 	 * @return \Kaltura\Client\Service\SocialActionService
 	 */
 	public function getSocialActionService()
@@ -1746,15 +1643,6 @@ class Client extends Base
 		if (is_null($this->ssoAdapterProfile))
 			$this->ssoAdapterProfile = new \Kaltura\Client\Service\SsoAdapterProfileService($this);
 		return $this->ssoAdapterProfile;
-	}
-	/**
-	 * @return \Kaltura\Client\Service\StreamingDeviceService
-	 */
-	public function getStreamingDeviceService()
-	{
-		if (is_null($this->streamingDevice))
-			$this->streamingDevice = new \Kaltura\Client\Service\StreamingDeviceService($this);
-		return $this->streamingDevice;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\SubscriptionService

@@ -6,7 +6,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -60,8 +60,6 @@ class Permission extends \Kaltura\Client\ObjectBase
 			$this->dependsOnPermissionNames = (string)$xml->dependsOnPermissionNames;
 		if(count($xml->type))
 			$this->type = (string)$xml->type;
-		if(count($xml->permissionItemsIds))
-			$this->permissionItemsIds = (string)$xml->permissionItemsIds;
 	}
 	/**
 	 * Permission identifier
@@ -90,15 +88,9 @@ class Permission extends \Kaltura\Client\ObjectBase
 	public $dependsOnPermissionNames = null;
 
 	/**
-	 * Permission type
+	 * Comma separated permissions names from type SPECIAL_FEATURE
 	 * @var \Kaltura\Client\Enum\PermissionType
 	 */
 	public $type = null;
-
-	/**
-	 * Comma separated associated permission items IDs
-	 * @var string
-	 */
-	public $permissionItemsIds = null;
 
 }

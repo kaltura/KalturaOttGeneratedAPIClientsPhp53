@@ -6,7 +6,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -90,16 +90,10 @@ class NotificationService extends \Kaltura\Client\ServiceBase
 	 * 
 	 * @return bool
 	 */
-	function sendSms($message, $phoneNumber = null, array $adapterData = null)
+	function sendSms($message)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "message", $message);
-		$this->client->addParam($kparams, "phoneNumber", $phoneNumber);
-		if ($adapterData !== null)
-			foreach($adapterData as $index => $obj)
-			{
-				$this->client->addParam($kparams, "adapterData:$index", $obj->toParams());
-			}
 		$this->client->queueServiceActionCall("notification", "sendSms", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();

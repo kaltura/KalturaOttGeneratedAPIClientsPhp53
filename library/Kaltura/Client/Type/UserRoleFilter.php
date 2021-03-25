@@ -6,7 +6,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -60,10 +60,6 @@ class UserRoleFilter extends \Kaltura\Client\Type\Filter
 			else
 				$this->currentUserRoleIdsContains = false;
 		}
-		if(count($xml->typeEqual))
-			$this->typeEqual = (string)$xml->typeEqual;
-		if(count($xml->profileEqual))
-			$this->profileEqual = (string)$xml->profileEqual;
 	}
 	/**
 	 * Comma separated roles identifiers
@@ -76,17 +72,5 @@ class UserRoleFilter extends \Kaltura\Client\Type\Filter
 	 * @var bool
 	 */
 	public $currentUserRoleIdsContains = null;
-
-	/**
-	 * User role type
-	 * @var \Kaltura\Client\Enum\UserRoleType
-	 */
-	public $typeEqual = null;
-
-	/**
-	 * User role profile
-	 * @var \Kaltura\Client\Enum\UserRoleProfile
-	 */
-	public $profileEqual = null;
 
 }

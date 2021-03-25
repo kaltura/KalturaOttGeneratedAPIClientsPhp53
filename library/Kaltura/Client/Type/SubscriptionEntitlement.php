@@ -6,7 +6,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -89,8 +89,6 @@ class SubscriptionEntitlement extends \Kaltura\Client\Type\Entitlement
 			else
 				$this->isSuspended = false;
 		}
-		if(count($xml->priceDetails) && !empty($xml->priceDetails))
-			$this->priceDetails = \Kaltura\Client\ParseUtils::unmarshalObject($xml->priceDetails, "KalturaEntitlementPriceDetails");
 	}
 	/**
 	 * The date of the next renewal (only for subscription)
@@ -152,12 +150,5 @@ class SubscriptionEntitlement extends \Kaltura\Client\Type\Entitlement
 	 * @readonly
 	 */
 	public $isSuspended = null;
-
-	/**
-	 * Price details
-	 * @var \Kaltura\Client\Type\EntitlementPriceDetails
-	 * @readonly
-	 */
-	public $priceDetails;
 
 }

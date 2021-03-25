@@ -6,7 +6,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -101,12 +101,6 @@ class CategoryTree extends \Kaltura\Client\ObjectBase
 			$this->startDateInSeconds = (string)$xml->startDateInSeconds;
 		if(count($xml->endDateInSeconds))
 			$this->endDateInSeconds = (string)$xml->endDateInSeconds;
-		if(count($xml->type))
-			$this->type = (string)$xml->type;
-		if(count($xml->versionId))
-			$this->versionId = (string)$xml->versionId;
-		if(count($xml->virtualAssetId))
-			$this->virtualAssetId = (string)$xml->virtualAssetId;
 	}
 	/**
 	 * Unique identifier for the category item
@@ -170,26 +164,5 @@ class CategoryTree extends \Kaltura\Client\ObjectBase
 	 * @var int
 	 */
 	public $endDateInSeconds = null;
-
-	/**
-	 * Category type
-	 * @var string
-	 * @insertonly
-	 */
-	public $type = null;
-
-	/**
-	 * Unique identifier for the category version
-	 * @var int
-	 * @readonly
-	 */
-	public $versionId = null;
-
-	/**
-	 * Virtual asset id
-	 * @var int
-	 * @readonly
-	 */
-	public $virtualAssetId = null;
 
 }

@@ -6,7 +6,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -65,13 +65,6 @@ class RegionFilter extends \Kaltura\Client\Type\BaseRegionFilter
 			else
 				$this->parentOnly = false;
 		}
-		if(count($xml->exclusiveLcn))
-		{
-			if(!empty($xml->exclusiveLcn) && $xml->exclusiveLcn != 'false')
-				$this->exclusiveLcn = true;
-			else
-				$this->exclusiveLcn = false;
-		}
 	}
 	/**
 	 * List of comma separated regions external IDs
@@ -102,11 +95,5 @@ class RegionFilter extends \Kaltura\Client\Type\BaseRegionFilter
 	 * @var bool
 	 */
 	public $parentOnly = null;
-
-	/**
-	 * Retrieves only the channels belonging specifically to the child region
-	 * @var bool
-	 */
-	public $exclusiveLcn = null;
 
 }

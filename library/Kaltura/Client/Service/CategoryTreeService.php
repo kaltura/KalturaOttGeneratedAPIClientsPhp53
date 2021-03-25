@@ -6,7 +6,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -76,26 +76,6 @@ class CategoryTreeService extends \Kaltura\Client\ServiceBase
 		$this->client->addParam($kparams, "categoryItemId", $categoryItemId);
 		$this->client->addParam($kparams, "filter", $filter);
 		$this->client->queueServiceActionCall("categorytree", "get", "KalturaCategoryTree", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCategoryTree");
-		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\CategoryTree");
-		return $resultObject;
-	}
-
-	/**
-	 * Retrieve default category tree of deviceFamilyId by KS or specific one if versionId is set.
-	 * 
-	 * @return \Kaltura\Client\Type\CategoryTree
-	 */
-	function getByVersion($versionId = null)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "versionId", $versionId);
-		$this->client->queueServiceActionCall("categorytree", "getByVersion", "KalturaCategoryTree", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
