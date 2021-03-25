@@ -6,7 +6,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -65,6 +65,26 @@ class SystemService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
+	 * Returns the current layered cache group config of the sent groupId. You need to send groupId only if you wish to get it for a specific groupId and not the one the KS belongs to.
+	 * 
+	 * @return \Kaltura\Client\Type\StringValue
+	 */
+	function getLayeredCacheGroupConfig($groupId = 0)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "groupId", $groupId);
+		$this->client->queueServiceActionCall("system", "getLayeredCacheGroupConfig", "KalturaStringValue", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaStringValue");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\StringValue");
+		return $resultObject;
+	}
+
+	/**
 	 * Returns current server timestamp
 	 * 
 	 * @return bigint
@@ -110,6 +130,25 @@ class SystemService extends \Kaltura\Client\ServiceBase
 		$kparams = array();
 		$this->client->addParam($kparams, "groupId", $groupId);
 		$this->client->queueServiceActionCall("system", "incrementLayeredCacheGroupConfigVersion", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (bool)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
+	}
+
+	/**
+	 * Returns true if the invalidation key was invalidated successfully or false otherwise.
+	 * 
+	 * @return bool
+	 */
+	function invalidateLayeredCacheInvalidationKey($key)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "key", $key);
+		$this->client->queueServiceActionCall("system", "invalidateLayeredCacheInvalidationKey", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
