@@ -6,7 +6,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -61,6 +61,28 @@ class SystemService extends \Kaltura\Client\ServiceBase
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = (bool)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
+	}
+
+	/**
+	 * Returns the epoch value of an invalidation key if it was found
+	 * 
+	 * @return \Kaltura\Client\Type\LongValue
+	 */
+	function getInvalidationKeyValue($invalidationKey, $layeredCacheConfigName = null, $groupId = 0)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "invalidationKey", $invalidationKey);
+		$this->client->addParam($kparams, "layeredCacheConfigName", $layeredCacheConfigName);
+		$this->client->addParam($kparams, "groupId", $groupId);
+		$this->client->queueServiceActionCall("system", "getInvalidationKeyValue", "KalturaLongValue", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaLongValue");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\LongValue");
 		return $resultObject;
 	}
 
