@@ -61,10 +61,8 @@ class EpgNotificationSettings extends \Kaltura\Client\ObjectBase
 			$this->deviceFamilyIds = (string)$xml->deviceFamilyIds;
 		if(count($xml->liveAssetIds))
 			$this->liveAssetIds = (string)$xml->liveAssetIds;
-		if(count($xml->backwardTimeRange))
-			$this->backwardTimeRange = (int)$xml->backwardTimeRange;
-		if(count($xml->forwardTimeRange))
-			$this->forwardTimeRange = (int)$xml->forwardTimeRange;
+		if(count($xml->timeRange))
+			$this->timeRange = (int)$xml->timeRange;
 	}
 	/**
 	 * EPG notification capability is enabled for the account
@@ -85,17 +83,10 @@ class EpgNotificationSettings extends \Kaltura\Client\ObjectBase
 	public $liveAssetIds = null;
 
 	/**
-	 * The backward range (in hours), in which, EPG updates triggers a notification,
+	 * The range (in hours), in which, EPG updates triggers a notification,
 	 *             every program that is updated and it’s starts time falls within this range shall trigger a notification
 	 * @var int
 	 */
-	public $backwardTimeRange = null;
-
-	/**
-	 * The forward range (in hours), in which, EPG updates triggers a notification,
-	 *             every program that is updated and it’s starts time falls within this range shall trigger a notification
-	 * @var int
-	 */
-	public $forwardTimeRange = null;
+	public $timeRange = null;
 
 }
