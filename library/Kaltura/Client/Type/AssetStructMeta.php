@@ -84,6 +84,8 @@ class AssetStructMeta extends \Kaltura\Client\ObjectBase
 			else
 				$this->isLocationTag = false;
 		}
+		if(count($xml->suppressedOrder))
+			$this->suppressedOrder = (int)$xml->suppressedOrder;
 	}
 	/**
 	 * Asset Struct id (template_id)
@@ -142,5 +144,11 @@ class AssetStructMeta extends \Kaltura\Client\ObjectBase
 	 * @var bool
 	 */
 	public $isLocationTag = null;
+
+	/**
+	 * suppressed Order, ascending
+	 * @var int
+	 */
+	public $suppressedOrder = null;
 
 }
