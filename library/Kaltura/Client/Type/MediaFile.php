@@ -59,8 +59,6 @@ class MediaFile extends \Kaltura\Client\Type\AssetFile
 			$this->type = (string)$xml->type;
 		if(count($xml->typeId))
 			$this->typeId = (int)$xml->typeId;
-		if(count($xml->altUrl))
-			$this->altUrl = (string)$xml->altUrl;
 		if(count($xml->duration))
 			$this->duration = (string)$xml->duration;
 		if(count($xml->externalId))
@@ -135,12 +133,6 @@ class MediaFile extends \Kaltura\Client\Type\AssetFile
 	 * @var int
 	 */
 	public $typeId = null;
-
-	/**
-	 * URL of the media file to be played
-	 * @var string
-	 */
-	public $altUrl = null;
 
 	/**
 	 * Duration of the media file

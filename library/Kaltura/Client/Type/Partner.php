@@ -30,16 +30,57 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class SuspensionProfileInheritanceType extends \Kaltura\Client\EnumBase
+class Partner extends \Kaltura\Client\ObjectBase
 {
-	const ALWAYS = "ALWAYS";
-	const NEVER = "NEVER";
-	const DEFAULT = "DEFAULT";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaPartner';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->id))
+			$this->id = (int)$xml->id;
+		if(count($xml->name))
+			$this->name = (string)$xml->name;
+		if(count($xml->creatDate))
+			$this->creatDate = (string)$xml->creatDate;
+		if(count($xml->updateDate))
+			$this->updateDate = (string)$xml->updateDate;
+	}
+	/**
+	 * PartnerId
+	 * @var int
+	 */
+	public $id = null;
 
+	/**
+	 * PartnerName
+	 * @var string
+	 */
+	public $name = null;
+
+	/**
+	 * Creat date represented as epoch
+	 * @var int
+	 */
+	public $creatDate = null;
+
+	/**
+	 * Update date represented as epoch
+	 * @var int
+	 */
+	public $updateDate = null;
+
+}

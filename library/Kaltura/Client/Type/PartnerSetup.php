@@ -30,26 +30,50 @@
 /**
  * @namespace
  */
-namespace Kaltura\Client\Enum;
+namespace Kaltura\Client\Type;
 
 /**
+ * Parameters for partner setup
  * @package Kaltura
  * @subpackage Client
  */
-class PartnerConfigurationType extends \Kaltura\Client\EnumBase
+class PartnerSetup extends \Kaltura\Client\ObjectBase
 {
-	const DEFAULTPAYMENTGATEWAY = "DefaultPaymentGateway";
-	const ENABLEPAYMENTGATEWAYSELECTION = "EnablePaymentGatewaySelection";
-	const OSSADAPTER = "OSSAdapter";
-	const CONCURRENCY = "Concurrency";
-	const GENERAL = "General";
-	const OBJECTVIRTUALASSET = "ObjectVirtualAsset";
-	const COMMERCE = "Commerce";
-	const PLAYBACK = "Playback";
-	const PAYMENT = "Payment";
-	const CATALOG = "Catalog";
-	const SECURITY = "Security";
-	const OPC = "Opc";
-	const BASE = "Base";
-}
+	public function getKalturaObjectType()
+	{
+		return 'KalturaPartnerSetup';
+	}
+	
+	public function __construct(\SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->adminUsername))
+			$this->adminUsername = (string)$xml->adminUsername;
+		if(count($xml->adminPassword))
+			$this->adminPassword = (string)$xml->adminPassword;
+		if(count($xml->basePartnerConfiguration) && !empty($xml->basePartnerConfiguration))
+			$this->basePartnerConfiguration = \Kaltura\Client\ParseUtils::unmarshalObject($xml->basePartnerConfiguration, "KalturaBasePartnerConfiguration");
+	}
+	/**
+	 * admin Username
+	 * @var string
+	 */
+	public $adminUsername = null;
 
+	/**
+	 * admin Password
+	 * @var string
+	 */
+	public $adminPassword = null;
+
+	/**
+	 * basePartnerConfiguration
+	 * @var \Kaltura\Client\Type\BasePartnerConfiguration
+	 */
+	public $basePartnerConfiguration;
+
+}

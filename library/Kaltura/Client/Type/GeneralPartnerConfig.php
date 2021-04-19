@@ -84,8 +84,6 @@ class GeneralPartnerConfig extends \Kaltura\Client\Type\PartnerConfiguration
 			$this->rollingDeviceData = \Kaltura\Client\ParseUtils::unmarshalObject($xml->rollingDeviceData, "KalturaRollingDeviceRemovalData");
 		if(count($xml->finishedPercentThreshold))
 			$this->finishedPercentThreshold = (int)$xml->finishedPercentThreshold;
-		if(count($xml->suspensionProfileInheritanceType))
-			$this->suspensionProfileInheritanceType = (string)$xml->suspensionProfileInheritanceType;
 	}
 	/**
 	 * Partner name
@@ -170,11 +168,5 @@ class GeneralPartnerConfig extends \Kaltura\Client\Type\PartnerConfiguration
 	 * @var int
 	 */
 	public $finishedPercentThreshold = null;
-
-	/**
-	 * Suspension Profile Inheritance
-	 * @var \Kaltura\Client\Enum\SuspensionProfileInheritanceType
-	 */
-	public $suspensionProfileInheritanceType = null;
 
 }
