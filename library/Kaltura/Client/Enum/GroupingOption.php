@@ -36,11 +36,9 @@ namespace Kaltura\Client\Enum;
  * @package Kaltura
  * @subpackage Client
  */
-class GroupByField extends \Kaltura\Client\EnumBase
+class GroupingOption extends \Kaltura\Client\EnumBase
 {
-	const MEDIA_TYPE_ID = "media_type_id";
-	const SUPPRESSED = "suppressed";
-	const CRID = "crid";
-	const LINEAR_MEDIA_ID = "linear_media_id";
+	const OMIT = "Omit";
+	const INCLUDE = "Include";
 }
 
