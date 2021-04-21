@@ -36,11 +36,11 @@ namespace Kaltura\Client\Type;
  * @package Kaltura
  * @subpackage Client
  */
-class ApiPriviligesPermissionItem extends \Kaltura\Client\Type\PermissionItem
+class RegionChannelNumber extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaApiPriviligesPermissionItem';
+		return 'KalturaRegionChannelNumber';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -50,21 +50,21 @@ class ApiPriviligesPermissionItem extends \Kaltura\Client\Type\PermissionItem
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->object))
-			$this->object = (string)$xml->object;
-		if(count($xml->parameter))
-			$this->parameter = (string)$xml->parameter;
+		if(count($xml->regionId))
+			$this->regionId = (int)$xml->regionId;
+		if(count($xml->channelNumber))
+			$this->channelNumber = (int)$xml->channelNumber;
 	}
 	/**
-	 * API object name
-	 * @var string
+	 * The identifier of the region
+	 * @var int
 	 */
-	public $object = null;
+	public $regionId = null;
 
 	/**
-	 * API parameter name
-	 * @var string
+	 * The number of channel
+	 * @var int
 	 */
-	public $parameter = null;
+	public $channelNumber = null;
 
 }

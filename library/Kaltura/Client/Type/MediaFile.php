@@ -59,8 +59,6 @@ class MediaFile extends \Kaltura\Client\Type\AssetFile
 			$this->type = (string)$xml->type;
 		if(count($xml->typeId))
 			$this->typeId = (int)$xml->typeId;
-		if(count($xml->altUrl))
-			$this->altUrl = (string)$xml->altUrl;
 		if(count($xml->duration))
 			$this->duration = (string)$xml->duration;
 		if(count($xml->externalId))
@@ -105,10 +103,6 @@ class MediaFile extends \Kaltura\Client\Type\AssetFile
 		}
 		if(count($xml->catalogEndDate))
 			$this->catalogEndDate = (string)$xml->catalogEndDate;
-		if(count($xml->opl))
-			$this->opl = (string)$xml->opl;
-		if(count($xml->businessModuleDetails) && !empty($xml->businessModuleDetails))
-			$this->businessModuleDetails = \Kaltura\Client\ParseUtils::unmarshalObject($xml->businessModuleDetails, "KalturaBusinessModuleDetails");
 	}
 	/**
 	 * Unique identifier for the asset
@@ -135,12 +129,6 @@ class MediaFile extends \Kaltura\Client\Type\AssetFile
 	 * @var int
 	 */
 	public $typeId = null;
-
-	/**
-	 * URL of the media file to be played
-	 * @var string
-	 */
-	public $altUrl = null;
 
 	/**
 	 * Duration of the media file
@@ -243,17 +231,5 @@ class MediaFile extends \Kaltura\Client\Type\AssetFile
 	 * @var int
 	 */
 	public $catalogEndDate = null;
-
-	/**
-	 * OPL
-	 * @var string
-	 */
-	public $opl = null;
-
-	/**
-	 * businessModuleDetails
-	 * @var \Kaltura\Client\Type\BusinessModuleDetails
-	 */
-	public $businessModuleDetails;
 
 }

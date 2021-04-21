@@ -80,12 +80,6 @@ class GeneralPartnerConfig extends \Kaltura\Client\Type\PartnerConfiguration
 		}
 		if(count($xml->defaultRegion))
 			$this->defaultRegion = (int)$xml->defaultRegion;
-		if(count($xml->rollingDeviceData) && !empty($xml->rollingDeviceData))
-			$this->rollingDeviceData = \Kaltura\Client\ParseUtils::unmarshalObject($xml->rollingDeviceData, "KalturaRollingDeviceRemovalData");
-		if(count($xml->finishedPercentThreshold))
-			$this->finishedPercentThreshold = (int)$xml->finishedPercentThreshold;
-		if(count($xml->suspensionProfileInheritanceType))
-			$this->suspensionProfileInheritanceType = (string)$xml->suspensionProfileInheritanceType;
 	}
 	/**
 	 * Partner name
@@ -158,23 +152,5 @@ class GeneralPartnerConfig extends \Kaltura\Client\Type\PartnerConfiguration
 	 * @var int
 	 */
 	public $defaultRegion = null;
-
-	/**
-	 * Rolling Device Policy
-	 * @var \Kaltura\Client\Type\RollingDeviceRemovalData
-	 */
-	public $rollingDeviceData;
-
-	/**
-	 * Finished PercentThreshold
-	 * @var int
-	 */
-	public $finishedPercentThreshold = null;
-
-	/**
-	 * Suspension Profile Inheritance
-	 * @var \Kaltura\Client\Enum\SuspensionProfileInheritanceType
-	 */
-	public $suspensionProfileInheritanceType = null;
 
 }

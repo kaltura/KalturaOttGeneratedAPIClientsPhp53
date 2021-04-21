@@ -167,8 +167,6 @@ class LiveAsset extends \Kaltura\Client\Type\MediaAsset
 
 	/**
 	 * Is CDVR enabled for this asset
-	 *             Please, note that value of this property is strictly connected with CDV-R setting on Partner level.
-	 *             In order to enable CDV-R for KalturaLiveAsset, Partner CDV-R setting should be enabled.
 	 * @var bool
 	 * @readonly
 	 */
@@ -176,8 +174,6 @@ class LiveAsset extends \Kaltura\Client\Type\MediaAsset
 
 	/**
 	 * Is catch-up enabled for this asset
-	 *             Please, note that value of this property is strictly connected with Catch Up setting on Partner level.
-	 *             In order to enable Catch Up for KalturaLiveAsset, Partner Catch Up setting should be enabled.
 	 * @var bool
 	 * @readonly
 	 */
@@ -185,8 +181,6 @@ class LiveAsset extends \Kaltura\Client\Type\MediaAsset
 
 	/**
 	 * Is start over enabled for this asset
-	 *             Please, note that value of this property is strictly connected with Start Over setting on Partner level.
-	 *             In order to enable Start Over for KalturaLiveAsset, Partner Start Over setting should be enabled.
 	 * @var bool
 	 * @readonly
 	 */
@@ -215,8 +209,6 @@ class LiveAsset extends \Kaltura\Client\Type\MediaAsset
 
 	/**
 	 * Is trick-play enabled for this asset
-	 *             Please, note that value of this property is strictly connected with Trick Play setting on Partner level.
-	 *             In order to enable Trick Play for KalturaLiveAsset, Partner Trick Play setting should be enabled.
 	 * @var bool
 	 * @readonly
 	 */

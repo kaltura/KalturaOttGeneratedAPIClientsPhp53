@@ -114,26 +114,6 @@ class Client extends Base
 	protected $businessModuleRule = null;
 
 	/**
-	 * @var \Kaltura\Client\Service\CampaignService
-	 */
-	protected $campaign = null;
-
-	/**
-	 * @var \Kaltura\Client\Service\CategoryItemService
-	 */
-	protected $categoryItem = null;
-
-	/**
-	 * @var \Kaltura\Client\Service\CategoryTreeService
-	 */
-	protected $categoryTree = null;
-
-	/**
-	 * @var \Kaltura\Client\Service\CategoryVersionService
-	 */
-	protected $categoryVersion = null;
-
-	/**
 	 * @var \Kaltura\Client\Service\CdnAdapterProfileService
 	 */
 	protected $cdnAdapterProfile = null;
@@ -214,11 +194,6 @@ class Client extends Base
 	protected $deviceFamily = null;
 
 	/**
-	 * @var \Kaltura\Client\Service\DeviceReferenceDataService
-	 */
-	protected $deviceReferenceData = null;
-
-	/**
 	 * @var \Kaltura\Client\Service\DiscountDetailsService
 	 */
 	protected $discountDetails = null;
@@ -227,11 +202,6 @@ class Client extends Base
 	 * @var \Kaltura\Client\Service\DrmProfileService
 	 */
 	protected $drmProfile = null;
-
-	/**
-	 * @var \Kaltura\Client\Service\DynamicListService
-	 */
-	protected $dynamicList = null;
 
 	/**
 	 * @var \Kaltura\Client\Service\EmailService
@@ -252,11 +222,6 @@ class Client extends Base
 	 * @var \Kaltura\Client\Service\EntitlementService
 	 */
 	protected $entitlement = null;
-
-	/**
-	 * @var \Kaltura\Client\Service\EpgService
-	 */
-	protected $epg = null;
 
 	/**
 	 * @var \Kaltura\Client\Service\EventNotificationActionService
@@ -364,16 +329,6 @@ class Client extends Base
 	protected $IngestProfile = null;
 
 	/**
-	 * @var \Kaltura\Client\Service\IotService
-	 */
-	protected $iot = null;
-
-	/**
-	 * @var \Kaltura\Client\Service\IotProfileService
-	 */
-	protected $iotProfile = null;
-
-	/**
 	 * @var \Kaltura\Client\Service\LanguageService
 	 */
 	protected $language = null;
@@ -472,11 +427,6 @@ class Client extends Base
 	 * @var \Kaltura\Client\Service\PermissionService
 	 */
 	protected $permission = null;
-
-	/**
-	 * @var \Kaltura\Client\Service\PermissionItemService
-	 */
-	protected $permissionItem = null;
 
 	/**
 	 * @var \Kaltura\Client\Service\PersonalFeedService
@@ -579,11 +529,6 @@ class Client extends Base
 	protected $session = null;
 
 	/**
-	 * @var \Kaltura\Client\Service\SmsAdapterProfileService
-	 */
-	protected $smsAdapterProfile = null;
-
-	/**
 	 * @var \Kaltura\Client\Service\SocialActionService
 	 */
 	protected $socialAction = null;
@@ -607,11 +552,6 @@ class Client extends Base
 	 * @var \Kaltura\Client\Service\SsoAdapterProfileService
 	 */
 	protected $ssoAdapterProfile = null;
-
-	/**
-	 * @var \Kaltura\Client\Service\StreamingDeviceService
-	 */
-	protected $streamingDevice = null;
 
 	/**
 	 * @var \Kaltura\Client\Service\SubscriptionService
@@ -717,8 +657,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:21-04-19');
-		$this->setApiVersion('6.3.0.29047');
+		$this->setClientTag('php5:21-04-21');
+		$this->setApiVersion('5.3.2.27581');
 	}
 	
 	/**
@@ -855,42 +795,6 @@ class Client extends Base
 		if (is_null($this->businessModuleRule))
 			$this->businessModuleRule = new \Kaltura\Client\Service\BusinessModuleRuleService($this);
 		return $this->businessModuleRule;
-	}
-	/**
-	 * @return \Kaltura\Client\Service\CampaignService
-	 */
-	public function getCampaignService()
-	{
-		if (is_null($this->campaign))
-			$this->campaign = new \Kaltura\Client\Service\CampaignService($this);
-		return $this->campaign;
-	}
-	/**
-	 * @return \Kaltura\Client\Service\CategoryItemService
-	 */
-	public function getCategoryItemService()
-	{
-		if (is_null($this->categoryItem))
-			$this->categoryItem = new \Kaltura\Client\Service\CategoryItemService($this);
-		return $this->categoryItem;
-	}
-	/**
-	 * @return \Kaltura\Client\Service\CategoryTreeService
-	 */
-	public function getCategoryTreeService()
-	{
-		if (is_null($this->categoryTree))
-			$this->categoryTree = new \Kaltura\Client\Service\CategoryTreeService($this);
-		return $this->categoryTree;
-	}
-	/**
-	 * @return \Kaltura\Client\Service\CategoryVersionService
-	 */
-	public function getCategoryVersionService()
-	{
-		if (is_null($this->categoryVersion))
-			$this->categoryVersion = new \Kaltura\Client\Service\CategoryVersionService($this);
-		return $this->categoryVersion;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\CdnAdapterProfileService
@@ -1037,15 +941,6 @@ class Client extends Base
 		return $this->deviceFamily;
 	}
 	/**
-	 * @return \Kaltura\Client\Service\DeviceReferenceDataService
-	 */
-	public function getDeviceReferenceDataService()
-	{
-		if (is_null($this->deviceReferenceData))
-			$this->deviceReferenceData = new \Kaltura\Client\Service\DeviceReferenceDataService($this);
-		return $this->deviceReferenceData;
-	}
-	/**
 	 * @return \Kaltura\Client\Service\DiscountDetailsService
 	 */
 	public function getDiscountDetailsService()
@@ -1062,15 +957,6 @@ class Client extends Base
 		if (is_null($this->drmProfile))
 			$this->drmProfile = new \Kaltura\Client\Service\DrmProfileService($this);
 		return $this->drmProfile;
-	}
-	/**
-	 * @return \Kaltura\Client\Service\DynamicListService
-	 */
-	public function getDynamicListService()
-	{
-		if (is_null($this->dynamicList))
-			$this->dynamicList = new \Kaltura\Client\Service\DynamicListService($this);
-		return $this->dynamicList;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\EmailService
@@ -1107,15 +993,6 @@ class Client extends Base
 		if (is_null($this->entitlement))
 			$this->entitlement = new \Kaltura\Client\Service\EntitlementService($this);
 		return $this->entitlement;
-	}
-	/**
-	 * @return \Kaltura\Client\Service\EpgService
-	 */
-	public function getEpgService()
-	{
-		if (is_null($this->epg))
-			$this->epg = new \Kaltura\Client\Service\EpgService($this);
-		return $this->epg;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\EventNotificationActionService
@@ -1307,24 +1184,6 @@ class Client extends Base
 		return $this->IngestProfile;
 	}
 	/**
-	 * @return \Kaltura\Client\Service\IotService
-	 */
-	public function getIotService()
-	{
-		if (is_null($this->iot))
-			$this->iot = new \Kaltura\Client\Service\IotService($this);
-		return $this->iot;
-	}
-	/**
-	 * @return \Kaltura\Client\Service\IotProfileService
-	 */
-	public function getIotProfileService()
-	{
-		if (is_null($this->iotProfile))
-			$this->iotProfile = new \Kaltura\Client\Service\IotProfileService($this);
-		return $this->iotProfile;
-	}
-	/**
 	 * @return \Kaltura\Client\Service\LanguageService
 	 */
 	public function getLanguageService()
@@ -1503,15 +1362,6 @@ class Client extends Base
 		if (is_null($this->permission))
 			$this->permission = new \Kaltura\Client\Service\PermissionService($this);
 		return $this->permission;
-	}
-	/**
-	 * @return \Kaltura\Client\Service\PermissionItemService
-	 */
-	public function getPermissionItemService()
-	{
-		if (is_null($this->permissionItem))
-			$this->permissionItem = new \Kaltura\Client\Service\PermissionItemService($this);
-		return $this->permissionItem;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\PersonalFeedService
@@ -1694,15 +1544,6 @@ class Client extends Base
 		return $this->session;
 	}
 	/**
-	 * @return \Kaltura\Client\Service\SmsAdapterProfileService
-	 */
-	public function getSmsAdapterProfileService()
-	{
-		if (is_null($this->smsAdapterProfile))
-			$this->smsAdapterProfile = new \Kaltura\Client\Service\SmsAdapterProfileService($this);
-		return $this->smsAdapterProfile;
-	}
-	/**
 	 * @return \Kaltura\Client\Service\SocialActionService
 	 */
 	public function getSocialActionService()
@@ -1746,15 +1587,6 @@ class Client extends Base
 		if (is_null($this->ssoAdapterProfile))
 			$this->ssoAdapterProfile = new \Kaltura\Client\Service\SsoAdapterProfileService($this);
 		return $this->ssoAdapterProfile;
-	}
-	/**
-	 * @return \Kaltura\Client\Service\StreamingDeviceService
-	 */
-	public function getStreamingDeviceService()
-	{
-		if (is_null($this->streamingDevice))
-			$this->streamingDevice = new \Kaltura\Client\Service\StreamingDeviceService($this);
-		return $this->streamingDevice;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\SubscriptionService

@@ -65,44 +65,20 @@ class SystemService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Returns the epoch value of an invalidation key if it was found
+	 * Gets the current level of the KLogger
 	 * 
-	 * @return \Kaltura\Client\Type\LongValue
+	 * @return string
 	 */
-	function getInvalidationKeyValue($invalidationKey, $layeredCacheConfigName = null, $groupId = 0)
+	function getLogLevel()
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "invalidationKey", $invalidationKey);
-		$this->client->addParam($kparams, "layeredCacheConfigName", $layeredCacheConfigName);
-		$this->client->addParam($kparams, "groupId", $groupId);
-		$this->client->queueServiceActionCall("system", "getInvalidationKeyValue", "KalturaLongValue", $kparams);
+		$this->client->queueServiceActionCall("system", "getLogLevel", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaLongValue");
-		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\LongValue");
-		return $resultObject;
-	}
-
-	/**
-	 * Returns the current layered cache group config of the sent groupId. You need to send groupId only if you wish to get it for a specific groupId and not the one the KS belongs to.
-	 * 
-	 * @return \Kaltura\Client\Type\StringValue
-	 */
-	function getLayeredCacheGroupConfig($groupId = 0)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "groupId", $groupId);
-		$this->client->queueServiceActionCall("system", "getLayeredCacheGroupConfig", "KalturaStringValue", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaStringValue");
-		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\StringValue");
+		$resultObject = (String)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
 		return $resultObject;
 	}
 
@@ -162,15 +138,14 @@ class SystemService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Returns true if the invalidation key was invalidated successfully or false otherwise.
+	 * Returns true
 	 * 
 	 * @return bool
 	 */
-	function invalidateLayeredCacheInvalidationKey($key)
+	function ping()
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "key", $key);
-		$this->client->queueServiceActionCall("system", "invalidateLayeredCacheInvalidationKey", null, $kparams);
+		$this->client->queueServiceActionCall("system", "ping", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
@@ -181,14 +156,15 @@ class SystemService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Returns true
+	 * Sets the current level of the KLogger
 	 * 
 	 * @return bool
 	 */
-	function ping()
+	function setLogLevel($level)
 	{
 		$kparams = array();
-		$this->client->queueServiceActionCall("system", "ping", null, $kparams);
+		$this->client->addParam($kparams, "level", $level);
+		$this->client->queueServiceActionCall("system", "setLogLevel", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();

@@ -53,13 +53,6 @@ class BulkUploadIngestJobData extends \Kaltura\Client\Type\BulkUploadJobData
 		
 		if(count($xml->ingestProfileId))
 			$this->ingestProfileId = (int)$xml->ingestProfileId;
-		if(count($xml->disableEpgNotification))
-		{
-			if(!empty($xml->disableEpgNotification) && $xml->disableEpgNotification != 'false')
-				$this->disableEpgNotification = true;
-			else
-				$this->disableEpgNotification = false;
-		}
 	}
 	/**
 	 * Identifies the ingest profile that will handle the ingest of programs
@@ -67,12 +60,5 @@ class BulkUploadIngestJobData extends \Kaltura\Client\Type\BulkUploadJobData
 	 * @var int
 	 */
 	public $ingestProfileId = null;
-
-	/**
-	 * By default, after the successful ingest, devices will be notified about changes in epg channels.
-	 *             This parameter disables this notification.
-	 * @var bool
-	 */
-	public $disableEpgNotification = null;
 
 }

@@ -70,7 +70,7 @@ class AssetFileService extends \Kaltura\Client\ServiceBase
 	 * 
 	 * @return \Kaltura\Client\Type\AssetFile
 	 */
-	function playManifest($partnerId, $assetId, $assetType, $assetFileId, $contextType, $ks = null, $tokenizedUrl = null, $isAltUrl = false)
+	function playManifest($partnerId, $assetId, $assetType, $assetFileId, $contextType, $ks = null, $tokenizedUrl = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "partnerId", $partnerId);
@@ -80,7 +80,6 @@ class AssetFileService extends \Kaltura\Client\ServiceBase
 		$this->client->addParam($kparams, "contextType", $contextType);
 		$this->client->addParam($kparams, "ks", $ks);
 		$this->client->addParam($kparams, "tokenizedUrl", $tokenizedUrl);
-		$this->client->addParam($kparams, "isAltUrl", $isAltUrl);
 		$this->client->queueServiceActionCall("assetfile", "playManifest", "KalturaAssetFile", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();

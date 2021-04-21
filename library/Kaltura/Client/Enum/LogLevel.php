@@ -27,3 +27,22 @@
 // @ignore
 // ===================================================================================================
 
+/**
+ * @namespace
+ */
+namespace Kaltura\Client\Enum;
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class LogLevel extends \Kaltura\Client\EnumBase
+{
+	const TRACE = "TRACE";
+	const DEBUG = "DEBUG";
+	const INFO = "INFO";
+	const WARN = "WARN";
+	const ERROR = "ERROR";
+	const ALL = "ALL";
+}
+

@@ -42,6 +42,5 @@ class InboxMessageType extends \Kaltura\Client\EnumBase
 	const FOLLOWED = "Followed";
 	const ENGAGEMENT = "Engagement";
 	const INTEREST = "Interest";
-	const CAMPAIGN = "Campaign";
 }
 

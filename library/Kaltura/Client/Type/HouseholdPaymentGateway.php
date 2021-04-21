@@ -63,8 +63,6 @@ class HouseholdPaymentGateway extends \Kaltura\Client\ObjectBase
 		}
 		if(count($xml->selectedBy))
 			$this->selectedBy = (string)$xml->selectedBy;
-		if(count($xml->suspendSettings) && !empty($xml->suspendSettings))
-			$this->suspendSettings = \Kaltura\Client\ParseUtils::unmarshalObject($xml->suspendSettings, "KalturaSuspendSettings");
 	}
 	/**
 	 * payment gateway id
@@ -90,12 +88,5 @@ class HouseholdPaymentGateway extends \Kaltura\Client\ObjectBase
 	 * @var \Kaltura\Client\Enum\HouseholdPaymentGatewaySelectedBy
 	 */
 	public $selectedBy = null;
-
-	/**
-	 * suspend settings
-	 * @var \Kaltura\Client\Type\SuspendSettings
-	 * @readonly
-	 */
-	public $suspendSettings;
 
 }

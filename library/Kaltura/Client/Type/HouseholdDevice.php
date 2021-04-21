@@ -69,23 +69,6 @@ class HouseholdDevice extends \Kaltura\Client\Type\OTTObjectSupportNullable
 			$this->drm = \Kaltura\Client\ParseUtils::unmarshalObject($xml->drm, "KalturaCustomDrmPlaybackPluginData");
 		if(count($xml->externalId))
 			$this->externalId = (string)$xml->externalId;
-		if(count($xml->macAddress))
-			$this->macAddress = (string)$xml->macAddress;
-		if(count($xml->dynamicData))
-		{
-			if(empty($xml->dynamicData))
-				$this->dynamicData = array();
-			else
-				$this->dynamicData = \Kaltura\Client\ParseUtils::unmarshalMap($xml->dynamicData, "KalturaStringValue");
-		}
-		if(count($xml->model))
-			$this->model = (string)$xml->model;
-		if(count($xml->manufacturer))
-			$this->manufacturer = (string)$xml->manufacturer;
-		if(count($xml->manufacturerId))
-			$this->manufacturerId = (string)$xml->manufacturerId;
-		if(count($xml->lastActivityTime))
-			$this->lastActivityTime = (string)$xml->lastActivityTime;
 	}
 	/**
 	 * Household identifier
@@ -144,43 +127,5 @@ class HouseholdDevice extends \Kaltura\Client\Type\OTTObjectSupportNullable
 	 * @var string
 	 */
 	public $externalId = null;
-
-	/**
-	 * mac address
-	 * @var string
-	 */
-	public $macAddress = null;
-
-	/**
-	 * Dynamic data
-	 * @var array<string, KalturaStringValue>
-	 */
-	public $dynamicData;
-
-	/**
-	 * model
-	 * @var string
-	 */
-	public $model = null;
-
-	/**
-	 * manufacturer
-	 * @var string
-	 */
-	public $manufacturer = null;
-
-	/**
-	 * manufacturer Id, read only
-	 * @var int
-	 * @readonly
-	 */
-	public $manufacturerId = null;
-
-	/**
-	 * Last Activity Time, read only
-	 * @var int
-	 * @readonly
-	 */
-	public $lastActivityTime = null;
 
 }
