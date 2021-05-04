@@ -6,7 +6,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -84,8 +84,6 @@ class GeneralPartnerConfig extends \Kaltura\Client\Type\PartnerConfiguration
 			$this->rollingDeviceData = \Kaltura\Client\ParseUtils::unmarshalObject($xml->rollingDeviceData, "KalturaRollingDeviceRemovalData");
 		if(count($xml->finishedPercentThreshold))
 			$this->finishedPercentThreshold = (int)$xml->finishedPercentThreshold;
-		if(count($xml->suspensionProfileInheritanceType))
-			$this->suspensionProfileInheritanceType = (string)$xml->suspensionProfileInheritanceType;
 	}
 	/**
 	 * Partner name
@@ -170,11 +168,5 @@ class GeneralPartnerConfig extends \Kaltura\Client\Type\PartnerConfiguration
 	 * @var int
 	 */
 	public $finishedPercentThreshold = null;
-
-	/**
-	 * Suspension Profile Inheritance
-	 * @var \Kaltura\Client\Enum\SuspensionProfileInheritanceType
-	 */
-	public $suspensionProfileInheritanceType = null;
 
 }
