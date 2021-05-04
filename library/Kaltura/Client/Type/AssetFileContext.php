@@ -61,6 +61,13 @@ class AssetFileContext extends \Kaltura\Client\ObjectBase
 			else
 				$this->isOfflinePlayBack = false;
 		}
+		if(count($xml->isLivePlayBack))
+		{
+			if(!empty($xml->isLivePlayBack) && $xml->isLivePlayBack != 'false')
+				$this->isLivePlayBack = true;
+			else
+				$this->isLivePlayBack = false;
+		}
 	}
 	/**
 	 * viewLifeCycle
@@ -82,5 +89,12 @@ class AssetFileContext extends \Kaltura\Client\ObjectBase
 	 * @readonly
 	 */
 	public $isOfflinePlayBack = null;
+
+	/**
+	 * Is Live PlayBack
+	 * @var bool
+	 * @readonly
+	 */
+	public $isLivePlayBack = null;
 
 }
