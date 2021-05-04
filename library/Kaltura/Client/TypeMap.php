@@ -6,7 +6,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -200,6 +200,7 @@ class TypeMap
 		'KalturaBaseRegionFilter' => 'Kaltura\Client\Type\BaseRegionFilter',
 		'KalturaRegionFilter' => 'Kaltura\Client\Type\RegionFilter',
 		'KalturaDefaultRegionFilter' => 'Kaltura\Client\Type\DefaultRegionFilter',
+		'KalturaAddDefaultIfEmptyResponseProfile' => 'Kaltura\Client\Type\AddDefaultIfEmptyResponseProfile',
 		'KalturaSearchHistoryFilter' => 'Kaltura\Client\Type\SearchHistoryFilter',
 		'KalturaTvmRuleFilter' => 'Kaltura\Client\Type\TvmRuleFilter',
 		'KalturaUserAssetRuleFilter' => 'Kaltura\Client\Type\UserAssetRuleFilter',
@@ -685,6 +686,8 @@ class TypeMap
 		'KalturaPin' => 'Kaltura\Client\Type\Pin',
 		'KalturaPurchaseSettings' => 'Kaltura\Client\Type\PurchaseSettings',
 		'KalturaPinResponse' => 'Kaltura\Client\Type\PinResponse',
+		'KalturaActionResult' => 'Kaltura\Client\Type\ActionResult',
+		'KalturaRegionChannelNumber' => 'Kaltura\Client\Type\RegionChannelNumber',
 		'KalturaSmsAdapterProfileListResponse' => 'Kaltura\Client\Type\SmsAdapterProfileListResponse',
 		'KalturaNetworkActionStatus' => 'Kaltura\Client\Type\NetworkActionStatus',
 		'KalturaUserSocialActionResponse' => 'Kaltura\Client\Type\UserSocialActionResponse',
