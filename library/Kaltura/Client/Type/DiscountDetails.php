@@ -66,10 +66,6 @@ class DiscountDetails extends \Kaltura\Client\ObjectBase
 			$this->startDate = (string)$xml->startDate;
 		if(count($xml->endDate))
 			$this->endDate = (string)$xml->endDate;
-		if(count($xml->whenAlgoTimes))
-			$this->whenAlgoTimes = (int)$xml->whenAlgoTimes;
-		if(count($xml->whenAlgoType))
-			$this->whenAlgoType = (int)$xml->whenAlgoType;
 	}
 	/**
 	 * The discount ID
@@ -101,17 +97,5 @@ class DiscountDetails extends \Kaltura\Client\ObjectBase
 	 * @var int
 	 */
 	public $endDate = null;
-
-	/**
-	 * End date represented as epoch
-	 * @var int
-	 */
-	public $whenAlgoTimes = null;
-
-	/**
-	 * End date represented as epoch
-	 * @var int
-	 */
-	public $whenAlgoType = null;
 
 }

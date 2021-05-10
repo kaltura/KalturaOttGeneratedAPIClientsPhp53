@@ -83,34 +83,35 @@ class UsageModule extends \Kaltura\Client\ObjectBase
 	/**
 	 * Usage module identifier
 	 * @var int
+	 * @readonly
 	 */
 	public $id = null;
 
 	/**
 	 * Usage module name
 	 * @var string
-	 * @insertonly
+	 * @readonly
 	 */
 	public $name = null;
 
 	/**
 	 * The maximum number of times an item in this usage module can be viewed
 	 * @var int
-	 * @insertonly
+	 * @readonly
 	 */
 	public $maxViewsNumber = null;
 
 	/**
 	 * The amount time an item is available for viewing since a user started watching the item
 	 * @var int
-	 * @insertonly
+	 * @readonly
 	 */
 	public $viewLifeCycle = null;
 
 	/**
 	 * The amount time an item is available for viewing
 	 * @var int
-	 * @insertonly
+	 * @readonly
 	 */
 	public $fullLifeCycle = null;
 
