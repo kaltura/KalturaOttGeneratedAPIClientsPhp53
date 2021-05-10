@@ -33,15 +33,14 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Discount details
  * @package Kaltura
  * @subpackage Client
  */
-class DiscountDetails extends \Kaltura\Client\ObjectBase
+class UsageModuleListResponse extends \Kaltura\Client\Type\ListResponse
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaDiscountDetails';
+		return 'KalturaUsageModuleListResponse';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,67 +50,18 @@ class DiscountDetails extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->id))
-			$this->id = (int)$xml->id;
-		if(count($xml->name))
-			$this->name = (string)$xml->name;
-		if(count($xml->multiCurrencyDiscount))
+		if(count($xml->objects))
 		{
-			if(empty($xml->multiCurrencyDiscount))
-				$this->multiCurrencyDiscount = array();
+			if(empty($xml->objects))
+				$this->objects = array();
 			else
-				$this->multiCurrencyDiscount = \Kaltura\Client\ParseUtils::unmarshalArray($xml->multiCurrencyDiscount, "KalturaDiscount");
+				$this->objects = \Kaltura\Client\ParseUtils::unmarshalArray($xml->objects, "KalturaUsageModule");
 		}
-		if(count($xml->startDate))
-			$this->startDate = (string)$xml->startDate;
-		if(count($xml->endDate))
-			$this->endDate = (string)$xml->endDate;
-		if(count($xml->whenAlgoTimes))
-			$this->whenAlgoTimes = (int)$xml->whenAlgoTimes;
-		if(count($xml->whenAlgoType))
-			$this->whenAlgoType = (int)$xml->whenAlgoType;
 	}
 	/**
-	 * The discount ID
-	 * @var int
-	 * @readonly
+	 * A list of usage modules
+	 * @var array<KalturaUsageModule>
 	 */
-	public $id = null;
-
-	/**
-	 * The price code name
-	 * @var string
-	 */
-	public $name = null;
-
-	/**
-	 * Multi currency discounts for all countries and currencies
-	 * @var array<KalturaDiscount>
-	 */
-	public $multiCurrencyDiscount;
-
-	/**
-	 * Start date represented as epoch
-	 * @var int
-	 */
-	public $startDate = null;
-
-	/**
-	 * End date represented as epoch
-	 * @var int
-	 */
-	public $endDate = null;
-
-	/**
-	 * End date represented as epoch
-	 * @var int
-	 */
-	public $whenAlgoTimes = null;
-
-	/**
-	 * End date represented as epoch
-	 * @var int
-	 */
-	public $whenAlgoType = null;
+	public $objects;
 
 }

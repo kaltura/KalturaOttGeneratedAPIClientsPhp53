@@ -57,7 +57,6 @@ class Discount extends \Kaltura\Client\Type\Price
 	/**
 	 * The discount percentage
 	 * @var int
-	 * @readonly
 	 */
 	public $percentage = null;
 

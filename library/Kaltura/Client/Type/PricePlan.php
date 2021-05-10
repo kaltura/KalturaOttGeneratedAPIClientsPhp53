@@ -68,21 +68,21 @@ class PricePlan extends \Kaltura\Client\Type\UsageModule
 	/**
 	 * Denotes whether or not this object can be renewed
 	 * @var bool
-	 * @readonly
+	 * @insertonly
 	 */
 	public $isRenewable = null;
 
 	/**
 	 * Defines the number of times the module will be renewed (for the life_cycle period)
 	 * @var int
-	 * @readonly
+	 * @insertonly
 	 */
 	public $renewalsNumber = null;
 
 	/**
 	 * The discount module identifier of the price plan
 	 * @var int
-	 * @readonly
+	 * @insertonly
 	 */
 	public $discountId = null;
 

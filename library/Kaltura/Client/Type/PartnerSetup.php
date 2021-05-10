@@ -33,15 +33,15 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Discount details
+ * Parameters for partner setup
  * @package Kaltura
  * @subpackage Client
  */
-class DiscountDetails extends \Kaltura\Client\ObjectBase
+class PartnerSetup extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaDiscountDetails';
+		return 'KalturaPartnerSetup';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,67 +51,29 @@ class DiscountDetails extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->id))
-			$this->id = (int)$xml->id;
-		if(count($xml->name))
-			$this->name = (string)$xml->name;
-		if(count($xml->multiCurrencyDiscount))
-		{
-			if(empty($xml->multiCurrencyDiscount))
-				$this->multiCurrencyDiscount = array();
-			else
-				$this->multiCurrencyDiscount = \Kaltura\Client\ParseUtils::unmarshalArray($xml->multiCurrencyDiscount, "KalturaDiscount");
-		}
-		if(count($xml->startDate))
-			$this->startDate = (string)$xml->startDate;
-		if(count($xml->endDate))
-			$this->endDate = (string)$xml->endDate;
-		if(count($xml->whenAlgoTimes))
-			$this->whenAlgoTimes = (int)$xml->whenAlgoTimes;
-		if(count($xml->whenAlgoType))
-			$this->whenAlgoType = (int)$xml->whenAlgoType;
+		if(count($xml->adminUsername))
+			$this->adminUsername = (string)$xml->adminUsername;
+		if(count($xml->adminPassword))
+			$this->adminPassword = (string)$xml->adminPassword;
+		if(count($xml->basePartnerConfiguration) && !empty($xml->basePartnerConfiguration))
+			$this->basePartnerConfiguration = \Kaltura\Client\ParseUtils::unmarshalObject($xml->basePartnerConfiguration, "KalturaBasePartnerConfiguration");
 	}
 	/**
-	 * The discount ID
-	 * @var int
-	 * @readonly
-	 */
-	public $id = null;
-
-	/**
-	 * The price code name
+	 * admin Username
 	 * @var string
 	 */
-	public $name = null;
+	public $adminUsername = null;
 
 	/**
-	 * Multi currency discounts for all countries and currencies
-	 * @var array<KalturaDiscount>
+	 * admin Password
+	 * @var string
 	 */
-	public $multiCurrencyDiscount;
+	public $adminPassword = null;
 
 	/**
-	 * Start date represented as epoch
-	 * @var int
+	 * basePartnerConfiguration
+	 * @var \Kaltura\Client\Type\BasePartnerConfiguration
 	 */
-	public $startDate = null;
-
-	/**
-	 * End date represented as epoch
-	 * @var int
-	 */
-	public $endDate = null;
-
-	/**
-	 * End date represented as epoch
-	 * @var int
-	 */
-	public $whenAlgoTimes = null;
-
-	/**
-	 * End date represented as epoch
-	 * @var int
-	 */
-	public $whenAlgoType = null;
+	public $basePartnerConfiguration;
 
 }

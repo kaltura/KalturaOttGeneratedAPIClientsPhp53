@@ -45,6 +45,45 @@ class DiscountDetailsService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
+	 * Internal API !!! Insert new DiscountDetails for partner
+	 * 
+	 * @return \Kaltura\Client\Type\DiscountDetails
+	 */
+	function add(\Kaltura\Client\Type\DiscountDetails $discountDetails)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "discountDetails", $discountDetails->toParams());
+		$this->client->queueServiceActionCall("discountdetails", "add", "KalturaDiscountDetails", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDiscountDetails");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\DiscountDetails");
+		return $resultObject;
+	}
+
+	/**
+	 * Internal API !!! Delete DiscountDetails
+	 * 
+	 * @return bool
+	 */
+	function delete($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("discountdetails", "delete", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (bool)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
+	}
+
+	/**
 	 * Returns the list of available discounts details, can be filtered by discount codes
 	 * 
 	 * @return \Kaltura\Client\Type\DiscountDetailsListResponse

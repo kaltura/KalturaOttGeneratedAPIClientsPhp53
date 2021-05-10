@@ -33,15 +33,14 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Discount details
  * @package Kaltura
  * @subpackage Client
  */
-class DiscountDetails extends \Kaltura\Client\ObjectBase
+class PartnerFilter extends \Kaltura\Client\Type\Filter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaDiscountDetails';
+		return 'KalturaPartnerFilter';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,67 +50,13 @@ class DiscountDetails extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->id))
-			$this->id = (int)$xml->id;
-		if(count($xml->name))
-			$this->name = (string)$xml->name;
-		if(count($xml->multiCurrencyDiscount))
-		{
-			if(empty($xml->multiCurrencyDiscount))
-				$this->multiCurrencyDiscount = array();
-			else
-				$this->multiCurrencyDiscount = \Kaltura\Client\ParseUtils::unmarshalArray($xml->multiCurrencyDiscount, "KalturaDiscount");
-		}
-		if(count($xml->startDate))
-			$this->startDate = (string)$xml->startDate;
-		if(count($xml->endDate))
-			$this->endDate = (string)$xml->endDate;
-		if(count($xml->whenAlgoTimes))
-			$this->whenAlgoTimes = (int)$xml->whenAlgoTimes;
-		if(count($xml->whenAlgoType))
-			$this->whenAlgoType = (int)$xml->whenAlgoType;
+		if(count($xml->idIn))
+			$this->idIn = (string)$xml->idIn;
 	}
 	/**
-	 * The discount ID
-	 * @var int
-	 * @readonly
-	 */
-	public $id = null;
-
-	/**
-	 * The price code name
+	 * Comma separated discount codes
 	 * @var string
 	 */
-	public $name = null;
-
-	/**
-	 * Multi currency discounts for all countries and currencies
-	 * @var array<KalturaDiscount>
-	 */
-	public $multiCurrencyDiscount;
-
-	/**
-	 * Start date represented as epoch
-	 * @var int
-	 */
-	public $startDate = null;
-
-	/**
-	 * End date represented as epoch
-	 * @var int
-	 */
-	public $endDate = null;
-
-	/**
-	 * End date represented as epoch
-	 * @var int
-	 */
-	public $whenAlgoTimes = null;
-
-	/**
-	 * End date represented as epoch
-	 * @var int
-	 */
-	public $whenAlgoType = null;
+	public $idIn = null;
 
 }

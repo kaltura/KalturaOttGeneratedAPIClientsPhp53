@@ -50,5 +50,6 @@ class PartnerConfigurationType extends \Kaltura\Client\EnumBase
 	const CATALOG = "Catalog";
 	const SECURITY = "Security";
 	const OPC = "Opc";
+	const BASE = "Base";
 }
 

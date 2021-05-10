@@ -73,7 +73,6 @@ class CouponsGroup extends \Kaltura\Client\ObjectBase
 	/**
 	 * Coupon group identifier
 	 * @var string
-	 * @readonly
 	 */
 	public $id = null;
 

@@ -33,15 +33,14 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Discount details
  * @package Kaltura
  * @subpackage Client
  */
-class DiscountDetails extends \Kaltura\Client\ObjectBase
+class BasePartnerConfiguration extends \Kaltura\Client\Type\PartnerConfiguration
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaDiscountDetails';
+		return 'KalturaBasePartnerConfiguration';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,67 +50,66 @@ class DiscountDetails extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->id))
-			$this->id = (int)$xml->id;
-		if(count($xml->name))
-			$this->name = (string)$xml->name;
-		if(count($xml->multiCurrencyDiscount))
+		if(count($xml->ksExpirationSeconds))
+			$this->ksExpirationSeconds = (string)$xml->ksExpirationSeconds;
+		if(count($xml->appTokenSessionMaxDurationSeconds))
+			$this->appTokenSessionMaxDurationSeconds = (int)$xml->appTokenSessionMaxDurationSeconds;
+		if(count($xml->anonymousKSExpirationSeconds))
+			$this->anonymousKSExpirationSeconds = (string)$xml->anonymousKSExpirationSeconds;
+		if(count($xml->refreshExpirationForPinLoginSeconds))
+			$this->refreshExpirationForPinLoginSeconds = (string)$xml->refreshExpirationForPinLoginSeconds;
+		if(count($xml->appTokenMaxExpirySeconds))
+			$this->appTokenMaxExpirySeconds = (int)$xml->appTokenMaxExpirySeconds;
+		if(count($xml->uploadTokenExpirySeconds))
+			$this->uploadTokenExpirySeconds = (int)$xml->uploadTokenExpirySeconds;
+		if(count($xml->apptokenUserValidationDisabled))
 		{
-			if(empty($xml->multiCurrencyDiscount))
-				$this->multiCurrencyDiscount = array();
+			if(!empty($xml->apptokenUserValidationDisabled) && $xml->apptokenUserValidationDisabled != 'false')
+				$this->apptokenUserValidationDisabled = true;
 			else
-				$this->multiCurrencyDiscount = \Kaltura\Client\ParseUtils::unmarshalArray($xml->multiCurrencyDiscount, "KalturaDiscount");
+				$this->apptokenUserValidationDisabled = false;
 		}
-		if(count($xml->startDate))
-			$this->startDate = (string)$xml->startDate;
-		if(count($xml->endDate))
-			$this->endDate = (string)$xml->endDate;
-		if(count($xml->whenAlgoTimes))
-			$this->whenAlgoTimes = (int)$xml->whenAlgoTimes;
-		if(count($xml->whenAlgoType))
-			$this->whenAlgoType = (int)$xml->whenAlgoType;
 	}
 	/**
-	 * The discount ID
-	 * @var int
-	 * @readonly
-	 */
-	public $id = null;
-
-	/**
-	 * The price code name
-	 * @var string
-	 */
-	public $name = null;
-
-	/**
-	 * Multi currency discounts for all countries and currencies
-	 * @var array<KalturaDiscount>
-	 */
-	public $multiCurrencyDiscount;
-
-	/**
-	 * Start date represented as epoch
+	 * KSExpirationSeconds
 	 * @var int
 	 */
-	public $startDate = null;
+	public $ksExpirationSeconds = null;
 
 	/**
-	 * End date represented as epoch
+	 * AppTokenSessionMaxDurationSeconds
 	 * @var int
 	 */
-	public $endDate = null;
+	public $appTokenSessionMaxDurationSeconds = null;
 
 	/**
-	 * End date represented as epoch
+	 * AnonymousKSExpirationSeconds
 	 * @var int
 	 */
-	public $whenAlgoTimes = null;
+	public $anonymousKSExpirationSeconds = null;
 
 	/**
-	 * End date represented as epoch
+	 * RefreshExpirationForPinLoginSeconds
 	 * @var int
 	 */
-	public $whenAlgoType = null;
+	public $refreshExpirationForPinLoginSeconds = null;
+
+	/**
+	 * AppTokenMaxExpirySeconds
+	 * @var int
+	 */
+	public $appTokenMaxExpirySeconds = null;
+
+	/**
+	 * uploadTokenExpirySeconds
+	 * @var int
+	 */
+	public $uploadTokenExpirySeconds = null;
+
+	/**
+	 * apptokenUserValidationDisabled
+	 * @var bool
+	 */
+	public $apptokenUserValidationDisabled = null;
 
 }
