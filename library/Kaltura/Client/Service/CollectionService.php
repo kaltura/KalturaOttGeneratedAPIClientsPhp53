@@ -6,7 +6,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -42,6 +42,45 @@ class CollectionService extends \Kaltura\Client\ServiceBase
 	function __construct(\Kaltura\Client\Client $client = null)
 	{
 		parent::__construct($client);
+	}
+
+	/**
+	 * Internal API !!! Insert new collection for partner
+	 * 
+	 * @return \Kaltura\Client\Type\Collection
+	 */
+	function add(\Kaltura\Client\Type\Collection $collection)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "collection", $collection->toParams());
+		$this->client->queueServiceActionCall("collection", "add", "KalturaCollection", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCollection");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\Collection");
+		return $resultObject;
+	}
+
+	/**
+	 * Internal API !!! Delete collection
+	 * 
+	 * @return bool
+	 */
+	function delete($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("collection", "delete", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (bool)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
 	}
 
 	/**

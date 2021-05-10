@@ -6,7 +6,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -85,6 +85,7 @@ class TypeMap
 		'KalturaMultilingualStringValue' => 'Kaltura\Client\Type\MultilingualStringValue',
 		'KalturaStringValue' => 'Kaltura\Client\Type\StringValue',
 		'KalturaOTTUserFilter' => 'Kaltura\Client\Type\OTTUserFilter',
+		'KalturaPartnerFilter' => 'Kaltura\Client\Type\PartnerFilter',
 		'KalturaBulkUploadFilter' => 'Kaltura\Client\Type\BulkUploadFilter',
 		'KalturaSocialActionFilter' => 'Kaltura\Client\Type\SocialActionFilter',
 		'KalturaSocialCommentFilter' => 'Kaltura\Client\Type\SocialCommentFilter',
@@ -200,6 +201,7 @@ class TypeMap
 		'KalturaBaseRegionFilter' => 'Kaltura\Client\Type\BaseRegionFilter',
 		'KalturaRegionFilter' => 'Kaltura\Client\Type\RegionFilter',
 		'KalturaDefaultRegionFilter' => 'Kaltura\Client\Type\DefaultRegionFilter',
+		'KalturaAddDefaultIfEmptyResponseProfile' => 'Kaltura\Client\Type\AddDefaultIfEmptyResponseProfile',
 		'KalturaSearchHistoryFilter' => 'Kaltura\Client\Type\SearchHistoryFilter',
 		'KalturaTvmRuleFilter' => 'Kaltura\Client\Type\TvmRuleFilter',
 		'KalturaUserAssetRuleFilter' => 'Kaltura\Client\Type\UserAssetRuleFilter',
@@ -228,6 +230,8 @@ class TypeMap
 		'KalturaFairPlayPlaybackPluginData' => 'Kaltura\Client\Type\FairPlayPlaybackPluginData',
 		'KalturaCustomDrmPlaybackPluginData' => 'Kaltura\Client\Type\CustomDrmPlaybackPluginData',
 		'KalturaOTTUserListResponse' => 'Kaltura\Client\Type\OTTUserListResponse',
+		'KalturaPartner' => 'Kaltura\Client\Type\Partner',
+		'KalturaPartnerListResponse' => 'Kaltura\Client\Type\PartnerListResponse',
 		'KalturaSSOAdapterProfile' => 'Kaltura\Client\Type\SSOAdapterProfile',
 		'KalturaSSOAdapterProfileListResponse' => 'Kaltura\Client\Type\SSOAdapterProfileListResponse',
 		'KalturaUserInterestTopic' => 'Kaltura\Client\Type\UserInterestTopic',
@@ -382,11 +386,12 @@ class TypeMap
 		'KalturaPriceDetails' => 'Kaltura\Client\Type\PriceDetails',
 		'KalturaPpv' => 'Kaltura\Client\Type\Ppv',
 		'KalturaPpvListResponse' => 'Kaltura\Client\Type\PpvListResponse',
+		'KalturaPreviewModule' => 'Kaltura\Client\Type\PreviewModule',
+		'KalturaPreviewModuleListResponse' => 'Kaltura\Client\Type\PreviewModuleListResponse',
 		'KalturaPriceDetailsListResponse' => 'Kaltura\Client\Type\PriceDetailsListResponse',
 		'KalturaPricePlanListResponse' => 'Kaltura\Client\Type\PricePlanListResponse',
 		'KalturaProductPriceListResponse' => 'Kaltura\Client\Type\ProductPriceListResponse',
 		'KalturaProductsPriceListResponse' => 'Kaltura\Client\Type\ProductsPriceListResponse',
-		'KalturaPreviewModule' => 'Kaltura\Client\Type\PreviewModule',
 		'KalturaPremiumService' => 'Kaltura\Client\Type\PremiumService',
 		'KalturaSubscription' => 'Kaltura\Client\Type\Subscription',
 		'KalturaSubscriptionListResponse' => 'Kaltura\Client\Type\SubscriptionListResponse',
@@ -396,8 +401,10 @@ class TypeMap
 		'KalturaSubscriptionSetListResponse' => 'Kaltura\Client\Type\SubscriptionSetListResponse',
 		'KalturaSubscriptionDependencySet' => 'Kaltura\Client\Type\SubscriptionDependencySet',
 		'KalturaSubscriptionSwitchSet' => 'Kaltura\Client\Type\SubscriptionSwitchSet',
+		'KalturaUsageModuleListResponse' => 'Kaltura\Client\Type\UsageModuleListResponse',
 		'KalturaPartnerConfiguration' => 'Kaltura\Client\Type\PartnerConfiguration',
 		'KalturaPartnerConfigurationListResponse' => 'Kaltura\Client\Type\PartnerConfigurationListResponse',
+		'KalturaBasePartnerConfiguration' => 'Kaltura\Client\Type\BasePartnerConfiguration',
 		'KalturaBillingPartnerConfig' => 'Kaltura\Client\Type\BillingPartnerConfig',
 		'KalturaCategoryManagement' => 'Kaltura\Client\Type\CategoryManagement',
 		'KalturaCatalogPartnerConfig' => 'Kaltura\Client\Type\CatalogPartnerConfig',
@@ -675,6 +682,7 @@ class TypeMap
 		'KalturaNotificationsPartnerSettings' => 'Kaltura\Client\Type\NotificationsPartnerSettings',
 		'KalturaNotificationsSettings' => 'Kaltura\Client\Type\NotificationsSettings',
 		'KalturaOTTUserDynamicData' => 'Kaltura\Client\Type\OTTUserDynamicData',
+		'KalturaPartnerSetup' => 'Kaltura\Client\Type\PartnerSetup',
 		'KalturaPasswordPolicyListResponse' => 'Kaltura\Client\Type\PasswordPolicyListResponse',
 		'KalturaPermissionItem' => 'Kaltura\Client\Type\PermissionItem',
 		'KalturaPermissionItemListResponse' => 'Kaltura\Client\Type\PermissionItemListResponse',
@@ -685,6 +693,8 @@ class TypeMap
 		'KalturaPin' => 'Kaltura\Client\Type\Pin',
 		'KalturaPurchaseSettings' => 'Kaltura\Client\Type\PurchaseSettings',
 		'KalturaPinResponse' => 'Kaltura\Client\Type\PinResponse',
+		'KalturaActionResult' => 'Kaltura\Client\Type\ActionResult',
+		'KalturaRegionChannelNumber' => 'Kaltura\Client\Type\RegionChannelNumber',
 		'KalturaSmsAdapterProfileListResponse' => 'Kaltura\Client\Type\SmsAdapterProfileListResponse',
 		'KalturaNetworkActionStatus' => 'Kaltura\Client\Type\NetworkActionStatus',
 		'KalturaUserSocialActionResponse' => 'Kaltura\Client\Type\UserSocialActionResponse',
