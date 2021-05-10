@@ -6,7 +6,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -68,21 +68,21 @@ class PricePlan extends \Kaltura\Client\Type\UsageModule
 	/**
 	 * Denotes whether or not this object can be renewed
 	 * @var bool
-	 * @readonly
+	 * @insertonly
 	 */
 	public $isRenewable = null;
 
 	/**
 	 * Defines the number of times the module will be renewed (for the life_cycle period)
 	 * @var int
-	 * @readonly
+	 * @insertonly
 	 */
 	public $renewalsNumber = null;
 
 	/**
 	 * The discount module identifier of the price plan
 	 * @var int
-	 * @readonly
+	 * @insertonly
 	 */
 	public $discountId = null;
 

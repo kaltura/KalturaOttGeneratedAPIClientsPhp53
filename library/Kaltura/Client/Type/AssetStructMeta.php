@@ -6,7 +6,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -84,6 +84,8 @@ class AssetStructMeta extends \Kaltura\Client\ObjectBase
 			else
 				$this->isLocationTag = false;
 		}
+		if(count($xml->suppressedOrder))
+			$this->suppressedOrder = (int)$xml->suppressedOrder;
 	}
 	/**
 	 * Asset Struct id (template_id)
@@ -142,5 +144,11 @@ class AssetStructMeta extends \Kaltura\Client\ObjectBase
 	 * @var bool
 	 */
 	public $isLocationTag = null;
+
+	/**
+	 * suppressed Order, ascending
+	 * @var int
+	 */
+	public $suppressedOrder = null;
 
 }
