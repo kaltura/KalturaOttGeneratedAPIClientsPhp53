@@ -45,45 +45,6 @@ class CollectionService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Internal API !!! Insert new collection for partner
-	 * 
-	 * @return \Kaltura\Client\Type\Collection
-	 */
-	function add(\Kaltura\Client\Type\Collection $collection)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "collection", $collection->toParams());
-		$this->client->queueServiceActionCall("collection", "add", "KalturaCollection", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCollection");
-		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\Collection");
-		return $resultObject;
-	}
-
-	/**
-	 * Internal API !!! Delete collection
-	 * 
-	 * @return bool
-	 */
-	function delete($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("collection", "delete", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (bool)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
-	}
-
-	/**
 	 * Returns a list of subscriptions requested by Subscription ID or file ID
 	 * 
 	 * @return \Kaltura\Client\Type\CollectionListResponse

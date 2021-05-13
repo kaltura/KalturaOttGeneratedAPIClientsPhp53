@@ -57,6 +57,7 @@ class BaseChannel extends \Kaltura\Client\Type\OTTObjectSupportNullable
 	/**
 	 * Unique identifier for the channel
 	 * @var int
+	 * @readonly
 	 */
 	public $id = null;
 

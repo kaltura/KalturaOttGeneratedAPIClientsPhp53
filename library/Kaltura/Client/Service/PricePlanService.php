@@ -45,45 +45,6 @@ class PricePlanService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Internal API !!!  Insert new PriceDetails for partner
-	 * 
-	 * @return \Kaltura\Client\Type\PricePlan
-	 */
-	function add(\Kaltura\Client\Type\PricePlan $pricePlan)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "pricePlan", $pricePlan->toParams());
-		$this->client->queueServiceActionCall("priceplan", "add", "KalturaPricePlan", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPricePlan");
-		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\PricePlan");
-		return $resultObject;
-	}
-
-	/**
-	 * Internal API !!! Delete PricePlan
-	 * 
-	 * @return bool
-	 */
-	function delete($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("priceplan", "delete", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (bool)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
-	}
-
-	/**
 	 * Returns a list of price plans by IDs
 	 * 
 	 * @return \Kaltura\Client\Type\PricePlanListResponse
