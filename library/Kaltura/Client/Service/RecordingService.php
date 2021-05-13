@@ -6,7 +6,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -61,27 +61,6 @@ class RecordingService extends \Kaltura\Client\ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaRecording");
 		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\Recording");
-		return $resultObject;
-	}
-
-	/**
-	 * Delete list of user&#39;s recordings. Recording can be deleted only in status Recorded.
-	 *             Possible error codes for each recording: RecordingNotFound = 3039, RecordingStatusNotValid = 3043, Error = 1
-	 * 
-	 * @return array
-	 */
-	function bulkdelete($recordingIds)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "recordingIds", $recordingIds);
-		$this->client->queueServiceActionCall("recording", "bulkdelete", "KalturaActionResult", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaActionResult");
-		$this->client->validateObjectType($resultObject, "array");
 		return $resultObject;
 	}
 
