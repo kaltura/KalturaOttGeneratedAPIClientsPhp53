@@ -43,5 +43,7 @@ class ChannelsOrderBy extends \Kaltura\Client\EnumBase
 	const NAME_DESC = "NAME_DESC";
 	const CREATE_DATE_ASC = "CREATE_DATE_ASC";
 	const CREATE_DATE_DESC = "CREATE_DATE_DESC";
+	const LAST_MODIFIED_DATE_ASC = "LAST_MODIFIED_DATE_ASC";
+	const LAST_MODIFIED_DATE_DESC = "LAST_MODIFIED_DATE_DESC";
 }
 
