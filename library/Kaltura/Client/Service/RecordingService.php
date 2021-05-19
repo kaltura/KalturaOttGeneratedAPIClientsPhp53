@@ -65,27 +65,6 @@ class RecordingService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Delete list of user&#39;s recordings. Recording can be deleted only in status Recorded.
-	 *             Possible error codes for each recording: RecordingNotFound = 3039, RecordingStatusNotValid = 3043, Error = 1
-	 * 
-	 * @return array
-	 */
-	function bulkdelete($recordingIds)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "recordingIds", $recordingIds);
-		$this->client->queueServiceActionCall("recording", "bulkdelete", "KalturaActionResult", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = \Kaltura\Client\ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaActionResult");
-		$this->client->validateObjectType($resultObject, "array");
-		return $resultObject;
-	}
-
-	/**
 	 * Cancel a previously requested recording. Cancel recording can be called for recording in status Scheduled or Recording Only
 	 * 
 	 * @return \Kaltura\Client\Type\Recording

@@ -86,13 +86,6 @@ class AssetStruct extends \Kaltura\Client\ObjectBase
 			$this->connectingMetaId = (string)$xml->connectingMetaId;
 		if(count($xml->connectedParentMetaId))
 			$this->connectedParentMetaId = (string)$xml->connectedParentMetaId;
-		if(count($xml->dynamicData))
-		{
-			if(empty($xml->dynamicData))
-				$this->dynamicData = array();
-			else
-				$this->dynamicData = \Kaltura\Client\ParseUtils::unmarshalMap($xml->dynamicData, "KalturaStringValue");
-		}
 	}
 	/**
 	 * Asset Struct id
@@ -175,11 +168,5 @@ class AssetStruct extends \Kaltura\Client\ObjectBase
 	 * @var int
 	 */
 	public $connectedParentMetaId = null;
-
-	/**
-	 * Dynamic data
-	 * @var array<string, KalturaStringValue>
-	 */
-	public $dynamicData;
 
 }
