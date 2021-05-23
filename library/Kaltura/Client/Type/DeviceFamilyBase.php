@@ -59,13 +59,13 @@ class DeviceFamilyBase extends \Kaltura\Client\ObjectBase
 	/**
 	 * Device family identifier
 	 * @var int
-	 * @readonly
 	 */
 	public $id = null;
 
 	/**
 	 * Device family name
 	 * @var string
+	 * @readonly
 	 */
 	public $name = null;
 
