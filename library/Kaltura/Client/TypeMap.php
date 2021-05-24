@@ -6,7 +6,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -386,11 +386,12 @@ class TypeMap
 		'KalturaPriceDetails' => 'Kaltura\Client\Type\PriceDetails',
 		'KalturaPpv' => 'Kaltura\Client\Type\Ppv',
 		'KalturaPpvListResponse' => 'Kaltura\Client\Type\PpvListResponse',
+		'KalturaPreviewModule' => 'Kaltura\Client\Type\PreviewModule',
+		'KalturaPreviewModuleListResponse' => 'Kaltura\Client\Type\PreviewModuleListResponse',
 		'KalturaPriceDetailsListResponse' => 'Kaltura\Client\Type\PriceDetailsListResponse',
 		'KalturaPricePlanListResponse' => 'Kaltura\Client\Type\PricePlanListResponse',
 		'KalturaProductPriceListResponse' => 'Kaltura\Client\Type\ProductPriceListResponse',
 		'KalturaProductsPriceListResponse' => 'Kaltura\Client\Type\ProductsPriceListResponse',
-		'KalturaPreviewModule' => 'Kaltura\Client\Type\PreviewModule',
 		'KalturaPremiumService' => 'Kaltura\Client\Type\PremiumService',
 		'KalturaSubscription' => 'Kaltura\Client\Type\Subscription',
 		'KalturaSubscriptionListResponse' => 'Kaltura\Client\Type\SubscriptionListResponse',
@@ -400,6 +401,7 @@ class TypeMap
 		'KalturaSubscriptionSetListResponse' => 'Kaltura\Client\Type\SubscriptionSetListResponse',
 		'KalturaSubscriptionDependencySet' => 'Kaltura\Client\Type\SubscriptionDependencySet',
 		'KalturaSubscriptionSwitchSet' => 'Kaltura\Client\Type\SubscriptionSwitchSet',
+		'KalturaUsageModuleListResponse' => 'Kaltura\Client\Type\UsageModuleListResponse',
 		'KalturaPartnerConfiguration' => 'Kaltura\Client\Type\PartnerConfiguration',
 		'KalturaPartnerConfigurationListResponse' => 'Kaltura\Client\Type\PartnerConfigurationListResponse',
 		'KalturaBasePartnerConfiguration' => 'Kaltura\Client\Type\BasePartnerConfiguration',

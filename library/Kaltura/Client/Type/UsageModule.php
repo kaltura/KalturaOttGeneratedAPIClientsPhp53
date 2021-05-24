@@ -6,7 +6,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -83,35 +83,34 @@ class UsageModule extends \Kaltura\Client\ObjectBase
 	/**
 	 * Usage module identifier
 	 * @var int
-	 * @readonly
 	 */
 	public $id = null;
 
 	/**
 	 * Usage module name
 	 * @var string
-	 * @readonly
+	 * @insertonly
 	 */
 	public $name = null;
 
 	/**
 	 * The maximum number of times an item in this usage module can be viewed
 	 * @var int
-	 * @readonly
+	 * @insertonly
 	 */
 	public $maxViewsNumber = null;
 
 	/**
 	 * The amount time an item is available for viewing since a user started watching the item
 	 * @var int
-	 * @readonly
+	 * @insertonly
 	 */
 	public $viewLifeCycle = null;
 
 	/**
 	 * The amount time an item is available for viewing
 	 * @var int
-	 * @readonly
+	 * @insertonly
 	 */
 	public $fullLifeCycle = null;
 

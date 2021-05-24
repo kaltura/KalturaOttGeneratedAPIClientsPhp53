@@ -6,7 +6,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -504,6 +504,11 @@ class Client extends Base
 	protected $ppv = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\PreviewModuleService
+	 */
+	protected $previewModule = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\PriceDetailsService
 	 */
 	protected $priceDetails = null;
@@ -679,6 +684,11 @@ class Client extends Base
 	protected $uploadToken = null;
 
 	/**
+	 * @var \Kaltura\Client\Service\UsageModuleService
+	 */
+	protected $usageModule = null;
+
+	/**
 	 * @var \Kaltura\Client\Service\UserAssetRuleService
 	 */
 	protected $userAssetRule = null;
@@ -717,8 +727,8 @@ class Client extends Base
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:21-05-13');
-		$this->setApiVersion('6.4.0.29137');
+		$this->setClientTag('php5:21-05-24');
+		$this->setApiVersion('6.4.0.29304');
 	}
 	
 	/**
@@ -1559,6 +1569,15 @@ class Client extends Base
 		return $this->ppv;
 	}
 	/**
+	 * @return \Kaltura\Client\Service\PreviewModuleService
+	 */
+	public function getPreviewModuleService()
+	{
+		if (is_null($this->previewModule))
+			$this->previewModule = new \Kaltura\Client\Service\PreviewModuleService($this);
+		return $this->previewModule;
+	}
+	/**
 	 * @return \Kaltura\Client\Service\PriceDetailsService
 	 */
 	public function getPriceDetailsService()
@@ -1872,6 +1891,15 @@ class Client extends Base
 		if (is_null($this->uploadToken))
 			$this->uploadToken = new \Kaltura\Client\Service\UploadTokenService($this);
 		return $this->uploadToken;
+	}
+	/**
+	 * @return \Kaltura\Client\Service\UsageModuleService
+	 */
+	public function getUsageModuleService()
+	{
+		if (is_null($this->usageModule))
+			$this->usageModule = new \Kaltura\Client\Service\UsageModuleService($this);
+		return $this->usageModule;
 	}
 	/**
 	 * @return \Kaltura\Client\Service\UserAssetRuleService
