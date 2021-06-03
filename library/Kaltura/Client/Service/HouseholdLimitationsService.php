@@ -45,6 +45,45 @@ class HouseholdLimitationsService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
+	 * Add household limitation
+	 * 
+	 * @return \Kaltura\Client\Type\HouseholdLimitations
+	 */
+	function add(\Kaltura\Client\Type\HouseholdLimitations $householdLimitations)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "householdLimitations", $householdLimitations->toParams());
+		$this->client->queueServiceActionCall("householdlimitations", "add", "KalturaHouseholdLimitations", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaHouseholdLimitations");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\HouseholdLimitations");
+		return $resultObject;
+	}
+
+	/**
+	 * Delete household limitation
+	 * 
+	 * @return bool
+	 */
+	function delete($householdLimitationsId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "householdLimitationsId", $householdLimitationsId);
+		$this->client->queueServiceActionCall("householdlimitations", "delete", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (bool)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
+	}
+
+	/**
 	 * Get the limitation module by id
 	 * 
 	 * @return \Kaltura\Client\Type\HouseholdLimitations

@@ -89,28 +89,24 @@ class HouseholdLimitations extends \Kaltura\Client\ObjectBase
 	/**
 	 * Household limitation module name
 	 * @var string
-	 * @readonly
 	 */
 	public $name = null;
 
 	/**
 	 * Max number of streams allowed for the household
 	 * @var int
-	 * @readonly
 	 */
 	public $concurrentLimit = null;
 
 	/**
 	 * Max number of devices allowed for the household
 	 * @var int
-	 * @readonly
 	 */
 	public $deviceLimit = null;
 
 	/**
 	 * Allowed device change frequency code
 	 * @var int
-	 * @readonly
 	 */
 	public $deviceFrequency = null;
 
@@ -124,7 +120,6 @@ class HouseholdLimitations extends \Kaltura\Client\ObjectBase
 	/**
 	 * Allowed user change frequency code
 	 * @var int
-	 * @readonly
 	 */
 	public $userFrequency = null;
 
@@ -145,14 +140,12 @@ class HouseholdLimitations extends \Kaltura\Client\ObjectBase
 	/**
 	 * Max number of users allowed for the household
 	 * @var int
-	 * @readonly
 	 */
 	public $usersLimit = null;
 
 	/**
 	 * Device families limitations
 	 * @var array<KalturaHouseholdDeviceFamilyLimitations>
-	 * @readonly
 	 */
 	public $deviceFamiliesLimitations;
 

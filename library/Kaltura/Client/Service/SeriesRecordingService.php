@@ -187,4 +187,24 @@ class SeriesRecordingService extends \Kaltura\Client\ServiceBase
 		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\SeriesRecordingListResponse");
 		return $resultObject;
 	}
+
+	/**
+	 * Enable EPG recording that was canceled as part of series
+	 * 
+	 * @return \Kaltura\Client\Type\SeriesRecording
+	 */
+	function rebookCanceledByEpgId($epgId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "epgId", $epgId);
+		$this->client->queueServiceActionCall("seriesrecording", "rebookCanceledByEpgId", "KalturaSeriesRecording", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaSeriesRecording");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\SeriesRecording");
+		return $resultObject;
+	}
 }

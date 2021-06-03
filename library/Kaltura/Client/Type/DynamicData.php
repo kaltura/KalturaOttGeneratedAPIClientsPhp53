@@ -33,15 +33,14 @@
 namespace Kaltura\Client\Type;
 
 /**
- * Device family details
  * @package Kaltura
  * @subpackage Client
  */
-class DeviceFamilyBase extends \Kaltura\Client\ObjectBase
+class DynamicData extends \Kaltura\Client\ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaDeviceFamilyBase';
+		return 'KalturaDynamicData';
 	}
 	
 	public function __construct(\SimpleXMLElement $xml = null)
@@ -51,22 +50,21 @@ class DeviceFamilyBase extends \Kaltura\Client\ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->id))
-			$this->id = (string)$xml->id;
-		if(count($xml->name))
-			$this->name = (string)$xml->name;
+		if(count($xml->key))
+			$this->key = (string)$xml->key;
+		if(count($xml->value) && !empty($xml->value))
+			$this->value = \Kaltura\Client\ParseUtils::unmarshalObject($xml->value, "KalturaValue");
 	}
 	/**
-	 * Device family identifier
-	 * @var int
+	 * Key
+	 * @var string
 	 */
-	public $id = null;
+	public $key = null;
 
 	/**
-	 * Device family name
-	 * @var string
-	 * @readonly
+	 * Value
+	 * @var \Kaltura\Client\Type\Value
 	 */
-	public $name = null;
+	public $value;
 
 }

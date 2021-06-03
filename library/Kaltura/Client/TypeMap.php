@@ -657,6 +657,7 @@ class TypeMap
 		'KalturaDevicePin' => 'Kaltura\Client\Type\DevicePin',
 		'KalturaLoginSession' => 'Kaltura\Client\Type\LoginSession',
 		'KalturaLoginResponse' => 'Kaltura\Client\Type\LoginResponse',
+		'KalturaDynamicData' => 'Kaltura\Client\Type\DynamicData',
 		'KalturaPaymentGatewayConfiguration' => 'Kaltura\Client\Type\PaymentGatewayConfiguration',
 		'KalturaHouseholdQuota' => 'Kaltura\Client\Type\HouseholdQuota',
 		'KalturaHouseholdSegmentListResponse' => 'Kaltura\Client\Type\HouseholdSegmentListResponse',
