@@ -125,6 +125,25 @@ class OttUserService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
+	 * Deletes dynamic data item for a user.
+	 * 
+	 * @return bool
+	 */
+	function deleteDynamicData($key)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "key", $key);
+		$this->client->queueServiceActionCall("ottuser", "deleteDynamicData", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (bool)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
+	}
+
+	/**
 	 * Retrieving users&#39; data
 	 * 
 	 * @return \Kaltura\Client\Type\OTTUser
@@ -364,7 +383,8 @@ class OttUserService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
-	 * Update user dynamic data
+	 * Update user dynamic data. If it is needed to update several items, use a multi-request to avoid race conditions.
+	 *             This API endpoint will deprecated soon. Please use UpsertDynamicData instead of it.
 	 * 
 	 * @return \Kaltura\Client\Type\OTTUserDynamicData
 	 */
@@ -420,5 +440,26 @@ class OttUserService extends \Kaltura\Client\ServiceBase
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
+	}
+
+	/**
+	 * Adds or updates dynamic data item for a user. If it is needed to update several items, use a multi-request to avoid race conditions.
+	 * 
+	 * @return \Kaltura\Client\Type\DynamicData
+	 */
+	function upsertDynamicData($key, \Kaltura\Client\Type\StringValue $value)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "key", $key);
+		$this->client->addParam($kparams, "value", $value->toParams());
+		$this->client->queueServiceActionCall("ottuser", "upsertDynamicData", "KalturaDynamicData", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDynamicData");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\DynamicData");
+		return $resultObject;
 	}
 }

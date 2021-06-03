@@ -105,6 +105,26 @@ class HouseholdDeviceService extends \Kaltura\Client\ServiceBase
 	}
 
 	/**
+	 * Deletes dynamic data item with key  for device with identifier .
+	 * 
+	 * @return bool
+	 */
+	function deleteDynamicData($udid, $key)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "udid", $udid);
+		$this->client->addParam($kparams, "key", $key);
+		$this->client->queueServiceActionCall("householddevice", "deleteDynamicData", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (bool)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
+	}
+
+	/**
 	 * Generates device pin to use when adding a device to household by pin
 	 * 
 	 * @return \Kaltura\Client\Type\DevicePin
@@ -226,6 +246,28 @@ class HouseholdDeviceService extends \Kaltura\Client\ServiceBase
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = (bool)\Kaltura\Client\ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
+	}
+
+	/**
+	 * Adds or updates dynamic data item for device with identifier udid. If it is needed to update several items, use a multi-request to avoid race conditions.
+	 * 
+	 * @return \Kaltura\Client\Type\DynamicData
+	 */
+	function upsertDynamicData($udid, $key, \Kaltura\Client\Type\StringValue $value)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "udid", $udid);
+		$this->client->addParam($kparams, "key", $key);
+		$this->client->addParam($kparams, "value", $value->toParams());
+		$this->client->queueServiceActionCall("householddevice", "upsertDynamicData", "KalturaDynamicData", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = \Kaltura\Client\ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDynamicData");
+		$this->client->validateObjectType($resultObject, "\\Kaltura\\Client\\Type\\DynamicData");
 		return $resultObject;
 	}
 }
